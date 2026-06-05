@@ -1,14 +1,6 @@
-import {
-  ChevronDown,
-  Mail,
-  MapPin,
-  Menu,
-  Phone,
-  Search,
-  X
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import company from "../../data/company.json";
+import { imageAssets } from "../../data/imageAssets";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -19,24 +11,6 @@ const navItems = [
   { label: "Contact", href: "#contact" }
 ];
 
-const socialLinks = [
-  {
-    label: "Facebook",
-    shortLabel: "f",
-    href: "https://www.facebook.com"
-  },
-  {
-    label: "Instagram",
-    shortLabel: "ig",
-    href: "https://www.instagram.com"
-  },
-  {
-    label: "LinkedIn",
-    shortLabel: "in",
-    href: "https://www.linkedin.com"
-  }
-];
-
 export default function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
@@ -44,20 +18,20 @@ export default function NavigationBar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 120);
+      setIsSticky(window.scrollY > 40);
 
       const sections = navItems
         .map((item) => item.href.replace("#", ""))
         .map((id) => document.getElementById(id))
         .filter(Boolean) as HTMLElement[];
 
-      const current = sections.find((section) => {
+      const currentSection = sections.find((section) => {
         const rect = section.getBoundingClientRect();
-        return rect.top <= 160 && rect.bottom >= 160;
+        return rect.top <= 150 && rect.bottom >= 150;
       });
 
-      if (current) {
-        setActiveSection(current.id);
+      if (currentSection) {
+        setActiveSection(currentSection.id);
       }
     };
 
@@ -65,102 +39,91 @@ export default function NavigationBar() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const closeMobileMenu = () => {
+  const closeMenu = () => {
     setIsMenuOpen(false);
   };
 
   return (
-    <header className={`site-header ${isSticky ? "is-sticky" : ""}`}>
-      <div className="top-bar">
-        <div className="container top-bar-inner">
-          <div className="top-contact">
-            <a href={`tel:${company.contact.phone}`} className="top-contact-link">
-              <Phone size={15} strokeWidth={2.2} />
-              <span>{company.contact.phone}</span>
-            </a>
+    <header className={`sp-header ${isSticky ? "is-sticky" : ""}`}>
+      <div className="container sp-nav-container">
+        <a href="#home" className="sp-brand" onClick={closeMenu}>
+          <img
+          src={imageAssets.logo.main}
+          alt="Sumathi Printers"
+          className="sp-brand-logo"
+          />
+        </a>
 
-            <a href={`mailto:${company.contact.email}`} className="top-contact-link">
-              <Mail size={15} strokeWidth={2.2} />
-              <span>{company.contact.email}</span>
-            </a>
+        <nav className="sp-nav-pill" aria-label="Primary navigation">
+          {navItems.map((item) => {
+            const sectionId = item.href.replace("#", "");
+            const isActive = activeSection === sectionId;
 
-            <span className="top-contact-link top-address">
-              <MapPin size={15} strokeWidth={2.2} />
-              <span>{company.contact.address}</span>
-            </span>
-          </div>
-
-          <div className="top-social">
-            {socialLinks.map((item) => (
+            return (
               <a
                 key={item.label}
                 href={item.href}
-                aria-label={item.label}
-                className="social-pill"
-                target="_blank"
-                rel="noreferrer"
+                className={`sp-nav-link ${isActive ? "active" : ""}`}
               >
-                {item.shortLabel}
+                {item.label}
               </a>
-            ))}
-          </div>
+            );
+          })}
+
+          <a href="#contact" className="sp-quote-button">
+            <span>Get Quote</span>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          className="sp-mobile-toggle"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setIsMenuOpen((current) => !current)}
+        >
+          {isMenuOpen ? <X size={25} /> : <Menu size={25} />}
+        </button>
+      </div>
+
+      <div className={`sp-mobile-panel ${isMenuOpen ? "is-open" : ""}`}>
+        <div className="sp-mobile-panel-inner">
+          {navItems.map((item) => {
+            const sectionId = item.href.replace("#", "");
+            const isActive = activeSection === sectionId;
+
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                className={`sp-mobile-link ${isActive ? "active" : ""}`}
+                onClick={closeMenu}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+
+          <a
+            href="#contact"
+            className="sp-mobile-quote-button"
+            onClick={closeMenu}
+          >
+            <span>Get Quote</span>
+          </a>
         </div>
       </div>
 
-      <nav className="main-nav">
-        <div className="container nav-inner">
-          <a href="#home" className="brand" onClick={closeMobileMenu}>
-            <span className="brand-mark">S</span>
-            <span className="brand-copy">
-              <strong>SUMATHI</strong>
-              <small>PRINTERS</small>
-            </span>
-          </a>
-
-          <div className={`nav-links ${isMenuOpen ? "is-open" : ""}`}>
-            {navItems.map((item) => {
-              const sectionId = item.href.replace("#", "");
-              const isActive = activeSection === sectionId;
-
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className={`nav-link ${isActive ? "active" : ""}`}
-                  onClick={closeMobileMenu}
-                >
-                  <span>{item.label}</span>
-                  {item.label === "Services" && (
-                    <ChevronDown size={14} strokeWidth={2.4} />
-                  )}
-                </a>
-              );
-            })}
-          </div>
-
-          <div className="nav-actions">
-            <button className="nav-search" type="button" aria-label="Search">
-              <Search size={18} strokeWidth={2.3} />
-            </button>
-
-            <a href="#contact" className="nav-quote">
-              Get Quote
-            </a>
-
-            <button
-              className="menu-toggle"
-              type="button"
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setIsMenuOpen((current) => !current)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </nav>
+      <button
+        type="button"
+        className={`sp-mobile-backdrop ${isMenuOpen ? "is-open" : ""}`}
+        aria-label="Close menu"
+        onClick={closeMenu}
+      />
     </header>
   );
 }
