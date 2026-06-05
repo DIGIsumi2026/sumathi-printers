@@ -1,0 +1,10 @@
+{
+  "name": "sumathi-printers-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency-free backend for Sumathi Printers portfolio",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js"
+  }
+}

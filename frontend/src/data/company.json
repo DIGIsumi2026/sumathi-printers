@@ -1,0 +1,260 @@
+{
+  "brand": "Sumathi Printers",
+  "legalName": "Sumathi Printers (Pvt) Ltd",
+  "tagline": "Comprehensive printing solutions with quality, service excellence and reliable delivery.",
+  "topBar": {
+    "phone": "077 42 6900",
+    "email": "info@sumathiprinters.com",
+    "address": "445/1, Sirimawo Bandaranayaka Mawatha, Colombo 14"
+  },
+  "contact": {
+    "address": "445/1, Sirimawo Bandaranayaka Mawatha, Colombo 14",
+    "phone": "077 42 6900",
+    "website": "www.sumathiprinters.com",
+    "facebook": "www.sumathiprintersfacebook.com",
+    "email": "info@sumathiprinters.com"
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "#home"
+    },
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Services",
+      "href": "#services"
+    },
+    {
+      "label": "Finishing",
+      "href": "#finishing"
+    },
+    {
+      "label": "Clients",
+      "href": "#clients"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Premium Printing & Publishing",
+    "rotatingWords": [
+      "Quality",
+      "Modern",
+      "Reliable"
+    ],
+    "titlePrefix": "Printing Solutions",
+    "titleSuffix": "For Your Brand",
+    "description": "From offset printing and packaging to books, labels, calendars and finishing, Sumathi Printers delivers professional print production for Sri Lankan businesses and institutions.",
+    "points": [
+      "Established roots since 1984",
+      "Modern printing equipment",
+      "Fast and reliable delivery"
+    ]
+  },
+  "about": {
+    "title": "At the Forefront of Printing and Publishing in Sri Lanka",
+    "paragraphs": [
+      "Sumathi Publishers, a partnership established in 1984, was the forerunner to Sumathi Book Printing (Pvt) Ltd, which was incorporated in 1991.",
+      "The company was later renamed Sumathi Printers (Pvt) Ltd in 2011, operating as a subsidiary of Sumathi Global Consolidated (Pvt) Ltd."
+    ],
+    "technology": "State-of-the-art machinery, technology and accessories combined with qualified personnel help the press meet demanding quality standards while maintaining confidentiality and agreed time schedules."
+  },
+  "missionVision": {
+    "vision": "To be a key player in the printing industry in the pursuit of quality and service excellence while earning our employees\u2019 and customers\u2019 enthusiasm through continuous improvement driven by integrity, teamwork and innovation.",
+    "mission": "Committed to providing comprehensive printing solutions dedicated to excellence in customer service, product quality and environmental responsibility while ensuring profitable growth for staff, customers and suppliers."
+  },
+  "stats": [
+    {
+      "value": "1984",
+      "label": "Printing heritage started"
+    },
+    {
+      "value": "1991",
+      "label": "Book printing company incorporated"
+    },
+    {
+      "value": "2011",
+      "label": "Renamed Sumathi Printers"
+    }
+  ],
+  "features": [
+    {
+      "title": "High Quality Printing",
+      "text": "Sharp, consistent, professional printing output for every requirement."
+    },
+    {
+      "title": "Modern Equipment",
+      "text": "Technology-driven production with modern machinery and qualified personnel."
+    },
+    {
+      "title": "Reliable Delivery",
+      "text": "Confidential, affordable and schedule-focused production workflow."
+    }
+  ],
+  "services": [
+    "Offset Printing",
+    "Graphic Designing",
+    "Flyers & Leaflets",
+    "Posters & Banners",
+    "Bill Books & Letterheads",
+    "Calendars & Diaries",
+    "Letterheads & Envelopes",
+    "Certificates Printing",
+    "Stickers & Labels",
+    "Packaging Box Printing",
+    "Brochures & Catalogs",
+    "Books & Magazine Printing"
+  ],
+  "serviceCards": [
+    {
+      "title": "Offset Colour Lithography",
+      "text": "Professional colour printing for publications, marketing materials and business stationery.",
+      "imageKey": "serviceFace"
+    },
+    {
+      "title": "Packaging Box Printing",
+      "text": "Custom printed packaging boxes designed to improve brand presentation and product protection.",
+      "imageKey": "serviceBox"
+    },
+    {
+      "title": "Books & Magazine Printing",
+      "text": "Reliable book, catalog and magazine production with finishing options for polished results.",
+      "imageKey": "categoryLabel"
+    }
+  ],
+  "finishingServices": [
+    "Cutting & Trimming",
+    "Folding",
+    "Binding",
+    "Lamination",
+    "Numbering",
+    "UV Varnishing",
+    "Gold Foiling",
+    "Shrink Wrapping"
+  ],
+  "whyChooseUs": [
+    "High quality printing output",
+    "Customized printing solutions",
+    "Modern printing equipment",
+    "Friendly and professional customer service",
+    "Fast and reliable delivery",
+    "Affordable and competitive prices"
+  ],
+  "clients": [
+    "Ministry of Health",
+    "Sri Lanka Rupavahini Corporation",
+    "National Cancer Control Programme",
+    "Family Health Bureau",
+    "Health Promotion Bureau",
+    "BCC",
+    "University of Colombo",
+    "Inland Revenue Department",
+    "Regional Development Bank",
+    "Sri Lanka Insurance",
+    "NSB",
+    "National Water Supply & Drainage Board",
+    "Colombo Textiles"
+  ],
+  "processSteps": [
+    {
+      "title": "Share Requirement",
+      "text": "Send your artwork, sample, product size, paper type or print idea."
+    },
+    {
+      "title": "Choose Materials",
+      "text": "Select paper, board, sticker stock, binding style, lamination or finishing."
+    },
+    {
+      "title": "Approve Details",
+      "text": "Confirm artwork, quantity, delivery details and production timeline."
+    },
+    {
+      "title": "Receive Delivery",
+      "text": "Your completed print order is packed and delivered reliably."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Corporate Client",
+      "role": "Government & Institutional Printing",
+      "title": "Reliable Quality and Professional Service",
+      "quote": "Sumathi Printers provides dependable print quality, clear communication and timely delivery for repeated print requirements.",
+      "imageKey": "testimonialMan",
+      "points": [
+        "Consistent production quality",
+        "Trusted institutional service",
+        "Fast and reliable delivery"
+      ]
+    },
+    {
+      "name": "Business Client",
+      "role": "Branding & Packaging",
+      "title": "Clean Finishing and Strong Presentation",
+      "quote": "Their packaging, labels and marketing print work helped us maintain a professional brand presence.",
+      "imageKey": "testimonialWoman",
+      "points": [
+        "Clean finishing options",
+        "Professional brand output",
+        "Helpful project support"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "title": "Business Stationery",
+      "imageKey": "categoryMarketing"
+    },
+    {
+      "title": "Packaging Boxes",
+      "imageKey": "categoryPackaging"
+    },
+    {
+      "title": "Labels & Stickers",
+      "imageKey": "categoryLabel"
+    },
+    {
+      "title": "Posters & Banners",
+      "imageKey": "categoryLarge"
+    },
+    {
+      "title": "Books & Magazines",
+      "imageKey": "categoryApparel"
+    },
+    {
+      "title": "Promotional Materials",
+      "imageKey": "categoryPromo"
+    }
+  ],
+  "blogs": [
+    {
+      "tag": "Printing Guide",
+      "title": "How to Choose the Right Print Material",
+      "author": "Sumathi Printers",
+      "imageKey": "blogOne"
+    },
+    {
+      "tag": "Finishing",
+      "title": "Why Lamination and Binding Matter",
+      "author": "Production Team",
+      "imageKey": "blogTwo"
+    },
+    {
+      "tag": "Branding",
+      "title": "Packaging Ideas for Better Product Presentation",
+      "author": "Design Team",
+      "imageKey": "blogThree"
+    }
+  ],
+  "partners": [
+    "Ministry of Health",
+    "University of Colombo",
+    "RDB",
+    "SLIC",
+    "NSB"
+  ]
+}
