@@ -10,7 +10,9 @@ export default function CustomCursor() {
 
     if (!cursor || !follower) return;
 
-    const isFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const isFinePointer = window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
 
     if (!isFinePointer) {
       cursor.style.display = "none";
@@ -34,6 +36,7 @@ export default function CustomCursor() {
       "select",
       "[role='button']",
       "[data-cursor='hover']",
+      "[data-cursor-label]",
       ".sp-nav-link",
       ".sp-quote-button",
       ".sp-mobile-toggle",
@@ -41,7 +44,9 @@ export default function CustomCursor() {
       ".sp-hero-progress-segment"
     ].join(",");
 
-    const textSelector = ["input", "textarea", "[contenteditable='true']"].join(",");
+    const textSelector = ["input", "textarea", "[contenteditable='true']"].join(
+      ","
+    );
 
     const updateCursor = () => {
       followerX += (mouseX - followerX) * 0.18;
@@ -59,11 +64,23 @@ export default function CustomCursor() {
 
       const target = event.target as HTMLElement | null;
 
-      const isInteractive = Boolean(target?.closest(interactiveSelector));
-      const isText = Boolean(target?.closest(textSelector));
+      const labeledTarget = target?.closest("[data-cursor-label]") as
+        | HTMLElement
+        | null;
 
-      document.body.classList.toggle("cursor-hovering", isInteractive);
-      document.body.classList.toggle("cursor-text", isText);
+      const label = labeledTarget?.dataset.cursorLabel || "";
+
+      follower.dataset.label = label;
+
+      document.body.classList.toggle("cursor-labeled", Boolean(label));
+      document.body.classList.toggle(
+        "cursor-hovering",
+        Boolean(target?.closest(interactiveSelector))
+      );
+      document.body.classList.toggle(
+        "cursor-text",
+        Boolean(target?.closest(textSelector))
+      );
     };
 
     const handleMouseDown = () => {
@@ -102,7 +119,8 @@ export default function CustomCursor() {
         "cursor-hovering",
         "cursor-clicking",
         "cursor-hidden",
-        "cursor-text"
+        "cursor-text",
+        "cursor-labeled"
       );
     };
   }, []);

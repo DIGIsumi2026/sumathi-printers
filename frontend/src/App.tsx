@@ -22,9 +22,7 @@ export default function App() {
   const [quoteStatus, setQuoteStatus] = useState<FormStatus>("idle");
 
   useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setLoading(false);
-    }, 2150);
+    const timer = window.setTimeout(() => setLoading(false), 4200);
 
     return () => {
       window.clearTimeout(timer);
@@ -66,7 +64,7 @@ export default function App() {
   return (
     <>
       <CustomCursor />
-      
+
       <Preloader visible={loading} brand={company.brand} />
 
       <FloatingDecor />

@@ -1,6 +1,9 @@
 //navigation bar 
 import sumathiLogo from "../assets/images/logo/sumathi-logo.png";
 
+//loading animation 
+
+
 //hero section 
 import offsetPrinting from "../assets/images/hero-section/offset-printing.png";
 import graphicDesigning from "../assets/images/hero-section/graphic-designing.png";

@@ -314,61 +314,257 @@ button {
   flex: 1;
 }
 
-.preloader {
+/*=============== pre loader ================*/
+
+.sp-page-loader {
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  overflow: hidden;
-  background: #000;
-  animation: preloaderExit .45s ease 1.85s forwards;
-}
-
-.preloader-green,
-.preloader-black {
-  position: absolute;
-  inset: 0;
+  z-index: 99999;
   display: grid;
   place-items: center;
-  font-size: 20px;
-  font-weight: 800;
-  color: #fff;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.94) 18%,
+      rgba(244, 240, 252, 0.92) 44%,
+      rgba(237, 233, 247, 0.98) 100%
+    ),
+    linear-gradient(180deg, #faf8ff 0%, #f1eef8 100%);
+  transition:
+    opacity 0.75s ease,
+    visibility 0.75s ease,
+    transform 0.75s ease;
 }
 
-.preloader-green {
-  background: #37d279;
-  animation: greenCurtain 1s ease .65s forwards;
+.sp-page-loader.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
 }
 
-.preloader-black {
-  background: #000;
+.sp-page-loader.is-hidden {
   opacity: 0;
-  animation: blackReveal .9s ease .75s forwards;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.02);
 }
 
-.scan-lines {
+/* Soft background grid matching the video atmosphere */
+.sp-page-loader-bg {
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(90deg, #38d279 0 10px, #000 10px 20px);
-  transform: translateX(-100%);
-  animation: scanMove .9s cubic-bezier(.77, 0, .18, 1) .88s forwards;
+  z-index: 0;
+  background:
+    linear-gradient(
+      to right,
+      rgba(122, 77, 255, 0.028) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(122, 77, 255, 0.024) 1px,
+      transparent 1px
+    );
+  background-size: 96px 96px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+  opacity: 0.55;
+  pointer-events: none;
 }
 
-@keyframes greenCurtain {
-  to { clip-path: inset(0 100% 0 0); }
+/* Video wrapper: transparent, no visible border/card */
+.sp-page-loader-video-wrap {
+  position: relative;
+  z-index: 2;
+  width: min(720px, 68vw);
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  transform: translateY(-8px);
+  animation: spLoaderVideoFloat 3.2s ease-in-out infinite;
 }
 
-@keyframes blackReveal {
-  to { opacity: 1; }
+/* Disable previous glow card layer if it existed */
+.sp-page-loader-video-wrap::before {
+  content: none;
 }
 
-@keyframes scanMove {
-  0% { transform: translateX(-110%); opacity: 1; }
-  80% { transform: translateX(18%); opacity: 1; }
-  100% { transform: translateX(110%); opacity: 0; }
+/* Video itself */
+.sp-page-loader-video {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+  transform: scale(0.8);
+  transform-origin: center center;
+  filter:
+    drop-shadow(0 18px 34px rgba(122, 77, 255, 0.08))
+    drop-shadow(0 0 20px rgba(56, 199, 255, 0.06));
+  user-select: none;
+  pointer-events: none;
 }
 
-@keyframes preloaderExit {
-  to { opacity: 0; visibility: hidden; pointer-events: none; }
+/* Optional soft edge blend.
+   Keep this enabled if the video rectangle is slightly visible. */
+.sp-page-loader-video {
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 0%,
+    black 76%,
+    rgba(0, 0, 0, 0.86) 86%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse at center,
+    black 0%,
+    black 76%,
+    rgba(0, 0, 0, 0.86) 86%,
+    transparent 100%
+  );
+}
+
+@keyframes spLoaderVideoFloat {
+  0%,
+  100% {
+    transform: translateY(-8px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-14px) scale(1.01);
+  }
+}
+
+/* Bottom loading details */
+.sp-page-loader-bottom {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(34px, 6vh, 72px);
+  z-index: 3;
+  transform: translateX(-50%);
+  width: min(420px, calc(100% - 48px));
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+/* Loading progress line */
+.sp-loader-line {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(122, 77, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 8px 22px rgba(122, 77, 255, 0.08);
+}
+
+.sp-loader-line::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 42%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #38c7ff 0%,
+    #7a4dff 35%,
+    #e72a9a 68%,
+    #f6a13d 100%
+  );
+  box-shadow:
+    0 0 18px rgba(56, 199, 255, 0.38),
+    0 0 26px rgba(231, 42, 154, 0.28);
+  animation: spLoaderLineMove 1.35s ease-in-out infinite;
+}
+
+@keyframes spLoaderLineMove {
+  0% {
+    transform: translateX(-105%);
+  }
+
+  100% {
+    transform: translateX(245%);
+  }
+}
+
+/* Loading text */
+.sp-loader-text {
+  color: rgba(17, 24, 39, 0.56);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  animation: spLoaderTextPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes spLoaderTextPulse {
+  0%,
+  100% {
+    opacity: 0.52;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   Tablet
+   ========================= */
+
+@media (max-width: 900px) {
+  .sp-page-loader-video-wrap {
+    width: min(560px, 78vw);
+  }
+
+  .sp-page-loader-video {
+    transform: scale(0.78);
+  }
+
+  .sp-page-loader-bottom {
+    width: min(380px, calc(100% - 44px));
+  }
+}
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 560px) {
+  .sp-page-loader-video-wrap {
+    width: min(390px, 92vw);
+  }
+
+  .sp-page-loader-video {
+    transform: scale(0.76);
+  }
+
+  .sp-page-loader-bottom {
+    bottom: 34px;
+    width: min(320px, calc(100% - 36px));
+    gap: 12px;
+  }
+
+  .sp-loader-line {
+    height: 3px;
+  }
+
+  .sp-loader-text {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
 }
 
 [data-reveal] {
@@ -3660,6 +3856,58 @@ body {
   }
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-follower::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.84);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s ease;
+    pointer-events: none;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
+  }
+
+  body.cursor-labeled .custom-cursor-follower {
+    width: 74px !important;
+    height: 74px !important;
+    opacity: 0.92 !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    background:
+      radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.2), transparent 34%),
+      conic-gradient(
+        from 180deg,
+        rgba(56, 199, 255, 0.34),
+        rgba(122, 77, 255, 0.34),
+        rgba(231, 42, 154, 0.34),
+        rgba(246, 161, 61, 0.34),
+        rgba(56, 199, 255, 0.34)
+      ) !important;
+    filter:
+      drop-shadow(0 0 14px rgba(56, 199, 255, 0.32))
+      drop-shadow(0 0 22px rgba(231, 42, 154, 0.26)) !important;
+  }
+
+  body.cursor-labeled .custom-cursor-follower::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  body.cursor-labeled .custom-cursor-dot {
+    width: 6px !important;
+    height: 6px !important;
+    opacity: 0.95 !important;
+  }
+}
+
 /* ======= Home page ============ */
 
 /* Hero page */
@@ -4895,13 +5143,9 @@ body {
 
 /* ====== home about video section ============ */
 
-/* =========================================================
-   ABOUT VIDEO SECTION - FULL COVER VIDEO + END CAPTION
-   ========================================================= */
-
 .sp-about-video-section {
   position: relative;
-  padding: 86px 0;
+  padding: 62px 0;
   background:
     radial-gradient(circle at 14% 22%, rgba(122, 77, 255, 0.1), transparent 30%),
     radial-gradient(circle at 88% 26%, rgba(231, 42, 154, 0.1), transparent 32%),
@@ -4916,8 +5160,8 @@ body {
 
 .sp-about-video-card {
   position: relative;
-  height: min(800px, 86svh);
-  min-height: 640px;
+  height: min(820px, 88svh);
+  min-height: 660px;
   border-radius: 42px;
   overflow: hidden;
   background: #070a14;
@@ -4927,7 +5171,6 @@ body {
   isolation: isolate;
 }
 
-/* Important: no negative z-index here */
 .sp-about-video {
   position: absolute;
   inset: 0;
@@ -4936,43 +5179,73 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transform: scale(1.04);
+  transform: scale(1.08);
+}
+
+/* Thumbnail covers the whole video after playback ends */
+.sp-about-video-thumbnail {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.08);
+  opacity: 0;
+  transition:
+    opacity 0.42s ease,
+    filter 0.42s ease;
+  pointer-events: none;
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.sp-about-video-thumbnail.is-visible {
+  opacity: 1;
+}
+
+/* This layer lets the custom cursor show Play over video */
+.sp-about-video-cursor-zone {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: auto;
 }
 
 .sp-about-video-base-overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 6;
   background:
     radial-gradient(circle at 22% 42%, rgba(56, 199, 255, 0.08), transparent 28%),
     radial-gradient(circle at 78% 36%, rgba(231, 42, 154, 0.12), transparent 30%),
     linear-gradient(
       90deg,
-      rgba(7, 10, 20, 0.08) 0%,
+      rgba(7, 10, 20, 0.06) 0%,
       rgba(7, 10, 20, 0.02) 46%,
       rgba(7, 10, 20, 0.08) 100%
     );
   pointer-events: none;
 }
 
-/* Right fade appears only after the video ends */
+/* Right fade sits above video/thumbnail but below caption */
 .sp-about-video-right-fade {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 7;
   opacity: 0;
   background:
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.08) 36%,
-      rgba(0, 0, 0, 0.62) 63%,
-      rgba(0, 0, 0, 0.9) 100%
+      rgba(0, 0, 0, 0.08) 35%,
+      rgba(0, 0, 0, 0.72) 58%,
+      rgba(0, 0, 0, 0.94) 100%
     );
   transition:
-    opacity 0.9s ease,
-    filter 0.9s ease;
-  filter: blur(10px);
+    opacity 0.55s ease,
+    filter 0.55s ease;
+  filter: blur(8px);
   pointer-events: none;
 }
 
@@ -4985,7 +5258,7 @@ body {
   content: "";
   position: absolute;
   inset: 18px;
-  z-index: 7;
+  z-index: 14;
   border-radius: 32px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   pointer-events: none;
@@ -4996,7 +5269,7 @@ body {
   position: absolute;
   right: -90px;
   bottom: -90px;
-  z-index: 3;
+  z-index: 8;
   width: 280px;
   height: 280px;
   border-radius: 50%;
@@ -5005,21 +5278,23 @@ body {
   pointer-events: none;
 }
 
-/* Invisible logo hover/replay zone.
-   Adjust these values if your logo position changes in the video. */
+/* Invisible logo area. No duplicate logo image is added. */
 .sp-about-logo-hotspot {
   position: absolute;
-  left: 12.8%;
-  top: 17.5%;
-  z-index: 8;
-  width: 32%;
-  height: 55%;
+  left: 10.8%;
+  top: 12%;
+  z-index: 13;
+  width: 36%;
+  height: 64%;
   border: 0;
-  border-radius: 18px;
+  border-radius: 26px;
   background: transparent;
-  cursor: pointer;
   opacity: 0;
   pointer-events: none;
+  cursor: pointer;
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sp-about-logo-hotspot.is-active {
@@ -5030,22 +5305,19 @@ body {
 .sp-about-logo-hotspot::before {
   content: "";
   position: absolute;
-  inset: -10px;
-  border-radius: 24px;
+  inset: -16px;
+  border-radius: 34px;
   background:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 58%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.12), transparent 58%),
     linear-gradient(
       135deg,
-      rgba(56, 199, 255, 0.14),
-      rgba(122, 77, 255, 0.16),
+      rgba(56, 199, 255, 0.16),
+      rgba(122, 77, 255, 0.18),
       rgba(231, 42, 154, 0.14)
     );
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow:
-    0 0 0 rgba(122, 77, 255, 0),
-    0 0 0 rgba(56, 199, 255, 0);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   opacity: 0;
-  transform: scale(0.96);
+  transform: scale(0.94);
   transition:
     opacity 0.35s ease,
     transform 0.35s ease,
@@ -5053,42 +5325,28 @@ body {
   pointer-events: none;
 }
 
+.sp-about-logo-hotspot.is-active:hover,
+.sp-about-logo-hotspot.is-hovering {
+  transform: scale(1.045);
+}
+
 .sp-about-logo-hotspot.is-active:hover::before,
-.sp-about-logo-hotspot.is-active:focus-visible::before {
+.sp-about-logo-hotspot.is-hovering::before {
   opacity: 1;
   transform: scale(1.04);
   box-shadow:
-    0 24px 70px rgba(122, 77, 255, 0.22),
+    0 26px 70px rgba(122, 77, 255, 0.22),
     0 0 34px rgba(56, 199, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
-.sp-about-logo-hotspot.is-active:hover {
-  animation: spAboutLogoPop 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@keyframes spAboutLogoPop {
-  0% {
-    transform: scale(1);
-  }
-
-  55% {
-    transform: scale(1.035);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Right-side caption */
+/* Caption moved upward so Read More is visible */
 .sp-about-video-caption {
   position: absolute;
-  z-index: 6;
-  top: 50%;
+  z-index: 12;
+  top: 22%;
   right: clamp(30px, 6vw, 84px);
-  width: min(560px, 42%);
-  transform: translateY(-50%);
+  width: min(590px, 44%);
   color: #ffffff;
   pointer-events: none;
 }
@@ -5100,8 +5358,8 @@ body {
 .sp-about-video-badge {
   width: max-content;
   max-width: 100%;
-  min-height: 40px;
-  padding: 0 16px;
+  min-height: 38px;
+  padding: 0 15px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -5128,66 +5386,34 @@ body {
 }
 
 .sp-about-video-title {
-  margin: 22px 0 0;
+  margin: 18px 0 0;
   color: #ffffff;
-  font-size: clamp(38px, 4.2vw, 68px);
+  font-size: clamp(36px, 3.8vw, 60px);
   line-height: 0.96;
   letter-spacing: -0.07em;
   font-weight: 950;
-  text-shadow: 0 20px 48px rgba(0, 0, 0, 0.38);
+  text-shadow: 0 20px 48px rgba(0, 0, 0, 0.42);
+}
+
+.sp-about-video-title span {
+  display: block;
+  color: #38c7ff;
 }
 
 .sp-about-video-text {
-  margin: 22px 0 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: clamp(15px, 1.12vw, 19px);
-  line-height: 1.68;
+  margin: 18px 0 0;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(13px, 15px, 15.5px);
+  line-height: 1.58;
   font-weight: 700;
-}
-
-.sp-about-video-points {
-  margin-top: 26px;
-  display: grid;
-  gap: 12px;
-}
-
-.sp-about-video-points span {
-  position: relative;
-  min-height: 42px;
-  width: max-content;
-  max-width: 100%;
-  padding: 0 15px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: rgba(255, 255, 255, 0.92);
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.17),
-      rgba(255, 255, 255, 0.055)
-    );
-  border: 1px solid rgba(255, 255, 255, 0.19);
-  backdrop-filter: blur(18px) saturate(1.35);
-  -webkit-backdrop-filter: blur(18px) saturate(1.35);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 16px 42px rgba(0, 0, 0, 0.14);
-  font-size: 13px;
-  font-weight: 850;
-}
-
-.sp-about-video-points svg {
-  color: #38c7ff;
-  flex: 0 0 auto;
 }
 
 .sp-about-video-readmore {
   position: relative;
   width: max-content;
-  min-height: 58px;
-  margin-top: 32px;
+  min-height: 54px;
+  margin-top: 22px;
   padding: 0 22px 0 24px;
   border-radius: 999px;
   display: inline-flex;
@@ -5263,45 +5489,47 @@ body {
 
 @media (max-width: 1100px) {
   .sp-about-video-section {
-    padding: 74px 0;
+    padding: 58px 0;
   }
 
   .sp-about-video-card {
     height: auto;
-    min-height: 680px;
+    min-height: 700px;
     border-radius: 34px;
   }
 
   .sp-about-video-caption {
+    top: 20%;
     width: min(560px, 52%);
     right: 42px;
   }
 
   .sp-about-video-title {
-    font-size: clamp(36px, 6vw, 58px);
+    font-size: clamp(34px, 5.4vw, 54px);
   }
 
   .sp-about-logo-hotspot {
-    left: 12%;
-    top: 18%;
-    width: 34%;
-    height: 54%;
+    left: 9.5%;
+    top: 10%;
+    width: 38%;
+    height: 64%;
   }
 }
 
 @media (max-width: 760px) {
   .sp-about-video-section {
-    padding: 60px 0;
+    padding: 50px 0;
   }
 
   .sp-about-video-card {
-    min-height: 760px;
+    min-height: 820px;
     border-radius: 28px;
   }
 
-  .sp-about-video {
+  .sp-about-video,
+  .sp-about-video-thumbnail {
     object-position: center center;
-    transform: scale(1.12);
+    transform: scale(1.16);
   }
 
   .sp-about-video-right-fade {
@@ -5309,20 +5537,9 @@ body {
       linear-gradient(
         180deg,
         transparent 0%,
-        rgba(0, 0, 0, 0.2) 24%,
-        rgba(0, 0, 0, 0.72) 58%,
-        rgba(0, 0, 0, 0.9) 100%
-      );
-  }
-
-  .sp-about-video-base-overlay {
-    background:
-      radial-gradient(circle at 72% 28%, rgba(56, 199, 255, 0.12), transparent 26%),
-      linear-gradient(
-        180deg,
-        rgba(7, 10, 20, 0.16) 0%,
-        rgba(7, 10, 20, 0.54) 58%,
-        rgba(7, 10, 20, 0.84) 100%
+        rgba(0, 0, 0, 0.22) 24%,
+        rgba(0, 0, 0, 0.76) 56%,
+        rgba(0, 0, 0, 0.94) 100%
       );
   }
 
@@ -5332,7 +5549,6 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    transform: none;
     padding: 34px 26px;
   }
 
@@ -5341,31 +5557,25 @@ body {
   }
 
   .sp-about-video-text {
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .sp-about-video-points span {
-    width: 100%;
-    min-height: 42px;
-    font-size: 13px;
+    font-size: 20px;
+    line-height: 1.55;
   }
 
   .sp-about-video-readmore {
-    min-height: 54px;
+    min-height: 52px;
   }
 
   .sp-about-logo-hotspot {
-    left: 18%;
-    top: 15%;
-    width: 64%;
-    height: 34%;
+    left: 15%;
+    top: 10%;
+    width: 70%;
+    height: 38%;
   }
 }
 
 @media (max-width: 460px) {
   .sp-about-video-card {
-    min-height: 780px;
+    min-height: 850px;
   }
 
   .sp-about-video-caption {

@@ -1,40 +1,52 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef } from "react";
+import { videoAssets } from "../../data/videoAssets";
 
 type PreloaderProps = {
   visible: boolean;
-  brand: string;
+  brand?: string;
 };
 
-export default function Preloader({ visible, brand }: PreloaderProps) {
+export default function Preloader({ visible }: PreloaderProps) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    if (visible) {
+      video.currentTime = 0;
+
+      const playPromise = video.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    } else {
+      video.pause();
+    }
+  }, [visible]);
+
   return (
-    <AnimatePresence>
-      {visible ? (
-        <motion.div
-          className="preloader"
-          aria-label="Loading website"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, pointerEvents: 'none' }}
-          transition={{ duration: 0.45 }}
-        >
-          <motion.div
-            className="preloader-green"
-            initial={{ y: 0 }}
-            animate={{ y: '-100%' }}
-            transition={{ delay: 1.25, duration: 0.72, ease: [0.76, 0, 0.24, 1] }}
-          >
-            <span>{brand}</span>
-          </motion.div>
-          <motion.div
-            className="preloader-black"
-            initial={{ y: 0 }}
-            animate={{ y: '100%' }}
-            transition={{ delay: 1.25, duration: 0.72, ease: [0.76, 0, 0.24, 1] }}
-          >
-            <span>{brand}</span>
-          </motion.div>
-          <div className="scan-lines" />
-        </motion.div>
-      ) : null}
-    </AnimatePresence>
+    <div className={`sp-page-loader ${visible ? "is-visible" : "is-hidden"}`}>
+      <div className="sp-page-loader-bg" />
+
+      <div className="sp-page-loader-video-wrap">
+        <video
+          ref={videoRef}
+          className="sp-page-loader-video"
+          src={videoAssets.loading.intro}
+          muted
+          playsInline
+          autoPlay
+          preload="auto"
+        />
+      </div>
+
+      <div className="sp-page-loader-bottom">
+        <span className="sp-loader-line" />
+        <span className="sp-loader-text">Loading Experience</span>
+      </div>
+    </div>
   );
 }
