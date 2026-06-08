@@ -15,6 +15,8 @@ import BlogSection from './sections/BlogSection';
 import QuoteSection from './sections/QuoteSection';
 import ContactSection from './sections/ContactSection';
 import PartnersSection from './sections/PartnersSection';
+import ProductGallerySection from "./sections/ProductGallerySection";
+
 
 type HomePageProps = {
   company: CompanyData;
@@ -28,6 +30,7 @@ export default function HomePage({ company, contactStatus, quoteStatus, onContac
   return (
     <main>
       <HeroSection company={company} />
+      <ProductGallerySection />
       <WhyStandoutSection company={company} />
       <FeatureSection company={company} />
       <AboutSection company={company} />

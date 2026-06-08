@@ -4,9 +4,22 @@ import sumathiLogo from "../assets/images/logo/sumathi-logo.png";
 //hero section 
 import offsetPrinting from "../assets/images/hero-section/offset-printing.png";
 import graphicDesigning from "../assets/images/hero-section/graphic-designing.png";
-import packagingBoxPrinting from "../assets/images/hero-section/packaging-box-printing.png";
+import packagingBoxPrinting from "../assets/images/hero-section/packaging-box-printing-h.png";
 import booksMagazinesBrochures from "../assets/images/hero-section/books-magazines-brochures.png";
 import cap from "../assets/images/hero-section/cap.png";
+
+//hero-product section 
+import flyersLeaflets from  "../assets/images/hero-section/service-gallery/flyers-leaflets.png";
+import postersBanners from  "../assets/images/hero-section/service-gallery/posters-banners.png";
+import billBooksLetterheads from  "../assets/images/hero-section/service-gallery/bill-books-letterheads.png";
+import calendarsDiaries from  "../assets/images/hero-section/service-gallery/calendars-diaries.png";
+import letterheadsEnvelopes from  "../assets/images/hero-section/service-gallery/letterheads-envelopes.png";
+import certificatesPrinting from  "../assets/images/hero-section/service-gallery/certificates-printing.png";
+import stickersLabels from  "../assets/images/hero-section/service-gallery/stickers-labels.png";
+import packagingBoxPrintingGallery from  "../assets/images/hero-section/service-gallery/packaging-box-printing.png";
+import brochuresCatalogs from  "../assets/images/hero-section/service-gallery/brochures-catalogs.png";
+import booksMagazinesPrinting from  "../assets/images/hero-section/service-gallery/books-magazines-printing.png";
+
 
 
 
@@ -28,6 +41,19 @@ export const imageAssets = {
     booksMagazinesBrochures,
     cap,
   },
+
+  serviceGallery: {
+  flyersLeaflets,
+  postersBanners,
+  billBooksLetterheads,
+  calendarsDiaries,
+  letterheadsEnvelopes,
+  certificatesPrinting,
+  stickersLabels,
+  packagingBoxPrinting: packagingBoxPrintingGallery,
+  brochuresCatalogs,
+  booksMagazinesPrinting
+},
 
 
 
