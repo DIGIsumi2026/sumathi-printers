@@ -113,29 +113,6 @@ export default function HeroSection({ company }: HeroSectionProps) {
 
       <div className="container sp-hero-container">
         <div className="sp-hero-left">
-          <div className="sp-hero-image-card">
-            {heroSlides.map((slide, index) => (
-              <img
-                key={slide.id}
-                src={slide.image}
-                alt={slide.eyebrow}
-                className={`sp-hero-card-image ${
-                  index === activeIndex ? "is-active" : ""
-                }`}
-              />
-            ))}
-
-            <div className="sp-hero-image-caption">
-              <Sparkles size={17} />
-              <span>{activeSlide.eyebrow}</span>
-            </div>
-          </div>
-
-          <img
-            src={imageAssets.hero.cap}
-            alt="T-shirt cap and tag mockup"
-            className="sp-hero-floating-mockup"
-          />
         </div>
 
         <div className="sp-hero-content">
