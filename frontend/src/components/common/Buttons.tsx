@@ -1,25 +1,61 @@
-import { ArrowUpRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import { ArrowUpRight } from "lucide-react";
 
-type ButtonLinkProps = {
-  label: string;
-  href: string;
-  variant?: 'gradient' | 'outline';
-};
+type AnimatedButtonProps = {
+  children: ReactNode;
+  href?: string;
+  variant?: "primary" | "secondary";
+  className?: string;
+} & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export function ButtonLink({ label, href, variant = 'gradient' }: ButtonLinkProps) {
-  const className = variant === 'gradient' ? 'btn gradient-btn' : 'btn outline-btn';
+type NativeButtonProps = {
+  children: ReactNode;
+  variant?: "primary" | "secondary";
+  className?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
+export function AnimatedButton({
+  children,
+  href = "#",
+  variant = "primary",
+  className = "",
+  ...props
+}: AnimatedButtonProps) {
   return (
-    <motion.a
-      className={className}
+    <a
       href={href}
-      whileHover={{ y: -3, scale: 1.025 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: 'spring', stiffness: 420, damping: 20 }}
+      className={`sp-animated-btn sp-animated-btn-${variant} ${className}`}
+      {...props}
     >
-      <span><ArrowUpRight size={16} strokeWidth={2.4} /></span>
-      {label}
-    </motion.a>
+      <span className="sp-btn-icon">
+        <ArrowUpRight size={18} strokeWidth={2.6} />
+      </span>
+      <span className="sp-btn-label">{children}</span>
+    </a>
   );
 }
+
+export function AnimatedNativeButton({
+  children,
+  variant = "primary",
+  className = "",
+  ...props
+}: NativeButtonProps) {
+  return (
+    <button
+      type="button"
+      className={`sp-animated-btn sp-animated-btn-${variant} ${className}`}
+      {...props}
+    >
+      <span className="sp-btn-icon">
+        <ArrowUpRight size={18} strokeWidth={2.6} />
+      </span>
+      <span className="sp-btn-label">{children}</span>
+    </button>
+  );
+}
+
+export const PrimaryButton = AnimatedButton;
+export const SecondaryButton = AnimatedButton;
+
+export default AnimatedButton;
