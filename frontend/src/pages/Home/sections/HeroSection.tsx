@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import type { CSSProperties } from "react";
+import { CheckCircle2, Sparkles } from "lucide-react";
 import type { CompanyData } from "../../../types/site";
 import { imageAssets } from "../../../data/imageAssets";
 import { AnimatedButton } from "../../../components/common/Buttons";
@@ -51,41 +52,27 @@ const heroSlides = [
 
 export default function HeroSection({ company }: HeroSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-
   const activeSlide = heroSlides[activeIndex];
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % heroSlides.length);
-    }, SLIDE_DURATION);
+  const timer = window.setTimeout(() => {
+    setActiveIndex((current) => (current + 1) % heroSlides.length);
+  }, SLIDE_DURATION);
 
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, []);
+  return () => {
+    window.clearTimeout(timer);
+  };
+}, [activeIndex]);
+
 
   const heroStyle = useMemo(
     () =>
       ({
         "--hero-accent": activeSlide.color,
         "--hero-duration": `${SLIDE_DURATION}ms`
-      }) as React.CSSProperties,
+      }) as CSSProperties,
     [activeSlide.color]
   );
-
-  const goToSlide = (index: number) => {
-    setActiveIndex(index);
-  };
-
-  const goPrevious = () => {
-    setActiveIndex((current) =>
-      current === 0 ? heroSlides.length - 1 : current - 1
-    );
-  };
-
-  const goNext = () => {
-    setActiveIndex((current) => (current + 1) % heroSlides.length);
-  };
 
   return (
     <section id="home" className="sp-hero-section" style={heroStyle}>
@@ -94,7 +81,7 @@ export default function HeroSection({ company }: HeroSectionProps) {
           <img
             key={slide.id}
             src={slide.image}
-            alt={`${slide.eyebrow} service by Sumathi Printers`}
+            alt={`${slide.eyebrow} service`}
             className={`sp-hero-bg-image ${
               index === activeIndex ? "is-active" : ""
             }`}
@@ -103,7 +90,6 @@ export default function HeroSection({ company }: HeroSectionProps) {
       </div>
 
       <div className="sp-hero-overlay" />
-
       <div className="sp-hero-grid-pattern" />
 
       <span className="sp-hero-shape sp-hero-shape-one" />
@@ -112,9 +98,6 @@ export default function HeroSection({ company }: HeroSectionProps) {
       <span className="sp-hero-watermark">SUMATHI PRINTERS</span>
 
       <div className="container sp-hero-container">
-        <div className="sp-hero-left">
-        </div>
-
         <div className="sp-hero-content">
           <div className="sp-hero-eyebrow">
             <Sparkles size={15} />
@@ -123,10 +106,7 @@ export default function HeroSection({ company }: HeroSectionProps) {
 
           <h1 className="sp-hero-title">
             <span>Printing Solutions</span>
-            <span
-              key={activeSlide.word}
-              className="sp-hero-changing-word"
-            >
+            <span key={activeSlide.word} className="sp-hero-changing-word">
               {activeSlide.word}
             </span>
             <span>For Your Brand</span>
@@ -141,8 +121,8 @@ export default function HeroSection({ company }: HeroSectionProps) {
               Request Quote
             </AnimatedButton>
 
-            <AnimatedButton href="#services" variant="secondary">
-              View Services
+            <AnimatedButton href="#contact" variant="secondary">
+              Get In Touch
             </AnimatedButton>
           </div>
 
@@ -163,16 +143,7 @@ export default function HeroSection({ company }: HeroSectionProps) {
         </div>
       </div>
 
-      <div className="container sp-hero-progress-wrap">
-        <button
-          type="button"
-          className="sp-hero-progress-arrow"
-          aria-label="Previous hero image"
-          onClick={goPrevious}
-        >
-          <ArrowLeft size={24} />
-        </button>
-
+      <div className="sp-hero-progress-wrap">
         <div className="sp-hero-progress-bar" role="tablist">
           {heroSlides.map((slide, index) => (
             <button
@@ -183,24 +154,19 @@ export default function HeroSection({ company }: HeroSectionProps) {
               className={`sp-hero-progress-segment ${
                 activeIndex === index ? "is-active" : ""
               }`}
-              onClick={() => goToSlide(index)}
+              onClick={() => setActiveIndex(index)}
             >
               <span
-                key={activeIndex === index ? `${slide.id}-${activeIndex}` : slide.id}
+                key={
+                  activeIndex === index
+                    ? `${slide.id}-${activeIndex}`
+                    : slide.id
+                }
                 className="sp-hero-progress-fill"
               />
             </button>
           ))}
         </div>
-
-        <button
-          type="button"
-          className="sp-hero-progress-arrow"
-          aria-label="Next hero image"
-          onClick={goNext}
-        >
-          <ArrowRight size={24} />
-        </button>
       </div>
     </section>
   );

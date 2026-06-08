@@ -5,7 +5,6 @@ import companyJson from "./data/company.json";
 import Preloader from "./components/layout/Preloader";
 import NavigationBar from "./components/layout/NavigationBar";
 import FloatingDecor from "./components/layout/FloatingDecor";
-import FloatingTools from "./components/layout/FloatingTools";
 import Footer from "./components/layout/Footer";
 import HomePage from "./pages/Home/HomePage";
 import { formToPayload, postForm } from "./lib/api";
@@ -80,8 +79,6 @@ export default function App() {
       />
 
       <Footer />
-
-      <FloatingTools />
     </>
   );
 }

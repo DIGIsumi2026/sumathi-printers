@@ -1,4 +1,8 @@
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ReactNode
+} from "react";
 import { ArrowUpRight } from "lucide-react";
 
 type AnimatedButtonProps = {
@@ -28,8 +32,9 @@ export function AnimatedButton({
       {...props}
     >
       <span className="sp-btn-icon">
-        <ArrowUpRight size={18} strokeWidth={2.6} />
+        <ArrowUpRight size={18} strokeWidth={2.8} />
       </span>
+
       <span className="sp-btn-label">{children}</span>
     </a>
   );
@@ -48,13 +53,15 @@ export function AnimatedNativeButton({
       {...props}
     >
       <span className="sp-btn-icon">
-        <ArrowUpRight size={18} strokeWidth={2.6} />
+        <ArrowUpRight size={18} strokeWidth={2.8} />
       </span>
+
       <span className="sp-btn-label">{children}</span>
     </button>
   );
 }
 
+export const ButtonLink = AnimatedButton;
 export const PrimaryButton = AnimatedButton;
 export const SecondaryButton = AnimatedButton;
 

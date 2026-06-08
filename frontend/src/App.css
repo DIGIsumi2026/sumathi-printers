@@ -3468,213 +3468,132 @@ body {
 
 /* ======= Home page ============ */
 
-/* Hero section */
+/* Hero page */
+
 .sp-hero-section {
-  position: relative;
-  min-height: 100vh;
-  padding: 150px 0 120px;
-  overflow: hidden;
-  background: #0b1020;
-  isolation: isolate;
+  position: relative !important;
+  min-height: 100svh !important;
+  height: 100svh !important;
+  padding: 112px 0 86px !important;
+  overflow: hidden !important;
+  background: #0b1020 !important;
+  isolation: isolate !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .sp-hero-background {
-  position: absolute;
-  inset: 0;
-  z-index: -4;
-  overflow: hidden;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -4 !important;
+  overflow: hidden !important;
 }
 
 .sp-hero-bg-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transform: scale(1.08);
-  filter: saturate(1.05) contrast(1.05);
-  transition:
-    opacity 0.9s ease,
-    transform 6s ease;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  opacity: 0 !important;
+  transform: scale(1.06) !important;
+  transition: opacity 0.85s ease, transform 5.5s ease !important;
 }
 
 .sp-hero-bg-image.is-active {
-  opacity: 1;
-  transform: scale(1);
+  opacity: 1 !important;
+  transform: scale(1) !important;
 }
 
 .sp-hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: -3;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -3 !important;
   background:
-    radial-gradient(circle at 20% 24%, rgba(122, 77, 255, 0.42), transparent 30%),
-    radial-gradient(circle at 82% 34%, rgba(231, 42, 154, 0.34), transparent 26%),
+    radial-gradient(circle at 20% 28%, rgba(122, 77, 255, 0.32), transparent 30%),
+    radial-gradient(circle at 82% 34%, rgba(231, 42, 154, 0.28), transparent 28%),
     linear-gradient(
       90deg,
-      rgba(7, 10, 20, 0.62) 0%,
-      rgba(7, 10, 20, 0.54) 42%,
-      rgba(7, 10, 20, 0.82) 100%
-    );
+      rgba(7, 10, 20, 0.74) 0%,
+      rgba(7, 10, 20, 0.62) 46%,
+      rgba(7, 10, 20, 0.74) 100%
+    ) !important;
 }
 
 .sp-hero-grid-pattern {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -2 !important;
   background-image:
-    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 74px 74px;
-  opacity: 0.42;
-  pointer-events: none;
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px) !important;
+  background-size: 74px 74px !important;
+  opacity: 0.34 !important;
+  pointer-events: none !important;
 }
 
 .sp-hero-container {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  gap: 70px;
-  align-items: center;
-}
-
-.sp-hero-left {
-  position: relative;
-  min-height: 560px;
-}
-
-.sp-hero-image-card {
-  position: relative;
-  width: min(620px, 100%);
-  height: 460px;
-  border-radius: 34px;
-  overflow: hidden;
-  box-shadow:
-    0 34px 90px rgba(0, 0, 0, 0.42),
-    inset 0 1px 0 rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.08);
-}
-
-.sp-hero-card-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transform: scale(1.06) translateY(18px);
-  transition:
-    opacity 0.75s ease,
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.sp-hero-card-image.is-active {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-.sp-hero-image-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, transparent 46%, rgba(0,0,0,0.58) 100%);
-  pointer-events: none;
-}
-
-.sp-hero-image-caption {
-  position: absolute;
-  left: 24px;
-  bottom: 24px;
-  z-index: 4;
-  min-height: 48px;
-  padding: 0 18px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: #ffffff;
-  background: rgba(10, 13, 26, 0.68);
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(16px);
-  font-weight: 900;
-}
-
-.sp-hero-floating-mockup {
-  position: absolute;
-  right: -34px;
-  bottom: -34px;
-  width: min(340px, 52vw);
-  z-index: 5;
-  filter: drop-shadow(0 28px 45px rgba(0,0,0,0.28));
-  animation: spHeroFloatMockup 5.2s ease-in-out infinite;
-}
-
-@keyframes spHeroFloatMockup {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(-2deg);
-  }
-  50% {
-    transform: translate3d(0, -18px, 0) rotate(2deg);
-  }
+  position: relative !important;
+  z-index: 5 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .sp-hero-content {
-  text-align: right;
-  justify-self: end;
-  max-width: 760px;
-  color: #ffffff;
+  width: min(920px, 100%) !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+  color: #ffffff !important;
 }
 
 .sp-hero-eyebrow {
-  margin-left: auto;
-  margin-bottom: 22px;
-  width: max-content;
-  max-width: 100%;
-  min-height: 38px;
-  padding: 0 16px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.9);
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.16);
-  backdrop-filter: blur(16px);
-  font-size: 14px;
-  font-weight: 800;
+  width: max-content !important;
+  max-width: 100% !important;
+  min-height: 38px !important;
+  margin: 0 auto 18px !important;
+  padding: 0 16px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: rgba(255,255,255,0.92) !important;
+  background: rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255,255,255,0.16) !important;
+  backdrop-filter: blur(16px) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
 }
 
 .sp-hero-eyebrow svg {
-  color: var(--hero-accent);
+  color: var(--hero-accent) !important;
 }
 
 .sp-hero-title {
-  margin: 0;
-  display: grid;
-  gap: 8px;
-  color: #ffffff;
-  font-size: clamp(50px, 6.2vw, 104px);
-  line-height: 1.02;
-  letter-spacing: -0.075em;
-  font-weight: 900;
-  text-shadow: 0 18px 48px rgba(0,0,0,0.34);
+  margin: 0 !important;
+  display: grid !important;
+  gap: 4px !important;
+  color: #ffffff !important;
+  font-size: clamp(48px, 5.25vw, 88px) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.07em !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+  text-shadow: 0 16px 38px rgba(0, 0, 0, 0.28) !important;
 }
 
 .sp-hero-changing-word {
-  color: var(--hero-accent);
-  animation: spHeroWordIn 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+  color: var(--hero-accent) !important;
+  animation: spHeroWordIn 0.72s cubic-bezier(0.22, 1, 0.36, 1) both !important;
 }
 
 @keyframes spHeroWordIn {
   0% {
     opacity: 0;
-    transform: translateY(28px) scale(0.96);
-    filter: blur(12px);
+    transform: translateY(22px) scale(0.97);
+    filter: blur(10px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -3683,448 +3602,543 @@ body {
 }
 
 .sp-hero-description {
-  margin: 28px 0 0 auto;
-  max-width: 660px;
-  color: rgba(255,255,255,0.78);
-  font-size: clamp(17px, 1.5vw, 22px);
-  line-height: 1.72;
-  font-weight: 700;
-  animation: spHeroDescriptionIn 0.65s ease both;
-}
-
-@keyframes spHeroDescriptionIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-    filter: blur(7px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
+  max-width: 780px !important;
+  margin: 18px auto 0 !important;
+  color: rgba(255,255,255,0.78) !important;
+  font-size: clamp(16px, 1.24vw, 20px) !important;
+  line-height: 1.6 !important;
+  font-weight: 700 !important;
+  text-align: center !important;
 }
 
 .sp-hero-actions {
-  margin-top: 34px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 18px;
-  flex-wrap: wrap;
+  margin-top: 22px !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
 }
 
 .sp-hero-points {
-  list-style: none;
-  margin: 34px 0 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-end;
-  gap: 24px;
-  flex-wrap: wrap;
+  list-style: none !important;
+  margin: 24px 0 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
 }
 
 .sp-hero-points li {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: rgba(255,255,255,0.76);
-  font-size: 14px;
-  font-weight: 800;
+  position: relative !important;
+  min-height: 42px !important;
+  padding: 0 16px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: rgba(255,255,255,0.88) !important;
+  font-size: 13px !important;
+  font-weight: 850 !important;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.055)) !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    0 16px 42px rgba(0,0,0,0.16) !important;
+  backdrop-filter: blur(18px) saturate(1.35) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.35) !important;
+  overflow: hidden !important;
 }
 
-.sp-hero-points svg {
-  color: var(--hero-accent);
+.sp-hero-points li svg {
+  color: var(--hero-accent) !important;
+}
+
+.sp-hero-floating-mockup {
+  position: absolute !important;
+  right: 8% !important;
+  bottom: 9% !important;
+  width: min(300px, 25vw) !important;
+  z-index: 4 !important;
+  filter: drop-shadow(0 28px 50px rgba(0,0,0,0.32)) !important;
+  animation: spHeroFloatMockup 5.4s ease-in-out infinite !important;
+  pointer-events: none !important;
+}
+
+@keyframes spHeroFloatMockup {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(2deg);
+  }
 }
 
 .sp-hero-shape {
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
+  position: absolute !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
 }
 
 .sp-hero-shape-one {
-  left: 4%;
-  top: 26%;
-  width: 0;
-  height: 0;
-  border-top: 28px solid transparent;
-  border-bottom: 28px solid transparent;
-  border-left: 58px solid #7a4dff;
-  filter: drop-shadow(0 20px 25px rgba(122, 77, 255, 0.4));
-  animation: spHeroFloatShape 4s ease-in-out infinite;
+  left: 4% !important;
+  top: 32% !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 20px solid transparent !important;
+  border-bottom: 20px solid transparent !important;
+  border-left: 42px solid #7a4dff !important;
 }
 
 .sp-hero-shape-two {
-  right: 8%;
-  top: 32%;
-  width: 82px;
-  height: 82px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #38c7ff, #e72a9a, #f6a13d);
-  animation: spHeroFloatShape 5.4s ease-in-out infinite reverse;
+  right: 8% !important;
+  top: 46% !important;
+  width: 74px !important;
+  height: 74px !important;
+  border-radius: 22px !important;
+  background: linear-gradient(135deg, #38c7ff, #e72a9a, #f6a13d) !important;
 }
 
 .sp-hero-shape-three {
-  left: 13%;
-  top: 46%;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.22);
-  backdrop-filter: blur(16px);
-  animation: spHeroPulse 2.8s ease-in-out infinite;
-}
-
-@keyframes spHeroFloatShape {
-  0%, 100% {
-    transform: translateY(0) rotate(-14deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(10deg);
-  }
-}
-
-@keyframes spHeroPulse {
-  0%, 100% {
-    transform: scale(0.92);
-    opacity: 0.55;
-  }
-  50% {
-    transform: scale(1.12);
-    opacity: 1;
-  }
+  left: 11% !important;
+  top: 48% !important;
+  width: 58px !important;
+  height: 58px !important;
+  border-radius: 18px !important;
+  background: linear-gradient(135deg, rgba(56,199,255,0.92), rgba(231,42,154,0.75), rgba(246,161,61,0.75)) !important;
 }
 
 .sp-hero-watermark {
-  position: absolute;
-  right: 4%;
-  top: 18%;
-  z-index: 1;
-  writing-mode: vertical-rl;
-  color: transparent;
-  -webkit-text-stroke: 2px rgba(255,255,255,0.16);
-  font-size: clamp(80px, 8vw, 148px);
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.08em;
-  pointer-events: none;
+  position: absolute !important;
+  right: 4% !important;
+  top: 18% !important;
+  z-index: 2 !important;
+  writing-mode: vertical-rl !important;
+  color: transparent !important;
+  -webkit-text-stroke: 2px rgba(255,255,255,0.12) !important;
+  font-size: clamp(72px, 8vw, 138px) !important;
+  font-weight: 900 !important;
+  line-height: 0.88 !important;
+  letter-spacing: -0.08em !important;
+  pointer-events: none !important;
 }
 
-/* Progress gallery bar */
 .sp-hero-progress-wrap {
-  position: absolute;
-  left: 50%;
-  bottom: 34px;
-  z-index: 8;
-  transform: translateX(-50%);
-  display: grid;
-  grid-template-columns: 58px minmax(280px, 620px) 58px;
-  align-items: center;
-  gap: 14px;
-}
-
-.sp-hero-progress-arrow {
-  width: 58px;
-  height: 58px;
-  border: 0;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  color: #ffffff;
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(255,255,255,0.18);
-  backdrop-filter: blur(18px);
-  transition:
-    transform 0.28s ease,
-    background 0.28s ease,
-    color 0.28s ease;
-}
-
-.sp-hero-progress-arrow:hover {
-  transform: translateY(-3px);
-  background: #ffffff;
-  color: #111827;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 26px !important;
+  z-index: 10 !important;
+  transform: translateX(-50%) !important;
+  width: min(560px, calc(100% - 34px)) !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .sp-hero-progress-bar {
-  height: 44px;
-  padding: 0 10px;
-  border-radius: 999px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-  gap: 12px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.16);
-  backdrop-filter: blur(20px);
+  width: 100% !important;
+  height: 42px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: rgba(255,255,255,0.12) !important;
+  border: 1px solid rgba(255,255,255,0.16) !important;
+  backdrop-filter: blur(20px) !important;
 }
 
 .sp-hero-progress-segment {
-  position: relative;
-  height: 9px;
-  border: 0;
-  border-radius: 999px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.24);
-  cursor: pointer;
-}
-
-.sp-hero-progress-segment::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.22);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.28s ease;
-}
-
-.sp-hero-progress-segment:hover::before {
-  transform: scaleX(1);
+  position: relative !important;
+  height: 9px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  background: rgba(255,255,255,0.25) !important;
+  cursor: pointer !important;
 }
 
 .sp-hero-progress-fill {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    90deg,
-    #38c7ff,
-    #7a4dff,
-    #e72a9a,
-    #f6a13d
-  );
-  transform: scaleX(0);
-  transform-origin: left;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  background: linear-gradient(90deg, #38c7ff, #7a4dff, #e72a9a, #f6a13d) !important;
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
 }
 
 .sp-hero-progress-segment.is-active .sp-hero-progress-fill {
-  animation: spHeroProgressFill var(--hero-duration) linear forwards;
+  animation: spHeroProgressFill var(--hero-duration) linear forwards !important;
 }
 
 @keyframes spHeroProgressFill {
   from {
     transform: scaleX(0);
   }
+
   to {
     transform: scaleX(1);
   }
 }
 
-/* Button animation based on provided demo */
-.sp-animated-btn {
-  position: relative;
-  min-height: 64px;
-  padding: 0 30px 0 10px;
-  border: 0;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  overflow: hidden;
-  isolation: isolate;
-  font-size: 16px;
-  font-weight: 900;
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    color 0.35s ease;
-}
-
-.sp-animated-btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  border-radius: inherit;
-  background: linear-gradient(
-    105deg,
-    #e72a9a 0%,
-    #b532f3 35%,
-    #7a4dff 62%,
-    #38c7ff 100%
-  );
-}
-
-.sp-animated-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(
-      110deg,
-      transparent 0%,
-      rgba(255,255,255,0.26) 38%,
-      rgba(255,255,255,0.46) 48%,
-      transparent 62%
-    );
-  transform: translateX(-125%);
-  transition: transform 0.72s ease;
-}
-
-.sp-animated-btn:hover {
-  transform: translateY(-5px);
-  box-shadow:
-    0 20px 45px rgba(122, 77, 255, 0.35),
-    0 0 30px rgba(231, 42, 154, 0.18);
-}
-
-.sp-animated-btn:hover::after {
-  transform: translateX(125%);
-}
-
-.sp-animated-btn-secondary {
-  background: rgba(255,255,255,0.1);
-}
-
-.sp-animated-btn-secondary::before {
-  background: rgba(255,255,255,0.12);
-  border: 2px solid rgba(255,255,255,0.35);
-}
-
-.sp-btn-icon {
-  position: relative;
-  z-index: 2;
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  color: #7a4dff;
-  background: #ffffff;
-  transition:
-    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.35s ease,
-    color 0.35s ease;
-}
-
-.sp-btn-label {
-  position: relative;
-  z-index: 2;
-  color: #ffffff;
-}
-
-.sp-animated-btn-secondary .sp-btn-icon {
-  background: linear-gradient(135deg, #e72a9a, #7a4dff, #38c7ff);
-  color: #ffffff;
-}
-
-.sp-animated-btn-secondary .sp-btn-label {
-  color: rgba(255,255,255,0.9);
-}
-
-.sp-animated-btn:hover .sp-btn-icon {
-  transform: translateX(7px) rotate(-42deg);
-}
-
-/* Responsive hero */
 @media (max-width: 1180px) {
   .sp-hero-section {
-    padding: 132px 0 120px;
-  }
-
-  .sp-hero-container {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .sp-hero-left {
-    order: 2;
-    min-height: 440px;
-  }
-
-  .sp-hero-content {
-    order: 1;
-    text-align: center;
-    justify-self: center;
-  }
-
-  .sp-hero-eyebrow,
-  .sp-hero-description {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .sp-hero-actions,
-  .sp-hero-points {
-    justify-content: center;
-  }
-
-  .sp-hero-image-card {
-    margin-inline: auto;
+    height: auto !important;
+    min-height: 100svh !important;
+    padding-top: 116px !important;
+    padding-bottom: 96px !important;
   }
 
   .sp-hero-floating-mockup {
-    right: 8%;
-  }
-
-  .sp-hero-progress-wrap {
-    grid-template-columns: 48px minmax(220px, 1fr) 48px;
-    width: min(720px, calc(100% - 32px));
+    width: 220px !important;
+    right: 3% !important;
+    bottom: 12% !important;
   }
 }
 
 @media (max-width: 720px) {
   .sp-hero-section {
-    padding: 118px 0 110px;
+    padding-top: 104px !important;
+    padding-bottom: 92px !important;
   }
 
   .sp-hero-title {
-    font-size: clamp(42px, 13vw, 68px);
+    font-size: clamp(40px, 12vw, 62px) !important;
   }
 
-  .sp-hero-left {
-    min-height: 360px;
-  }
-
-  .sp-hero-image-card {
-    height: 320px;
-    border-radius: 24px;
-  }
-
-  .sp-hero-floating-mockup {
-    width: 240px;
-    right: 0;
-    bottom: -26px;
+  .sp-hero-description {
+    font-size: 15px !important;
   }
 
   .sp-hero-points {
-    display: grid;
-    gap: 12px;
+    display: grid !important;
+    justify-items: center !important;
   }
 
-  .sp-hero-actions {
-    gap: 12px;
+  .sp-hero-floating-mockup {
+    width: 170px !important;
+    right: -8px !important;
+    bottom: 18% !important;
+  }
+}
+
+
+.sp-hero-content {
+  transform: translateY(-18px) !important;
+}
+
+.sp-hero-points {
+  margin-top: 24px !important;
+  margin-bottom: 48px !important;
+}
+
+.sp-hero-progress-wrap {
+  bottom: 18px !important;
+  width: min(560px, calc(100% - 34px)) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  justify-content: center !important;
+  z-index: 20 !important;
+}
+
+.sp-hero-progress-arrow {
+  display: none !important;
+}
+
+.sp-hero-progress-bar {
+  width: 100% !important;
+  height: 42px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(22px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(1.25) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 18px 42px rgba(0, 0, 0, 0.2) !important;
+}
+
+.sp-hero-progress-segment {
+  position: relative !important;
+  height: 9px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  cursor: pointer !important;
+}
+
+.sp-hero-progress-segment::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
+  transition: transform 0.28s ease !important;
+}
+
+.sp-hero-progress-segment:hover::before {
+  transform: scaleX(1) !important;
+}
+
+.sp-hero-progress-fill {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 0;
+  border-radius: inherit !important;
+  transform: none !important;
+  background: linear-gradient(
+    90deg,
+    #38c7ff 0%,
+    #7a4dff 35%,
+    #e72a9a 68%,
+    #f6a13d 100%
+  ) !important;
+  box-shadow:
+    0 0 12px rgba(56, 199, 255, 0.55),
+    0 0 22px rgba(231, 42, 154, 0.35) !important;
+}
+
+.sp-hero-progress-segment.is-active .sp-hero-progress-fill {
+  animation: spHeroProgressWidth var(--hero-duration) linear forwards !important;
+}
+
+@keyframes spHeroProgressWidth {
+  from {
+    width: 0;
   }
 
-  .sp-animated-btn {
-    min-height: 58px;
-    padding-right: 22px;
-    font-size: 14px;
+  to {
+    width: 100%;
+  }
+}
+
+.sp-hero-points li {
+  position: relative !important;
+  min-height: 42px !important;
+  padding: 0 16px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 13px !important;
+  font-weight: 850 !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.06)
+    ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -12px 22px rgba(255, 255, 255, 0.04),
+    0 16px 42px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(18px) saturate(1.35) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.35) !important;
+  overflow: hidden !important;
+}
+
+.sp-hero-points li::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -1px !important;
+  border-radius: inherit !important;
+  background:
+    radial-gradient(
+      circle at 18% 18%,
+      rgba(255, 255, 255, 0.44),
+      transparent 26%
+    ),
+    linear-gradient(
+      120deg,
+      rgba(56, 199, 255, 0.24),
+      rgba(231, 42, 154, 0.16),
+      rgba(246, 161, 61, 0.14)
+    ) !important;
+  opacity: 0.72 !important;
+  pointer-events: none !important;
+}
+
+.sp-hero-points li svg,
+.sp-hero-points li span {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.sp-animated-btn {
+  position: relative !important;
+  min-height: 58px !important;
+  padding: 0 24px 0 8px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  box-shadow:
+    0 18px 42px rgba(122, 77, 255, 0.28),
+    0 8px 24px rgba(231, 42, 154, 0.18) !important;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    filter 0.35s ease !important;
+}
+
+.sp-animated-btn::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -3 !important;
+  border-radius: inherit !important;
+  background: linear-gradient(
+    105deg,
+    #e72a9a 0%,
+    #b532f3 34%,
+    #7a4dff 62%,
+    #38c7ff 100%
+  ) !important;
+}
+
+.sp-animated-btn::after {
+  content: "" !important;
+  position: absolute !important;
+  top: -50% !important;
+  bottom: -50% !important;
+  left: -80% !important;
+  width: 46% !important;
+  z-index: -1 !important;
+  transform: skewX(-22deg) !important;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.16) 28%,
+    rgba(255, 255, 255, 0.68) 50%,
+    rgba(255, 255, 255, 0.16) 72%,
+    transparent 100%
+  ) !important;
+  opacity: 0 !important;
+}
+
+.sp-animated-btn:hover {
+  transform: translateY(-5px) scale(1.018) !important;
+  filter: saturate(1.15) !important;
+  box-shadow:
+    0 24px 54px rgba(122, 77, 255, 0.4),
+    0 10px 34px rgba(231, 42, 154, 0.3),
+    0 0 34px rgba(56, 199, 255, 0.2) !important;
+}
+
+.sp-animated-btn:hover::after {
+  opacity: 1 !important;
+  animation: spButtonShine 0.82s ease forwards !important;
+}
+
+@keyframes spButtonShine {
+  0% {
+    left: -80%;
   }
 
-  .sp-btn-icon {
-    width: 44px;
-    height: 44px;
+  100% {
+    left: 135%;
+  }
+}
+
+.sp-btn-icon {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 999px !important;
+  display: grid !important;
+  place-items: center !important;
+  color: #7a4dff !important;
+  background: #ffffff !important;
+  flex: 0 0 auto !important;
+  transition:
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease,
+    color 0.35s ease !important;
+}
+
+.sp-btn-label {
+  position: relative !important;
+  z-index: 2 !important;
+  color: #ffffff !important;
+  white-space: nowrap !important;
+}
+
+.sp-animated-btn:hover .sp-btn-icon {
+  transform: translateX(7px) rotate(-42deg) !important;
+}
+
+.sp-animated-btn-secondary {
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.28),
+    0 14px 36px rgba(0, 0, 0, 0.14) !important;
+}
+
+.sp-animated-btn-secondary::before {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.06)
+    ) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.sp-animated-btn-secondary .sp-btn-icon {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #e72a9a, #7a4dff, #38c7ff) !important;
+}
+
+.sp-animated-btn-secondary .sp-btn-label {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+@media (max-width: 720px) {
+  .sp-hero-content {
+    transform: translateY(-8px) !important;
+  }
+
+  .sp-hero-points {
+    margin-bottom: 40px !important;
   }
 
   .sp-hero-progress-wrap {
-    bottom: 22px;
-    grid-template-columns: 44px 1fr 44px;
-    gap: 8px;
+    bottom: 16px !important;
   }
 
-  .sp-hero-progress-arrow {
-    width: 44px;
-    height: 44px;
+  .sp-animated-btn {
+    min-height: 54px !important;
+    padding-right: 18px !important;
+    font-size: 14px !important;
   }
 
-  .sp-hero-progress-bar {
-    height: 38px;
-    gap: 8px;
+  .sp-btn-icon {
+    width: 40px !important;
+    height: 40px !important;
   }
 }
