@@ -3466,6 +3466,200 @@ body {
   }
 }
 
+/* ============ custom curser ============ */
+
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-dot,
+  .custom-cursor-follower {
+    pointer-events: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  .sp-nav-link,
+  .sp-quote-button,
+  .sp-mobile-toggle,
+  .sp-animated-btn,
+  .sp-hero-progress-segment {
+    cursor: none !important;
+  }
+
+  .custom-cursor-dot,
+  .custom-cursor-follower {
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 1;
+    will-change: transform, width, height, opacity, filter;
+  }
+
+  .custom-cursor-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #38c7ff, #7a4dff, #e72a9a, #f6a13d);
+    box-shadow:
+      0 0 12px rgba(56, 199, 255, 0.55),
+      0 0 22px rgba(231, 42, 154, 0.35);
+    transition:
+      width 0.24s ease,
+      height 0.24s ease,
+      opacity 0.24s ease,
+      filter 0.24s ease;
+  }
+
+  .custom-cursor-follower {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    background:
+      radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.22), transparent 32%),
+      linear-gradient(
+        135deg,
+        rgba(56, 199, 255, 0.12),
+        rgba(122, 77, 255, 0.16),
+        rgba(231, 42, 154, 0.12)
+      );
+    backdrop-filter: blur(10px) saturate(1.35);
+    -webkit-backdrop-filter: blur(10px) saturate(1.35);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.26),
+      0 12px 34px rgba(0, 0, 0, 0.16);
+    transition:
+      width 0.28s ease,
+      height 0.28s ease,
+      border-color 0.28s ease,
+      background 0.28s ease,
+      opacity 0.28s ease,
+      filter 0.28s ease;
+  }
+
+  body.cursor-hovering .custom-cursor-dot {
+    width: 7px;
+    height: 7px;
+    filter: brightness(1);
+  }
+
+  body.cursor-hovering .custom-cursor-follower {
+    width: 64px;
+    height: 64px;
+    border-color: rgba(255, 255, 255, 0.62);
+    background:
+      radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.24), transparent 34%),
+      conic-gradient(
+        from 180deg,
+        rgba(56, 199, 255, 0.24),
+        rgba(122, 77, 255, 0.24),
+        rgba(231, 42, 154, 0.24),
+        rgba(246, 161, 61, 0.24),
+        rgba(56, 199, 255, 0.24)
+      );
+    filter:
+      drop-shadow(0 0 12px rgba(56, 199, 255, 0.28))
+      drop-shadow(0 0 18px rgba(231, 42, 154, 0.22));
+  }
+
+  body.cursor-clicking .custom-cursor-dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  body.cursor-clicking .custom-cursor-follower {
+    width: 48px;
+    height: 48px;
+    filter:
+      drop-shadow(0 0 14px rgba(122, 77, 255, 0.32))
+      drop-shadow(0 0 22px rgba(231, 42, 154, 0.24));
+  }
+
+  body.cursor-hidden .custom-cursor-dot,
+  body.cursor-hidden .custom-cursor-follower {
+    opacity: 0;
+  }
+
+  body.cursor-text .custom-cursor-dot,
+  body.cursor-text .custom-cursor-follower {
+    opacity: 0;
+  }
+
+  body.cursor-text,
+  body.cursor-text input,
+  body.cursor-text textarea {
+    cursor: text !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-follower {
+    display: none !important;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-dot,
+  .custom-cursor-follower {
+    pointer-events: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  .custom-cursor-follower {
+    width: 34px !important;
+    height: 34px !important;
+    background: transparent !important;
+    border: 2px solid rgba(122, 77, 255, 0.55) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow:
+      0 0 14px rgba(56, 199, 255, 0.24),
+      0 0 24px rgba(231, 42, 154, 0.16) !important;
+  }
+
+  body.cursor-hovering .custom-cursor-follower {
+    width: 58px !important;
+    height: 58px !important;
+    background:
+      radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 48%),
+      conic-gradient(
+        from 180deg,
+        rgba(56, 199, 255, 0.32),
+        rgba(122, 77, 255, 0.32),
+        rgba(231, 42, 154, 0.32),
+        rgba(246, 161, 61, 0.32),
+        rgba(56, 199, 255, 0.32)
+      ) !important;
+    opacity: 0.42 !important;
+    border: 1px solid rgba(255, 255, 255, 0.26) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  body.cursor-hovering .custom-cursor-dot {
+    width: 8px !important;
+    height: 8px !important;
+    opacity: 0.95 !important;
+  }
+
+  .sp-nav-link,
+  .sp-nav-link span,
+  .sp-quote-button,
+  .sp-quote-button span,
+  .sp-mobile-toggle,
+  .sp-animated-btn,
+  .sp-btn-label {
+    position: relative;
+    z-index: 10000;
+  }
+}
+
 /* ======= Home page ============ */
 
 /* Hero page */
@@ -3482,6 +3676,7 @@ body {
   align-items: center !important;
 }
 
+
 .sp-hero-background {
   position: absolute !important;
   inset: 0 !important;
@@ -3496,8 +3691,11 @@ body {
   height: 100% !important;
   object-fit: cover !important;
   opacity: 0 !important;
-  transform: scale(1.06) !important;
-  transition: opacity 0.85s ease, transform 5.5s ease !important;
+  transform: scale(1.065) !important;
+  filter: saturate(1.04) contrast(1.05) !important;
+  transition:
+    opacity 0.85s ease,
+    transform 5.5s ease !important;
 }
 
 .sp-hero-bg-image.is-active {
@@ -3510,8 +3708,16 @@ body {
   inset: 0 !important;
   z-index: -3 !important;
   background:
-    radial-gradient(circle at 20% 28%, rgba(122, 77, 255, 0.32), transparent 30%),
-    radial-gradient(circle at 82% 34%, rgba(231, 42, 154, 0.28), transparent 28%),
+    radial-gradient(
+      circle at 20% 28%,
+      rgba(122, 77, 255, 0.32),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 82% 34%,
+      rgba(231, 42, 154, 0.28),
+      transparent 28%
+    ),
     linear-gradient(
       90deg,
       rgba(7, 10, 20, 0.74) 0%,
@@ -3525,8 +3731,8 @@ body {
   inset: 0 !important;
   z-index: -2 !important;
   background-image:
-    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px) !important;
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px) !important;
   background-size: 74px 74px !important;
   opacity: 0.34 !important;
   pointer-events: none !important;
@@ -3534,7 +3740,7 @@ body {
 
 .sp-hero-container {
   position: relative !important;
-  z-index: 5 !important;
+  z-index: 8 !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -3545,6 +3751,7 @@ body {
   margin-inline: auto !important;
   text-align: center !important;
   color: #ffffff !important;
+  transform: translateY(-18px) !important;
 }
 
 .sp-hero-eyebrow {
@@ -3557,12 +3764,21 @@ body {
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
-  color: rgba(255,255,255,0.92) !important;
-  background: rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255,255,255,0.16) !important;
-  backdrop-filter: blur(16px) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.055)
+    ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  backdrop-filter: blur(16px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.25) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 16px 42px rgba(0, 0, 0, 0.14) !important;
   font-size: 14px !important;
-  font-weight: 800 !important;
+  font-weight: 850 !important;
 }
 
 .sp-hero-eyebrow svg {
@@ -3604,12 +3820,28 @@ body {
 .sp-hero-description {
   max-width: 780px !important;
   margin: 18px auto 0 !important;
-  color: rgba(255,255,255,0.78) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
   font-size: clamp(16px, 1.24vw, 20px) !important;
   line-height: 1.6 !important;
-  font-weight: 700 !important;
+  font-weight: 750 !important;
   text-align: center !important;
+  animation: spHeroDescriptionIn 0.65s ease both !important;
 }
+
+@keyframes spHeroDescriptionIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
 
 .sp-hero-actions {
   margin-top: 22px !important;
@@ -3617,366 +3849,6 @@ body {
   justify-content: center !important;
   gap: 10px !important;
   flex-wrap: wrap !important;
-}
-
-.sp-hero-points {
-  list-style: none !important;
-  margin: 24px 0 0 !important;
-  padding: 0 !important;
-  display: flex !important;
-  justify-content: center !important;
-  gap: 10px !important;
-  flex-wrap: wrap !important;
-}
-
-.sp-hero-points li {
-  position: relative !important;
-  min-height: 42px !important;
-  padding: 0 16px !important;
-  border-radius: 999px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  color: rgba(255,255,255,0.88) !important;
-  font-size: 13px !important;
-  font-weight: 850 !important;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.055)) !important;
-  border: 1px solid rgba(255,255,255,0.22) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.35),
-    0 16px 42px rgba(0,0,0,0.16) !important;
-  backdrop-filter: blur(18px) saturate(1.35) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(1.35) !important;
-  overflow: hidden !important;
-}
-
-.sp-hero-points li svg {
-  color: var(--hero-accent) !important;
-}
-
-.sp-hero-floating-mockup {
-  position: absolute !important;
-  right: 8% !important;
-  bottom: 9% !important;
-  width: min(300px, 25vw) !important;
-  z-index: 4 !important;
-  filter: drop-shadow(0 28px 50px rgba(0,0,0,0.32)) !important;
-  animation: spHeroFloatMockup 5.4s ease-in-out infinite !important;
-  pointer-events: none !important;
-}
-
-@keyframes spHeroFloatMockup {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(-2deg);
-  }
-
-  50% {
-    transform: translate3d(0, -14px, 0) rotate(2deg);
-  }
-}
-
-.sp-hero-shape {
-  position: absolute !important;
-  z-index: 3 !important;
-  pointer-events: none !important;
-}
-
-.sp-hero-shape-one {
-  left: 4% !important;
-  top: 32% !important;
-  width: 0 !important;
-  height: 0 !important;
-  border-top: 20px solid transparent !important;
-  border-bottom: 20px solid transparent !important;
-  border-left: 42px solid #7a4dff !important;
-}
-
-.sp-hero-shape-two {
-  right: 8% !important;
-  top: 46% !important;
-  width: 74px !important;
-  height: 74px !important;
-  border-radius: 22px !important;
-  background: linear-gradient(135deg, #38c7ff, #e72a9a, #f6a13d) !important;
-}
-
-.sp-hero-shape-three {
-  left: 11% !important;
-  top: 48% !important;
-  width: 58px !important;
-  height: 58px !important;
-  border-radius: 18px !important;
-  background: linear-gradient(135deg, rgba(56,199,255,0.92), rgba(231,42,154,0.75), rgba(246,161,61,0.75)) !important;
-}
-
-.sp-hero-watermark {
-  position: absolute !important;
-  right: 4% !important;
-  top: 18% !important;
-  z-index: 2 !important;
-  writing-mode: vertical-rl !important;
-  color: transparent !important;
-  -webkit-text-stroke: 2px rgba(255,255,255,0.12) !important;
-  font-size: clamp(72px, 8vw, 138px) !important;
-  font-weight: 900 !important;
-  line-height: 0.88 !important;
-  letter-spacing: -0.08em !important;
-  pointer-events: none !important;
-}
-
-.sp-hero-progress-wrap {
-  position: absolute !important;
-  left: 50% !important;
-  bottom: 26px !important;
-  z-index: 10 !important;
-  transform: translateX(-50%) !important;
-  width: min(560px, calc(100% - 34px)) !important;
-  display: flex !important;
-  justify-content: center !important;
-}
-
-.sp-hero-progress-bar {
-  width: 100% !important;
-  height: 42px !important;
-  padding: 0 10px !important;
-  border-radius: 999px !important;
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  align-items: center !important;
-  gap: 12px !important;
-  background: rgba(255,255,255,0.12) !important;
-  border: 1px solid rgba(255,255,255,0.16) !important;
-  backdrop-filter: blur(20px) !important;
-}
-
-.sp-hero-progress-segment {
-  position: relative !important;
-  height: 9px !important;
-  border: 0 !important;
-  border-radius: 999px !important;
-  overflow: hidden !important;
-  background: rgba(255,255,255,0.25) !important;
-  cursor: pointer !important;
-}
-
-.sp-hero-progress-fill {
-  position: absolute !important;
-  inset: 0 !important;
-  border-radius: inherit !important;
-  background: linear-gradient(90deg, #38c7ff, #7a4dff, #e72a9a, #f6a13d) !important;
-  transform: scaleX(0) !important;
-  transform-origin: left !important;
-}
-
-.sp-hero-progress-segment.is-active .sp-hero-progress-fill {
-  animation: spHeroProgressFill var(--hero-duration) linear forwards !important;
-}
-
-@keyframes spHeroProgressFill {
-  from {
-    transform: scaleX(0);
-  }
-
-  to {
-    transform: scaleX(1);
-  }
-}
-
-@media (max-width: 1180px) {
-  .sp-hero-section {
-    height: auto !important;
-    min-height: 100svh !important;
-    padding-top: 116px !important;
-    padding-bottom: 96px !important;
-  }
-
-  .sp-hero-floating-mockup {
-    width: 220px !important;
-    right: 3% !important;
-    bottom: 12% !important;
-  }
-}
-
-@media (max-width: 720px) {
-  .sp-hero-section {
-    padding-top: 104px !important;
-    padding-bottom: 92px !important;
-  }
-
-  .sp-hero-title {
-    font-size: clamp(40px, 12vw, 62px) !important;
-  }
-
-  .sp-hero-description {
-    font-size: 15px !important;
-  }
-
-  .sp-hero-points {
-    display: grid !important;
-    justify-items: center !important;
-  }
-
-  .sp-hero-floating-mockup {
-    width: 170px !important;
-    right: -8px !important;
-    bottom: 18% !important;
-  }
-}
-
-
-.sp-hero-content {
-  transform: translateY(-18px) !important;
-}
-
-.sp-hero-points {
-  margin-top: 24px !important;
-  margin-bottom: 48px !important;
-}
-
-.sp-hero-progress-wrap {
-  bottom: 18px !important;
-  width: min(560px, calc(100% - 34px)) !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  display: flex !important;
-  justify-content: center !important;
-  z-index: 20 !important;
-}
-
-.sp-hero-progress-arrow {
-  display: none !important;
-}
-
-.sp-hero-progress-bar {
-  width: 100% !important;
-  height: 42px !important;
-  padding: 0 10px !important;
-  border-radius: 999px !important;
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  align-items: center !important;
-  gap: 12px !important;
-  background: rgba(255, 255, 255, 0.16) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(22px) saturate(1.25) !important;
-  -webkit-backdrop-filter: blur(22px) saturate(1.25) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    0 18px 42px rgba(0, 0, 0, 0.2) !important;
-}
-
-.sp-hero-progress-segment {
-  position: relative !important;
-  height: 9px !important;
-  border: 0 !important;
-  border-radius: 999px !important;
-  overflow: hidden !important;
-  background: rgba(255, 255, 255, 0.28) !important;
-  cursor: pointer !important;
-}
-
-.sp-hero-progress-segment::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  border-radius: inherit !important;
-  background: rgba(255, 255, 255, 0.18) !important;
-  transform: scaleX(0) !important;
-  transform-origin: left !important;
-  transition: transform 0.28s ease !important;
-}
-
-.sp-hero-progress-segment:hover::before {
-  transform: scaleX(1) !important;
-}
-
-.sp-hero-progress-fill {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  bottom: 0 !important;
-  width: 0;
-  border-radius: inherit !important;
-  transform: none !important;
-  background: linear-gradient(
-    90deg,
-    #38c7ff 0%,
-    #7a4dff 35%,
-    #e72a9a 68%,
-    #f6a13d 100%
-  ) !important;
-  box-shadow:
-    0 0 12px rgba(56, 199, 255, 0.55),
-    0 0 22px rgba(231, 42, 154, 0.35) !important;
-}
-
-.sp-hero-progress-segment.is-active .sp-hero-progress-fill {
-  animation: spHeroProgressWidth var(--hero-duration) linear forwards !important;
-}
-
-@keyframes spHeroProgressWidth {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 100%;
-  }
-}
-
-.sp-hero-points li {
-  position: relative !important;
-  min-height: 42px !important;
-  padding: 0 16px !important;
-  border-radius: 999px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 13px !important;
-  font-weight: 850 !important;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.06)
-    ) !important;
-  border: 1px solid rgba(255, 255, 255, 0.24) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.42),
-    inset 0 -12px 22px rgba(255, 255, 255, 0.04),
-    0 16px 42px rgba(0, 0, 0, 0.18) !important;
-  backdrop-filter: blur(18px) saturate(1.35) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(1.35) !important;
-  overflow: hidden !important;
-}
-
-.sp-hero-points li::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: -1px !important;
-  border-radius: inherit !important;
-  background:
-    radial-gradient(
-      circle at 18% 18%,
-      rgba(255, 255, 255, 0.44),
-      transparent 26%
-    ),
-    linear-gradient(
-      120deg,
-      rgba(56, 199, 255, 0.24),
-      rgba(231, 42, 154, 0.16),
-      rgba(246, 161, 61, 0.14)
-    ) !important;
-  opacity: 0.72 !important;
-  pointer-events: none !important;
-}
-
-.sp-hero-points li svg,
-.sp-hero-points li span {
-  position: relative !important;
-  z-index: 2 !important;
 }
 
 .sp-animated-btn {
@@ -4107,6 +3979,7 @@ body {
       rgba(255, 255, 255, 0.06)
     ) !important;
   backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
 }
 
 .sp-animated-btn-secondary .sp-btn-icon {
@@ -4118,17 +3991,426 @@ body {
   color: rgba(255, 255, 255, 0.92) !important;
 }
 
-@media (max-width: 720px) {
+
+.sp-hero-points {
+  list-style: none !important;
+  margin: 24px 0 52px !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+
+.sp-hero-points li {
+  position: relative !important;
+  min-height: 42px !important;
+  padding: 0 16px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 13px !important;
+  font-weight: 850 !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.06)
+    ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -12px 22px rgba(255, 255, 255, 0.04),
+    0 16px 42px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(18px) saturate(1.35) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.35) !important;
+  overflow: hidden !important;
+}
+
+.sp-hero-points li::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -1px !important;
+  border-radius: inherit !important;
+  background:
+    radial-gradient(
+      circle at 18% 18%,
+      rgba(255, 255, 255, 0.44),
+      transparent 26%
+    ),
+    linear-gradient(
+      120deg,
+      rgba(56, 199, 255, 0.24),
+      rgba(231, 42, 154, 0.16),
+      rgba(246, 161, 61, 0.14)
+    ) !important;
+  opacity: 0.72 !important;
+  pointer-events: none !important;
+}
+
+.sp-hero-points li svg,
+.sp-hero-points li span {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.sp-hero-points li svg {
+  color: var(--hero-accent) !important;
+}
+
+
+.sp-hero-progress-wrap {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 18px !important;
+  z-index: 20 !important;
+  transform: translateX(-50%) !important;
+  width: min(560px, calc(100% - 34px)) !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.sp-hero-progress-arrow {
+  display: none !important;
+}
+
+.sp-hero-progress-bar {
+  width: 100% !important;
+  height: 42px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(22px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(1.25) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 18px 42px rgba(0, 0, 0, 0.2) !important;
+}
+
+.sp-hero-progress-segment {
+  position: relative !important;
+  height: 9px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  cursor: pointer !important;
+}
+
+.sp-hero-progress-segment::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
+  transition: transform 0.28s ease !important;
+}
+
+.sp-hero-progress-segment:hover::before {
+  transform: scaleX(1) !important;
+}
+
+.sp-hero-progress-fill {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 0;
+  border-radius: inherit !important;
+  transform: none !important;
+  background: linear-gradient(
+    90deg,
+    #38c7ff 0%,
+    #7a4dff 35%,
+    #e72a9a 68%,
+    #f6a13d 100%
+  ) !important;
+  box-shadow:
+    0 0 12px rgba(56, 199, 255, 0.55),
+    0 0 22px rgba(231, 42, 154, 0.35) !important;
+}
+
+.sp-hero-progress-segment.is-active .sp-hero-progress-fill {
+  animation: spHeroProgressWidth var(--hero-duration) linear forwards !important;
+}
+
+@keyframes spHeroProgressWidth {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+
+
+.sp-hero-shape {
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+.sp-hero-shape-one {
+  left: 4% !important;
+  top: 32% !important;
+  z-index: 4 !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 20px solid transparent !important;
+  border-bottom: 20px solid transparent !important;
+  border-left: 42px solid #7a4dff !important;
+  filter: drop-shadow(0 18px 22px rgba(122, 77, 255, 0.38)) !important;
+  animation: spHeroTriangleFloat 4.2s ease-in-out infinite !important;
+}
+
+@keyframes spHeroTriangleFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateY(-16px) rotate(10deg);
+  }
+}
+
+.sp-hero-watermark {
+  position: absolute !important;
+  right: 4% !important;
+  top: 18% !important;
+  z-index: 6 !important;
+  writing-mode: vertical-rl !important;
+  color: transparent !important;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.14) !important;
+  font-size: clamp(72px, 8vw, 138px) !important;
+  font-weight: 900 !important;
+  line-height: 0.88 !important;
+  letter-spacing: -0.08em !important;
+  pointer-events: none !important;
+}
+
+.sp-hero-shape-two {
+  position: absolute !important;
+  right: 8% !important;
+  top: 45% !important;
+  width: 74px !important;
+  height: 74px !important;
+  border-radius: 22px !important;
+  z-index: 4 !important;
+  background: linear-gradient(
+    135deg,
+    #38c7ff 0%,
+    #8b5cf6 35%,
+    #ec4899 68%,
+    #fb923c 100%
+  ) !important;
+  box-shadow:
+    0 22px 40px rgba(0, 0, 0, 0.24),
+    0 10px 24px rgba(236, 72, 153, 0.18),
+    inset 0 1px 1px rgba(255, 255, 255, 0.42),
+    inset -8px -10px 20px rgba(0, 0, 0, 0.12) !important;
+  transform-style: preserve-3d !important;
+  transform: perspective(700px) rotateX(12deg) rotateY(-18deg) rotateZ(8deg) !important;
+  animation: spHeroSquareFloatA 5.4s ease-in-out infinite !important;
+  overflow: visible !important;
+}
+
+.sp-hero-shape-two::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 8px 10px auto 10px !important;
+  height: 24px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.62),
+    rgba(255, 255, 255, 0.05)
+  ) !important;
+  opacity: 0.75 !important;
+  filter: blur(0.4px) !important;
+  pointer-events: none !important;
+}
+
+.sp-hero-shape-two::after {
+  content: "" !important;
+  position: absolute !important;
+  left: -4px !important;
+  top: 92px !important;
+  width: 74px !important;
+  height: 74px !important;
+  border-radius: 22px !important;
+  background: linear-gradient(
+    135deg,
+    #7c3aed 0%,
+    #a855f7 30%,
+    #ec4899 68%,
+    #fb923c 100%
+  ) !important;
+  box-shadow:
+    0 22px 40px rgba(0, 0, 0, 0.24),
+    0 10px 24px rgba(124, 58, 237, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.42),
+    inset -8px -10px 20px rgba(0, 0, 0, 0.12) !important;
+  transform-style: preserve-3d !important;
+  transform: perspective(700px) rotateX(10deg) rotateY(-16deg) rotateZ(-6deg) !important;
+  animation: spHeroSquareFloatB 6.1s ease-in-out infinite !important;
+  pointer-events: none !important;
+}
+
+@keyframes spHeroSquareFloatA {
+  0%,
+  100% {
+    transform:
+      perspective(700px)
+      rotateX(12deg)
+      rotateY(-18deg)
+      rotateZ(8deg)
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      perspective(700px)
+      rotateX(18deg)
+      rotateY(-12deg)
+      rotateZ(12deg)
+      translate3d(-6px, -16px, 18px);
+  }
+}
+
+@keyframes spHeroSquareFloatB {
+  0%,
+  100% {
+    transform:
+      perspective(700px)
+      rotateX(10deg)
+      rotateY(-16deg)
+      rotateZ(-6deg)
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      perspective(700px)
+      rotateX(16deg)
+      rotateY(-10deg)
+      rotateZ(-10deg)
+      translate3d(8px, -14px, 16px);
+  }
+}
+
+.sp-hero-shape-three {
+  z-index: 3 !important;
+  right: 16% !important;
+  left: auto !important;
+  top: 42% !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  background:
+    radial-gradient(
+      circle at 35% 35%,
+      rgba(255, 255, 255, 0.32),
+      rgba(236, 72, 153, 0.62)
+    ) !important;
+  box-shadow:
+    0 12px 26px rgba(236, 72, 153, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.28) !important;
+  backdrop-filter: blur(8px) !important;
+  animation: spHeroOrbFloat 4.8s ease-in-out infinite !important;
+}
+
+@keyframes spHeroOrbFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(0.96);
+    opacity: 0.72;
+  }
+
+  50% {
+    transform: translateY(-12px) scale(1.08);
+    opacity: 1;
+  }
+}
+
+.sp-hero-floating-mockup {
+  position: absolute !important;
+  right: 8% !important;
+  bottom: 9% !important;
+  width: min(300px, 25vw) !important;
+  z-index: 5 !important;
+  filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.32)) !important;
+  animation: spHeroFloatMockup 5.4s ease-in-out infinite !important;
+  pointer-events: none !important;
+}
+
+@keyframes spHeroFloatMockup {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(2deg);
+  }
+}
+
+
+
+@media (max-width: 1180px) {
+  .sp-hero-section {
+    height: auto !important;
+    min-height: 100svh !important;
+    padding-top: 116px !important;
+    padding-bottom: 96px !important;
+  }
+
   .sp-hero-content {
     transform: translateY(-8px) !important;
   }
 
-  .sp-hero-points {
-    margin-bottom: 40px !important;
+  .sp-hero-title {
+    font-size: clamp(44px, 8vw, 76px) !important;
   }
 
-  .sp-hero-progress-wrap {
-    bottom: 16px !important;
+  .sp-hero-floating-mockup {
+    width: 220px !important;
+    right: 3% !important;
+    bottom: 12% !important;
+  }
+
+  .sp-hero-watermark {
+    opacity: 0.72 !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .sp-hero-section {
+    padding-top: 104px !important;
+    padding-bottom: 92px !important;
+  }
+
+  .sp-hero-title {
+    font-size: clamp(40px, 12vw, 62px) !important;
+  }
+
+  .sp-hero-description {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+  }
+
+  .sp-hero-actions {
+    gap: 8px !important;
   }
 
   .sp-animated-btn {
@@ -4140,5 +4422,63 @@ body {
   .sp-btn-icon {
     width: 40px !important;
     height: 40px !important;
+  }
+
+  .sp-hero-points {
+    display: grid !important;
+    justify-items: center !important;
+    margin-bottom: 40px !important;
+  }
+
+  .sp-hero-points li {
+    min-height: 40px !important;
+    padding: 0 14px !important;
+    font-size: 12px !important;
+  }
+
+  .sp-hero-progress-wrap {
+    bottom: 16px !important;
+    width: min(440px, calc(100% - 22px)) !important;
+  }
+
+  .sp-hero-progress-bar {
+    height: 36px !important;
+    gap: 8px !important;
+  }
+
+  .sp-hero-progress-segment {
+    height: 8px !important;
+  }
+
+  .sp-hero-floating-mockup {
+    width: 170px !important;
+    right: -8px !important;
+    bottom: 18% !important;
+  }
+
+  .sp-hero-watermark {
+    right: -2% !important;
+    top: 16% !important;
+    font-size: 82px !important;
+  }
+
+  .sp-hero-shape-two {
+    right: 4% !important;
+    top: 52% !important;
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .sp-hero-shape-two::after {
+    top: 72px !important;
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .sp-hero-shape-three {
+    right: 18% !important;
+    top: 48% !important;
+    width: 42px !important;
+    height: 42px !important;
   }
 }

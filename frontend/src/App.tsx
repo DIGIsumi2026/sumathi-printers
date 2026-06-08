@@ -9,6 +9,7 @@ import Footer from "./components/layout/Footer";
 import HomePage from "./pages/Home/HomePage";
 import { formToPayload, postForm } from "./lib/api";
 import type { CompanyData, FormStatus } from "./types/site";
+import CustomCursor from "./components/layout/CustomCursor";
 import "./App.css";
 
 const company = companyJson as CompanyData;
@@ -64,6 +65,8 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
+      
       <Preloader visible={loading} brand={company.brand} />
 
       <FloatingDecor />
