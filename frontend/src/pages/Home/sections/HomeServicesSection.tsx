@@ -1,5 +1,6 @@
 import { ArrowUpRight, BookOpen, Boxes, CalendarDays, FileBadge, FileText, Layers, Megaphone, NotebookTabs, PackageCheck, ScrollText, Sparkles, Tags } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const homeServices = [
   {
@@ -134,10 +135,10 @@ export default function HomeServicesSection() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
-          <a href="/services" className="sp-home-services-more">
+          <Link to="/services" className="sp-home-services-more">
             <span>See More Services</span>
             <ArrowUpRight size={18} />
-          </a>
+        </Link>
         </motion.div>
       </div>
     </section>
