@@ -29,6 +29,23 @@ import technologyBinding from "../assets/images/hero-section/technology/binding-
 import technologyPackaging from "../assets/images/hero-section/technology/packaging-machinery.png";
 import technologyFinishing from "../assets/images/hero-section/technology/finishing-machinery.png";
 
+//hero clients 
+import clientLogo01 from "../assets/images/hero-section/clients/ministry-health.png";
+import clientLogo02 from "../assets/images/hero-section/clients/rupawahini.png";
+import clientLogo03 from "../assets/images/hero-section/clients/family-health.png";
+import clientLogo04 from "../assets/images/hero-section/clients/heath-promotion.png";
+import clientLogo05 from "../assets/images/hero-section/clients/bcc.png";
+import clientLogo06 from "../assets/images/hero-section/clients/japura.png";
+import clientLogo07 from "../assets/images/hero-section/clients/colombo.png";
+import clientLogo08 from "../assets/images/hero-section/clients/NAITA.png";
+import clientLogo09 from "../assets/images/hero-section/clients/revenue-department.png";
+import clientLogo10 from "../assets/images/hero-section/clients/RDB.png";
+import clientLogo11 from "../assets/images/hero-section/clients/sri-lanka-insurance.png";
+import clientLogo12 from "../assets/images/hero-section/clients/NSB.png";
+import clientLogo13 from "../assets/images/hero-section/clients/national-water-suply.png";
+import clientLogo14 from "../assets/images/hero-section/clients/colombo-text.png";
+import clientLogo15 from "../assets/images/hero-section/clients/national-cancer.png";
+
 
 
 
@@ -71,7 +88,25 @@ technology: {
   binding: technologyBinding,
   packaging: technologyPackaging,
   finishing: technologyFinishing
-}
+}, 
+
+clients: {
+  client01: clientLogo01,
+  client02: clientLogo02,
+  client03: clientLogo03,
+  client04: clientLogo04,
+  client05: clientLogo05,
+  client06: clientLogo06,
+  client07: clientLogo07,
+  client08: clientLogo08,
+  client09: clientLogo09,
+  client10: clientLogo10,
+  client11: clientLogo11,
+  client12: clientLogo12,
+  client13: clientLogo13,
+  client14: clientLogo14,
+  client15: clientLogo15
+},
 
 
 

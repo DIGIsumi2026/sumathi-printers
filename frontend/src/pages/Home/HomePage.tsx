@@ -22,6 +22,7 @@ import ProductGallerySection from "./sections/ProductGallerySection";
 import AboutVideoSection from "./sections/AboutVideoSection";
 import TechnologySection from "./sections/TechnologySection";
 import HomeServicesSection from "./sections/HomeServicesSection";
+import HomeClientsSection from "./sections/HomeClientsSection";
 
 type HomePageProps = {
   company: CompanyData;
@@ -39,6 +40,7 @@ export default function HomePage({ company, contactStatus, quoteStatus, onContac
       <AboutVideoSection />
       <TechnologySection />
       <HomeServicesSection/>
+      <HomeClientsSection />
 
 
 
