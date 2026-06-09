@@ -100,8 +100,6 @@ export default function HeroSection({ company }: HeroSectionProps) {
       <div className="container sp-hero-container">
         <div className="sp-hero-content">
           <div className="sp-hero-eyebrow">
-            <Sparkles size={15} />
-            <span>{company.tagline || "Premium Printing & Publishing"}</span>
           </div>
 
           <h1 className="sp-hero-title">

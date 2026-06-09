@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Cpu, Sparkles } from "lucide-react";
 import { imageAssets } from "../../../data/imageAssets";
 
-const SLIDE_DURATION = 5200;
+const SLIDE_DURATION = 3800;
 
 const technologySlides = [
   {
@@ -124,7 +124,7 @@ export default function TechnologySection() {
           </div>
 
           <h2 className="sp-technology-title">
-            State-Of-The-Art Machinery For Demanding Print Standards
+            State Of The Art Machinery For Demanding Print Standards
           </h2>
 
           <p className="sp-technology-text">
@@ -150,14 +150,6 @@ export default function TechnologySection() {
                 {point}
               </span>
             ))}
-          </div>
-
-          <div className="sp-technology-mini-card">
-            <Cpu size={22} />
-            <div>
-              <strong>Technology-led production</strong>
-              <span>Precision, speed, finishing quality and reliability.</span>
-            </div>
           </div>
         </motion.div>
       </div>

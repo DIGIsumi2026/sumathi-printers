@@ -4919,13 +4919,11 @@ body {
   height: 150px;
 }
 
-/* =========================
-   Decorative Elements
-   ========================= */
+
 
 .zoom-gallery-watermark {
   position: absolute;
-  right: -18px;
+  right: 100px;
   top: 38px;
   z-index: 1;
   color: transparent;
@@ -5625,13 +5623,13 @@ body {
 
 .sp-technology-watermark {
   position: absolute;
-  left: -18px;
+  left: -10px;
   top: 50%;
   z-index: 1;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
   color: transparent;
-  -webkit-text-stroke: 2px rgba(0, 72, 180, 0.22);
+  -webkit-text-stroke: 2px rgba(0, 72, 180, 0.24);
   font-size: clamp(82px, 10vw, 160px);
   line-height: 0.82;
   letter-spacing: -0.075em;
@@ -5644,9 +5642,10 @@ body {
   position: relative;
   z-index: 3;
   display: grid;
-  grid-template-columns: minmax(320px, 480px) 1fr;
+  grid-template-columns: minmax(360px, 500px) 1fr;
   gap: clamp(42px, 7vw, 92px);
   align-items: center;
+  padding-left: 26px;
 }
 
 .sp-technology-image-column {
@@ -5658,7 +5657,7 @@ body {
 
 .sp-technology-image-frame {
   position: relative;
-  width: min(430px, 100%);
+  width: min(470px, 100%);
   aspect-ratio: 4 / 5;
   border-radius: 34px;
   overflow: hidden;
