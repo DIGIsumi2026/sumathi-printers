@@ -46,6 +46,12 @@ import clientLogo13 from "../assets/images/hero-section/clients/national-water-s
 import clientLogo14 from "../assets/images/hero-section/clients/colombo-text.png";
 import clientLogo15 from "../assets/images/hero-section/clients/national-cancer.png";
 
+//hero-projects
+import projectSchoolBooks from "../assets/images/hero-section/projects/school-books-printing.png";
+import projectHealthCards from "../assets/images/hero-section/projects/health-cards-printing.png";
+import projectExamPapers from "../assets/images/hero-section/projects/exam-papers-printing.png";
+import projectLeaflets from "../assets/images/hero-section/projects/leaflets-printing.png";
+import projectTshirtPrinting from "../assets/images/hero-section/projects/tshirt-printing.png";
 
 
 
@@ -106,6 +112,14 @@ clients: {
   client13: clientLogo13,
   client14: clientLogo14,
   client15: clientLogo15
+},
+
+projects: {
+  schoolBooks: projectSchoolBooks,
+  healthCards: projectHealthCards,
+  examPapers: projectExamPapers,
+  leaflets: projectLeaflets,
+  tshirtPrinting: projectTshirtPrinting
 },
 
 

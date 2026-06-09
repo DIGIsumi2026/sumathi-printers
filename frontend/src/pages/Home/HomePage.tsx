@@ -23,6 +23,8 @@ import AboutVideoSection from "./sections/AboutVideoSection";
 import TechnologySection from "./sections/TechnologySection";
 import HomeServicesSection from "./sections/HomeServicesSection";
 import HomeClientsSection from "./sections/HomeClientsSection";
+import HomeProjectsSection from "./sections/HomeProjectsSection";
+
 
 type HomePageProps = {
   company: CompanyData;
@@ -40,6 +42,7 @@ export default function HomePage({ company, contactStatus, quoteStatus, onContac
       <AboutVideoSection />
       <TechnologySection />
       <HomeServicesSection/>
+      <HomeProjectsSection />
       <HomeClientsSection />
 
 
