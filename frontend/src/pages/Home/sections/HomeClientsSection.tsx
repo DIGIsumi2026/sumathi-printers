@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { imageAssets } from "../../../data/imageAssets";
+
+const AUTO_SLIDE_DURATION = 3200;
 
 const clients = [
   { name: "Ministry Of Health", logo: imageAssets.clients.client01 },
@@ -24,10 +26,18 @@ const clients = [
 
 export default function HomeClientsSection() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const activeIndexRef = useRef(0);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const updateActiveLogo = () => {
+  const setActiveLogo = useCallback((index: number) => {
+    activeIndexRef.current = index;
+    setActiveIndex(index);
+  }, []);
+
+  const updateActiveLogo = useCallback(() => {
     const scroller = scrollRef.current;
 
     if (!scroller) return;
@@ -53,44 +63,55 @@ export default function HomeClientsSection() {
       }
     });
 
-    setActiveIndex(closestIndex);
-  };
+    setActiveLogo(closestIndex);
+  }, [setActiveLogo]);
 
-  const scrollToLogo = (index: number) => {
-    const scroller = scrollRef.current;
+  const scrollToLogo = useCallback(
+    (index: number) => {
+      const scroller = scrollRef.current;
 
-    if (!scroller) return;
+      if (!scroller) return;
 
-    const cards = Array.from(
-      scroller.querySelectorAll<HTMLElement>(".sp-client-logo-card")
-    );
+      const cards = Array.from(
+        scroller.querySelectorAll<HTMLElement>(".sp-client-logo-card")
+      );
 
-    const targetCard = cards[index];
+      const targetCard = cards[index];
 
-    if (!targetCard) return;
+      if (!targetCard) return;
 
-    const targetLeft =
-      targetCard.offsetLeft -
-      scroller.clientWidth / 2 +
-      targetCard.clientWidth / 2;
+      const targetLeft =
+        targetCard.offsetLeft -
+        scroller.clientWidth / 2 +
+        targetCard.clientWidth / 2;
 
-    scroller.scrollTo({
-      left: targetLeft,
-      behavior: "smooth"
-    });
+      scroller.scrollTo({
+        left: targetLeft,
+        behavior: "smooth"
+      });
 
-    setActiveIndex(index);
-  };
+      setActiveLogo(index);
+    },
+    [setActiveLogo]
+  );
 
   const goPrevious = () => {
-    const nextIndex = activeIndex === 0 ? clients.length - 1 : activeIndex - 1;
+    const nextIndex =
+      activeIndexRef.current === 0
+        ? clients.length - 1
+        : activeIndexRef.current - 1;
+
     scrollToLogo(nextIndex);
   };
 
-  const goNext = () => {
-    const nextIndex = activeIndex === clients.length - 1 ? 0 : activeIndex + 1;
+  const goNext = useCallback(() => {
+    const nextIndex =
+      activeIndexRef.current === clients.length - 1
+        ? 0
+        : activeIndexRef.current + 1;
+
     scrollToLogo(nextIndex);
-  };
+  }, [scrollToLogo]);
 
   useEffect(() => {
     const scroller = scrollRef.current;
@@ -118,7 +139,19 @@ export default function HomeClientsSection() {
       scroller.removeEventListener("wheel", handleWheel);
       scroller.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [updateActiveLogo]);
+
+  useEffect(() => {
+    if (isPaused || isDragging) return;
+
+    const timer = window.setInterval(() => {
+      goNext();
+    }, AUTO_SLIDE_DURATION);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [goNext, isPaused, isDragging]);
 
   const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
     const scroller = scrollRef.current;
@@ -126,6 +159,7 @@ export default function HomeClientsSection() {
     if (!scroller) return;
 
     setIsDragging(true);
+    setIsPaused(true);
 
     const startX = event.pageX - scroller.offsetLeft;
     const startScrollLeft = scroller.scrollLeft;
@@ -140,6 +174,8 @@ export default function HomeClientsSection() {
 
     const handleMouseUp = () => {
       setIsDragging(false);
+      setIsPaused(false);
+
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
@@ -188,6 +224,8 @@ export default function HomeClientsSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <div className="sp-client-panel-head">
             <div>
@@ -211,6 +249,8 @@ export default function HomeClientsSection() {
             ref={scrollRef}
             className={`sp-client-logo-scroll ${isDragging ? "is-dragging" : ""}`}
             onMouseDown={handleMouseDown}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
           >
             {clients.map((client, index) => (
               <article
