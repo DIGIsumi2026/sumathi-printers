@@ -23,6 +23,14 @@ import packagingBoxPrintingGallery from  "../assets/images/hero-section/service-
 import brochuresCatalogs from  "../assets/images/hero-section/service-gallery/brochures-catalogs.png";
 import booksMagazinesPrinting from  "../assets/images/hero-section/service-gallery/books-magazines-printing.png";
 
+//hero-technology 
+import technologyPrinting from "../assets/images/hero-section/technology/printing-machinery.png";
+import technologyBinding from "../assets/images/hero-section/technology/binding-machinery.png";
+import technologyPackaging from "../assets/images/hero-section/technology/packaging-machinery.png";
+import technologyFinishing from "../assets/images/hero-section/technology/finishing-machinery.png";
+
+
+
 
 
 
@@ -57,6 +65,13 @@ export const imageAssets = {
   brochuresCatalogs,
   booksMagazinesPrinting
 },
+
+technology: {
+  printing: technologyPrinting,
+  binding: technologyBinding,
+  packaging: technologyPackaging,
+  finishing: technologyFinishing
+}
 
 
 

@@ -16,8 +16,11 @@ import QuoteSection from './sections/QuoteSection';
 import ContactSection from './sections/ContactSection';
 import PartnersSection from './sections/PartnersSection';
 import ProductGallerySection from "./sections/ProductGallerySection";
-import AboutVideoSection from "./sections/AboutVideoSection";
 
+
+//sections
+import AboutVideoSection from "./sections/AboutVideoSection";
+import TechnologySection from "./sections/TechnologySection";
 
 type HomePageProps = {
   company: CompanyData;
@@ -33,6 +36,7 @@ export default function HomePage({ company, contactStatus, quoteStatus, onContac
       <HeroSection company={company} />
       <ProductGallerySection />
       <AboutVideoSection />
+      <TechnologySection />
 
 
 

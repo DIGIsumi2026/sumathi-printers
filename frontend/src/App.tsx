@@ -12,6 +12,7 @@ import type { CompanyData, FormStatus } from "./types/site";
 import CustomCursor from "./components/layout/CustomCursor";
 import "./App.css";
 
+
 const company = companyJson as CompanyData;
 
 type ApiEndpoint = "/contact" | "/newsletter" | "/quote";
