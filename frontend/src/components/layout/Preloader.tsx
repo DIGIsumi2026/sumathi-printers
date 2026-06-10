@@ -3,7 +3,6 @@ import { videoAssets } from "../../data/videoAssets";
 
 type PreloaderProps = {
   visible: boolean;
-  brand?: string;
 };
 
 export default function Preloader({ visible }: PreloaderProps) {
@@ -11,17 +10,11 @@ export default function Preloader({ visible }: PreloaderProps) {
 
   useEffect(() => {
     const video = videoRef.current;
-
     if (!video) return;
 
     if (visible) {
       video.currentTime = 0;
-
-      const playPromise = video.play();
-
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
+      video.play().catch(() => {});
     } else {
       video.pause();
     }
@@ -29,24 +22,18 @@ export default function Preloader({ visible }: PreloaderProps) {
 
   return (
     <div className={`sp-page-loader ${visible ? "is-visible" : "is-hidden"}`}>
-      <div className="sp-page-loader-bg" />
+      <div className="sp-page-loader-glass" />
 
-      <div className="sp-page-loader-video-wrap">
-        <video
-          ref={videoRef}
-          className="sp-page-loader-video"
-          src={videoAssets.loading.intro}
-          muted
-          playsInline
-          autoPlay
-          preload="auto"
-        />
-      </div>
-
-      <div className="sp-page-loader-bottom">
-        <span className="sp-loader-line" />
-        <span className="sp-loader-text">Loading Experience</span>
-      </div>
+      <video
+        ref={videoRef}
+        className="sp-page-loader-video"
+        src={videoAssets.loading.introPre}
+        muted
+        playsInline
+        autoPlay
+        loop
+        preload="auto"
+      />
     </div>
   );
 }

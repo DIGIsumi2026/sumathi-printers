@@ -4,6 +4,10 @@ import loadingVideo from "../assets/videos/loading.mp4";
 
 //about page
 import aboutHero from "../assets/videos/about-hero.mp4";
+import preLoader from "../assets/videos/sumathi-preloader-transparent.webm";
+
+
+
 
 export const videoAssets = {
   about: {
@@ -13,12 +17,13 @@ export const videoAssets = {
 
   loading:{
     intro: loadingVideo,
+    introPre: preLoader,
   },
 
   aboutHero:{
     intro: aboutHero
   },
-  
+
 } as const;
 
 export type VideoAssets = typeof videoAssets;
