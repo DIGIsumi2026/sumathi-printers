@@ -70,6 +70,26 @@ import boardSamadara from "../assets/images/about/board/samadara-sumathipala.png
 import boardDulantha from "../assets/images/about/board/dulantha-sumathipala.png";
 import boardSajantha from "../assets/images/about/board/sajantha-sumathipala.png";
 
+//companies
+import companyLogo1 from "../assets/images/about/companies/company1.png";
+import companyLogo2 from "../assets/images/about/companies/company2.png";
+import companyLogo3 from "../assets/images/about/companies/company3.png";
+import companyLogo4 from "../assets/images/about/companies/company4.png";
+import companyLogo5 from "../assets/images/about/companies/company5.png";
+import companyLogo6 from "../assets/images/about/companies/company6.png";
+import companyLogo7 from "../assets/images/about/companies/company7.png";
+import companyLogo8 from "../assets/images/about/companies/company8.png";
+import companyLogo9 from "../assets/images/about/companies/company9.png";
+import companyLogo10 from "../assets/images/about/companies/company10.png";
+import companyLogo11 from "../assets/images/about/companies/company11.png";
+import companyLogo12 from "../assets/images/about/companies/company12.png";
+import companyLogo13 from "../assets/images/about/companies/company13.png";
+import companyLogo14 from "../assets/images/about/companies/company14.png";
+import companyLogo15 from "../assets/images/about/companies/company15.png";
+
+
+
+
 
 
 
@@ -151,6 +171,24 @@ board: {
   samadara: boardSamadara,
   dulantha: boardDulantha,
   sajantha: boardSajantha
+},
+
+companies: {
+  company01: companyLogo1,
+  company02: companyLogo2,
+  company03: companyLogo3,
+  company04: companyLogo4,
+  company05: companyLogo5,
+  company06: companyLogo6,
+  company07: companyLogo7,
+  company08: companyLogo8,
+  company09: companyLogo9,
+  company10: companyLogo10,
+  company11: companyLogo11,
+  company12: companyLogo12,
+  company13: companyLogo13,
+  company14: companyLogo14,
+  company15: companyLogo15,
 },
 
 
