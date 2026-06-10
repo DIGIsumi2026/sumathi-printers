@@ -66,8 +66,6 @@ export default function HomePage({ company, contactStatus, quoteStatus, onContac
       <ContactSection company={company} contactStatus={contactStatus} onSubmit={onContactSubmit} />
       <PartnersSection company={company} />
       */}
-
-
       
     </main>
   );

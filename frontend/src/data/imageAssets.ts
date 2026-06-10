@@ -53,7 +53,9 @@ import projectExamPapers from "../assets/images/hero-section/projects/exam-paper
 import projectLeaflets from "../assets/images/hero-section/projects/leaflets-printing.png";
 import projectTshirtPrinting from "../assets/images/hero-section/projects/tshirt-printing.png";
 
-
+//about us page 
+//hero
+import aboutIntroThumbnail from "../assets/images/about/about-intro-thumbnail.png";
 
 
 
@@ -120,6 +122,10 @@ projects: {
   examPapers: projectExamPapers,
   leaflets: projectLeaflets,
   tshirtPrinting: projectTshirtPrinting
+},
+
+about: {
+  thumbnail: aboutIntroThumbnail,
 },
 
 
