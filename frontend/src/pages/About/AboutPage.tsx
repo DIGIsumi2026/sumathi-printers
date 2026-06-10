@@ -3,6 +3,7 @@ import type { CompanyData } from "../../types/site";
 import AboutIntroVideoSection from "./sections/AboutIntroVideoSection";
 import AboutStorySection from "./sections/AboutStorySection";
 import AboutVisionMissionSection from "./sections/AboutVisionMissionSection";
+import AboutBoardSection from "./sections/AboutBoardSection";
 
 type AboutPageProps = {
   company: CompanyData;
@@ -14,6 +15,7 @@ export default function AboutPage({ company }: AboutPageProps) {
       <AboutIntroVideoSection/>
       <AboutStorySection/>
       <AboutVisionMissionSection/>
+      <AboutBoardSection/>
     </main>
   );
 }

@@ -56,11 +56,21 @@ import projectTshirtPrinting from "../assets/images/hero-section/projects/tshirt
 //about us page 
 //hero
 import aboutIntroThumbnail from "../assets/images/about/about-intro-thumbnail.png";
+
 //about-story
 import aboutStoryImage from "../assets/images/about/about-story.png";
+
 //visiion, mission 
 import visionImage from "../assets/images/about/vision.png";
 import missionImage from "../assets/images/about/mission.png";
+
+//board management
+import boardThilanga from "../assets/images/about/board/thilanga-sumathipala.png";
+import boardSamadara from "../assets/images/about/board/samadara-sumathipala.png";
+import boardDulantha from "../assets/images/about/board/dulantha-sumathipala.png";
+import boardSajantha from "../assets/images/about/board/sajantha-sumathipala.png";
+
+
 
 
 
@@ -135,6 +145,14 @@ about: {
   vision: visionImage,
   mission: missionImage,
 },
+
+board: {
+  thilanga: boardThilanga,
+  samadara: boardSamadara,
+  dulantha: boardDulantha,
+  sajantha: boardSajantha
+},
+
 
 
 
