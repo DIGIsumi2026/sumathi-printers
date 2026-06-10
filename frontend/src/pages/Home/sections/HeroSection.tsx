@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import { CheckCircle2, Sparkles } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import type { CompanyData } from "../../../types/site";
 import { imageAssets } from "../../../data/imageAssets";
 import { AnimatedButton } from "../../../components/common/Buttons";
@@ -50,20 +50,19 @@ const heroSlides = [
   }
 ];
 
-export default function HeroSection({ company }: HeroSectionProps) {
+export default function HeroSection({ company: _company }: HeroSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeSlide = heroSlides[activeIndex];
 
   useEffect(() => {
-  const timer = window.setTimeout(() => {
-    setActiveIndex((current) => (current + 1) % heroSlides.length);
-  }, SLIDE_DURATION);
+    const timer = window.setTimeout(() => {
+      setActiveIndex((current) => (current + 1) % heroSlides.length);
+    }, SLIDE_DURATION);
 
-  return () => {
-    window.clearTimeout(timer);
-  };
-}, [activeIndex]);
-
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [activeIndex]);
 
   const heroStyle = useMemo(
     () =>
@@ -100,13 +99,16 @@ export default function HeroSection({ company }: HeroSectionProps) {
       <div className="container sp-hero-container">
         <div className="sp-hero-content">
           <div className="sp-hero-eyebrow">
+            <span>{activeSlide.eyebrow}</span>
           </div>
 
           <h1 className="sp-hero-title">
             <span>Printing Solutions</span>
+
             <span key={activeSlide.word} className="sp-hero-changing-word">
               {activeSlide.word}
             </span>
+
             <span>For Your Brand</span>
           </h1>
 
@@ -129,41 +131,32 @@ export default function HeroSection({ company }: HeroSectionProps) {
               <CheckCircle2 size={16} />
               <span>Established roots since 1984</span>
             </li>
+
             <li>
               <CheckCircle2 size={16} />
               <span>Modern printing equipment</span>
             </li>
+
             <li>
               <CheckCircle2 size={16} />
               <span>Fast and reliable delivery</span>
             </li>
           </ul>
-        </div>
-      </div>
 
-      <div className="sp-hero-progress-wrap">
-        <div className="sp-hero-progress-bar" role="tablist">
-          {heroSlides.map((slide, index) => (
-            <button
-              key={slide.id}
-              type="button"
-              role="tab"
-              aria-selected={activeIndex === index}
-              className={`sp-hero-progress-segment ${
-                activeIndex === index ? "is-active" : ""
-              }`}
-              onClick={() => setActiveIndex(index)}
-            >
-              <span
-                key={
-                  activeIndex === index
-                    ? `${slide.id}-${activeIndex}`
-                    : slide.id
-                }
-                className="sp-hero-progress-fill"
+          <div className="sp-hero-process-wrap" aria-label="Hero slide progress">
+            {heroSlides.map((slide, index) => (
+              <button
+                key={slide.id}
+                type="button"
+                aria-label={`Show ${slide.eyebrow}`}
+                aria-current={activeIndex === index ? "true" : undefined}
+                className={`sp-hero-process-dot ${
+                  activeIndex === index ? "is-active" : ""
+                }`}
+                onClick={() => setActiveIndex(index)}
               />
-            </button>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
