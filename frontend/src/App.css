@@ -10840,13 +10840,8 @@ main:has(.sp-about-page-intro-section),
     flex-basis: 170px;
   }
 }
-/* =========================================================
-   ABOUT COMPANIES SECTION FIX
-   Bigger company logos + missing arrow line between buttons
-   Paste at the VERY BOTTOM of App.css
-   ========================================================= */
+/* fix */
 
-/* Make company cards closer to client card size */
 .sp-about-company-logo-card {
   flex: 0 0 clamp(210px, 20vw, 260px) !important;
   min-height: 154px !important;
@@ -10855,7 +10850,6 @@ main:has(.sp-about-page-intro-section),
   place-items: center !important;
 }
 
-/* Make company logos bigger like client logos */
 .sp-about-company-logo-img {
   width: auto !important;
   height: auto !important;
@@ -10869,18 +10863,15 @@ main:has(.sp-about-page-intro-section),
     opacity 0.32s ease !important;
 }
 
-/* Active company logo pop */
 .sp-about-company-logo-card.is-active .sp-about-company-logo-img {
   transform: scale(1.28) !important;
   filter: saturate(1.08) contrast(1.05) !important;
 }
 
-/* Hover logo scale */
 .sp-about-company-logo-card:hover .sp-about-company-logo-img {
   transform: scale(1.22) !important;
 }
 
-/* Make company active card match client card feeling */
 .sp-about-company-logo-card.is-active {
   border-color: rgba(122, 77, 255, 0.42) !important;
   background:
