@@ -4,7 +4,7 @@ import loadingVideo from "../assets/videos/loading.mp4";
 
 //about page
 import aboutHero from "../assets/videos/about-hero.mp4";
-import preLoader from "../assets/videos/sumathi-preloader-transparent.webm";
+import preLoader from "../assets/videos/sumathi-3d-preloader-transparent.webm";
 
 
 
