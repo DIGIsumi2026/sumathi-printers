@@ -56,7 +56,11 @@ import projectTshirtPrinting from "../assets/images/hero-section/projects/tshirt
 //about us page 
 //hero
 import aboutIntroThumbnail from "../assets/images/about/about-intro-thumbnail.png";
+//about-story
 import aboutStoryImage from "../assets/images/about/about-story.png";
+//visiion, mission 
+import visionImage from "../assets/images/about/vision.png";
+import missionImage from "../assets/images/about/mission.png";
 
 
 
@@ -128,6 +132,8 @@ projects: {
 about: {
   thumbnail: aboutIntroThumbnail,
   story: aboutStoryImage,
+  vision: visionImage,
+  mission: missionImage,
 },
 
 
