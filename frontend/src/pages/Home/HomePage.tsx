@@ -1,6 +1,7 @@
 import type { FormEvent } from 'react';
 import type { CompanyData, FormStatus } from '../../types/site';
-import HeroSection from './sections/HeroSection';
+
+/*
 import WhyStandoutSection from './sections/WhyStandoutSection';
 import FeatureSection from './sections/FeatureSection';
 import AboutSection from './sections/AboutSection';
@@ -15,12 +16,14 @@ import BlogSection from './sections/BlogSection';
 import QuoteSection from './sections/QuoteSection';
 import ContactSection from './sections/ContactSection';
 import PartnersSection from './sections/PartnersSection';
-import ProductGallerySection from "./sections/ProductGallerySection";
+ */
 
 
 //sections
+import HeroSection from './sections/HeroSection';
 import AboutVideoSection from "./sections/AboutVideoSection";
 import TechnologySection from "./sections/TechnologySection";
+import ProductGallerySection from "./sections/ProductGallerySection";
 import HomeServicesSection from "./sections/HomeServicesSection";
 import HomeClientsSection from "./sections/HomeClientsSection";
 import HomeProjectsSection from "./sections/HomeProjectsSection";
@@ -46,9 +49,9 @@ export default function HomePage({ company, contactStatus, quoteStatus, onContac
       <HomeClientsSection />
 
 
-
+     {/* remove later 
       
-      <WhyStandoutSection company={company} />
+    <WhyStandoutSection company={company} />
       <FeatureSection company={company} />
       <AboutSection company={company} />
       <MissionVisionSection company={company} />
@@ -62,6 +65,10 @@ export default function HomePage({ company, contactStatus, quoteStatus, onContac
       <QuoteSection company={company} quoteStatus={quoteStatus} onSubmit={onQuoteSubmit} />
       <ContactSection company={company} contactStatus={contactStatus} onSubmit={onContactSubmit} />
       <PartnersSection company={company} />
+      */}
+
+
+      
     </main>
   );
 }
