@@ -5143,11 +5143,6 @@ body.sp-menu-open .sp-nav-shell {
 
 /* ======== product gallery section ============ */
 
-/* =========================================================
-   ZOOM PRODUCT GALLERY - FINAL CLEAN CSS
-   Section after hero, no heading, centered mosaic, scroll zoom
-   ========================================================= */
-
 .zoom-gallery-section {
   position: relative;
   height: 215svh;
@@ -5188,10 +5183,6 @@ body.sp-menu-open .sp-nav-shell {
   margin-inline: auto;
 }
 
-/* =========================
-   Product Cards
-   ========================= */
-
 .zoom-gallery-card {
   position: absolute;
   overflow: hidden;
@@ -5226,11 +5217,7 @@ body.sp-menu-open .sp-nav-shell {
   pointer-events: none;
 }
 
-/* =========================
-   Symmetric Desktop Mosaic
-   ========================= */
 
-/* Left edge */
 .zg-card-01 {
   left: 0;
   top: 226px;
@@ -5245,7 +5232,6 @@ body.sp-menu-open .sp-nav-shell {
   height: 278px;
 }
 
-/* Middle-left column */
 .zg-card-03 {
   left: 410px;
   top: 86px;
@@ -5260,7 +5246,6 @@ body.sp-menu-open .sp-nav-shell {
   height: 144px;
 }
 
-/* Center column */
 .zg-card-04 {
   left: 636px;
   top: 38px;
@@ -5275,7 +5260,6 @@ body.sp-menu-open .sp-nav-shell {
   height: 176px;
 }
 
-/* Middle-right column */
 .zg-card-05 {
   left: 862px;
   top: 102px;
@@ -5290,7 +5274,6 @@ body.sp-menu-open .sp-nav-shell {
   height: 224px;
 }
 
-/* Right edge */
 .zg-card-07 {
   left: 1088px;
   top: 108px;
@@ -5377,15 +5360,10 @@ body.sp-menu-open .sp-nav-shell {
   }
 }
 
-/* Safety: hide old headings if old markup is cached somewhere */
 .product-gallery-heading,
 .sp-product-gallery-heading {
   display: none !important;
 }
-
-/* =========================================================
-   Tablet Layout
-   ========================================================= */
 
 @media (max-width: 900px) {
   .zoom-gallery-section {
@@ -5501,9 +5479,6 @@ body.sp-menu-open .sp-nav-shell {
   }
 }
 
-/* =========================================================
-   Mobile Layout
-   ========================================================= */
 
 @media (max-width: 560px) {
   .zoom-gallery-section {
@@ -5590,7 +5565,6 @@ body.sp-menu-open .sp-nav-shell {
   transform: scale(1.08);
 }
 
-/* Thumbnail covers the whole video after playback ends */
 .sp-about-video-thumbnail {
   position: absolute;
   inset: 0;
@@ -5612,7 +5586,6 @@ body.sp-menu-open .sp-nav-shell {
   opacity: 1;
 }
 
-/* This layer lets the custom cursor show Play over video */
 .sp-about-video-cursor-zone {
   position: absolute;
   inset: 0;
@@ -5636,7 +5609,6 @@ body.sp-menu-open .sp-nav-shell {
   pointer-events: none;
 }
 
-/* Right fade sits above video/thumbnail but below caption */
 .sp-about-video-right-fade {
   position: absolute;
   inset: 0;
@@ -5686,7 +5658,6 @@ body.sp-menu-open .sp-nav-shell {
   pointer-events: none;
 }
 
-/* Invisible logo area. No duplicate logo image is added. */
 .sp-about-logo-hotspot {
   position: absolute;
   left: 10.8%;
@@ -5748,7 +5719,6 @@ body.sp-menu-open .sp-nav-shell {
     inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
-/* Caption moved upward so Read More is visible */
 .sp-about-video-caption {
   position: absolute;
   z-index: 12;
@@ -5891,9 +5861,7 @@ body.sp-menu-open .sp-nav-shell {
   }
 }
 
-/* =========================
-   Responsive
-   ========================= */
+
 
 @media (max-width: 1100px) {
   .sp-about-video-section {
@@ -6820,13 +6788,8 @@ body.sp-menu-open .sp-nav-shell {
   }
 }
 
-/* =========================================================
-   FINAL CLEAN ROUTER NAVBAR + MOBILE MENU + CUSTOM CURSOR FIX
-   Keep this block at the bottom of App.css.
-   It intentionally overrides old template navigation classes.
-   ========================================================= */
 
-/* Hide old template navigation/header systems */
+
 .site-header,
 .top-bar,
 .top-inner,
@@ -6844,10 +6807,6 @@ body.sp-menu-open .sp-nav-shell {
 .top-address {
   display: none !important;
 }
-
-/* -------------------------
-   Floating router navbar
-   ------------------------- */
 
 .sp-header {
   position: fixed !important;
@@ -6989,7 +6948,6 @@ body.sp-menu-open .sp-nav-shell {
   opacity: 1 !important;
 }
 
-/* Quote button */
 .sp-quote-button,
 .sp-mobile-quote-button {
   --quote-border: 3px;
@@ -7496,7 +7454,6 @@ body.sp-menu-open {
   pointer-events: none;
 }
 
-/* Floating background elements */
 .sp-client-bg-shape,
 .sp-client-bg-ring {
   position: absolute;
@@ -7656,7 +7613,6 @@ body.sp-menu-open {
   font-weight: 650;
 }
 
-/* Floating white logo container */
 .sp-client-floating-panel {
   position: relative;
   margin-top: 58px;
@@ -7729,7 +7685,6 @@ body.sp-menu-open {
   font-weight: 800;
 }
 
-/* Arrow controls like provided reference */
 .sp-client-arrows {
   display: inline-flex;
   align-items: center;
@@ -7808,7 +7763,6 @@ body.sp-menu-open {
   transform: translateY(-50%) rotate(45deg);
 }
 
-/* Horizontal scrolling logos */
 .sp-client-logo-scroll {
   position: relative;
   z-index: 2;
@@ -8675,6 +8629,490 @@ body.sp-menu-open {
 
   .sp-project-preview-card {
     height: 170px;
+  }
+}
+
+/* =============== Home CTA section ================== */
+
+.sp-home-cta-section {
+  position: relative;
+  padding: 112px 0 126px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(56, 199, 255, 0.14), transparent 32%),
+    radial-gradient(circle at 88% 34%, rgba(231, 42, 154, 0.12), transparent 36%),
+    linear-gradient(180deg, #ffffff 0%, #f8f4ff 52%, #ffffff 100%);
+}
+
+.sp-home-cta-bg-shape,
+.sp-home-cta-bg-ring {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sp-home-cta-bg-shape-one {
+  left: 7%;
+  top: 18%;
+  width: 76px;
+  height: 76px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #38c7ff, #7a4dff, #e72a9a);
+  opacity: 0.2;
+  transform: rotate(-18deg);
+  animation: spHomeCtaFloatOne 5.8s ease-in-out infinite;
+}
+
+.sp-home-cta-bg-shape-two {
+  right: 8%;
+  bottom: 16%;
+  width: 104px;
+  height: 104px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(231, 42, 154, 0.24), transparent 68%);
+  animation: spHomeCtaFloatTwo 6.4s ease-in-out infinite;
+}
+
+.sp-home-cta-bg-ring-one {
+  left: 12%;
+  bottom: 14%;
+  width: 148px;
+  height: 148px;
+  border-radius: 999px;
+  border: 2px solid rgba(122, 77, 255, 0.14);
+  animation: spHomeCtaRing 5.8s ease-in-out infinite;
+}
+
+.sp-home-cta-bg-ring-two {
+  right: 14%;
+  top: 14%;
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  border: 2px solid rgba(56, 199, 255, 0.16);
+  animation: spHomeCtaRing 6.2s ease-in-out infinite reverse;
+}
+
+.sp-home-cta-container {
+  position: relative;
+  z-index: 3;
+}
+
+.sp-home-cta-card {
+  position: relative;
+  min-height: clamp(430px, 44vw, 620px);
+  border-radius: clamp(32px, 4vw, 56px);
+  overflow: hidden;
+  isolation: isolate;
+  background: #050816;
+  box-shadow:
+    0 42px 110px rgba(15, 23, 42, 0.22),
+    0 18px 48px rgba(122, 77, 255, 0.13);
+}
+
+.sp-home-cta-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 199, 255, 0.68),
+    rgba(122, 77, 255, 0.32),
+    rgba(231, 42, 154, 0.44),
+    rgba(246, 161, 61, 0.36)
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+.sp-home-cta-image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  user-select: none;
+  transform: scale(1.02);
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sp-home-cta-card:hover .sp-home-cta-image {
+  transform: scale(1.065);
+}
+
+.sp-home-cta-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 10, 24, 0.94) 0%,
+      rgba(4, 10, 24, 0.78) 34%,
+      rgba(4, 10, 24, 0.36) 66%,
+      rgba(4, 10, 24, 0.16) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 10, 24, 0.1) 0%,
+      rgba(4, 10, 24, 0.28) 46%,
+      rgba(4, 10, 24, 0.86) 100%
+    );
+}
+
+.sp-home-cta-grid-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: 0.2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: radial-gradient(circle at 20% 50%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at 20% 50%, black 0%, transparent 70%);
+}
+
+.sp-home-cta-content {
+  position: relative;
+  z-index: 5;
+  width: min(730px, calc(100% - 58px));
+  padding: clamp(38px, 6vw, 86px);
+  color: #ffffff;
+}
+
+.sp-home-cta-badge {
+  width: max-content;
+  max-width: 100%;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 16px 42px rgba(15, 23, 42, 0.22);
+  backdrop-filter: blur(16px) saturate(1.24);
+  -webkit-backdrop-filter: blur(16px) saturate(1.24);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.sp-home-cta-badge svg {
+  color: #38c7ff;
+}
+
+.sp-home-cta-content h2 {
+  width: min(700px, 100%);
+  margin: 20px 0 0;
+  color: #ffffff;
+  font-size: clamp(42px, 5.6vw, 88px);
+  line-height: 0.9;
+  letter-spacing: -0.085em;
+  font-weight: 950;
+  text-wrap: balance;
+}
+
+.sp-home-cta-content p {
+  width: min(620px, 100%);
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(14px, 1.16vw, 18px);
+  line-height: 1.7;
+  font-weight: 700;
+}
+
+.sp-home-cta-actions {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.sp-home-cta-button {
+  min-height: 56px;
+  padding: 0 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 950;
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.34s ease,
+    background 0.34s ease,
+    color 0.34s ease;
+}
+
+.sp-home-cta-button svg {
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sp-home-cta-button:hover {
+  transform: translateY(-5px);
+}
+
+.sp-home-cta-button:hover svg {
+  transform: translateX(4px) rotate(-18deg);
+}
+
+.sp-home-cta-button-primary {
+  color: #ffffff;
+  background: linear-gradient(105deg, #e72a9a, #7a4dff, #38c7ff);
+  box-shadow:
+    0 22px 54px rgba(122, 77, 255, 0.26),
+    0 10px 28px rgba(231, 42, 154, 0.18);
+}
+
+.sp-home-cta-button-secondary {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(16px) saturate(1.24);
+  -webkit-backdrop-filter: blur(16px) saturate(1.24);
+  box-shadow:
+    0 18px 44px rgba(15, 23, 42, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.sp-home-cta-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.sp-home-cta-mini-card {
+  position: absolute;
+  right: clamp(24px, 5vw, 74px);
+  bottom: clamp(24px, 5vw, 62px);
+  z-index: 5;
+  width: min(230px, calc(100% - 48px));
+  padding: 22px 24px;
+  border-radius: 28px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 24px 58px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(18px) saturate(1.28);
+  -webkit-backdrop-filter: blur(18px) saturate(1.28);
+}
+
+.sp-home-cta-mini-card span {
+  display: block;
+  color: #38c7ff;
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sp-home-cta-mini-card strong {
+  display: block;
+  margin-top: 4px;
+  color: #ffffff;
+  font-size: 48px;
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+  font-weight: 950;
+}
+
+.sp-home-cta-mini-card small {
+  display: block;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.sp-home-cta-float,
+.sp-home-cta-ring {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.sp-home-cta-float-one {
+  right: 10%;
+  top: 16%;
+  width: 78px;
+  height: 78px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(56, 199, 255, 0.82), rgba(122, 77, 255, 0.76));
+  animation: spHomeCtaFloatOne 5.4s ease-in-out infinite;
+}
+
+.sp-home-cta-float-two {
+  right: 24%;
+  bottom: 20%;
+  width: 98px;
+  height: 98px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(231, 42, 154, 0.42), transparent 68%);
+  animation: spHomeCtaFloatTwo 6.2s ease-in-out infinite;
+}
+
+.sp-home-cta-float-three {
+  left: 5%;
+  top: 18%;
+  width: 0;
+  height: 0;
+  border-top: 24px solid transparent;
+  border-bottom: 24px solid transparent;
+  border-left: 54px solid rgba(246, 161, 61, 0.62);
+  filter: drop-shadow(0 18px 28px rgba(246, 161, 61, 0.22));
+  animation: spHomeCtaFloatThree 5.8s ease-in-out infinite;
+}
+
+.sp-home-cta-ring-one {
+  right: 5%;
+  bottom: 15%;
+  width: 156px;
+  height: 156px;
+  border-radius: 999px;
+  border: 2px solid rgba(56, 199, 255, 0.3);
+  animation: spHomeCtaRing 5.8s ease-in-out infinite;
+}
+
+.sp-home-cta-ring-two {
+  left: 15%;
+  bottom: 18%;
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  border: 2px solid rgba(231, 42, 154, 0.28);
+  animation: spHomeCtaRing 6.2s ease-in-out infinite reverse;
+}
+
+@keyframes spHomeCtaFloatOne {
+  0%,
+  100% {
+    transform: translateY(0) rotate(18deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(-8deg);
+  }
+}
+
+@keyframes spHomeCtaFloatTwo {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-18px) scale(1.08);
+  }
+}
+
+@keyframes spHomeCtaFloatThree {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(10deg);
+  }
+}
+
+@keyframes spHomeCtaRing {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.42;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.86;
+  }
+}
+
+@media (max-width: 900px) {
+  .sp-home-cta-section {
+    padding: 88px 0 98px;
+  }
+
+  .sp-home-cta-card {
+    min-height: 660px;
+  }
+
+  .sp-home-cta-content {
+    width: 100%;
+    padding: 38px 30px;
+  }
+
+  .sp-home-cta-mini-card {
+    left: 30px;
+    right: auto;
+    bottom: 30px;
+  }
+
+  .sp-home-cta-float-one,
+  .sp-home-cta-ring-one {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .sp-home-cta-card {
+    min-height: 700px;
+    border-radius: 30px;
+  }
+
+  .sp-home-cta-overlay {
+    background:
+      linear-gradient(180deg, rgba(4, 10, 24, 0.3) 0%, rgba(4, 10, 24, 0.88) 100%);
+  }
+
+  .sp-home-cta-content {
+    padding: 30px 22px;
+  }
+
+  .sp-home-cta-content h2 {
+    font-size: clamp(36px, 12vw, 56px);
+  }
+
+  .sp-home-cta-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .sp-home-cta-button {
+    width: 100%;
+  }
+
+  .sp-home-cta-mini-card {
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+    width: auto;
+  }
+
+  .sp-home-cta-float-two,
+  .sp-home-cta-ring-two {
+    display: none;
   }
 }
 

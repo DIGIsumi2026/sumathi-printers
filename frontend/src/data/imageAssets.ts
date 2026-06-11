@@ -53,6 +53,9 @@ import projectExamPapers from "../assets/images/hero-section/projects/exam-paper
 import projectLeaflets from "../assets/images/hero-section/projects/leaflets-printing.png";
 import projectTshirtPrinting from "../assets/images/hero-section/projects/tshirt-printing.png";
 
+//hero-cta 
+import ctaBindingScene from "../assets/images/hero-section/cta/cta-binding-scene.png";
+
 //about us page 
 //hero
 import aboutIntroThumbnail from "../assets/images/about/about-intro-thumbnail.png";
@@ -112,6 +115,10 @@ export const imageAssets = {
     booksMagazinesBrochures,
     cap,
   },
+
+  cta: {
+  bindingScene: ctaBindingScene
+},
 
   serviceGallery: {
   flyersLeaflets,

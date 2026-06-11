@@ -27,7 +27,7 @@ import ProductGallerySection from "./sections/ProductGallerySection";
 import HomeServicesSection from "./sections/HomeServicesSection";
 import HomeClientsSection from "./sections/HomeClientsSection";
 import HomeProjectsSection from "./sections/HomeProjectsSection";
-
+import HomeCtaSection from "./sections/HomeCtaSection";
 
 type HomePageProps = {
   company: CompanyData;
@@ -47,6 +47,7 @@ export default function HomePage({ company, contactStatus, quoteStatus, onContac
       <HomeServicesSection/>
       <HomeProjectsSection />
       <HomeClientsSection />
+      <HomeCtaSection/>
 
 
      {/* remove later 
