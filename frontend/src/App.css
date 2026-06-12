@@ -11915,15 +11915,11 @@ main:has(.sp-about-page-intro-section),
 }
 
 /*=============== why choose section ================== */
-/* =========================================================
-   SERVICES PAGE - WHY CHOOSE US LAYER DECK SECTION
-   Compact sticky layers + dynamic image color glow
-   ========================================================= */
 
 .sp-why-layer-section {
   position: relative;
-  min-height: 260vh;
-  padding: 0;
+  min-height: 145vh;
+  padding: 0 0 170px;
   overflow: visible;
   isolation: isolate;
   background:
@@ -11936,10 +11932,11 @@ main:has(.sp-about-page-intro-section),
 .sp-why-sticky {
   position: sticky;
   top: 0;
-  min-height: 100vh;
+  height: 100svh;
+  min-height: 720px;
   display: grid;
   align-items: center;
-  padding: 94px 0 76px;
+  padding: 96px 0 118px;
   overflow: hidden;
 }
 
@@ -12101,17 +12098,17 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-why-header {
-  width: min(820px, 100%);
-  margin: 0 auto 34px;
+  width: min(760px, 100%);
+  margin: 0 auto 20px;
   text-align: center;
 }
 
 .sp-why-eyebrow {
   width: max-content;
   max-width: 100%;
-  min-height: 40px;
+  min-height: 34px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 14px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -12124,7 +12121,7 @@ main:has(.sp-about-page-intro-section),
     0 14px 36px rgba(56, 199, 255, 0.12);
   backdrop-filter: blur(18px) saturate(1.3);
   -webkit-backdrop-filter: blur(18px) saturate(1.3);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 950;
 }
 
@@ -12133,36 +12130,37 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-why-header h2 {
-  margin: 20px 0 0;
+  margin: 14px 0 0;
   color: #111827;
-  font-size: clamp(40px, 5.4vw, 82px);
+  font-size: clamp(32px, 4.35vw, 60px);
   line-height: 0.94;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.075em;
   font-weight: 950;
 }
 
 .sp-why-header p {
-  width: min(680px, 100%);
-  margin: 18px auto 0;
+  width: min(620px, 100%);
+  margin: 12px auto 0;
   color: rgba(17, 24, 39, 0.66);
-  font-size: clamp(15px, 1.16vw, 18px);
-  line-height: 1.72;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.5;
   font-weight: 650;
 }
 
 .sp-why-deck-stage {
   position: relative;
   width: min(1080px, 100%);
-  height: min(56vh, 560px);
-  min-height: 470px;
-  margin: 0 auto;
+  height: clamp(390px, 48svh, 490px);
+  min-height: 390px;
+  margin: 0 auto 34px;
 }
 
 .sp-why-deck {
   position: relative;
   width: 100%;
   height: 100%;
-  perspective: 1600px;
+  perspective: 1800px;
+  transform-style: preserve-3d;
 }
 
 .sp-why-layer-card {
@@ -12182,48 +12180,50 @@ main:has(.sp-about-page-intro-section),
   opacity: 0;
   pointer-events: none;
   transform-origin: center;
+  will-change: transform, opacity, filter;
+  transform-style: preserve-3d;
   transition:
-    opacity 0.72s ease,
-    transform 0.82s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.72s ease;
+    opacity 0.58s ease,
+    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.58s ease;
 }
 
 .sp-why-layer-card.is-active {
-  z-index: 30;
+  z-index: 50;
   opacity: 1;
   pointer-events: auto;
   transform: translate3d(0, 0, 0) scale(1);
-  filter: blur(0);
+  filter: blur(0) saturate(1) brightness(1);
 }
 
 .sp-why-layer-card.is-past {
-  z-index: 15;
-  opacity: 0.68;
+  z-index: 18;
+  opacity: 0.3;
   pointer-events: none;
   transform:
     translate3d(
-      calc(-38px * var(--why-layer-depth)),
-      calc(44px * var(--why-layer-depth)),
-      calc(-80px * var(--why-layer-depth))
+      calc(-70px * var(--why-layer-depth)),
+      calc(62px * var(--why-layer-depth)),
+      calc(-170px * var(--why-layer-depth))
     )
-    scale(calc(1 - (0.08 * var(--why-layer-depth))));
-  filter: blur(1.2px) saturate(0.92);
+    scale(calc(1 - (0.125 * var(--why-layer-depth))));
+  filter: blur(10px) saturate(0.58) brightness(0.88);
 }
 
 .sp-why-layer-card.is-next {
-  z-index: 10;
-  opacity: 0.42;
+  z-index: 15;
+  opacity: 0.28;
   pointer-events: none;
-  transform: translate3d(54px, 62px, -90px) scale(0.9);
-  filter: blur(3px) saturate(0.9);
+  transform: translate3d(76px, 74px, -180px) scale(0.82);
+  filter: blur(10px) saturate(0.58) brightness(0.88);
 }
 
 .sp-why-layer-card.is-future {
   z-index: 1;
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(80px, 82px, -130px) scale(0.84);
-  filter: blur(10px);
+  transform: translate3d(105px, 105px, -250px) scale(0.74);
+  filter: blur(20px) saturate(0.56) brightness(0.86);
 }
 
 .sp-why-layer-card.image-right .sp-why-media-wrap {
@@ -12244,7 +12244,7 @@ main:has(.sp-about-page-intro-section),
 
 .sp-why-media-wrap {
   position: relative;
-  width: min(430px, 100%);
+  width: min(380px, 100%);
   justify-self: center;
   aspect-ratio: 1 / 1;
 }
@@ -12258,8 +12258,8 @@ main:has(.sp-about-page-intro-section),
     radial-gradient(circle at 20% 18%, var(--why-soft-one), transparent 42%),
     radial-gradient(circle at 80% 26%, var(--why-soft-two), transparent 44%),
     radial-gradient(circle at 50% 100%, var(--why-soft-three), transparent 48%);
-  filter: blur(20px);
-  opacity: 0.9;
+  filter: blur(32px);
+  opacity: 1;
   transform: scale(0.92);
   animation: spWhyImageGlow 3.6s ease-in-out infinite;
 }
@@ -12305,6 +12305,15 @@ main:has(.sp-about-page-intro-section),
   box-shadow:
     0 26px 70px rgba(15, 23, 42, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.sp-why-layer-card.is-active .sp-why-media {
+  filter: blur(0) saturate(1) brightness(1);
+}
+
+.sp-why-layer-card.is-past .sp-why-media,
+.sp-why-layer-card.is-next .sp-why-media {
+  filter: blur(4.5px) saturate(0.6) brightness(0.88);
 }
 
 .sp-why-image {
@@ -12365,8 +12374,8 @@ main:has(.sp-about-page-intro-section),
 
 .sp-why-text-glass {
   position: relative;
-  width: min(490px, 100%);
-  padding: clamp(20px, 2.35vw, 30px);
+  width: min(460px, 100%);
+  padding: clamp(18px, 2vw, 25px);
   border-radius: 28px;
   overflow: hidden;
   background:
@@ -12384,7 +12393,8 @@ main:has(.sp-about-page-intro-section),
   opacity: 0;
   transition:
     opacity 0.62s ease,
-    transform 0.74s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.74s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.62s ease;
 }
 
 .sp-why-text-glass::before {
@@ -12414,13 +12424,15 @@ main:has(.sp-about-page-intro-section),
 
 .sp-why-layer-card.is-active .sp-why-text-glass {
   opacity: 1;
+  filter: blur(0) saturate(1) brightness(1);
   transform: translateX(0) scale(1);
 }
 
 .sp-why-layer-card.is-past .sp-why-text-glass,
 .sp-why-layer-card.is-next .sp-why-text-glass {
-  opacity: 0.74;
-  transform: translateX(0) scale(0.98);
+  opacity: 0.38;
+  filter: blur(7px) saturate(0.58) brightness(0.88);
+  transform: translateX(0) scale(0.96);
 }
 
 .sp-why-kicker {
@@ -12450,21 +12462,21 @@ main:has(.sp-about-page-intro-section),
 .sp-why-text-glass h3 {
   margin: 14px 0 0;
   color: #111827;
-  font-size: clamp(25px, 2.8vw, 42px);
+  font-size: clamp(24px, 2.35vw, 36px);
   line-height: 0.98;
   letter-spacing: -0.065em;
   font-weight: 950;
 }
 
 .sp-why-point-list {
-  margin-top: 18px;
+  margin-top: 15px;
   display: grid;
-  gap: 10px;
+  gap: 9px;
 }
 
 .sp-why-point-chip {
-  min-height: 46px;
-  padding: 9px 12px;
+  min-height: 42px;
+  padding: 8px 11px;
   border-radius: 17px;
   display: flex;
   align-items: center;
@@ -12477,7 +12489,7 @@ main:has(.sp-about-page-intro-section),
     inset 0 1px 0 rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(14px) saturate(1.2);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
-  font-size: 13.5px;
+  font-size: 13px;
   line-height: 1.35;
   font-weight: 850;
 }
@@ -12489,9 +12501,9 @@ main:has(.sp-about-page-intro-section),
 
 .sp-why-layer-count {
   position: absolute;
-  left: 8px;
-  top: 16px;
-  z-index: 50;
+  left: 0;
+  top: 10px;
+  z-index: 90;
   display: inline-flex;
   align-items: baseline;
   gap: 4px;
@@ -12500,7 +12512,7 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-why-layer-count span {
-  font-size: 42px;
+  font-size: 34px;
   line-height: 0.8;
   letter-spacing: -0.07em;
   font-weight: 950;
@@ -12514,9 +12526,9 @@ main:has(.sp-about-page-intro-section),
 
 .sp-why-layer-dots {
   position: absolute;
-  right: 10px;
-  bottom: 18px;
-  z-index: 50;
+  right: 14px;
+  bottom: 24px;
+  z-index: 90;
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -12538,6 +12550,7 @@ main:has(.sp-about-page-intro-section),
   border: 0;
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.2);
+  cursor: pointer;
   transition:
     width 0.34s cubic-bezier(0.22, 1, 0.36, 1),
     background 0.34s ease,
@@ -12552,15 +12565,50 @@ main:has(.sp-about-page-intro-section),
     0 0 24px rgba(231, 42, 154, 0.24);
 }
 
+.sp-why-layer-section::before,
+.sp-why-layer-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.sp-why-layer-section::before {
+  top: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0));
+}
+
+.sp-why-layer-section::after {
+  bottom: 0;
+  height: 150px;
+  background: linear-gradient(to top, #ffffff 8%, rgba(255, 255, 255, 0));
+}
+
+/* Tablet */
 @media (max-width: 1050px) {
+  .sp-why-layer-section {
+    min-height: 150vh;
+    padding-bottom: 180px;
+  }
+
+  .sp-why-sticky {
+    min-height: 760px;
+    padding: 88px 0 124px;
+  }
+
   .sp-why-deck-stage {
-    height: 620px;
+    height: 520px;
+    min-height: 520px;
+    margin-bottom: 42px;
   }
 
   .sp-why-layer-card {
     grid-template-columns: 1fr;
     align-content: center;
-    gap: 16px;
+    gap: 14px;
   }
 
   .sp-why-layer-card.image-right .sp-why-media-wrap,
@@ -12571,50 +12619,84 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-why-media-wrap {
-    width: min(340px, 78vw);
+    width: min(295px, 72vw);
   }
 
   .sp-why-text-glass {
-    width: min(620px, 100%);
+    width: min(580px, 100%);
     margin: 0 auto;
   }
 
   .sp-why-layer-card.image-right .sp-why-text-glass,
   .sp-why-layer-card.image-left .sp-why-text-glass {
-    transform: translateY(-42px) scale(0.96);
+    transform: translateY(-34px) scale(0.96);
   }
 
-  .sp-why-layer-card.is-active .sp-why-text-glass,
-  .sp-why-layer-card.is-past .sp-why-text-glass,
-  .sp-why-layer-card.is-next .sp-why-text-glass {
+  .sp-why-layer-card.is-active .sp-why-text-glass {
     transform: translateY(0) scale(1);
+  }
+
+  .sp-why-layer-card.is-past {
+    opacity: 0.22;
+    transform: translate3d(-30px, 62px, -170px) scale(0.8);
+    filter: blur(12px) saturate(0.54) brightness(0.86);
+  }
+
+  .sp-why-layer-card.is-next {
+    opacity: 0.22;
+    transform: translate3d(30px, 72px, -190px) scale(0.78);
+    filter: blur(12px) saturate(0.54) brightness(0.86);
   }
 }
 
+/* Mobile */
 @media (max-width: 720px) {
   .sp-why-layer-section {
-    min-height: 255vh;
+    min-height: 155vh;
+    padding-bottom: 190px;
   }
 
   .sp-why-sticky {
-    padding: 76px 0 60px;
+    height: 100svh;
+    min-height: 760px;
+    padding: 78px 0 126px;
   }
 
   .sp-why-header {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .sp-why-header h2 {
-    font-size: clamp(36px, 11vw, 56px);
+    font-size: clamp(32px, 10vw, 48px);
   }
 
   .sp-why-header p {
-    font-size: 14px;
+    font-size: 12.5px;
+    line-height: 1.45;
   }
 
   .sp-why-deck-stage {
-    min-height: 590px;
-    height: 64vh;
+    height: 530px;
+    min-height: 530px;
+    margin-bottom: 46px;
+  }
+
+  .sp-why-media-wrap {
+    width: min(270px, 70vw);
+  }
+
+  .sp-why-text-glass {
+    padding: 17px;
+    border-radius: 22px;
+  }
+
+  .sp-why-text-glass h3 {
+    font-size: 25px;
+  }
+
+  .sp-why-point-chip {
+    min-height: 41px;
+    font-size: 12.3px;
   }
 
   .sp-why-watermark {
@@ -12624,39 +12706,17 @@ main:has(.sp-about-page-intro-section),
     -webkit-text-stroke-width: 1.2px;
   }
 
-  .sp-why-layer-card.is-past {
-    opacity: 0.42;
-  }
-
-  .sp-why-media-wrap {
-    width: min(300px, 76vw);
-  }
-
-  .sp-why-text-glass {
-    padding: 19px;
-    border-radius: 24px;
-  }
-
-  .sp-why-text-glass h3 {
-    font-size: 28px;
-  }
-
-  .sp-why-point-chip {
-    min-height: 44px;
-    font-size: 13px;
+  .sp-why-layer-dots {
+    right: 50%;
+    bottom: 12px;
+    transform: translateX(50%);
   }
 
   .sp-why-layer-count {
-    top: 8px;
+    top: 6px;
   }
 
   .sp-why-layer-count span {
-    font-size: 34px;
-  }
-
-  .sp-why-layer-dots {
-    right: 50%;
-    bottom: 2px;
-    transform: translateX(50%);
+    font-size: 30px;
   }
 }

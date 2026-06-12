@@ -94,6 +94,7 @@ function extractImageColors(
     context.drawImage(image, 0, 0, size, size);
 
     const imageData = context.getImageData(0, 0, size, size).data;
+
     const colorBuckets: Array<{
       r: number;
       g: number;
@@ -121,8 +122,12 @@ function extractImageColors(
       colorBuckets.push({ r, g, b, score });
     }
 
-    const selected: Array<{ r: number; g: number; b: number; score: number }> =
-      [];
+    const selected: Array<{
+      r: number;
+      g: number;
+      b: number;
+      score: number;
+    }> = [];
 
     colorBuckets
       .sort((a, b) => b.score - a.score)
@@ -190,7 +195,8 @@ function WhyChooseLayerCard({
     const image = imageRef.current;
     if (!image) return;
 
-    setColors(extractImageColors(image, item.fallbackColors));
+    const extractedColors = extractImageColors(image, item.fallbackColors);
+    setColors(extractedColors);
   };
 
   const imageRight = index % 2 === 0;
@@ -273,46 +279,127 @@ function WhyChooseLayerCard({
 
 export default function WhyChooseUsSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const activeIndexRef = useRef(0);
+  const isLayerChangingRef = useRef(false);
+  const layerChangeTimerRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
+
   const [activeIndex, setActiveIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    let frame = 0;
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
 
-    const updateLayer = () => {
+  useEffect(() => {
+    const maxIndex = whyChooseItems.length - 1;
+    const transitionDuration = 760;
+    const wheelThreshold = 14;
+    const touchThreshold = 42;
+
+    const isSectionReadyToLock = () => {
       const section = sectionRef.current;
-      if (!section) return;
+      if (!section) return false;
 
       const rect = section.getBoundingClientRect();
-      const totalScroll = rect.height - window.innerHeight;
-      const rawProgress =
-        totalScroll <= 0 ? 0 : Math.min(Math.max(-rect.top / totalScroll, 0), 1);
 
-      setProgress(rawProgress);
+      return (
+        rect.top <= window.innerHeight * 0.16 &&
+        rect.bottom >= window.innerHeight * 0.72
+      );
+    };
 
-      if (rawProgress < 0.36) {
-        setActiveIndex(0);
-      } else if (rawProgress < 0.68) {
-        setActiveIndex(1);
-      } else {
-        setActiveIndex(2);
+    const changeLayer = (nextIndex: number) => {
+      const safeNextIndex = Math.min(Math.max(nextIndex, 0), maxIndex);
+
+      if (safeNextIndex === activeIndexRef.current) return;
+
+      isLayerChangingRef.current = true;
+      activeIndexRef.current = safeNextIndex;
+      setActiveIndex(safeNextIndex);
+
+      if (layerChangeTimerRef.current) {
+        window.clearTimeout(layerChangeTimerRef.current);
+      }
+
+      layerChangeTimerRef.current = window.setTimeout(() => {
+        isLayerChangingRef.current = false;
+      }, transitionDuration);
+    };
+
+    const handleWheel = (event: WheelEvent) => {
+      if (!isSectionReadyToLock()) return;
+
+      const currentIndex = activeIndexRef.current;
+      const isScrollingDown = event.deltaY > wheelThreshold;
+      const isScrollingUp = event.deltaY < -wheelThreshold;
+
+      if (!isScrollingDown && !isScrollingUp) return;
+
+      if (isLayerChangingRef.current) {
+        event.preventDefault();
+        return;
+      }
+
+      if (isScrollingDown && currentIndex < maxIndex) {
+        event.preventDefault();
+        changeLayer(currentIndex + 1);
+        return;
+      }
+
+      if (isScrollingUp && currentIndex > 0) {
+        event.preventDefault();
+        changeLayer(currentIndex - 1);
       }
     };
 
-    const requestUpdate = () => {
-      window.cancelAnimationFrame(frame);
-      frame = window.requestAnimationFrame(updateLayer);
+    const handleTouchStart = (event: TouchEvent) => {
+      touchStartYRef.current = event.touches[0]?.clientY ?? null;
     };
 
-    updateLayer();
+    const handleTouchMove = (event: TouchEvent) => {
+      if (!isSectionReadyToLock()) return;
+      if (touchStartYRef.current === null) return;
 
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
+      const currentY = event.touches[0]?.clientY ?? touchStartYRef.current;
+      const deltaY = touchStartYRef.current - currentY;
+
+      const currentIndex = activeIndexRef.current;
+      const isSwipingDownPage = deltaY > touchThreshold;
+      const isSwipingUpPage = deltaY < -touchThreshold;
+
+      if (!isSwipingDownPage && !isSwipingUpPage) return;
+
+      if (isLayerChangingRef.current) {
+        event.preventDefault();
+        return;
+      }
+
+      if (isSwipingDownPage && currentIndex < maxIndex) {
+        event.preventDefault();
+        touchStartYRef.current = currentY;
+        changeLayer(currentIndex + 1);
+        return;
+      }
+
+      if (isSwipingUpPage && currentIndex > 0) {
+        event.preventDefault();
+        touchStartYRef.current = currentY;
+        changeLayer(currentIndex - 1);
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+
+      if (layerChangeTimerRef.current) {
+        window.clearTimeout(layerChangeTimerRef.current);
+      }
     };
   }, []);
 
@@ -321,7 +408,6 @@ export default function WhyChooseUsSection() {
       id="why-choose-us"
       ref={sectionRef}
       className="sp-why-section sp-why-layer-section"
-      style={{ "--why-scroll-progress": progress } as CSSProperties}
     >
       <span className="sp-why-watermark">WHY CHOOSE US</span>
 
@@ -375,18 +461,8 @@ export default function WhyChooseUsSection() {
                   className={activeIndex === index ? "is-active" : ""}
                   aria-label={`Show ${item.kicker}`}
                   onClick={() => {
-                    const section = sectionRef.current;
-                    if (!section) return;
-
-                    const target =
-                      section.offsetTop +
-                      (section.offsetHeight - window.innerHeight) *
-                        (index === 0 ? 0.05 : index === 1 ? 0.44 : 0.78);
-
-                    window.scrollTo({
-                      top: target,
-                      behavior: "smooth"
-                    });
+                    activeIndexRef.current = index;
+                    setActiveIndex(index);
                   }}
                 />
               ))}
