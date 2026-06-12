@@ -90,6 +90,9 @@ import companyLogo13 from "../assets/images/about/companies/company13.png";
 import companyLogo14 from "../assets/images/about/companies/company14.png";
 import companyLogo15 from "../assets/images/about/companies/company15.png";
 
+//service page
+import servicesHeroThumbnail from "../assets/images/services/services-hero-thumbnail.png";
+
 
 
 
@@ -197,6 +200,11 @@ companies: {
   company14: companyLogo14,
   company15: companyLogo15,
 },
+
+services: {
+  heroThumbnail: servicesHeroThumbnail
+},
+
 
 
 

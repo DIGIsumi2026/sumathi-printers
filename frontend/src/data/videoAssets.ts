@@ -6,6 +6,9 @@ import loadingVideo from "../assets/videos/loading.mp4";
 import aboutHero from "../assets/videos/about-hero.mp4";
 import preLoader from "../assets/videos/sumathi-3d-preloader-transparent.webm";
 
+//service page 
+import serviceHeroVideo from "../assets/videos/service-hero.mp4";
+
 
 
 
@@ -23,6 +26,10 @@ export const videoAssets = {
   aboutHero:{
     intro: aboutHero
   },
+
+services:{
+  hero: serviceHeroVideo
+},
 
 } as const;
 

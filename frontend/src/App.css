@@ -11431,7 +11431,488 @@ main:has(.sp-about-page-intro-section),
   }
 }
 
+/* ==============  Service page ==================== */
 
+.sp-services-hero-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #050816;
+}
+
+.sp-services-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  background: #050816;
+}
+
+.sp-services-hero-video,
+.sp-services-hero-thumbnail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.sp-services-hero-video {
+  z-index: 2;
+  opacity: 1;
+  transform: scale(1.02);
+  transition:
+    opacity 0.9s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.9s ease;
+}
+
+.sp-services-hero-video.is-hidden {
+  opacity: 0;
+  transform: scale(1.08);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.sp-services-hero-thumbnail {
+  z-index: 1;
+  opacity: 0;
+  transform: scale(1.08);
+  filter: blur(18px);
+  transition:
+    opacity 1s ease,
+    transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1s ease;
+}
+
+.sp-services-hero-thumbnail.is-visible {
+  opacity: 1;
+  transform: scale(1.02);
+  filter: blur(0);
+}
+
+.sp-services-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 7, 18, 0.92) 0%,
+      rgba(3, 7, 18, 0.72) 38%,
+      rgba(3, 7, 18, 0.34) 72%,
+      rgba(3, 7, 18, 0.18) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 7, 18, 0.12) 0%,
+      rgba(3, 7, 18, 0.24) 48%,
+      rgba(3, 7, 18, 0.92) 100%
+    );
+  pointer-events: none;
+}
+
+.sp-services-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0.17;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 78px 78px;
+  mask-image: radial-gradient(circle at 24% 48%, black 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 24% 48%, black 0%, transparent 72%);
+}
+
+.sp-services-hero-watermark {
+  position: absolute;
+  right: -44px;
+  top: 50%;
+  z-index: 4;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.12);
+  font-size: clamp(82px, 9vw, 160px);
+  line-height: 0.82;
+  letter-spacing: -0.08em;
+  font-weight: 950;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sp-services-hero-container {
+  position: relative;
+  z-index: 6;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  padding-top: 110px;
+  padding-bottom: 90px;
+}
+
+.sp-services-hero-content {
+  width: min(760px, 100%);
+  color: #ffffff;
+}
+
+.sp-services-hero-badge {
+  width: max-content;
+  max-width: 100%;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 16px 42px rgba(15, 23, 42, 0.2);
+  backdrop-filter: blur(16px) saturate(1.24);
+  -webkit-backdrop-filter: blur(16px) saturate(1.24);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.sp-services-hero-badge svg {
+  color: #38c7ff;
+}
+
+.sp-services-hero-content h1 {
+  margin: 22px 0 0;
+  color: #ffffff;
+  font-size: clamp(48px, 6.6vw, 104px);
+  line-height: 0.9;
+  letter-spacing: -0.09em;
+  font-weight: 950;
+  text-wrap: balance;
+}
+
+.sp-services-hero-content p {
+  width: min(650px, 100%);
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(15px, 1.16vw, 18px);
+  line-height: 1.74;
+  font-weight: 700;
+}
+
+.sp-services-hero-actions {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sp-services-hero-actions.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sp-services-hero-button {
+  min-height: 56px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 950;
+  cursor: pointer;
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.34s ease,
+    background 0.34s ease,
+    color 0.34s ease;
+}
+
+.sp-services-hero-button svg {
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sp-services-hero-button:hover {
+  transform: translateY(-5px);
+}
+
+.sp-services-hero-button:hover svg {
+  transform: translateX(4px) rotate(-18deg);
+}
+
+.sp-services-hero-button-primary {
+  color: #ffffff;
+  background: linear-gradient(105deg, #e72a9a, #7a4dff, #38c7ff);
+  box-shadow:
+    0 22px 54px rgba(122, 77, 255, 0.26),
+    0 10px 28px rgba(231, 42, 154, 0.18);
+}
+
+.sp-services-hero-button-secondary {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(16px) saturate(1.24);
+  -webkit-backdrop-filter: blur(16px) saturate(1.24);
+  box-shadow:
+    0 18px 44px rgba(15, 23, 42, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.sp-services-hero-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.sp-services-thumbnail-popup {
+  position: absolute;
+  right: clamp(22px, 5vw, 76px);
+  bottom: clamp(30px, 7vh, 76px);
+  z-index: 8;
+  width: min(290px, calc(100% - 44px));
+  padding: 22px 24px;
+  border-radius: 28px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 24px 58px rgba(15, 23, 42, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(18px) saturate(1.28);
+  -webkit-backdrop-filter: blur(18px) saturate(1.28);
+  pointer-events: none;
+}
+
+.sp-services-thumbnail-popup.is-visible {
+  pointer-events: auto;
+}
+
+.sp-services-thumbnail-popup span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #38c7ff;
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sp-services-thumbnail-popup strong {
+  display: block;
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1.16;
+  letter-spacing: -0.04em;
+  font-weight: 950;
+}
+
+.sp-services-thumbnail-popup a {
+  width: max-content;
+  margin-top: 16px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #ffffff;
+  background: linear-gradient(105deg, #7a4dff, #e72a9a);
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.sp-services-float,
+.sp-services-ring {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.sp-services-float-one {
+  right: 14%;
+  top: 20%;
+  width: 76px;
+  height: 76px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(56, 199, 255, 0.76), rgba(122, 77, 255, 0.72));
+  animation: spServicesFloatOne 5.4s ease-in-out infinite;
+}
+
+.sp-services-float-two {
+  right: 30%;
+  bottom: 20%;
+  width: 94px;
+  height: 94px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(231, 42, 154, 0.38), transparent 68%);
+  animation: spServicesFloatTwo 6.2s ease-in-out infinite;
+}
+
+.sp-services-float-three {
+  left: 6%;
+  top: 24%;
+  width: 0;
+  height: 0;
+  border-top: 22px solid transparent;
+  border-bottom: 22px solid transparent;
+  border-left: 50px solid rgba(246, 161, 61, 0.58);
+  filter: drop-shadow(0 18px 28px rgba(246, 161, 61, 0.22));
+  animation: spServicesFloatThree 5.8s ease-in-out infinite;
+}
+
+.sp-services-ring-one {
+  right: 8%;
+  bottom: 18%;
+  width: 152px;
+  height: 152px;
+  border-radius: 999px;
+  border: 2px solid rgba(56, 199, 255, 0.26);
+  animation: spServicesRing 5.8s ease-in-out infinite;
+}
+
+.sp-services-ring-two {
+  left: 15%;
+  bottom: 20%;
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  border: 2px solid rgba(231, 42, 154, 0.24);
+  animation: spServicesRing 6.2s ease-in-out infinite reverse;
+}
+
+@keyframes spServicesFloatOne {
+  0%,
+  100% {
+    transform: translateY(0) rotate(18deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(-8deg);
+  }
+}
+
+@keyframes spServicesFloatTwo {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-18px) scale(1.08);
+  }
+}
+
+@keyframes spServicesFloatThree {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(10deg);
+  }
+}
+
+@keyframes spServicesRing {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.42;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.86;
+  }
+}
+
+@media (max-width: 900px) {
+  .sp-services-hero-section,
+  .sp-services-hero-container {
+    min-height: 820px;
+  }
+
+  .sp-services-hero-container {
+    padding-top: 96px;
+    padding-bottom: 180px;
+  }
+
+  .sp-services-thumbnail-popup {
+    left: 30px;
+    right: auto;
+    bottom: 32px;
+  }
+
+  .sp-services-float-one,
+  .sp-services-ring-one {
+    display: none;
+  }
+
+  .sp-services-hero-watermark {
+    right: -34px;
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 560px) {
+  .sp-services-hero-section,
+  .sp-services-hero-container {
+    min-height: 860px;
+  }
+
+  .sp-services-hero-container {
+    padding-top: 92px;
+    padding-bottom: 190px;
+  }
+
+  .sp-services-hero-content h1 {
+    font-size: clamp(42px, 13vw, 64px);
+  }
+
+  .sp-services-hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .sp-services-hero-button {
+    width: 100%;
+  }
+
+  .sp-services-thumbnail-popup {
+    left: 22px;
+    right: 22px;
+    bottom: 24px;
+    width: auto;
+  }
+
+  .sp-services-float-two,
+  .sp-services-ring-two {
+    display: none;
+  }
+
+  .sp-services-hero-watermark {
+    right: -26px;
+    font-size: 68px;
+    opacity: 0.34;
+    -webkit-text-stroke-width: 1.2px;
+  }
+}
 
 
 
