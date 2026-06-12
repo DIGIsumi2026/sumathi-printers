@@ -96,6 +96,20 @@ import whyChoose01 from "../assets/images/services/why-choose-01.png";
 import whyChoose02 from "../assets/images/services/why-choose-02.png";
 import whyChoose03 from "../assets/images/services/why-choose-03.png";
 
+//service stat cards 
+import offsetPrintingstat from "../assets/images/services/service-offset-printing.png";
+import graphicDesigningstat from "../assets/images/services/service-graphic-designing.png";
+import flyersLeafletsstat from "../assets/images/services/service-flyers-leaflets.png";
+import billBooksLetterheadsstat from "../assets/images/services/service-bill-books-letterheads.png";
+import envelopesstat from "../assets/images/services/service-envelopes.png";
+import certificatePrintingstat from "../assets/images/services/service-certificate-printing.png";
+import postersBannersstat from "../assets/images/services/service-posters-banners.png";
+import calendarsDiariesstat from "../assets/images/services/service-calendars-diaries.png";
+import  packagingBoxPrintingstat from "../assets/images/services/service-packaging-box-printing.png";
+import booksMagazinesPrintingstat from "../assets/images/services/service-books-magazines.png";
+import  stickersLabelsstat from "../assets/images/services/service-stickers-labels.png";
+import  brochuresCatalogsstat from "../assets/images/services/service-brochures-catalogs.png";
+
 
 
 
@@ -210,7 +224,20 @@ services: {
   whyChoose02,
   whyChoose03
 },
-
+ serviceCards:{
+  offsetPrintingstat,
+  graphicDesigningstat,
+  flyersLeafletsstat,
+  billBooksLetterheadsstat,
+  envelopesstat,
+  certificatePrintingstat,
+  postersBannersstat,
+  calendarsDiariesstat,
+  packagingBoxPrintingstat,
+  booksMagazinesPrintingstat,
+  stickersLabelsstat,
+  brochuresCatalogsstat
+ }
 
 
 
