@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { CheckCircle2, Sparkles } from "lucide-react";
+import { CheckCircle2, Layers3, Sparkles } from "lucide-react";
 import { imageAssets } from "../../../data/imageAssets";
 
 type WhyChooseItem = {
@@ -121,7 +121,8 @@ function extractImageColors(
       colorBuckets.push({ r, g, b, score });
     }
 
-    const selected: Array<{ r: number; g: number; b: number; score: number }> = [];
+    const selected: Array<{ r: number; g: number; b: number; score: number }> =
+      [];
 
     colorBuckets
       .sort((a, b) => b.score - a.score)
@@ -170,65 +171,55 @@ function extractImageColors(
   }
 }
 
-function WhyChooseUsCard({
+function WhyChooseLayerCard({
   item,
-  index
+  index,
+  activeIndex
 }: {
   item: WhyChooseItem;
   index: number;
+  activeIndex: number;
 }) {
-  const cardRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
 
-  const [visible, setVisible] = useState(false);
   const [colors, setColors] = useState<[string, string, string]>(
     item.fallbackColors
   );
-
-  useEffect(() => {
-    const node = cardRef.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        }
-      },
-      {
-        threshold: 0.32
-      }
-    );
-
-    observer.observe(node);
-
-    return () => observer.disconnect();
-  }, []);
 
   const extractColors = () => {
     const image = imageRef.current;
     if (!image) return;
 
-    const extractedColors = extractImageColors(image, item.fallbackColors);
-    setColors(extractedColors);
+    setColors(extractImageColors(image, item.fallbackColors));
   };
 
   const imageRight = index % 2 === 0;
+  const depth = Math.abs(activeIndex - index);
+
+  let stateClass = "is-future";
+
+  if (index === activeIndex) {
+    stateClass = "is-active";
+  } else if (index < activeIndex) {
+    stateClass = "is-past";
+  } else if (index === activeIndex + 1) {
+    stateClass = "is-next";
+  }
 
   const style =
     {
       "--why-color-one": colors[0],
       "--why-color-two": colors[1],
       "--why-color-three": colors[2],
-      "--why-soft-one": softColor(colors[0], 0.2),
-      "--why-soft-two": softColor(colors[1], 0.16),
-      "--why-soft-three": softColor(colors[2], 0.14)
+      "--why-soft-one": softColor(colors[0], 0.22),
+      "--why-soft-two": softColor(colors[1], 0.18),
+      "--why-soft-three": softColor(colors[2], 0.15),
+      "--why-layer-depth": depth
     } as CSSProperties;
 
   return (
     <article
-      ref={cardRef}
-      className={`sp-why-card ${visible ? "is-visible" : ""} ${
+      className={`sp-why-layer-card ${stateClass} ${
         imageRight ? "image-right" : "image-left"
       }`}
       style={style}
@@ -281,8 +272,57 @@ function WhyChooseUsCard({
 }
 
 export default function WhyChooseUsSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateLayer = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const totalScroll = rect.height - window.innerHeight;
+      const rawProgress =
+        totalScroll <= 0 ? 0 : Math.min(Math.max(-rect.top / totalScroll, 0), 1);
+
+      setProgress(rawProgress);
+
+      if (rawProgress < 0.36) {
+        setActiveIndex(0);
+      } else if (rawProgress < 0.68) {
+        setActiveIndex(1);
+      } else {
+        setActiveIndex(2);
+      }
+    };
+
+    const requestUpdate = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(updateLayer);
+    };
+
+    updateLayer();
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, []);
+
   return (
-    <section id="why-choose-us" className="sp-why-section">
+    <section
+      id="why-choose-us"
+      ref={sectionRef}
+      className="sp-why-section sp-why-layer-section"
+      style={{ "--why-scroll-progress": progress } as CSSProperties}
+    >
       <span className="sp-why-watermark">WHY CHOOSE US</span>
 
       <span className="sp-why-bg-orb sp-why-bg-orb-one" />
@@ -293,26 +333,65 @@ export default function WhyChooseUsSection() {
       <span className="sp-why-bg-shape sp-why-bg-shape-one" />
       <span className="sp-why-bg-shape sp-why-bg-shape-two" />
 
-      <div className="container sp-why-container">
-        <div className="sp-why-header">
-          <div className="sp-why-eyebrow">
-            <Sparkles size={15} />
-            <span>Why Choose Us</span>
+      <div className="sp-why-sticky">
+        <div className="container sp-why-container">
+          <div className="sp-why-header">
+            <div className="sp-why-eyebrow">
+              <Layers3 size={15} />
+              <span>Why Choose Us</span>
+            </div>
+
+            <h2>Why Businesses Trust Sumathi Printers</h2>
+
+            <p>
+              We combine premium print quality, modern production technology,
+              customized solutions and dependable service to deliver print
+              results your brand can trust.
+            </p>
           </div>
 
-          <h2>Why Businesses Trust Sumathi Printers</h2>
+          <div className="sp-why-deck-stage">
+            <div className="sp-why-layer-count">
+              <span>{String(activeIndex + 1).padStart(2, "0")}</span>
+              <small>/ 03</small>
+            </div>
 
-          <p>
-            We combine premium print quality, modern production technology,
-            customized solutions and dependable service to deliver print results
-            your brand can trust.
-          </p>
-        </div>
+            <div className="sp-why-deck">
+              {whyChooseItems.map((item, index) => (
+                <WhyChooseLayerCard
+                  key={item.id}
+                  item={item}
+                  index={index}
+                  activeIndex={activeIndex}
+                />
+              ))}
+            </div>
 
-        <div className="sp-why-list">
-          {whyChooseItems.map((item, index) => (
-            <WhyChooseUsCard key={item.id} item={item} index={index} />
-          ))}
+            <div className="sp-why-layer-dots" aria-label="Why choose us layers">
+              {whyChooseItems.map((item, index) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  className={activeIndex === index ? "is-active" : ""}
+                  aria-label={`Show ${item.kicker}`}
+                  onClick={() => {
+                    const section = sectionRef.current;
+                    if (!section) return;
+
+                    const target =
+                      section.offsetTop +
+                      (section.offsetHeight - window.innerHeight) *
+                        (index === 0 ? 0.05 : index === 1 ? 0.44 : 0.78);
+
+                    window.scrollTo({
+                      top: target,
+                      behavior: "smooth"
+                    });
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
