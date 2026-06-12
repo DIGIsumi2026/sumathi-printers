@@ -79,7 +79,7 @@ export default function NavigationBar({ company }: NavigationBarProps) {
           </nav>
 
           <Link to="/contact" className="sp-quote-button" onClick={closeMenu}>
-            <span>Get Quote</span>
+            <span>Get a Quote</span>
           </Link>
 
           <button

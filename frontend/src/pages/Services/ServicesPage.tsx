@@ -1,5 +1,6 @@
 import type { CompanyData } from "../../types/site";
 import ServicesHeroSection from "./sections/ServicesHeroSection";
+import WhyChooseUsSection from "./sections/WhyChooseUsSection";
 
 type ServicesPageProps = {
   company: CompanyData;
@@ -9,6 +10,7 @@ export default function ServicesPage({ company }: ServicesPageProps) {
   return (
     <main className="sp-inner-page">
       <ServicesHeroSection/>
+      <WhyChooseUsSection/>
       {/*
       <section className="container sp-inner-page-hero">
         <span className="sp-inner-page-kicker">Services</span>

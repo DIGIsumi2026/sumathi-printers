@@ -92,6 +92,9 @@ import companyLogo15 from "../assets/images/about/companies/company15.png";
 
 //service page
 import servicesHeroThumbnail from "../assets/images/services/services-hero-thumbnail.png";
+import whyChoose01 from "../assets/images/services/why-choose-01.png";
+import whyChoose02 from "../assets/images/services/why-choose-02.png";
+import whyChoose03 from "../assets/images/services/why-choose-03.png";
 
 
 
@@ -202,7 +205,10 @@ companies: {
 },
 
 services: {
-  heroThumbnail: servicesHeroThumbnail
+  heroThumbnail: servicesHeroThumbnail,
+  whyChoose01,
+  whyChoose02,
+  whyChoose03
 },
 
 
