@@ -138,9 +138,53 @@ function chunkArray<T>(items: T[], size: number) {
 
 export default function ServicesGridSection() {
   const rows = useMemo(() => chunkArray(services, 4), []);
+
   const [hoveredByRow, setHoveredByRow] = useState<Record<number, number | null>>(
     {}
   );
+
+  const leaveTimersRef = useMemo(() => new Map<number, number>(), []);
+
+  const clearLeaveTimer = (rowIndex: number) => {
+    const timer = leaveTimersRef.get(rowIndex);
+
+    if (timer) {
+      window.clearTimeout(timer);
+      leaveTimersRef.delete(rowIndex);
+    }
+  };
+
+  const setRowHover = (rowIndex: number, serviceId: number) => {
+    clearLeaveTimer(rowIndex);
+
+    setHoveredByRow((current) => {
+      if (current[rowIndex] === serviceId) return current;
+
+      return {
+        ...current,
+        [rowIndex]: serviceId
+      };
+    });
+  };
+
+  const clearRowHoverWithDelay = (rowIndex: number) => {
+    clearLeaveTimer(rowIndex);
+
+    const timer = window.setTimeout(() => {
+      setHoveredByRow((current) => {
+        if (!current[rowIndex]) return current;
+
+        return {
+          ...current,
+          [rowIndex]: null
+        };
+      });
+
+      leaveTimersRef.delete(rowIndex);
+    }, 180);
+
+    leaveTimersRef.set(rowIndex, timer);
+  };
 
   const getRowTemplate = (row: ServiceItem[], rowIndex: number) => {
     const hoveredId = hoveredByRow[rowIndex];
@@ -156,7 +200,7 @@ export default function ServicesGridSection() {
     }
 
     return row
-      .map((_, index) => (index === activeIndex ? "1.72fr" : "0.76fr"))
+      .map((_, index) => (index === activeIndex ? "1.58fr" : "0.86fr"))
       .join(" ");
   };
 
@@ -219,12 +263,8 @@ export default function ServicesGridSection() {
                     "--services-row-template": getRowTemplate(row, rowIndex)
                   } as CSSProperties
                 }
-                onMouseLeave={() =>
-                  setHoveredByRow((current) => ({
-                    ...current,
-                    [rowIndex]: null
-                  }))
-                }
+                onPointerEnter={() => clearLeaveTimer(rowIndex)}
+                onPointerLeave={() => clearRowHoverWithDelay(rowIndex)}
               >
                 {row.map((service) => {
                   const isExpanded = hoveredId === service.id;
@@ -235,27 +275,10 @@ export default function ServicesGridSection() {
                       key={service.id}
                       className={`sp-service-card ${
                         isExpanded ? "is-expanded" : ""
-                      } ${isFeatured ? "is-featured" : ""} ${
-                        isRowHovered ? "is-row-hovering" : ""
-                      }`}
-                      onMouseEnter={() =>
-                        setHoveredByRow((current) => ({
-                          ...current,
-                          [rowIndex]: service.id
-                        }))
-                      }
-                      onFocus={() =>
-                        setHoveredByRow((current) => ({
-                          ...current,
-                          [rowIndex]: service.id
-                        }))
-                      }
-                      onClick={() =>
-                        setHoveredByRow((current) => ({
-                          ...current,
-                          [rowIndex]: service.id
-                        }))
-                      }
+                      } ${isFeatured ? "is-featured" : ""}`}
+                      onPointerEnter={() => setRowHover(rowIndex, service.id)}
+                      onFocus={() => setRowHover(rowIndex, service.id)}
+                      onClick={() => setRowHover(rowIndex, service.id)}
                       tabIndex={0}
                       style={
                         {

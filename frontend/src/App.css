@@ -12724,9 +12724,11 @@ main:has(.sp-about-page-intro-section),
 /* ======================= service stat cards ============================= */
 
 /* =========================================================
-   SERVICES GRID SECTION - STABLE EXPAND VERSION
-   Default featured cards do NOT expand.
-   Expansion happens only on hover/focus/click.
+   SERVICES GRID SECTION - BUTTER SMOOTH STABLE VERSION
+   - Default featured cards stay equal-size on render.
+   - Expansion happens only on hover/focus/click.
+   - Row hover reset delay must be handled in ServicesGridSection.tsx.
+   - This CSS avoids heavy blur/layout operations during pointer movement.
    ========================================================= */
 
 .sp-services-grid-section {
@@ -12751,7 +12753,7 @@ main:has(.sp-about-page-intro-section),
   top: 50%;
   right: -42px;
   z-index: 1;
-  transform: translateY(-50%);
+  transform: translate3d(0, -50%, 0);
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.14);
@@ -12764,12 +12766,14 @@ main:has(.sp-about-page-intro-section),
   user-select: none;
 }
 
+/* Floating background elements */
 .sp-services-grid-orb,
 .sp-services-grid-ring,
 .sp-services-grid-shape {
   position: absolute;
   z-index: 1;
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .sp-services-grid-orb-one {
@@ -12828,12 +12832,13 @@ main:has(.sp-about-page-intro-section),
   left: 5%;
   top: 24%;
   border-radius: 30px;
-  background: linear-gradient(
-    135deg,
-    rgba(89, 201, 255, 0.34),
-    rgba(247, 77, 166, 0.3)
-  );
-  transform: rotate(18deg);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(89, 201, 255, 0.34),
+      rgba(247, 77, 166, 0.3)
+    );
+  transform: translate3d(0, 0, 0) rotate(18deg);
   box-shadow: 0 24px 60px rgba(131, 107, 255, 0.16);
   animation: spServicesShapeFloat 6.2s ease-in-out infinite;
 }
@@ -12844,12 +12849,13 @@ main:has(.sp-about-page-intro-section),
   width: 90px;
   height: 90px;
   border-radius: 24px;
-  background: linear-gradient(
-    135deg,
-    rgba(122, 77, 255, 0.24),
-    rgba(56, 199, 255, 0.28)
-  );
-  transform: rotate(-16deg);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(122, 77, 255, 0.24),
+      rgba(56, 199, 255, 0.28)
+    );
+  transform: translate3d(0, 0, 0) rotate(-16deg);
   animation: spServicesShapeFloatTwo 5.8s ease-in-out infinite;
 }
 
@@ -12883,12 +12889,12 @@ main:has(.sp-about-page-intro-section),
 @keyframes spServicesRingPulse {
   0%,
   100% {
-    transform: scale(0.86);
+    transform: translate3d(0, 0, 0) scale(0.86);
     opacity: 0.34;
   }
 
   50% {
-    transform: scale(1.16);
+    transform: translate3d(0, 0, 0) scale(1.16);
     opacity: 0.82;
   }
 }
@@ -12896,22 +12902,22 @@ main:has(.sp-about-page-intro-section),
 @keyframes spServicesShapeFloat {
   0%,
   100% {
-    transform: translateY(0) rotate(18deg) scale(1);
+    transform: translate3d(0, 0, 0) rotate(18deg) scale(1);
   }
 
   50% {
-    transform: translateY(-28px) rotate(-8deg) scale(1.12);
+    transform: translate3d(0, -28px, 0) rotate(-8deg) scale(1.12);
   }
 }
 
 @keyframes spServicesShapeFloatTwo {
   0%,
   100% {
-    transform: translateY(0) rotate(-16deg) scale(1);
+    transform: translate3d(0, 0, 0) rotate(-16deg) scale(1);
   }
 
   50% {
-    transform: translateY(-24px) rotate(12deg) scale(1.1);
+    transform: translate3d(0, -24px, 0) rotate(12deg) scale(1.1);
   }
 }
 
@@ -12926,6 +12932,7 @@ main:has(.sp-about-page-intro-section),
   }
 }
 
+/* Header */
 .sp-services-grid-header {
   position: relative;
   z-index: 2;
@@ -12976,6 +12983,7 @@ main:has(.sp-about-page-intro-section),
   font-weight: 650;
 }
 
+/* Grid */
 .sp-services-grid-shell {
   position: relative;
   z-index: 2;
@@ -12988,29 +12996,33 @@ main:has(.sp-about-page-intro-section),
   display: grid;
   grid-template-columns: var(--services-row-template);
   gap: 18px;
-  will-change: grid-template-columns;
-  transition: grid-template-columns 620ms cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 0;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  transition: grid-template-columns 780ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .sp-service-card {
   position: relative;
+  min-width: 0;
   min-height: 330px;
   border-radius: 30px;
   overflow: hidden;
   isolation: isolate;
   cursor: pointer;
-  contain: layout paint style;
+  contain: paint;
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: rgba(255, 255, 255, 0.5);
   box-shadow:
     0 24px 50px rgba(27, 40, 90, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.35);
   transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   transition:
-    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 520ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 420ms ease,
-    filter 420ms ease;
+    transform 680ms cubic-bezier(0.19, 1, 0.22, 1),
+    box-shadow 680ms cubic-bezier(0.19, 1, 0.22, 1),
+    border-color 520ms ease,
+    filter 520ms ease;
 }
 
 .sp-service-card:focus-visible {
@@ -13021,23 +13033,23 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-service-card.is-featured {
-  border-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.92);
   box-shadow:
-    0 28px 68px rgba(33, 51, 120, 0.14),
+    0 28px 68px rgba(33, 51, 120, 0.13),
     0 0 0 1px rgba(255, 255, 255, 0.34);
 }
 
 .sp-service-card.is-expanded {
-  transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.92);
+  transform: translate3d(0, -4px, 0);
+  border-color: rgba(255, 255, 255, 0.94);
   box-shadow:
     0 34px 82px rgba(33, 51, 120, 0.18),
     0 0 0 1px rgba(255, 255, 255, 0.34);
 }
 
 .sp-services-grid-row.is-hovering .sp-service-card:not(.is-expanded) {
-  transform: scale(0.985);
-  filter: saturate(0.86) brightness(0.94);
+  transform: translate3d(0, 0, 0) scale(0.992);
+  filter: saturate(0.9) brightness(0.96);
 }
 
 /* Media */
@@ -13045,6 +13057,7 @@ main:has(.sp-about-page-intro-section),
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
 }
 
 .sp-service-card-image {
@@ -13054,11 +13067,13 @@ main:has(.sp-about-page-intro-section),
   height: 100%;
   object-fit: cover;
   user-select: none;
-  transform: translateZ(0) scale(1.01);
+  transform: translate3d(0, 0, 0) scale(1.01);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
   transition:
-    transform 720ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 460ms ease,
-    filter 460ms ease;
+    transform 900ms cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 520ms ease,
+    filter 520ms ease;
 }
 
 .sp-service-card-image-color {
@@ -13068,21 +13083,21 @@ main:has(.sp-about-page-intro-section),
 .sp-service-card-image-mono {
   opacity: 0;
   filter: grayscale(1) contrast(1.08) brightness(0.72);
-  transform: translateZ(0) scale(1.06);
+  transform: translate3d(0, 0, 0) scale(1.06);
 }
 
 .sp-service-card.is-featured .sp-service-card-image-color {
-  transform: translateZ(0) scale(1.035);
+  transform: translate3d(0, 0, 0) scale(1.035);
 }
 
 .sp-service-card.is-expanded .sp-service-card-image-color {
   opacity: 0.18;
-  transform: translateZ(0) scale(1.04);
+  transform: translate3d(0, 0, 0) scale(1.035);
 }
 
 .sp-service-card.is-expanded .sp-service-card-image-mono {
   opacity: 1;
-  transform: translateZ(0) scale(1.09);
+  transform: translate3d(0, 0, 0) scale(1.075);
 }
 
 .sp-service-card-overlay {
@@ -13221,24 +13236,25 @@ main:has(.sp-about-page-intro-section),
     0 2px 4px rgba(0, 0, 0, 0.24);
 }
 
+/* Important: only expanded cards reveal description */
 .sp-service-card-expand {
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
   margin-top: 0;
-  transform: translateY(8px);
+  transform: translate3d(0, 10px, 0);
   transition:
-    grid-template-rows 520ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 300ms ease,
-    margin-top 420ms ease,
-    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    grid-template-rows 560ms cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 340ms ease,
+    margin-top 460ms ease,
+    transform 560ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .sp-service-card.is-expanded .sp-service-card-expand {
   grid-template-rows: 1fr;
   opacity: 1;
   margin-top: 14px;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .sp-service-card-expand-inner {
@@ -13283,6 +13299,7 @@ main:has(.sp-about-page-intro-section),
   flex-shrink: 0;
 }
 
+/* Bottom buttons */
 .sp-services-grid-actions {
   position: relative;
   z-index: 4;
@@ -13314,6 +13331,7 @@ main:has(.sp-about-page-intro-section),
     0 8px 24px rgba(231, 42, 154, 0.16);
   font-size: 15px;
   font-weight: 900;
+  transform: translate3d(0, 0, 0);
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.35s ease,
@@ -13342,8 +13360,8 @@ main:has(.sp-about-page-intro-section),
   top: -50%;
   bottom: -50%;
   left: -80%;
-  width: 46%;
   z-index: -1;
+  width: 46%;
   transform: skewX(-22deg);
   background:
     linear-gradient(
@@ -13358,7 +13376,7 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-services-grid-button:hover {
-  transform: translateY(-5px) scale(1.018);
+  transform: translate3d(0, -5px, 0) scale(1.018);
   filter: saturate(1.15);
   box-shadow:
     0 24px 54px rgba(122, 77, 255, 0.36),
@@ -13381,6 +13399,7 @@ main:has(.sp-about-page-intro-section),
   }
 }
 
+/* Tablet */
 @media (max-width: 1200px) {
   .sp-services-grid-section {
     padding: 88px 0;
@@ -13391,7 +13410,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-services-grid-row.is-hovering .sp-service-card:not(.is-expanded) {
-    transform: none;
+    transform: translate3d(0, 0, 0);
     filter: none;
   }
 
@@ -13401,6 +13420,7 @@ main:has(.sp-about-page-intro-section),
   }
 }
 
+/* Mobile */
 @media (max-width: 767px) {
   .sp-services-grid-section {
     padding: 76px 0;
@@ -13472,5 +13492,22 @@ main:has(.sp-about-page-intro-section),
   .sp-services-grid-ring-one,
   .sp-services-grid-ring-two {
     opacity: 0.7;
+  }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .sp-services-grid-row,
+  .sp-service-card,
+  .sp-service-card-image,
+  .sp-service-card-expand,
+  .sp-services-grid-button {
+    transition-duration: 0.01ms !important;
+  }
+
+  .sp-services-grid-orb,
+  .sp-services-grid-ring,
+  .sp-services-grid-shape {
+    animation: none !important;
   }
 }
