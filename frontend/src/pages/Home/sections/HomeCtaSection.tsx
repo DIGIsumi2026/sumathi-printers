@@ -5,6 +5,7 @@ import { imageAssets } from "../../../data/imageAssets";
 export default function HomeCtaSection() {
   return (
     <section className="sp-home-cta-section">
+        <span className="sp-home-cta-watermark">GET A QUOTE</span>
       <span className="sp-home-cta-bg-shape sp-home-cta-bg-shape-one" />
       <span className="sp-home-cta-bg-shape sp-home-cta-bg-shape-two" />
       <span className="sp-home-cta-bg-ring sp-home-cta-bg-ring-one" />

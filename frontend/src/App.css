@@ -9116,6 +9116,44 @@ body.sp-menu-open {
   }
 }
 
+/* ================ Home watermark ================*/
+
+.sp-home-cta-watermark {
+  position: absolute;
+  right: -36px;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0, 72, 180, 0.15);
+  font-size: clamp(72px, 8.6vw, 152px);
+  line-height: 0.82;
+  letter-spacing: -0.08em;
+  font-weight: 950;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .sp-home-cta-watermark {
+    right: -30px;
+    font-size: clamp(60px, 12vw, 104px);
+    opacity: 0.46;
+    -webkit-text-stroke-width: 1.5px;
+  }
+}
+
+@media (max-width: 560px) {
+  .sp-home-cta-watermark {
+    right: -26px;
+    font-size: 62px;
+    opacity: 0.32;
+    -webkit-text-stroke-width: 1.2px;
+  }
+}
+
 
 /* ============== About us page ==================*/
 
