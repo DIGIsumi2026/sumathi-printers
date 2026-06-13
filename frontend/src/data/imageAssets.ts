@@ -117,6 +117,9 @@ import  finishingBinding from  "../assets/images/services/finishing/finishing-bi
 import  finishingLamination from  "../assets/images/services/finishing/finishing-lamination.png";
 import  finishingNumbering from  "../assets/images/services/finishing/finishing-numbering.png";
 
+//service-cta 
+import serviceCtaBanner from "../assets/images/services/services-cta-banner.png";
+
 
 
 
@@ -227,7 +230,9 @@ services: {
   heroThumbnail: servicesHeroThumbnail,
   whyChoose01,
   whyChoose02,
-  whyChoose03
+  whyChoose03,
+  ctaBanner:serviceCtaBanner
+  
 },
  serviceCards:{
   offsetPrintingstat,
