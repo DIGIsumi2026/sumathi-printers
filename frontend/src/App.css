@@ -13971,7 +13971,7 @@ main:has(.sp-about-page-intro-section),
   }
 }
 
-/* Header */
+/* header */
 
 .sp-finishing-header {
   width: min(830px, 100%);
@@ -14023,7 +14023,7 @@ main:has(.sp-about-page-intro-section),
   font-weight: 650;
 }
 
-/* Carousel */
+/* carousel */
 
 .sp-finishing-carousel-stage {
   --finish-shift: clamp(145px, 19vw, 280px);
@@ -14245,7 +14245,7 @@ main:has(.sp-about-page-intro-section),
   transform: translateY(0);
 }
 
-/* Controls */
+/* controls */
 
 .sp-finishing-controls {
   position: relative;
@@ -14277,7 +14277,6 @@ main:has(.sp-about-page-intro-section),
     0 0 34px rgba(255, 63, 143, 0.24);
 }
 
-/* Actions */
 
 .sp-finishing-actions {
   position: relative;
@@ -14327,7 +14326,6 @@ main:has(.sp-about-page-intro-section),
   filter: saturate(1.14);
 }
 
-/* Responsive */
 
 @media (max-width: 1020px) {
   .sp-finishing-section {
@@ -14382,3 +14380,5 @@ main:has(.sp-about-page-intro-section),
     max-width: 310px;
   }
 }
+
+

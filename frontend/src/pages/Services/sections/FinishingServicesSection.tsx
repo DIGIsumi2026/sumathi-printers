@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
-import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { imageAssets } from "../../../data/imageAssets";
 
@@ -13,7 +13,7 @@ type FinishingService = {
   accent: string;
 };
 
-const LOOP_INTERVAL = 1850;
+const LOOP_INTERVAL = 1700;
 
 const finishingServices: FinishingService[] = [
   {
@@ -86,40 +86,40 @@ function getSlotVisual(slot: number) {
       opacity: 1,
       blur: "0px",
       rotate: "0deg",
-      z: 50
+      z: 60
     };
   }
 
   if (slot === -1) {
     return {
       x: "calc(var(--finish-shift) * -1)",
-      y: "22px",
+      y: "26px",
       scale: 0.84,
-      opacity: 0.68,
+      opacity: 0.66,
       blur: "1px",
       rotate: "8deg",
-      z: 35
+      z: 36
     };
   }
 
   if (slot === 1) {
     return {
       x: "calc(var(--finish-shift) * 1)",
-      y: "22px",
+      y: "26px",
       scale: 0.84,
-      opacity: 0.68,
+      opacity: 0.66,
       blur: "1px",
       rotate: "-8deg",
-      z: 35
+      z: 36
     };
   }
 
   if (slot === -2) {
     return {
       x: "calc(var(--finish-shift) * -2)",
-      y: "48px",
+      y: "56px",
       scale: 0.67,
-      opacity: 0.28,
+      opacity: 0.26,
       blur: "3px",
       rotate: "14deg",
       z: 18
@@ -128,9 +128,9 @@ function getSlotVisual(slot: number) {
 
   return {
     x: "calc(var(--finish-shift) * 2)",
-    y: "48px",
+    y: "56px",
     scale: 0.67,
-    opacity: 0.28,
+    opacity: 0.26,
     blur: "3px",
     rotate: "-14deg",
     z: 18
@@ -139,9 +139,10 @@ function getSlotVisual(slot: number) {
 
 export default function FinishingServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const isPaused = hoveredId !== null;
+  const isPaused = hoveredIndex !== null;
+  const activeService = finishingServices[activeIndex];
 
   useEffect(() => {
     if (isPaused) return;
@@ -155,9 +156,14 @@ export default function FinishingServicesSection() {
     };
   }, [isPaused]);
 
-  const activeService = finishingServices[activeIndex];
+  const handleCardEnter = (index: number) => {
+    setHoveredIndex(index);
+    setActiveIndex(index);
+  };
 
-  const carouselItems = useMemo(() => finishingServices, []);
+  const handleStageLeave = () => {
+    setHoveredIndex(null);
+  };
 
   const scrollToTopServices = () => {
     const serviceSection = document.getElementById("all-services");
@@ -209,34 +215,33 @@ export default function FinishingServicesSection() {
           className={`sp-finishing-carousel-stage ${
             isPaused ? "is-paused" : ""
           }`}
-          onPointerLeave={() => setHoveredId(null)}
+          onPointerLeave={handleStageLeave}
         >
           <div className="sp-finishing-red-spotlight" />
 
-          {carouselItems.map((service, index) => {
+          {finishingServices.map((service, index) => {
             const slot = getLoopSlot(
               index,
               activeIndex,
               finishingServices.length
             );
-            const visual = getSlotVisual(slot);
-            const isHovered = hoveredId === service.id;
-            const isCenter = slot === 0;
-            const isMuted = isPaused && !isHovered;
 
-            const finalScale = isHovered
-              ? Number(visual.scale) + 0.065
-              : visual.scale;
+            const visual = getSlotVisual(slot);
+            const isCenter = slot === 0;
+            const isHovered = hoveredIndex === index;
+            const isMuted = isPaused && !isHovered;
 
             const cardStyle =
               {
                 "--finish-x": visual.x,
                 "--finish-y": visual.y,
-                "--finish-scale": finalScale,
+                "--finish-scale": isHovered
+                  ? Number(visual.scale) + 0.075
+                  : visual.scale,
                 "--finish-opacity": isHovered ? 1 : visual.opacity,
                 "--finish-blur": isHovered ? "0px" : visual.blur,
-                "--finish-rotate": visual.rotate,
-                "--finish-z": isHovered ? 80 : visual.z,
+                "--finish-rotate": isHovered ? "0deg" : visual.rotate,
+                "--finish-z": isHovered ? 90 : visual.z,
                 "--finish-card-accent": service.accent
               } as CSSProperties;
 
@@ -249,8 +254,10 @@ export default function FinishingServicesSection() {
                   isMuted ? "is-muted" : ""
                 }`}
                 style={cardStyle}
-                onPointerEnter={() => setHoveredId(service.id)}
-                onClick={() => setHoveredId(service.id)}
+                onPointerEnter={() => handleCardEnter(index)}
+                onFocus={() => handleCardEnter(index)}
+                onClick={() => handleCardEnter(index)}
+                tabIndex={0}
               >
                 <div className="sp-finishing-card-media">
                   <img
@@ -292,7 +299,10 @@ export default function FinishingServicesSection() {
               type="button"
               aria-label={`Show ${service.title}`}
               className={activeIndex === index ? "is-active" : ""}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                setActiveIndex(index);
+                setHoveredIndex(null);
+              }}
             />
           ))}
         </div>
@@ -303,7 +313,7 @@ export default function FinishingServicesSection() {
             className="sp-finishing-action sp-finishing-action-secondary"
             onClick={scrollToTopServices}
           >
-            <ArrowDown size={18} />
+            <ArrowUp size={18} />
             <span>View All Services</span>
           </button>
 
