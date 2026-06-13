@@ -110,7 +110,12 @@ import booksMagazinesPrintingstat from "../assets/images/services/service-books-
 import  stickersLabelsstat from "../assets/images/services/service-stickers-labels.png";
 import  brochuresCatalogsstat from "../assets/images/services/service-brochures-catalogs.png";
 
-
+//finishing-ervice-cards
+import  finishingCuttingTrimming from  "../assets/images/services/finishing/finishing-cutting-trimming.png";
+import  finishingFolding  from  "../assets/images/services/finishing/finishing-folding.png";
+import  finishingBinding from  "../assets/images/services/finishing/finishing-binding.png";
+import  finishingLamination from  "../assets/images/services/finishing/finishing-lamination.png";
+import  finishingNumbering from  "../assets/images/services/finishing/finishing-numbering.png";
 
 
 
@@ -237,6 +242,14 @@ services: {
   booksMagazinesPrintingstat,
   stickersLabelsstat,
   brochuresCatalogsstat
+ },
+
+ finishingServices:{
+  cuttingTrimming: finishingCuttingTrimming,
+  folding: finishingFolding,
+  binding: finishingBinding,
+  lamination: finishingLamination,
+  numbering: finishingNumbering
  }
 
 
