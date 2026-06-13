@@ -138,71 +138,9 @@ function chunkArray<T>(items: T[], size: number) {
 
 export default function ServicesGridSection() {
   const rows = useMemo(() => chunkArray(services, 4), []);
-
   const [hoveredByRow, setHoveredByRow] = useState<Record<number, number | null>>(
     {}
   );
-
-  const leaveTimersRef = useMemo(() => new Map<number, number>(), []);
-
-  const clearLeaveTimer = (rowIndex: number) => {
-    const timer = leaveTimersRef.get(rowIndex);
-
-    if (timer) {
-      window.clearTimeout(timer);
-      leaveTimersRef.delete(rowIndex);
-    }
-  };
-
-  const setRowHover = (rowIndex: number, serviceId: number) => {
-    clearLeaveTimer(rowIndex);
-
-    setHoveredByRow((current) => {
-      if (current[rowIndex] === serviceId) return current;
-
-      return {
-        ...current,
-        [rowIndex]: serviceId
-      };
-    });
-  };
-
-  const clearRowHoverWithDelay = (rowIndex: number) => {
-    clearLeaveTimer(rowIndex);
-
-    const timer = window.setTimeout(() => {
-      setHoveredByRow((current) => {
-        if (!current[rowIndex]) return current;
-
-        return {
-          ...current,
-          [rowIndex]: null
-        };
-      });
-
-      leaveTimersRef.delete(rowIndex);
-    }, 180);
-
-    leaveTimersRef.set(rowIndex, timer);
-  };
-
-  const getRowTemplate = (row: ServiceItem[], rowIndex: number) => {
-    const hoveredId = hoveredByRow[rowIndex];
-
-    if (!hoveredId) {
-      return "repeat(4, minmax(0, 1fr))";
-    }
-
-    const activeIndex = row.findIndex((item) => item.id === hoveredId);
-
-    if (activeIndex === -1) {
-      return "repeat(4, minmax(0, 1fr))";
-    }
-
-    return row
-      .map((_, index) => (index === activeIndex ? "1.58fr" : "0.86fr"))
-      .join(" ");
-  };
 
   const scrollToFinishingServices = () => {
     const finishingSection = document.getElementById("finishing-services");
@@ -213,6 +151,28 @@ export default function ServicesGridSection() {
         block: "start"
       });
     }
+  };
+
+  const setRowHover = (rowIndex: number, serviceId: number) => {
+    setHoveredByRow((current) => {
+      if (current[rowIndex] === serviceId) return current;
+
+      return {
+        ...current,
+        [rowIndex]: serviceId
+      };
+    });
+  };
+
+  const clearRowHover = (rowIndex: number) => {
+    setHoveredByRow((current) => {
+      if (!current[rowIndex]) return current;
+
+      return {
+        ...current,
+        [rowIndex]: null
+      };
+    });
   };
 
   return (
@@ -258,13 +218,7 @@ export default function ServicesGridSection() {
                 className={`sp-services-grid-row ${
                   isRowHovered ? "is-hovering" : ""
                 }`}
-                style={
-                  {
-                    "--services-row-template": getRowTemplate(row, rowIndex)
-                  } as CSSProperties
-                }
-                onPointerEnter={() => clearLeaveTimer(rowIndex)}
-                onPointerLeave={() => clearRowHoverWithDelay(rowIndex)}
+                onPointerLeave={() => clearRowHover(rowIndex)}
               >
                 {row.map((service) => {
                   const isExpanded = hoveredId === service.id;
@@ -334,11 +288,6 @@ export default function ServicesGridSection() {
                               <p className="sp-service-card-text">
                                 {service.description}
                               </p>
-
-                              <span className="sp-service-card-cta">
-                                <span>Explore Service</span>
-                                <ArrowUpRight size={16} />
-                              </span>
                             </div>
                           </div>
                         </div>
