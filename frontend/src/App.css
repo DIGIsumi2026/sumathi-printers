@@ -314,6 +314,196 @@ button {
   flex: 1;
 }
 
+
+/* ==================== whatsapp integration ================================ */
+
+/* Hide old duplicate floating tools */
+.floating-tools,
+.sp-floating-tools,
+.scroll-top:not(.sp-floating-scroll),
+.sp-scroll-top:not(.sp-floating-scroll) {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.sp-floating-actions {
+  position: fixed !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  z-index: 999999 !important;
+  width: 64px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 14px !important;
+  pointer-events: none !important;
+}
+
+.sp-floating-actions .sp-floating-action {
+  position: relative !important;
+  inset: auto !important;
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px !important;
+  min-height: 64px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  display: grid !important;
+  place-items: center !important;
+  color: #ffffff !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
+  box-shadow:
+    0 22px 54px rgba(15, 23, 42, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.34s ease,
+    visibility 0.34s ease !important;
+}
+
+.sp-floating-actions .sp-floating-action::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: inherit;
+}
+
+.sp-floating-actions .sp-floating-action::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.28),
+      rgba(255, 255, 255, 0.08)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(16px) saturate(1.24);
+  -webkit-backdrop-filter: blur(16px) saturate(1.24);
+}
+
+.sp-floating-actions .sp-floating-whatsapp {
+  order: 1 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sp-floating-actions .sp-floating-whatsapp::before {
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.72), transparent 22%),
+    linear-gradient(135deg, #25d366 0%, #18b958 48%, #0f8f44 100%);
+  box-shadow:
+    0 0 32px rgba(37, 211, 102, 0.34),
+    0 18px 42px rgba(37, 211, 102, 0.22);
+}
+
+.sp-floating-actions .sp-floating-scroll {
+  order: 2 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translate3d(0, 14px, 0) scale(0.88) !important;
+}
+
+.sp-floating-actions .sp-floating-scroll.is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
+}
+
+.sp-floating-actions .sp-floating-scroll::before {
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.72), transparent 22%),
+    linear-gradient(135deg, #38c7ff 0%, #7a4dff 52%, #e72a9a 100%);
+  box-shadow:
+    0 0 32px rgba(56, 199, 255, 0.28),
+    0 18px 42px rgba(122, 77, 255, 0.2);
+}
+
+.sp-floating-actions .sp-floating-action:hover {
+  transform: translate3d(0, -6px, 0) scale(1.06) !important;
+}
+
+.sp-floating-actions .sp-floating-scroll.is-visible:hover {
+  transform: translate3d(0, -6px, 0) scale(1.06) !important;
+}
+
+.sp-floating-actions .sp-floating-action svg {
+  position: relative;
+  z-index: 2;
+  display: block;
+  stroke-width: 2.2;
+}
+
+.sp-floating-actions .sp-floating-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  min-height: 36px;
+  padding: 0 13px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  color: #ffffff;
+  background: rgba(3, 7, 18, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px) saturate(1.18);
+  -webkit-backdrop-filter: blur(14px) saturate(1.18);
+  font-size: 12px;
+  font-weight: 850;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.28s ease,
+    visibility 0.28s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sp-floating-actions .sp-floating-action:hover .sp-floating-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+@media (max-width: 640px) {
+  .sp-floating-actions {
+    right: 18px !important;
+    bottom: 18px !important;
+    width: 56px !important;
+    gap: 12px !important;
+  }
+
+  .sp-floating-actions .sp-floating-action {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+  }
+
+  .sp-floating-actions .sp-floating-tooltip {
+    display: none !important;
+  }
+}
+
 /* ======== bottom page blur ========== */
 
 body::after {

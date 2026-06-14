@@ -3,9 +3,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import companyJson from "./data/company.json";
 
 import Preloader from "./components/layout/Preloader";
+import FloatingActions from "./components/common/FloatingActions";
 import NavigationBar from "./components/layout/NavigationBar";
-import FloatingDecor from "./components/layout/FloatingDecor";
-import FloatingTools from "./components/layout/FloatingTools";
 import Footer from "./components/layout/Footer";
 import CustomCursor from "./components/layout/CustomCursor";
 
@@ -68,7 +67,6 @@ export default function App() {
 
       <div className={`sp-site-content ${loading ? "is-blurred" : ""}`}>
         <CustomCursor />
-        <FloatingDecor />
 
         <NavigationBar company={company} />
 
@@ -125,9 +123,9 @@ export default function App() {
             submitForm(event, "/newsletter", setNewsletterStatus)
           }
         />
-
-        <FloatingTools />
       </div>
+
+      <FloatingActions />
     </>
   );
 }
