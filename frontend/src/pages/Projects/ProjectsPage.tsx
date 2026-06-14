@@ -1,5 +1,6 @@
 import type { CompanyData } from "../../types/site";
 import ProjectsHeroSection from "./sections/ProjectsHeroSection";
+import ProjectsFacilitySection from "./sections/ProjectsFacilitySection";
 
 type ProjectsPageProps = {
   company: CompanyData;
@@ -9,6 +10,7 @@ export default function ProjectsPage({ company }: ProjectsPageProps) {
   return (
     <main className="sp-inner-page">
     <ProjectsHeroSection/>
+    <ProjectsFacilitySection/>
 
 
 

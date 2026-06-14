@@ -15034,7 +15034,6 @@ main:has(.sp-about-page-intro-section),
   filter: saturate(1.14);
 }
 
-/* Shared floating elements */
 
 .sp-projects-hero-watermark,
 .sp-projects-facility-watermark,
@@ -15186,7 +15185,7 @@ main:has(.sp-about-page-intro-section),
   }
 }
 
-/* FACILITY */
+/* facility  */
 
 .sp-projects-facility-section {
   position: relative;
@@ -15320,7 +15319,7 @@ main:has(.sp-about-page-intro-section),
   font-weight: 950;
 }
 
-/* CATEGORIES */
+/* catagories */
 
 .sp-projects-categories-section {
   position: relative;
@@ -15509,7 +15508,7 @@ main:has(.sp-about-page-intro-section),
   font-weight: 900;
 }
 
-/* CLIENTS */
+/* clients */
 
 .sp-projects-clients-section {
   position: relative;
@@ -15609,7 +15608,7 @@ main:has(.sp-about-page-intro-section),
   }
 }
 
-/* CTA */
+/* cta */
 
 .sp-projects-cta-section {
   position: relative;
@@ -15723,7 +15722,6 @@ main:has(.sp-about-page-intro-section),
   font-weight: 650;
 }
 
-/* RESPONSIVE */
 
 @media (max-width: 1100px) {
   .sp-projects-video-grid,
