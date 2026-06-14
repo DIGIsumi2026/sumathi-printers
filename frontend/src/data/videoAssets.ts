@@ -9,6 +9,12 @@ import preLoader from "../assets/videos/sumathi-3d-preloader-transparent.webm";
 //service page 
 import serviceHeroVideo from "../assets/videos/service-hero.mp4";
 
+//projects page 
+import projectsHeroVideo from "../assets/videos/projects-hero.mp4";
+import projectsFacilityVideo from "../assets/videos/projects-facility.mp4";
+import  projectsProcessVideo from "../assets/videos/projects-process.mp4";
+
+
 
 
 
@@ -30,6 +36,12 @@ export const videoAssets = {
 services:{
   hero: serviceHeroVideo
 },
+
+ projects: {
+    hero: projectsHeroVideo,
+    facility: projectsFacilityVideo,
+    process: projectsProcessVideo
+  }
 
 } as const;
 

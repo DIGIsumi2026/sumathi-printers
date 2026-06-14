@@ -120,6 +120,13 @@ import  finishingNumbering from  "../assets/images/services/finishing/finishing-
 //service-cta 
 import serviceCtaBanner from "../assets/images/services/services-cta-banner.png";
 
+//project page 
+import projectCorporatePublications from "../assets/images/projects/project-corporate-publications.png";
+import projectPackagingSolutions from "../assets/images/projects/project-packaging-solutions.png";
+import projectMarketingCollateral from "../assets/images/projects/project-marketing-collateral.png";
+import projectSecurePrinting from "../assets/images/projects/project-secure-printing.png";
+import projectClientsBackground from "../assets/images/projects/project-clients-background.png";
+import projectCtaBanner from "../assets/images/projects/project-cta-banner.png";
 
 
 
@@ -255,7 +262,16 @@ services: {
   binding: finishingBinding,
   lamination: finishingLamination,
   numbering: finishingNumbering
- }
+ },
+
+ projectsPage: {
+  corporatePublications: projectCorporatePublications,
+  packagingSolutions: projectPackagingSolutions,
+  marketingCollateral: projectMarketingCollateral,
+  securePrinting: projectSecurePrinting,
+  clientsBackground: projectClientsBackground,
+  ctaBanner: projectCtaBanner
+}
 
 
 
