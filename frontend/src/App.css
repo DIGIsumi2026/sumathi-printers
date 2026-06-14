@@ -15781,3 +15781,224 @@ main:has(.sp-about-page-intro-section),
     padding: 28px;
   }
 }
+
+/* fix  */
+
+.sp-projects-clients-section {
+  position: relative;
+  min-height: 760px;
+  padding: clamp(110px, 9vw, 150px) 0;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  background: #05070d;
+}
+
+.sp-projects-clients-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.sp-projects-clients-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.96) 0%,
+      rgba(0, 0, 0, 0.88) 28%,
+      rgba(0, 0, 0, 0.54) 58%,
+      rgba(0, 0, 0, 0.72) 100%
+    ),
+    radial-gradient(circle at 20% 48%, rgba(56, 199, 255, 0.22), transparent 38%),
+    radial-gradient(circle at 78% 24%, rgba(231, 42, 154, 0.16), transparent 34%);
+}
+
+.sp-projects-clients-grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.24;
+  pointer-events: none;
+}
+
+.sp-projects-clients-watermark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.075);
+  font-size: clamp(90px, 14vw, 220px);
+  line-height: 0.82;
+  letter-spacing: -0.09em;
+  font-weight: 950;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sp-projects-clients-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.sp-projects-clients-header {
+  position: relative;
+  z-index: 12;
+  width: min(620px, 100%);
+  margin: 0;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: 32px;
+  text-align: left;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.13),
+      rgba(255, 255, 255, 0.055)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.17);
+  backdrop-filter: blur(18px) saturate(1.18);
+  -webkit-backdrop-filter: blur(18px) saturate(1.18);
+}
+
+.sp-projects-clients-badge {
+  width: max-content;
+  max-width: 100%;
+  min-height: 38px;
+  padding: 0 15px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 16px 42px rgba(56, 199, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px) saturate(1.22);
+  -webkit-backdrop-filter: blur(16px) saturate(1.22);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.sp-projects-clients-badge svg {
+  color: #38c7ff;
+}
+
+.sp-projects-clients-header h2 {
+  margin: 18px 0 0;
+  color: #ffffff;
+  font-size: clamp(38px, 5.3vw, 78px);
+  line-height: 0.92;
+  letter-spacing: -0.085em;
+  font-weight: 950;
+  text-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.52),
+    0 0 34px rgba(56, 199, 255, 0.12);
+}
+
+.sp-projects-clients-header p {
+  width: min(560px, 100%);
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: clamp(14px, 1.1vw, 17px);
+  line-height: 1.72;
+  font-weight: 650;
+}
+
+.sp-projects-clients-marquee {
+  position: relative;
+  z-index: 11;
+  overflow: hidden;
+  margin-top: 34px;
+  padding: 18px 0;
+  mask-image: linear-gradient(90deg, transparent, black 16%, black 84%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 16%, black 84%, transparent);
+}
+
+.sp-projects-clients-track {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  animation: spProjectsClientsMarquee 30s linear infinite;
+}
+
+.sp-projects-clients-track span {
+  min-height: 56px;
+  padding: 0 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  font-size: 14px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+@keyframes spProjectsClientsMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 760px) {
+  .sp-projects-clients-section {
+    min-height: 780px;
+    padding: 94px 0;
+  }
+
+  .sp-projects-clients-bg {
+    object-position: 66% center;
+  }
+
+  .sp-projects-clients-header {
+    width: 100%;
+    padding: 24px;
+    border-radius: 26px;
+  }
+
+  .sp-projects-clients-header h2 {
+    font-size: clamp(36px, 11vw, 56px);
+  }
+
+  .sp-projects-clients-header p {
+    font-size: 14px;
+  }
+
+  .sp-projects-clients-watermark {
+    font-size: 72px;
+    opacity: 0.55;
+  }
+}

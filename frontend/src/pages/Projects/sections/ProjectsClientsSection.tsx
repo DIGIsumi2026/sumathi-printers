@@ -37,10 +37,10 @@ export default function ProjectsClientsSection() {
       <div className="container sp-projects-clients-container">
         <motion.div
           className="sp-projects-clients-header"
-          initial={{ opacity: 0, y: 34, filter: "blur(12px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.34 }}
-          transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, x: -42, filter: "blur(12px)" }}
+          whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="sp-projects-clients-badge">
             <Sparkles size={15} />
