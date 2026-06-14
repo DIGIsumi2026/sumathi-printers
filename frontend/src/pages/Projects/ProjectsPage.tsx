@@ -2,6 +2,7 @@ import type { CompanyData } from "../../types/site";
 import ProjectsHeroSection from "./sections/ProjectsHeroSection";
 import ProjectsFacilitySection from "./sections/ProjectsFacilitySection";
 import ProjectsCategoriesSection from "./sections/ProjectsCategoriesSection";
+import ProjectsClientsSection from "./sections/ProjectsClientsSection";
 
 type ProjectsPageProps = {
   company: CompanyData;
@@ -13,6 +14,7 @@ export default function ProjectsPage({ company }: ProjectsPageProps) {
     <ProjectsHeroSection/>
     <ProjectsFacilitySection/>
     <ProjectsCategoriesSection/>
+    <ProjectsClientsSection/>
 
 
 
