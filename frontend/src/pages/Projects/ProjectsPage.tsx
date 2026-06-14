@@ -1,6 +1,7 @@
 import type { CompanyData } from "../../types/site";
 import ProjectsHeroSection from "./sections/ProjectsHeroSection";
 import ProjectsFacilitySection from "./sections/ProjectsFacilitySection";
+import ProjectsCategoriesSection from "./sections/ProjectsCategoriesSection";
 
 type ProjectsPageProps = {
   company: CompanyData;
@@ -11,7 +12,7 @@ export default function ProjectsPage({ company }: ProjectsPageProps) {
     <main className="sp-inner-page">
     <ProjectsHeroSection/>
     <ProjectsFacilitySection/>
-
+    <ProjectsCategoriesSection/>
 
 
 
