@@ -16,7 +16,7 @@ import  projectsProcessVideo from "../assets/videos/projects-process.mp4";
 
 //gallery page 
 import projectsHeroVideoGal from "../assets/videos/gallery/projects-hero.mp4";
-
+import projectFacilityVideo from "../assets/videos/gallery/projects-facility.mp4";
 
 
 
@@ -49,6 +49,7 @@ services:{
 
  gallery:{
     hero: projectsHeroVideoGal,
+    facility: projectFacilityVideo,
  }
 
 } as const;

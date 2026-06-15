@@ -126,6 +126,18 @@ import projectClientsBackground from "../assets/images/projects/project-clients-
 import projectCtaBanner from "../assets/images/projects/project-cta-banner.png";
 
 //gallery page 
+import galleryCorporatePublications from "../assets/images/gallery/gallery-corporate-publications.png";
+import galleryPrecisionPrinting from "../assets/images/gallery/gallery-precision-printing.png";
+import galleryPackagingSolutions from "../assets/images/gallery/gallery-packaging-solutions.png";
+import  galleryPackagingDetail from "../assets/images/gallery/gallery-packaging-detail.png";
+import galleryMarketingCollateral from "../assets/images/gallery/gallery-marketing-collateral.png";
+import galleryCollaborationReview from "../assets/images/gallery/gallery-collaboration-review.png";
+import gallerySecureOfficial from "../assets/images/gallery/gallery-secure-official.png";
+import galleryFinishingExcellence from "../assets/images/gallery/gallery-finishing-excellence.png";
+import galleryPublicSector from "../assets/images/gallery/gallery-public-sector.png";
+import galleryStructuralPackaging from "../assets/images/gallery/gallery-structural-packaging.png";
+import galleryAcademicCorporate from "../assets/images/gallery/gallery-academic-corporate.png";
+import galleryFinalCta from "../assets/images/gallery/gallery-final-cta.png";
 
 
 
@@ -269,7 +281,22 @@ services: {
   securePrinting: projectSecurePrinting,
   clientsBackground: projectClientsBackground,
   ctaBanner: projectCtaBanner
-}
+},
+
+ gallery: {
+  corporatePublications: galleryCorporatePublications,
+  precisionPrinting: galleryPrecisionPrinting,
+  packagingSolutions: galleryPackagingSolutions,
+  packagingDetail: galleryPackagingDetail,
+  marketingCollateral: galleryMarketingCollateral,
+  collaborationReview: galleryCollaborationReview,
+  secureOfficial: gallerySecureOfficial,
+  finishingExcellence: galleryFinishingExcellence,
+  publicSector: galleryPublicSector,
+  structuralPackaging: galleryStructuralPackaging,
+  academicCorporate: galleryAcademicCorporate,
+  finalCta: galleryFinalCta
+},
 
 
 

@@ -1,14 +1,15 @@
 import type { CompanyData } from "../../types/site";
-import ProjectsHeroHeader from "./sections/ProjectsHeroHeader";
+import GalleryHeroSection from "./sections/GalleryHeroSection";
+import "./Gallery.css";
 
-type ProjectsPageProps = {
-  company: CompanyData;
+type GalleryPageProps = {
+  company?: CompanyData;
 };
 
-export default function ProjectsPage({ company }: ProjectsPageProps) {
+export default function GalleryPage({ company: _company }: GalleryPageProps) {
   return (
-    <main className="sp-inner-page">
-      <ProjectsHeroHeader/>
+    <main className="sp-gallery-page">
+      <GalleryHeroSection />
     </main>
   );
 }

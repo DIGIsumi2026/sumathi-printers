@@ -16438,9 +16438,9 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-project-hero-content h1 {
   margin: 22px 0 0;
   width: min(860px, 100%);
-  font-size: clamp(56px, 7.4vw, 122px);
+  font-size: clamp(56px, 5vw, 122px);
   line-height: 0.86;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.0005em;
   font-weight: 950;
 }
 
@@ -16450,7 +16450,7 @@ body::-webkit-scrollbar-thumb:hover {
   color: rgba(255, 255, 255, 0.72);
   font-size: clamp(15px, 1.18vw, 19px);
   line-height: 1.74;
-  font-weight: 650;
+  font-weight: 450;
 }
 
 .sp-project-hero-actions {
