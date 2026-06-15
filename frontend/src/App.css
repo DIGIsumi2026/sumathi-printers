@@ -16139,7 +16139,7 @@ main:has(.sp-about-page-intro-section),
   transform: translate3d(0, -4px, 0) scale(1.045) !important;
 }
 
-/* Mobile smaller */
+/* mobile smaller  */
 @media (max-width: 640px) {
   .sp-floating-actions {
     right: 14px !important;
@@ -16161,7 +16161,7 @@ main:has(.sp-about-page-intro-section),
   }
 }
 
-/* cuatom scrollbar */
+/* custom scrollbar */
 html {
   scrollbar-width: thin;
   scrollbar-color: #8a32f7 #f4f2fb;

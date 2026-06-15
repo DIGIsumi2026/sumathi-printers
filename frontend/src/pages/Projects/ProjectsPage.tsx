@@ -18,16 +18,6 @@ export default function ProjectsPage({ company }: ProjectsPageProps) {
     <ProjectsClientsSection/>
     <ProjectsCtaSection/>
 
-
-
-      {/*<section className="container sp-inner-page-hero">
-        <span className="sp-inner-page-kicker">Projects</span>
-        <h1>Featured Print Projects</h1>
-        <p>
-          Explore selected commercial, publishing, packaging and institutional
-          print work completed by {company.brand}.
-        </p>
-      </section> */}
     </main>
   );
 }
