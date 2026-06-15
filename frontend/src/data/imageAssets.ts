@@ -1,9 +1,6 @@
 //navigation bar 
 import sumathiLogo from "../assets/images/logo/sumathi-logo.png";
 
-//loading animation 
-
-
 //hero section 
 import offsetPrinting from "../assets/images/hero-section/offset-printing.png";
 import graphicDesigning from "../assets/images/hero-section/graphic-designing.png";
@@ -128,6 +125,7 @@ import projectSecurePrinting from "../assets/images/projects/project-secure-prin
 import projectClientsBackground from "../assets/images/projects/project-clients-background.png";
 import projectCtaBanner from "../assets/images/projects/project-cta-banner.png";
 
+//gallery page 
 
 
 

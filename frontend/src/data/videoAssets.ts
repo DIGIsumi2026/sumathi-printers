@@ -14,6 +14,10 @@ import projectsHeroVideo from "../assets/videos/projects-hero.mp4";
 import projectsFacilityVideo from "../assets/videos/projects-facility.mp4";
 import  projectsProcessVideo from "../assets/videos/projects-process.mp4";
 
+//gallery page 
+import projectsHeroVideoGal from "../assets/videos/gallery/projects-hero.mp4";
+
+
 
 
 
@@ -41,7 +45,11 @@ services:{
     hero: projectsHeroVideo,
     facility: projectsFacilityVideo,
     process: projectsProcessVideo
-  }
+  },
+
+ gallery:{
+    hero: projectsHeroVideoGal,
+ }
 
 } as const;
 
