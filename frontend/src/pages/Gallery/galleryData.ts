@@ -1,4 +1,4 @@
-import { imageAssets } from "../../../data/imageAssets";
+import { imageAssets } from "../../data/imageAssets";
 
 export type GalleryCategory =
   | "All"
