@@ -139,6 +139,8 @@ import galleryStructuralPackaging from "../assets/images/gallery/gallery-structu
 import galleryAcademicCorporate from "../assets/images/gallery/gallery-academic-corporate.png";
 import galleryFinalCta from "../assets/images/gallery/gallery-final-cta.png";
 
+//contact page 
+import contactHeroBanner from "../assets/images/contact/contact-hero-banner.png";
 
 
 
@@ -298,11 +300,9 @@ services: {
   finalCta: galleryFinalCta
 },
 
-
-
-
-
-
+contact:{
+  heroBanner: contactHeroBanner,
+}
 
 
 } as const

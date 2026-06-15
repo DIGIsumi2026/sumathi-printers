@@ -1,6 +1,9 @@
 import type { FormEvent } from "react";
 import type { CompanyData, FormStatus } from "../../types/site";
-import ContactSection from "../Home/sections/ContactSection";
+import ContactHeroSection from "../Contact/sections/ContactHeroSection";
+import ContactMainBlock from "../Contact/sections/ContactMainBlock";
+import ContactMapSection from "../Contact/sections/ContactMapSection";
+import "./Contact.css";
 
 type ContactPageProps = {
   company: CompanyData;
@@ -14,12 +17,14 @@ export default function ContactPage({
   onSubmit
 }: ContactPageProps) {
   return (
-    <main className="sp-inner-page">
-      <ContactSection
+    <main className="sp-contact-page">
+      <ContactHeroSection />
+      <ContactMainBlock
         company={company}
         contactStatus={contactStatus}
         onSubmit={onSubmit}
       />
+      <ContactMapSection />
     </main>
   );
 }
