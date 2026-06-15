@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import GalleryLightbox from "../sections/GalleryLightbox";
+import type { CSSProperties } from "react";
+import GalleryLightbox from "./GalleryLightbox";
 import {
   galleryFilters,
   galleryItems,
@@ -37,25 +38,35 @@ export default function GalleryGridSection() {
         <span className="sp-gallery-float-shape sp-gallery-grid-shape-one" />
 
         <div className="container sp-gallery-grid-container">
-          <div className="sp-gallery-filter-bar">
-            {galleryFilters.map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                className={activeFilter === filter ? "is-active" : ""}
-                onClick={() => setActiveFilter(filter)}
-              >
-                {filter}
-              </button>
-            ))}
+          <div className="sp-gallery-filter-area">
+            <div className="sp-gallery-filter-bar">
+              {galleryFilters.map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  className={activeFilter === filter ? "is-active" : ""}
+                  onClick={() => setActiveFilter(filter)}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="sp-gallery-masonry-grid">
+          <div
+            key={activeFilter}
+            className="sp-gallery-masonry-grid"
+          >
             {visibleItems.map((item, index) => (
               <button
-                key={item.id}
+                key={`${activeFilter}-${item.id}`}
                 type="button"
                 className={`sp-gallery-card ${item.size}`}
+                style={
+                  {
+                    "--gallery-card-delay": `${Math.min(index * 55, 420)}ms`
+                  } as CSSProperties
+                }
                 onClick={() => setActiveLightboxIndex(index)}
               >
                 <img src={item.image} alt={item.title} draggable={false} />
