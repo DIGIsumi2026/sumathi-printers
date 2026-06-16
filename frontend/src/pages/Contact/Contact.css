@@ -731,3 +731,227 @@
     opacity: 0.55;
   }
 }
+
+.sp-contact-main-section {
+  padding: clamp(76px, 6vw, 108px) 0 !important;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(56, 199, 255, 0.18), transparent 32%),
+    radial-gradient(circle at 92% 18%, rgba(231, 42, 154, 0.16), transparent 34%),
+    linear-gradient(135deg, #f7fbff 0%, #f7f4ff 38%, #fff4fb 100%) !important;
+}
+
+.sp-contact-main-container {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
+  gap: clamp(22px, 3vw, 42px) !important;
+  align-items: stretch !important;
+}
+
+/* Left contact info: tighter and cleaner */
+.sp-contact-info-panel {
+  padding: clamp(24px, 2.6vw, 36px) !important;
+}
+
+.sp-contact-info-panel h2 {
+  font-size: clamp(36px, 4.6vw, 72px) !important;
+  line-height: 0.9 !important;
+  margin-top: 18px !important;
+}
+
+.sp-contact-info-panel > p {
+  margin-top: 18px !important;
+  max-width: 620px !important;
+}
+
+.sp-contact-info-list {
+  margin-top: 26px !important;
+  gap: 12px !important;
+}
+
+.sp-contact-info-item {
+  min-height: 76px !important;
+  padding: 14px 16px !important;
+  border-radius: 22px !important;
+}
+
+/* Right inquiry panel: dark premium glass */
+.sp-contact-form-panel {
+  padding: clamp(24px, 2.7vw, 38px) !important;
+  border-radius: 42px !important;
+  overflow: hidden !important;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(56, 199, 255, 0.2), transparent 34%),
+    radial-gradient(circle at 92% 10%, rgba(231, 42, 154, 0.2), transparent 34%),
+    linear-gradient(145deg, rgba(5, 8, 22, 0.95), rgba(12, 10, 24, 0.9)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.13) !important;
+  box-shadow:
+    0 34px 90px rgba(5, 8, 22, 0.24),
+    0 0 44px rgba(56, 199, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(24px) saturate(1.26) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.26) !important;
+}
+
+.sp-contact-form-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 46px 46px;
+  opacity: 0.32;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 76%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 76%);
+}
+
+.sp-contact-form-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Form heading: smaller, no huge white empty feeling */
+.sp-contact-form-head > span {
+  background: linear-gradient(105deg, #38c7ff, #7a4dff, #e72a9a) !important;
+  box-shadow:
+    0 14px 34px rgba(122, 77, 255, 0.22),
+    0 0 28px rgba(56, 199, 255, 0.12) !important;
+}
+
+.sp-contact-form-head h2 {
+  color: #ffffff !important;
+  font-size: clamp(34px, 4.2vw, 64px) !important;
+  line-height: 0.9 !important;
+  margin-top: 16px !important;
+}
+
+.sp-contact-form-head p {
+  width: min(650px, 100%) !important;
+  color: rgba(255, 255, 255, 0.68) !important;
+  margin-top: 16px !important;
+  line-height: 1.62 !important;
+}
+
+/* Form layout: compact and balanced */
+.sp-contact-form {
+  margin-top: 24px !important;
+  gap: 14px !important;
+}
+
+.sp-contact-form label {
+  gap: 7px !important;
+}
+
+.sp-contact-form label > span {
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 12px !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Premium dark input fields */
+.sp-contact-form input,
+.sp-contact-form select,
+.sp-contact-form textarea {
+  min-height: 54px !important;
+  border-radius: 18px !important;
+  padding: 0 16px !important;
+  color: #ffffff !important;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.065)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(14px) saturate(1.18) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.18) !important;
+}
+
+.sp-contact-form textarea {
+  min-height: 132px !important;
+  padding: 15px 16px !important;
+}
+
+.sp-contact-form input::placeholder,
+.sp-contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.44) !important;
+}
+
+.sp-contact-form select {
+  color: rgba(255, 255, 255, 0.88) !important;
+  cursor: pointer !important;
+}
+
+.sp-contact-form select option {
+  color: #111827 !important;
+  background: #ffffff !important;
+}
+
+.sp-contact-form input:focus,
+.sp-contact-form select:focus,
+.sp-contact-form textarea:focus {
+  border-color: rgba(56, 199, 255, 0.54) !important;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
+  box-shadow:
+    0 0 0 5px rgba(56, 199, 255, 0.12),
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 0 34px rgba(122, 77, 255, 0.16) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Submit button matches the dark panel */
+.sp-contact-submit-button {
+  margin-top: 4px !important;
+  min-height: 58px !important;
+  box-shadow:
+    0 22px 54px rgba(122, 77, 255, 0.28),
+    0 0 42px rgba(56, 199, 255, 0.16) !important;
+}
+
+.sp-contact-submit-button:hover:not(:disabled) {
+  transform: translateY(-5px) scale(1.01) !important;
+}
+
+/* Status messages on dark form */
+.sp-contact-status.success {
+  color: #9fffd0 !important;
+  background: rgba(16, 185, 129, 0.14) !important;
+  border: 1px solid rgba(16, 185, 129, 0.22) !important;
+}
+
+.sp-contact-status.error {
+  color: #ff9ac8 !important;
+  background: rgba(231, 42, 154, 0.14) !important;
+  border: 1px solid rgba(231, 42, 154, 0.22) !important;
+}
+
+/* Better tablet/mobile spacing */
+@media (max-width: 1080px) {
+  .sp-contact-main-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sp-contact-form-panel {
+    padding: 26px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .sp-contact-main-section {
+    padding: 64px 0 84px !important;
+  }
+
+  .sp-contact-info-panel,
+  .sp-contact-form-panel {
+    border-radius: 30px !important;
+  }
+
+  .sp-contact-form {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sp-contact-form textarea {
+    min-height: 150px !important;
+  }
+}
