@@ -87,6 +87,9 @@ import companyLogo13 from "../assets/images/about/companies/company13.png";
 import companyLogo14 from "../assets/images/about/companies/company14.png";
 import companyLogo15 from "../assets/images/about/companies/company15.png";
 
+//services-proteacts banner 
+import  aboutServicesProjectsBanner from "../assets/images/about/about-services-projects-banner.png";
+
 //service page
 import servicesHeroThumbnail from "../assets/images/services/services-hero-thumbnail.png";
 import whyChoose01 from "../assets/images/services/why-choose-01.png";
@@ -141,14 +144,6 @@ import galleryFinalCta from "../assets/images/gallery/gallery-final-cta.png";
 
 //contact page 
 import contactHeroBanner from "../assets/images/contact/contact-hero-banner.png";
-
-
-
-
-
-
-
-
 
 export const imageAssets = {
   logo: {
@@ -218,6 +213,7 @@ about: {
   story: aboutStoryImage,
   vision: visionImage,
   mission: missionImage,
+  servicesProjectsBanner: aboutServicesProjectsBanner,
 },
 
 board: {

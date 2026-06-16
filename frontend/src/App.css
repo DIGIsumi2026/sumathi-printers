@@ -13987,9 +13987,7 @@ body::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, rgba(56, 199, 255, 0.28), rgba(122, 77, 255, 0.22), rgba(255, 63, 143, 0.26));
 }
 
-/* =========================================================
-   SECTION 3 - CASE STUDIES
-   ========================================================= */
+/* ===================== case studies ====================================*/
 
 .sp-project-case-section {
   padding: clamp(100px, 8vw, 142px) 0;
@@ -14197,9 +14195,7 @@ body::-webkit-scrollbar-thumb:hover {
   border-color: rgba(122, 77, 255, 0.18);
 }
 
-/* =========================================================
-   SECTION 4 - FACILITY
-   ========================================================= */
+/* ==================== facility ===================================== */
 
 .sp-project-facility-section {
   padding: clamp(100px, 8vw, 142px) 0;
@@ -14324,9 +14320,7 @@ body::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, rgba(56, 199, 255, 0.28), rgba(122, 77, 255, 0.22), rgba(255, 63, 143, 0.26));
 }
 
-/* =========================================================
-   SECTION 5 - FINAL CTA
-   ========================================================= */
+/* ========================= cta ================================*/
 
 .sp-project-final-cta-section {
   padding: clamp(100px, 8vw, 142px) 0;
@@ -14458,10 +14452,6 @@ body::-webkit-scrollbar-thumb:hover {
   border-color: rgba(122, 77, 255, 0.2);
 }
 
-/* =========================================================
-   PROJECTS RESPONSIVE
-   ========================================================= */
-
 @media (max-width: 1120px) {
   .sp-project-gallery-stage {
     min-height: 790px;
@@ -14583,11 +14573,7 @@ body::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* =========================================================
-   FINAL CLEAN NAVIGATION OVERRIDE
-   Fix: old nav block left/right properties were fighting.
-   This block fully resets the nav link pseudo-elements.
-   ========================================================= */
+/* ======================= navigation ==================================*/
 
 .sp-header {
   position: fixed !important;
@@ -14720,7 +14706,6 @@ body::-webkit-scrollbar-thumb:hover {
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
-/* Full reset for old pseudo-element properties */
 .sp-nav-link::before,
 .sp-nav-link::after {
   content: "" !important;
@@ -14732,7 +14717,6 @@ body::-webkit-scrollbar-thumb:hover {
   box-shadow: none !important;
 }
 
-/* Centered hover glow */
 .sp-nav-link::before {
   left: 50% !important;
   right: auto !important;
@@ -14754,7 +14738,6 @@ body::-webkit-scrollbar-thumb:hover {
     transform 0.42s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
-/* Bottom underline: this explicitly resets right:auto to kill the old offset bug */
 .sp-nav-link::after {
   left: 50% !important;
   right: auto !important;
@@ -14987,16 +14970,7 @@ body::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* =========================================================
-   FOOTER SECTION - FINAL CLEAN VERSION
-   Requirements:
-   - No footer watermark
-   - Smaller clear logo
-   - White blurred element behind logo only, no container
-   - Footer covers global bottom blur
-   - Quick-link progress line appears only on hover
-   - Reduced top/bottom padding
-   ========================================================= */
+/* ====================== footer ===================================*/
 
 .sp-footer {
   position: relative;
@@ -15056,7 +15030,6 @@ body::-webkit-scrollbar-thumb:hover {
   min-width: 0;
 }
 
-/* Logo: no card/container, only white blur behind it */
 .sp-footer-logo-card {
   position: relative;
   width: max-content;
@@ -15114,7 +15087,6 @@ body::-webkit-scrollbar-thumb:hover {
   font-weight: 700;
 }
 
-/* Social icons */
 .sp-footer-socials {
   margin-top: 24px;
   display: flex;
@@ -15171,7 +15143,6 @@ body::-webkit-scrollbar-thumb:hover {
   opacity: 1;
 }
 
-/* Headings */
 .sp-footer-column h3,
 .sp-footer-map-column h3 {
   margin: 0 0 22px;
@@ -15182,7 +15153,6 @@ body::-webkit-scrollbar-thumb:hover {
   font-weight: 950;
 }
 
-/* Quick links: progress line only on hover */
 .sp-footer-link-list {
   display: grid;
   gap: 13px;
@@ -15532,7 +15502,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 
-/* ======================Home css fix =================================== */
+/* ====================== Home css fix =================================== */
 
 .sp-hero-process-wrap {
   position: relative !important;
@@ -15789,4 +15759,378 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-about-read-more:hover svg,
 .about-preview-button:hover svg {
   transform: translate(4px, -4px) !important;
+}
+
+/* ================= About us services, projects banner section ============================ */
+
+.sp-about-bridge-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(82px, 7vw, 124px) 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(56, 199, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 90% 28%, rgba(231, 42, 154, 0.15), transparent 36%),
+    linear-gradient(135deg, #ffffff 0%, #f7f4ff 46%, #fff5fb 100%);
+}
+
+.sp-about-bridge-container {
+  position: relative;
+  z-index: 5;
+}
+
+.sp-about-bridge-card {
+  position: relative;
+  min-height: clamp(520px, 52vw, 720px);
+  border-radius: clamp(32px, 4vw, 54px);
+  overflow: hidden;
+  background: #050508;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 40px 110px rgba(15, 23, 42, 0.18),
+    0 0 44px rgba(56, 199, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.sp-about-bridge-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  transform: scale(1.02);
+  filter: saturate(1.06) contrast(1.05) brightness(0.82);
+}
+
+.sp-about-bridge-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.94) 0%,
+      rgba(0, 0, 0, 0.82) 34%,
+      rgba(0, 0, 0, 0.42) 68%,
+      rgba(0, 0, 0, 0.58) 100%
+    ),
+    radial-gradient(circle at 22% 50%, rgba(56, 199, 255, 0.2), transparent 38%),
+    radial-gradient(circle at 82% 20%, rgba(231, 42, 154, 0.18), transparent 36%);
+}
+
+.sp-about-bridge-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.26;
+  mask-image: radial-gradient(circle at 30% 48%, black 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 30% 48%, black 0%, transparent 72%);
+}
+
+.sp-about-bridge-content {
+  position: relative;
+  z-index: 4;
+  width: min(720px, 100%);
+  min-height: inherit;
+  padding: clamp(34px, 5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.sp-about-bridge-pill {
+  width: max-content;
+  max-width: 100%;
+  min-height: 38px;
+  padding: 0 15px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 16px 42px rgba(15, 23, 42, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px) saturate(1.22);
+  -webkit-backdrop-filter: blur(16px) saturate(1.22);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.sp-about-bridge-pill svg {
+  color: #38c7ff;
+}
+
+.sp-about-bridge-content h2 {
+  margin: 22px 0 0;
+  max-width: 650px;
+  color: #ffffff;
+  font-size: clamp(42px, 5.8vw, 86px);
+  line-height: 0.9;
+  letter-spacing: -0.09em;
+  font-weight: 950;
+}
+
+.sp-about-bridge-content p {
+  width: min(620px, 100%);
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.72;
+  font-weight: 700;
+}
+
+.sp-about-bridge-actions {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.sp-about-bridge-button {
+  position: relative;
+  min-height: 58px;
+  padding: 0 20px 0 8px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 950;
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition:
+    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.36s ease,
+    filter 0.36s ease;
+}
+
+.sp-about-bridge-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.28) 42%,
+      transparent 70%
+    );
+  transform: translateX(-130%);
+  transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sp-about-bridge-button:hover {
+  transform: translateY(-5px) scale(1.018);
+  filter: saturate(1.12);
+}
+
+.sp-about-bridge-button:hover::before {
+  transform: translateX(130%);
+}
+
+.sp-about-bridge-button > span {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    0 10px 28px rgba(0, 0, 0, 0.16);
+}
+
+.sp-about-bridge-button-primary {
+  background: linear-gradient(105deg, #e72a9a, #7a4dff, #38c7ff);
+}
+
+.sp-about-bridge-button-secondary {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.075)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+}
+
+.sp-about-bridge-watermark {
+  position: absolute;
+  right: -34px;
+  top: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0, 72, 180, 0.12);
+  font-size: clamp(74px, 8vw, 148px);
+  line-height: 0.82;
+  letter-spacing: -0.09em;
+  font-weight: 950;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sp-about-bridge-orb,
+.sp-about-bridge-ring,
+.sp-about-bridge-shape {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sp-about-bridge-orb {
+  border-radius: 999px;
+  animation: spAboutBridgeOrb 7.4s ease-in-out infinite;
+}
+
+.sp-about-bridge-orb-one {
+  width: 340px;
+  height: 340px;
+  left: -130px;
+  top: 16%;
+  background: radial-gradient(circle, rgba(56, 199, 255, 0.2), transparent 70%);
+}
+
+.sp-about-bridge-orb-two {
+  width: 430px;
+  height: 430px;
+  right: -170px;
+  bottom: 4%;
+  background: radial-gradient(circle, rgba(231, 42, 154, 0.18), transparent 70%);
+  animation-direction: reverse;
+}
+
+.sp-about-bridge-ring {
+  border-radius: 999px;
+  border: 1px solid rgba(122, 77, 255, 0.18);
+  animation: spAboutBridgeRing 7s ease-in-out infinite;
+}
+
+.sp-about-bridge-ring-one {
+  width: 250px;
+  height: 250px;
+  right: 12%;
+  top: 12%;
+}
+
+.sp-about-bridge-shape-one {
+  width: 96px;
+  height: 96px;
+  left: 12%;
+  bottom: 12%;
+  border-radius: 26px;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 199, 255, 0.26),
+    rgba(122, 77, 255, 0.22),
+    rgba(231, 42, 154, 0.24)
+  );
+  animation: spAboutBridgeShape 6s ease-in-out infinite;
+}
+
+@keyframes spAboutBridgeOrb {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translate3d(24px, -26px, 0) scale(1.12);
+    opacity: 0.9;
+  }
+}
+
+@keyframes spAboutBridgeRing {
+  0%,
+  100% {
+    transform: scale(0.86);
+    opacity: 0.32;
+  }
+
+  50% {
+    transform: scale(1.16);
+    opacity: 0.78;
+  }
+}
+
+@keyframes spAboutBridgeShape {
+  0%,
+  100% {
+    transform: translateY(0) rotate(18deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-22px) rotate(-8deg) scale(1.1);
+  }
+}
+
+@media (max-width: 760px) {
+  .sp-about-bridge-section {
+    padding: 72px 0;
+  }
+
+  .sp-about-bridge-card {
+    min-height: 620px;
+    border-radius: 32px;
+  }
+
+  .sp-about-bridge-image {
+    object-position: center;
+  }
+
+  .sp-about-bridge-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.74) 52%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+  }
+
+  .sp-about-bridge-content {
+    padding: 28px;
+    justify-content: flex-end;
+  }
+
+  .sp-about-bridge-content h2 {
+    font-size: clamp(38px, 12vw, 60px);
+  }
+
+  .sp-about-bridge-actions {
+    flex-direction: column;
+  }
+
+  .sp-about-bridge-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sp-about-bridge-watermark {
+    right: -20px;
+    font-size: 64px;
+    opacity: 0.55;
+  }
 }

@@ -5,6 +5,7 @@ import AboutStorySection from "./sections/AboutStorySection";
 import AboutVisionMissionSection from "./sections/AboutVisionMissionSection";
 import AboutBoardSection from "./sections/AboutBoardSection";
 import AboutCompaniesSection from "./sections/AboutCompaniesSection";
+import AboutServicesProjectsSection from "./sections/AboutServicesProjectsSection";
 
 
 type AboutPageProps = {
@@ -19,6 +20,7 @@ export default function AboutPage({ company }: AboutPageProps) {
       <AboutVisionMissionSection/>
       <AboutBoardSection/>
       <AboutCompaniesSection/>
+      <AboutServicesProjectsSection/>
     </main>
   );
 }
