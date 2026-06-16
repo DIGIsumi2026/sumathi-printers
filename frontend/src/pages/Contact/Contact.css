@@ -1,4 +1,4 @@
-/* ======================contact page ===================================*/
+/* ============= caontact page  ========================= */
 
 .sp-contact-page,
 .sp-contact-hero-section,
@@ -9,6 +9,7 @@
   isolation: isolate;
 }
 
+/* watermrk */
 .sp-contact-watermark {
   position: absolute;
   z-index: 1;
@@ -39,6 +40,8 @@
   font-size: clamp(74px, 8vw, 146px);
 }
 
+/* shared pils */
+
 .sp-contact-pill {
   width: max-content;
   max-width: 100%;
@@ -68,7 +71,12 @@
   color: #1559c8;
   background: rgba(255, 255, 255, 0.76);
   border-color: rgba(86, 124, 255, 0.2);
+  box-shadow:
+    0 16px 42px rgba(56, 199, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
+
+/* floating elemets */
 
 .sp-contact-orb,
 .sp-contact-ring,
@@ -131,7 +139,7 @@
   }
 }
 
-/* HERO */
+/* hero */
 
 .sp-contact-hero-section {
   min-height: 78svh;
@@ -263,31 +271,38 @@
   height: 96px;
   right: 20%;
   bottom: 16%;
-  background: linear-gradient(135deg, rgba(56, 199, 255, 0.28), rgba(122, 77, 255, 0.22), rgba(255, 63, 143, 0.26));
+  background: linear-gradient(
+    135deg,
+    rgba(56, 199, 255, 0.28),
+    rgba(122, 77, 255, 0.22),
+    rgba(255, 63, 143, 0.26)
+  );
 }
 
-/* MAIN BLOCK */
+/*inquiry form */
 
 .sp-contact-main-section {
-  padding: clamp(100px, 8vw, 142px) 0;
+  padding: clamp(76px, 6vw, 108px) 0;
   background:
-    radial-gradient(circle at 16% 18%, rgba(56, 199, 255, 0.16), transparent 32%),
-    radial-gradient(circle at 92% 28%, rgba(231, 42, 154, 0.14), transparent 34%),
-    linear-gradient(135deg, #f7f8fd 0%, #f4f2fb 48%, #fff7fb 100%);
+    radial-gradient(circle at 12% 16%, rgba(56, 199, 255, 0.18), transparent 32%),
+    radial-gradient(circle at 92% 18%, rgba(231, 42, 154, 0.16), transparent 34%),
+    linear-gradient(135deg, #f7fbff 0%, #f7f4ff 38%, #fff4fb 100%);
 }
 
 .sp-contact-main-container {
   position: relative;
   z-index: 6;
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: clamp(28px, 5vw, 70px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(22px, 3vw, 42px);
   align-items: stretch;
 }
 
-.sp-contact-info-panel,
-.sp-contact-form-panel {
+/* left panel  */
+
+.sp-contact-info-panel {
   position: relative;
+  padding: clamp(24px, 2.6vw, 36px);
   border-radius: 42px;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.46));
@@ -299,25 +314,18 @@
   -webkit-backdrop-filter: blur(22px) saturate(1.24);
 }
 
-.sp-contact-info-panel {
-  padding: clamp(28px, 3vw, 44px);
-}
-
-.sp-contact-info-panel h2,
-.sp-contact-form-head h2,
-.sp-contact-map-head h2 {
-  margin: 20px 0 0;
+.sp-contact-info-panel h2 {
+  margin: 18px 0 0;
   color: #111827;
-  font-size: clamp(36px, 4.4vw, 68px);
-  line-height: 0.92;
+  font-size: clamp(36px, 4.6vw, 72px);
+  line-height: 0.9;
   letter-spacing: -0.085em;
   font-weight: 950;
 }
 
-.sp-contact-info-panel > p,
-.sp-contact-form-head p,
-.sp-contact-map-head p {
-  margin: 20px 0 0;
+.sp-contact-info-panel > p {
+  max-width: 620px;
+  margin: 18px 0 0;
   color: rgba(17, 24, 39, 0.64);
   font-size: clamp(14px, 1.04vw, 17px);
   line-height: 1.72;
@@ -325,15 +333,15 @@
 }
 
 .sp-contact-info-list {
-  margin-top: 30px;
+  margin-top: 26px;
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .sp-contact-info-item {
-  min-height: 82px;
-  padding: 16px;
-  border-radius: 24px;
+  min-height: 76px;
+  padding: 14px 16px;
+  border-radius: 22px;
   display: grid;
   grid-template-columns: 52px 1fr;
   gap: 14px;
@@ -410,10 +418,44 @@
     0 0 44px rgba(18, 184, 90, 0.24);
 }
 
-/* FORM */
+/* right panel  */
 
 .sp-contact-form-panel {
-  padding: clamp(26px, 3vw, 42px);
+  position: relative;
+  padding: clamp(24px, 2.7vw, 38px);
+  border-radius: 42px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(56, 199, 255, 0.2), transparent 34%),
+    radial-gradient(circle at 92% 10%, rgba(231, 42, 154, 0.2), transparent 34%),
+    linear-gradient(145deg, rgba(5, 8, 22, 0.95), rgba(12, 10, 24, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow:
+    0 34px 90px rgba(5, 8, 22, 0.24),
+    0 0 44px rgba(56, 199, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(24px) saturate(1.26);
+  -webkit-backdrop-filter: blur(24px) saturate(1.26);
+}
+
+.sp-contact-form-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 46px 46px;
+  opacity: 0.32;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 76%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 76%);
+}
+
+.sp-contact-form-panel > * {
+  position: relative;
+  z-index: 2;
 }
 
 .sp-contact-form-head > span {
@@ -425,28 +467,50 @@
   align-items: center;
   color: #ffffff;
   background: linear-gradient(105deg, #38c7ff, #7a4dff, #e72a9a);
+  box-shadow:
+    0 14px 34px rgba(122, 77, 255, 0.22),
+    0 0 28px rgba(56, 199, 255, 0.12);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 950;
 }
 
+.sp-contact-form-head h2 {
+  margin: 16px 0 0;
+  color: #ffffff;
+  font-size: clamp(34px, 4.2vw, 64px);
+  line-height: 0.9;
+  letter-spacing: -0.085em;
+  font-weight: 950;
+}
+
+.sp-contact-form-head p {
+  width: min(650px, 100%);
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(14px, 1.04vw, 17px);
+  line-height: 1.62;
+  font-weight: 650;
+}
+
 .sp-contact-form {
-  margin-top: 28px;
+  margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 14px;
 }
 
 .sp-contact-form label {
   min-width: 0;
   display: grid;
-  gap: 8px;
+  gap: 7px;
 }
 
 .sp-contact-form label > span {
-  color: rgba(17, 24, 39, 0.72);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 12px;
+  letter-spacing: -0.01em;
   font-weight: 950;
 }
 
@@ -455,34 +519,56 @@
 .sp-contact-form textarea {
   width: 100%;
   min-height: 54px;
-  border: 1px solid rgba(15, 23, 42, 0.1);
   border-radius: 18px;
   padding: 0 16px;
-  color: #111827;
-  background: rgba(255, 255, 255, 0.72);
+  color: #ffffff;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.065));
+  border: 1px solid rgba(255, 255, 255, 0.14);
   outline: none;
   box-shadow:
-    0 12px 28px rgba(15, 23, 42, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.76);
+    0 14px 34px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px) saturate(1.18);
+  -webkit-backdrop-filter: blur(14px) saturate(1.18);
   transition:
     border-color 0.3s ease,
+    background 0.3s ease,
     box-shadow 0.3s ease,
     transform 0.3s ease;
 }
 
 .sp-contact-form textarea {
-  min-height: 150px;
-  padding: 16px;
+  min-height: 132px;
+  padding: 15px 16px;
   resize: vertical;
+}
+
+.sp-contact-form input::placeholder,
+.sp-contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.44);
+}
+
+.sp-contact-form select {
+  color: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+}
+
+.sp-contact-form select option {
+  color: #111827;
+  background: #ffffff;
 }
 
 .sp-contact-form input:focus,
 .sp-contact-form select:focus,
 .sp-contact-form textarea:focus {
-  border-color: rgba(122, 77, 255, 0.5);
+  border-color: rgba(56, 199, 255, 0.54);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
   box-shadow:
-    0 0 0 5px rgba(122, 77, 255, 0.12),
-    0 16px 34px rgba(15, 23, 42, 0.08);
+    0 0 0 5px rgba(56, 199, 255, 0.12),
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 0 34px rgba(122, 77, 255, 0.16);
   transform: translateY(-2px);
 }
 
@@ -501,19 +587,20 @@
 }
 
 .sp-contact-status.success {
-  color: #10723d;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.18);
+  color: #9fffd0;
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.22);
 }
 
 .sp-contact-status.error {
-  color: #b3215f;
-  background: rgba(231, 42, 154, 0.12);
-  border: 1px solid rgba(231, 42, 154, 0.18);
+  color: #ff9ac8;
+  background: rgba(231, 42, 154, 0.14);
+  border: 1px solid rgba(231, 42, 154, 0.22);
 }
 
 .sp-contact-submit-button {
   min-height: 58px;
+  margin-top: 4px;
   border: 0;
   border-radius: 999px;
   display: inline-flex;
@@ -523,8 +610,8 @@
   color: #ffffff;
   background: linear-gradient(105deg, #38c7ff, #7a4dff, #e72a9a);
   box-shadow:
-    0 20px 52px rgba(56, 199, 255, 0.2),
-    0 10px 32px rgba(122, 77, 255, 0.22);
+    0 22px 54px rgba(122, 77, 255, 0.28),
+    0 0 42px rgba(56, 199, 255, 0.16);
   font-size: 15px;
   font-weight: 950;
   transition:
@@ -534,7 +621,7 @@
 }
 
 .sp-contact-submit-button:hover:not(:disabled) {
-  transform: translateY(-4px);
+  transform: translateY(-5px) scale(1.01);
   filter: saturate(1.12);
 }
 
@@ -543,14 +630,58 @@
   cursor: not-allowed;
 }
 
-/* MAP */
+/* main section  */
+
+.sp-contact-main-orb-one {
+  width: 390px;
+  height: 390px;
+  left: -150px;
+  top: 10%;
+  background: radial-gradient(circle, rgba(56, 199, 255, 0.2), transparent 70%);
+}
+
+.sp-contact-main-orb-two {
+  width: 460px;
+  height: 460px;
+  right: -180px;
+  bottom: 8%;
+  background: radial-gradient(circle, rgba(231, 42, 154, 0.16), transparent 70%);
+  animation-direction: reverse;
+}
+
+.sp-contact-main-ring-one {
+  width: 250px;
+  height: 250px;
+  right: 13%;
+  top: 16%;
+  border-color: rgba(122, 77, 255, 0.18);
+}
+
+.sp-contact-main-shape-one {
+  width: 108px;
+  height: 108px;
+  left: 12%;
+  bottom: 8%;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 199, 255, 0.24),
+    rgba(122, 77, 255, 0.2),
+    rgba(231, 42, 154, 0.22)
+  );
+}
+
+/* map */
 
 .sp-contact-map-section {
-  padding: clamp(100px, 8vw, 142px) 0;
+  padding: clamp(90px, 8vw, 132px) 0;
   background:
-    radial-gradient(circle at 14% 18%, rgba(56, 199, 255, 0.14), transparent 32%),
-    radial-gradient(circle at 88% 22%, rgba(231, 42, 154, 0.18), transparent 36%),
-    linear-gradient(180deg, #050508 0%, #08050d 100%);
+    radial-gradient(circle at 14% 18%, rgba(56, 199, 255, 0.16), transparent 32%),
+    radial-gradient(circle at 88% 22%, rgba(231, 42, 154, 0.13), transparent 36%),
+    linear-gradient(135deg, #ffffff 0%, #f6f9ff 42%, #fff4fb 100%);
+}
+
+.sp-contact-map-section .sp-contact-watermark-left {
+  -webkit-text-stroke-color: rgba(0, 72, 180, 0.14);
 }
 
 .sp-contact-map-container {
@@ -569,13 +700,21 @@
 }
 
 .sp-contact-map-head h2 {
-  color: #ffffff;
+  margin: 20px 0 0;
+  color: #111827;
+  font-size: clamp(36px, 4.4vw, 68px);
+  line-height: 0.92;
+  letter-spacing: -0.085em;
+  font-weight: 950;
 }
 
 .sp-contact-map-head p {
   width: min(660px, 100%);
-  margin-inline: auto;
-  color: rgba(255, 255, 255, 0.66);
+  margin: 20px auto 0;
+  color: rgba(17, 24, 39, 0.64);
+  font-size: clamp(14px, 1.04vw, 17px);
+  line-height: 1.72;
+  font-weight: 650;
 }
 
 .sp-contact-map-card {
@@ -583,11 +722,12 @@
   min-height: clamp(460px, 48vw, 620px);
   border-radius: clamp(30px, 4vw, 48px);
   overflow: hidden;
-  background: #050505;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.84);
   box-shadow:
-    0 42px 110px rgba(0, 0, 0, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 34px 90px rgba(27, 40, 90, 0.14),
+    0 0 42px rgba(56, 199, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .sp-contact-map-card iframe {
@@ -596,7 +736,11 @@
   width: 100%;
   height: 100%;
   border: 0;
-  filter: grayscale(1) invert(0.92) contrast(0.92) brightness(0.72);
+  filter:
+    grayscale(0.32)
+    contrast(0.98)
+    brightness(1.04)
+    saturate(0.86);
 }
 
 .sp-contact-map-card::after {
@@ -605,8 +749,13 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.22)),
-    radial-gradient(circle at 22% 20%, rgba(56, 199, 255, 0.18), transparent 32%);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.1)
+    ),
+    radial-gradient(circle at 22% 20%, rgba(56, 199, 255, 0.1), transparent 34%),
+    radial-gradient(circle at 86% 80%, rgba(231, 42, 154, 0.08), transparent 36%);
 }
 
 .sp-contact-map-floating-card {
@@ -621,14 +770,20 @@
   grid-template-columns: 52px 1fr 48px;
   gap: 14px;
   align-items: center;
-  color: #ffffff;
-  background: rgba(3, 7, 18, 0.66);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #111827;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.84),
+      rgba(255, 255, 255, 0.62)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.86);
   box-shadow:
-    0 28px 80px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    0 28px 80px rgba(27, 40, 90, 0.16),
+    0 0 36px rgba(56, 199, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px) saturate(1.22);
+  -webkit-backdrop-filter: blur(18px) saturate(1.22);
 }
 
 .sp-contact-map-floating-card > span,
@@ -640,11 +795,14 @@
   place-items: center;
   color: #ffffff;
   background: linear-gradient(135deg, #38c7ff, #7a4dff, #e72a9a);
+  box-shadow:
+    0 14px 34px rgba(122, 77, 255, 0.2),
+    0 0 26px rgba(56, 199, 255, 0.14);
 }
 
 .sp-contact-map-floating-card strong {
   display: block;
-  color: #ffffff;
+  color: #111827;
   font-size: 14px;
   line-height: 1.24;
   font-weight: 950;
@@ -652,7 +810,7 @@
 
 .sp-contact-map-floating-card p {
   margin: 6px 0 0;
-  color: rgba(255, 255, 255, 0.66);
+  color: rgba(17, 24, 39, 0.62);
   font-size: 12.5px;
   font-weight: 750;
 }
@@ -662,7 +820,7 @@
   height: 390px;
   left: -150px;
   top: 12%;
-  background: radial-gradient(circle, rgba(56, 199, 255, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(56, 199, 255, 0.2), transparent 70%);
 }
 
 .sp-contact-map-orb-two {
@@ -670,7 +828,7 @@
   height: 460px;
   right: -170px;
   bottom: 6%;
-  background: radial-gradient(circle, rgba(231, 42, 154, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(231, 42, 154, 0.16), transparent 70%);
   animation-direction: reverse;
 }
 
@@ -679,9 +837,10 @@
   height: 250px;
   right: 13%;
   top: 16%;
+  border-color: rgba(122, 77, 255, 0.18);
 }
 
-/* RESPONSIVE */
+/* responsive */
 
 @media (max-width: 1080px) {
   .sp-contact-main-container {
@@ -691,9 +850,21 @@
   .sp-contact-hero-section {
     min-height: 720px;
   }
+
+  .sp-contact-form-panel {
+    padding: 26px;
+  }
 }
 
 @media (max-width: 720px) {
+  .sp-contact-hero-section {
+    min-height: 650px;
+  }
+
+  .sp-contact-main-section {
+    padding: 64px 0 84px;
+  }
+
   .sp-contact-hero-content h1,
   .sp-contact-info-panel h2,
   .sp-contact-form-head h2,
@@ -701,8 +872,17 @@
     font-size: clamp(40px, 13vw, 64px);
   }
 
+  .sp-contact-info-panel,
+  .sp-contact-form-panel {
+    border-radius: 30px;
+  }
+
   .sp-contact-form {
     grid-template-columns: 1fr;
+  }
+
+  .sp-contact-form textarea {
+    min-height: 150px;
   }
 
   .sp-contact-info-item {
@@ -729,229 +909,5 @@
   .sp-contact-watermark-right {
     font-size: 62px;
     opacity: 0.55;
-  }
-}
-
-.sp-contact-main-section {
-  padding: clamp(76px, 6vw, 108px) 0 !important;
-  background:
-    radial-gradient(circle at 12% 16%, rgba(56, 199, 255, 0.18), transparent 32%),
-    radial-gradient(circle at 92% 18%, rgba(231, 42, 154, 0.16), transparent 34%),
-    linear-gradient(135deg, #f7fbff 0%, #f7f4ff 38%, #fff4fb 100%) !important;
-}
-
-.sp-contact-main-container {
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
-  gap: clamp(22px, 3vw, 42px) !important;
-  align-items: stretch !important;
-}
-
-/* Left contact info: tighter and cleaner */
-.sp-contact-info-panel {
-  padding: clamp(24px, 2.6vw, 36px) !important;
-}
-
-.sp-contact-info-panel h2 {
-  font-size: clamp(36px, 4.6vw, 72px) !important;
-  line-height: 0.9 !important;
-  margin-top: 18px !important;
-}
-
-.sp-contact-info-panel > p {
-  margin-top: 18px !important;
-  max-width: 620px !important;
-}
-
-.sp-contact-info-list {
-  margin-top: 26px !important;
-  gap: 12px !important;
-}
-
-.sp-contact-info-item {
-  min-height: 76px !important;
-  padding: 14px 16px !important;
-  border-radius: 22px !important;
-}
-
-/* Right inquiry panel: dark premium glass */
-.sp-contact-form-panel {
-  padding: clamp(24px, 2.7vw, 38px) !important;
-  border-radius: 42px !important;
-  overflow: hidden !important;
-  background:
-    radial-gradient(circle at 16% 12%, rgba(56, 199, 255, 0.2), transparent 34%),
-    radial-gradient(circle at 92% 10%, rgba(231, 42, 154, 0.2), transparent 34%),
-    linear-gradient(145deg, rgba(5, 8, 22, 0.95), rgba(12, 10, 24, 0.9)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.13) !important;
-  box-shadow:
-    0 34px 90px rgba(5, 8, 22, 0.24),
-    0 0 44px rgba(56, 199, 255, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
-  backdrop-filter: blur(24px) saturate(1.26) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.26) !important;
-}
-
-.sp-contact-form-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 46px 46px;
-  opacity: 0.32;
-  mask-image: radial-gradient(circle at 50% 30%, black, transparent 76%);
-  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 76%);
-}
-
-.sp-contact-form-panel > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Form heading: smaller, no huge white empty feeling */
-.sp-contact-form-head > span {
-  background: linear-gradient(105deg, #38c7ff, #7a4dff, #e72a9a) !important;
-  box-shadow:
-    0 14px 34px rgba(122, 77, 255, 0.22),
-    0 0 28px rgba(56, 199, 255, 0.12) !important;
-}
-
-.sp-contact-form-head h2 {
-  color: #ffffff !important;
-  font-size: clamp(34px, 4.2vw, 64px) !important;
-  line-height: 0.9 !important;
-  margin-top: 16px !important;
-}
-
-.sp-contact-form-head p {
-  width: min(650px, 100%) !important;
-  color: rgba(255, 255, 255, 0.68) !important;
-  margin-top: 16px !important;
-  line-height: 1.62 !important;
-}
-
-/* Form layout: compact and balanced */
-.sp-contact-form {
-  margin-top: 24px !important;
-  gap: 14px !important;
-}
-
-.sp-contact-form label {
-  gap: 7px !important;
-}
-
-.sp-contact-form label > span {
-  color: rgba(255, 255, 255, 0.78) !important;
-  font-size: 12px !important;
-  letter-spacing: -0.01em !important;
-}
-
-/* Premium dark input fields */
-.sp-contact-form input,
-.sp-contact-form select,
-.sp-contact-form textarea {
-  min-height: 54px !important;
-  border-radius: 18px !important;
-  padding: 0 16px !important;
-  color: #ffffff !important;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.065)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(14px) saturate(1.18) !important;
-  -webkit-backdrop-filter: blur(14px) saturate(1.18) !important;
-}
-
-.sp-contact-form textarea {
-  min-height: 132px !important;
-  padding: 15px 16px !important;
-}
-
-.sp-contact-form input::placeholder,
-.sp-contact-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.44) !important;
-}
-
-.sp-contact-form select {
-  color: rgba(255, 255, 255, 0.88) !important;
-  cursor: pointer !important;
-}
-
-.sp-contact-form select option {
-  color: #111827 !important;
-  background: #ffffff !important;
-}
-
-.sp-contact-form input:focus,
-.sp-contact-form select:focus,
-.sp-contact-form textarea:focus {
-  border-color: rgba(56, 199, 255, 0.54) !important;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
-  box-shadow:
-    0 0 0 5px rgba(56, 199, 255, 0.12),
-    0 18px 42px rgba(0, 0, 0, 0.22),
-    0 0 34px rgba(122, 77, 255, 0.16) !important;
-  transform: translateY(-2px) !important;
-}
-
-/* Submit button matches the dark panel */
-.sp-contact-submit-button {
-  margin-top: 4px !important;
-  min-height: 58px !important;
-  box-shadow:
-    0 22px 54px rgba(122, 77, 255, 0.28),
-    0 0 42px rgba(56, 199, 255, 0.16) !important;
-}
-
-.sp-contact-submit-button:hover:not(:disabled) {
-  transform: translateY(-5px) scale(1.01) !important;
-}
-
-/* Status messages on dark form */
-.sp-contact-status.success {
-  color: #9fffd0 !important;
-  background: rgba(16, 185, 129, 0.14) !important;
-  border: 1px solid rgba(16, 185, 129, 0.22) !important;
-}
-
-.sp-contact-status.error {
-  color: #ff9ac8 !important;
-  background: rgba(231, 42, 154, 0.14) !important;
-  border: 1px solid rgba(231, 42, 154, 0.22) !important;
-}
-
-/* Better tablet/mobile spacing */
-@media (max-width: 1080px) {
-  .sp-contact-main-container {
-    grid-template-columns: 1fr !important;
-  }
-
-  .sp-contact-form-panel {
-    padding: 26px !important;
-  }
-}
-
-@media (max-width: 720px) {
-  .sp-contact-main-section {
-    padding: 64px 0 84px !important;
-  }
-
-  .sp-contact-info-panel,
-  .sp-contact-form-panel {
-    border-radius: 30px !important;
-  }
-
-  .sp-contact-form {
-    grid-template-columns: 1fr !important;
-  }
-
-  .sp-contact-form textarea {
-    min-height: 150px !important;
   }
 }
