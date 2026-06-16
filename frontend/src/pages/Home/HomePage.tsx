@@ -30,6 +30,7 @@ export default function HomePage({ company, contactStatus, quoteStatus, onContac
       <HomeProjectsSection />
       <HomeClientsSection />
       <HomeCtaSection/>
+      
     </main>
   );
 }
