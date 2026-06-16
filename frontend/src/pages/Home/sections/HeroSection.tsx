@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ArrowUpRight,MessageCircle  } from "lucide-react";
 import type { CompanyData } from "../../../types/site";
 import { imageAssets } from "../../../data/imageAssets";
 import { AnimatedButton } from "../../../components/common/Buttons";
+import { Link } from "react-router-dom";
 
 type HeroSectionProps = {
   company: CompanyData;
@@ -49,6 +50,12 @@ const heroSlides = [
       "Professional books, magazines, catalogs, brochures, and bound publications with clean pages, strong covers, and dependable finishing."
   }
 ];
+
+const whatsappMessage = encodeURIComponent(
+  "Hello Sumathi Printers, I would like to get a quote for a printing project."
+);
+
+const whatsappLink = `https://wa.me/9477426900?text=${whatsappMessage}`;
 
 export default function HeroSection({ company: _company }: HeroSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -117,14 +124,30 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
           </p>
 
           <div className="sp-hero-actions">
-            <AnimatedButton href="#contact" variant="primary">
-              Request Quote
-            </AnimatedButton>
+            <Link
+              to="/contact"
+              className="sp-hero-action-button sp-hero-action-primary"
+              data-cursor-label="Quote"
+            >
+          <span>
+            <ArrowUpRight size={18} />
+          </span>
+            Request Quote
+          </Link>
 
-            <AnimatedButton href="#contact" variant="secondary">
-              Get In Touch
-            </AnimatedButton>
-          </div>
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noreferrer"
+          className="sp-hero-action-button sp-hero-action-secondary"
+          data-cursor-label="WhatsApp"
+        >
+          <span>
+            <MessageCircle size={18} />
+          </span>
+            Get In Touch
+          </a>
+      </div>
 
           <ul className="sp-hero-points">
             <li>

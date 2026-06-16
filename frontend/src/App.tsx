@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import companyJson from "./data/company.json";
+import ScrollManager from "./components/layout/ScrollManager";
 
 import Preloader from "./components/layout/Preloader";
 import FloatingActions from "./components/common/FloatingActions";
@@ -64,6 +65,7 @@ export default function App() {
   return (
     <>
       <Preloader visible={loading} />
+      <ScrollManager loading={loading} />
 
       <div className={`sp-site-content ${loading ? "is-blurred" : ""}`}>
         <CustomCursor />

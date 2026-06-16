@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
+import { Link } from "react-router-dom";
 
 const CAPTION_REVEAL_AT_SECONDS = 1.2;
 const LOGO_REPLAY_DELAY = 420;
@@ -190,10 +191,10 @@ export default function AboutVideoSection() {
               varnish, foil and embossed soft covers.
             </p>
 
-            <a href="#about-details" className="sp-about-video-readmore">
+            <Link to="/about" className="sp-about-preview-button">
               <span>Read More</span>
               <ArrowUpRight size={18} />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

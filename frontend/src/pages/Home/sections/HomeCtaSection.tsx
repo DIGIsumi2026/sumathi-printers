@@ -1,6 +1,7 @@
 import { ArrowUpRight, MessageCircle, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { imageAssets } from "../../../data/imageAssets";
+import {Link} from  "react-router-dom";
 
 export default function HomeCtaSection() {
   return (
@@ -56,7 +57,7 @@ export default function HomeCtaSection() {
 
             <div className="sp-home-cta-actions">
               <a
-                href="#contact"
+                href="/contact"
                 className="sp-home-cta-button sp-home-cta-button-primary"
                 data-cursor-label="Quote"
               >

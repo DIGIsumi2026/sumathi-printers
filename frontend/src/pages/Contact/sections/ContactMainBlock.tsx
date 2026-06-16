@@ -42,11 +42,6 @@ const contactItems = [
     value: "(+94) 77 42 6900"
   },
   {
-    icon: Globe,
-    label: "Website",
-    value: "www.sumathiprinters.com"
-  },
-  {
     icon: Clock,
     label: "Business Hours",
     value: (
