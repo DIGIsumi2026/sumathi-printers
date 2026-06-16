@@ -397,14 +397,14 @@ body {
 }
 
 .sp-nav-shell {
-  grid-template-columns: 112px auto 178px 52px !important;
+  grid-template-columns: 112px auto 156px 52px !important;
   min-height: 76px !important;
   padding-left: 18px !important;
   column-gap: 18px !important;
 }
 
 .sp-header.is-sticky .sp-nav-shell {
-  grid-template-columns: 108px auto 178px 52px !important;
+  grid-template-columns: 108px auto 156px 52px !important;
   column-gap: 30px !important;
 }
 
@@ -14628,14 +14628,14 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .sp-nav-shell {
-  width: min(840px, calc(100vw - 56px)) !important;
+  width: min(822px, calc(100vw - 56px)) !important;
   min-height: 76px !important;
   order: 1 !important;
-  margin-inline: 0 !important;
+  margin-inline: 24px 0 !important;
   padding: 7px 9px 7px 18px !important;
   border-radius: 999px !important;
   display: grid !important;
-  grid-template-columns: 112px auto 178px 52px !important;
+  grid-template-columns: 112px auto 156px 52px !important;
   align-items: center !important;
   column-gap: 18px !important;
   overflow: visible !important;
@@ -14661,12 +14661,12 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .sp-header.is-sticky .sp-nav-shell {
-  width: min(828px, calc(100vw - 56px)) !important;
+  width: min(824px, calc(100vw - 56px)) !important;
   min-height: 70px !important;
   margin-inline: auto !important;
   padding: 7px 10px 7px 16px !important;
-  grid-template-columns: 108px auto 178px 52px !important;
-  column-gap: 30px !important;
+  grid-template-columns: 108px auto 156px 52px !important;
+  column-gap: 36px !important;
   background: rgba(255, 255, 255, 0.9) !important;
   box-shadow:
     0 18px 58px rgba(15, 23, 42, 0.18),
@@ -14684,6 +14684,7 @@ body::-webkit-scrollbar-thumb:hover {
   justify-content: flex-end !important;
   gap: 14px !important;
   overflow: visible !important;
+  pointer-events: auto !important;
   opacity: 1 !important;
   transform: translateX(0) scale(1) !important;
   transform-origin: left center !important;
@@ -14764,6 +14765,19 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-nav-social-link:hover::before {
   opacity: 0.72 !important;
   transform: scale(1) !important;
+  animation: spNavSocialOrbFlow 1.8s ease-in-out infinite alternate !important;
+}
+
+@keyframes spNavSocialOrbFlow {
+  0% {
+    filter: blur(18px) saturate(1.38);
+    transform: scale(0.82) rotate(0deg);
+  }
+
+  100% {
+    filter: blur(22px) saturate(1.55);
+    transform: scale(1.1) rotate(18deg);
+  }
 }
 
 .sp-header.is-sticky .sp-nav-socials {
@@ -15038,6 +15052,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .sp-mobile-toggle {
+  position: relative !important;
+  isolation: isolate !important;
   justify-self: end !important;
   width: 58px !important;
   height: 58px !important;
@@ -15049,7 +15065,10 @@ body::-webkit-scrollbar-thumb:hover {
   place-items: center !important;
   color: #111827 !important;
   background: rgba(15, 23, 42, 0.06) !important;
-  box-shadow: none !important;
+  overflow: hidden !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 8px 18px rgba(15, 23, 42, 0.08) !important;
   transition:
     transform 0.28s ease,
     color 0.3s ease,
@@ -15057,14 +15076,40 @@ body::-webkit-scrollbar-thumb:hover {
     background 0.3s ease !important;
 }
 
-/* Colorful blue→pink glow replaces the old solid-black hover */
+.sp-mobile-toggle::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -2px !important;
+  z-index: -1 !important;
+  border-radius: inherit !important;
+  background:
+    radial-gradient(circle at 30% 28%, rgba(56, 199, 255, 0.92), transparent 34%),
+    radial-gradient(circle at 72% 65%, rgba(231, 42, 154, 0.82), transparent 38%),
+    linear-gradient(135deg, rgba(122, 77, 255, 0.72), rgba(255, 255, 255, 0.02)) !important;
+  opacity: 0 !important;
+  transform: scale(0.55) rotate(-18deg) !important;
+  transition:
+    opacity 0.32s ease,
+    transform 0.46s cubic-bezier(0.2, 0.86, 0.2, 1) !important;
+}
+
+.sp-mobile-toggle svg {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
 .sp-mobile-toggle:hover {
-  background: rgba(15, 23, 42, 0.06) !important;
-  color: #38c7ff !important;
-  transform: translateY(-2px) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: #111827 !important;
+  transform: translateY(-3px) scale(1.04) !important;
   filter:
-    drop-shadow(0 0 5px rgba(56, 199, 255, 0.95))
-    drop-shadow(0 0 12px rgba(231, 42, 154, 0.72)) !important;
+    drop-shadow(0 0 10px rgba(56, 199, 255, 0.42))
+    drop-shadow(0 0 18px rgba(231, 42, 154, 0.28)) !important;
+}
+
+.sp-mobile-toggle:hover::before {
+  opacity: 1 !important;
+  transform: scale(1) rotate(0deg) !important;
 }
 
 .sp-mobile-menu-logo {
@@ -15078,8 +15123,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 @media (max-width: 1120px) {
   .sp-nav-shell {
-    width: min(760px, calc(100vw - 260px)) !important;
-    grid-template-columns: 100px auto 164px 52px !important;
+    width: min(738px, calc(100vw - 260px)) !important;
+    grid-template-columns: 100px auto 146px 52px !important;
     column-gap: 14px !important;
   }
 
@@ -15104,6 +15149,10 @@ body::-webkit-scrollbar-thumb:hover {
 
   .sp-nav-container {
     gap: 0 !important;
+  }
+
+  .sp-header.is-sticky .sp-nav-shell {
+    column-gap: 30px !important;
   }
 
   .sp-header.is-sticky .sp-nav-socials {
@@ -16369,8 +16418,8 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-nav-quote-final {
   position: relative !important;
   isolation: isolate !important;
-  width: 178px !important;
-  min-width: 178px !important;
+  width: 156px !important;
+  min-width: 156px !important;
   height: 58px !important;
   min-height: 58px !important;
   padding: 0 !important;
@@ -16382,7 +16431,14 @@ body::-webkit-scrollbar-thumb:hover {
   overflow: visible !important;
   text-decoration: none !important;
   color: #111827 !important;
-  background: transparent !important;
+  margin-left: 6px !important;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(56, 199, 255, 0.42) 0%,
+      rgba(122, 77, 255, 0.34) 46%,
+      rgba(231, 42, 154, 0.38) 100%
+    ) !important;
   cursor: pointer !important;
   transform: translateZ(0) !important;
   transition:
@@ -16471,7 +16527,7 @@ body::-webkit-scrollbar-thumb:hover {
   position: relative !important;
   z-index: 5 !important;
   color: #111827 !important;
-  font-size: 15px !important;
+  font-size: 14.5px !important;
   font-weight: 950 !important;
   line-height: 1 !important;
   letter-spacing: 0 !important;
@@ -16480,9 +16536,14 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-nav-quote-final:hover {
   transform: translateY(-2px) scale(1.012) !important;
+  background: linear-gradient(100deg, #38c7ff 0%, #7a4dff 46%, #e72a9a 100%) !important;
   filter:
     drop-shadow(0 0 7px rgba(56, 199, 255, 0.5))
     drop-shadow(0 0 16px rgba(231, 42, 154, 0.35)) !important;
+}
+
+.sp-header.is-sticky .sp-nav-quote-final {
+  margin-left: 14px !important;
 }
 
 /* SVG runners silenced – CSS pseudo-element chasing streak handles the effect */
