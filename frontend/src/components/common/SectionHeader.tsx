@@ -33,7 +33,7 @@ export default function SectionHeader({ badgeLeft, badgeRight, title, text, butt
       {(text || buttonLabel) ? (
         <Reveal className="head-side" direction="right">
           {text ? <p>{text}</p> : null}
-          {buttonLabel && buttonHref ? <ButtonLink label={buttonLabel} href={buttonHref} /> : null}
+          {buttonLabel && buttonHref ? <ButtonLink href={buttonHref}>{buttonLabel}</ButtonLink> : null}
         </Reveal>
       ) : null}
     </div>

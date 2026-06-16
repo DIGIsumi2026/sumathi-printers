@@ -12,7 +12,7 @@ type ImageHoverCardProps = {
 export default function ImageHoverCard({ src, alt, caption, className = '', children }: ImageHoverCardProps) {
   return (
     <motion.div className={`image-hover ${className}`} whileHover={{ y: -6 }} transition={{ type: 'spring', stiffness: 220, damping: 18 }}>
-      <img src={src} alt={alt} />
+      <img src={src} alt={alt} loading="lazy" decoding="async" />
       {children}
       <div className="hover-caption">{caption}</div>
     </motion.div>

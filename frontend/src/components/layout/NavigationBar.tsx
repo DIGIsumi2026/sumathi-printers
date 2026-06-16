@@ -80,6 +80,9 @@ export default function NavigationBar({ company }: NavigationBarProps) {
               src={imageAssets.logo.main}
               alt={company?.brand || "Sumathi Printers"}
               className="sp-brand-logo"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </Link>
 
@@ -183,6 +186,8 @@ export default function NavigationBar({ company }: NavigationBarProps) {
               src={imageAssets.logo.main}
               alt={company?.brand || "Sumathi Printers"}
               className="sp-mobile-menu-logo"
+              loading="eager"
+              decoding="async"
             />
 
             <button

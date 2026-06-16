@@ -125,6 +125,8 @@ export default function AboutVideoSection() {
             alt=""
             aria-hidden="true"
             draggable={false}
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="sp-about-video-cursor-zone" data-cursor-label="Play" />

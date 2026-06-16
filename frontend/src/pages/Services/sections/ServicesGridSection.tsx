@@ -247,6 +247,7 @@ export default function ServicesGridSection() {
                           className="sp-service-card-image sp-service-card-image-color"
                           draggable={false}
                           loading="lazy"
+                          decoding="async"
                         />
 
                         <img
@@ -256,6 +257,7 @@ export default function ServicesGridSection() {
                           className="sp-service-card-image sp-service-card-image-mono"
                           draggable={false}
                           loading="lazy"
+                          decoding="async"
                         />
 
                         <div className="sp-service-card-overlay" />

@@ -49,6 +49,9 @@ export default function ServicesHeroSection() {
             videoEnded ? "is-visible" : ""
           }`}
           draggable={false}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
       </div>
 

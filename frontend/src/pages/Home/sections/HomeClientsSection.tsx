@@ -264,6 +264,8 @@ export default function HomeClientsSection() {
                   alt={client.name}
                   className="sp-client-logo-img"
                   draggable={false}
+                  loading="lazy"
+                  decoding="async"
                 />
 
                 <span>{client.name}</span>

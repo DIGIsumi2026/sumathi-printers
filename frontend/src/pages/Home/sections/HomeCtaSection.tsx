@@ -24,6 +24,8 @@ export default function HomeCtaSection() {
             alt="Professional book binding and print finishing at Sumathi Printers"
             className="sp-home-cta-image"
             draggable={false}
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="sp-home-cta-overlay" />

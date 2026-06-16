@@ -26,6 +26,8 @@ export default function AboutServicesProjectsSection() {
             alt="Sumathi Printers services and projects"
             className="sp-about-bridge-image"
             draggable={false}
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="sp-about-bridge-overlay" />

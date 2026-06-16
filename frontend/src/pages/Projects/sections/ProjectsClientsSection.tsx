@@ -27,6 +27,8 @@ export default function ProjectsClientsSection() {
         alt="Trusted clients background"
         className="sp-projects-clients-bg"
         draggable={false}
+        loading="lazy"
+        decoding="async"
       />
 
       <div className="sp-projects-clients-overlay" />

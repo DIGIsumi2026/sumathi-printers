@@ -1,7 +1,8 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, lazy, Suspense, useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import companyJson from "./data/company.json";
 import ScrollManager from "./components/layout/ScrollManager";
+import SmoothScroll from "./components/layout/SmoothScroll";
 
 import Preloader from "./components/layout/Preloader";
 import FloatingActions from "./components/common/FloatingActions";
@@ -9,17 +10,17 @@ import NavigationBar from "./components/layout/NavigationBar";
 import Footer from "./components/layout/Footer";
 import CustomCursor from "./components/layout/CustomCursor";
 
-import HomePage from "./pages/Home/HomePage";
-import AboutPage from "./pages/About/AboutPage";
-import ServicesPage from "./pages/Services/ServicesPage";
-import ProjectsPage from "./pages/Projects/ProjectsPage";
-import GalleryPage from "./pages/Gallery/GalleryPage";
-import ContactPage from "./pages/Contact/ContactPage";
-
 import { formToPayload, postForm } from "./lib/api";
 import type { CompanyData, FormStatus } from "./types/site";
 
 import "./App.css";
+
+const HomePage = lazy(() => import("./pages/Home/HomePage"));
+const AboutPage = lazy(() => import("./pages/About/AboutPage"));
+const ServicesPage = lazy(() => import("./pages/Services/ServicesPage"));
+const ProjectsPage = lazy(() => import("./pages/Projects/ProjectsPage"));
+const GalleryPage = lazy(() => import("./pages/Gallery/GalleryPage"));
+const ContactPage = lazy(() => import("./pages/Contact/ContactPage"));
 
 const company = companyJson as CompanyData;
 
@@ -68,55 +69,61 @@ export default function App() {
       <ScrollManager loading={loading} />
 
       <div className={`sp-site-content ${loading ? "is-blurred" : ""}`}>
+        <SmoothScroll />
         <CustomCursor />
 
         <NavigationBar company={company} />
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                company={company}
-                contactStatus={contactStatus}
-                quoteStatus={quoteStatus}
-                onContactSubmit={(event: FormEvent<HTMLFormElement>) =>
-                  submitForm(event, "/contact", setContactStatus)
-                }
-                onQuoteSubmit={(event: FormEvent<HTMLFormElement>) =>
-                  submitForm(event, "/quote", setQuoteStatus)
-                }
-              />
-            }
-          />
+        <Suspense fallback={null}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  company={company}
+                  contactStatus={contactStatus}
+                  quoteStatus={quoteStatus}
+                  onContactSubmit={(event: FormEvent<HTMLFormElement>) =>
+                    submitForm(event, "/contact", setContactStatus)
+                  }
+                  onQuoteSubmit={(event: FormEvent<HTMLFormElement>) =>
+                    submitForm(event, "/quote", setQuoteStatus)
+                  }
+                />
+              }
+            />
 
-          <Route path="/about" element={<AboutPage company={company} />} />
+            <Route path="/about" element={<AboutPage company={company} />} />
 
-          <Route
-            path="/services"
-            element={<ServicesPage company={company} />}
-          />
+            <Route
+              path="/services"
+              element={<ServicesPage company={company} />}
+            />
 
-          <Route
-            path="/projects"
-            element={<ProjectsPage company={company} />}
-          />
+            <Route
+              path="/projects"
+              element={<ProjectsPage company={company} />}
+            />
 
-          <Route path="/gallery" element={<GalleryPage company={company} />} />
+            <Route
+              path="/gallery"
+              element={<GalleryPage company={company} />}
+            />
 
-          <Route
-            path="/contact"
-            element={
-              <ContactPage
-                company={company}
-                contactStatus={contactStatus}
-                onSubmit={(event: FormEvent<HTMLFormElement>) =>
-                  submitForm(event, "/contact", setContactStatus)
-                }
-              />
-            }
-          />
-        </Routes>
+            <Route
+              path="/contact"
+              element={
+                <ContactPage
+                  company={company}
+                  contactStatus={contactStatus}
+                  onSubmit={(event: FormEvent<HTMLFormElement>) =>
+                    submitForm(event, "/contact", setContactStatus)
+                  }
+                />
+              }
+            />
+          </Routes>
+        </Suspense>
 
         <Footer
           company={company}

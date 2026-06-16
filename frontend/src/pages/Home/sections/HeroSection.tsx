@@ -91,6 +91,9 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
             className={`sp-hero-bg-image ${
               index === activeIndex ? "is-active" : ""
             }`}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+            fetchPriority={index === 0 ? "high" : "auto"}
           />
         ))}
       </div>

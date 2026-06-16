@@ -102,7 +102,13 @@ export default function AboutBoardSection() {
                 }}
               >
                 <div className="sp-about-board-image-wrap">
-                  <img src={member.image} alt={member.name} draggable={false} />
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    draggable={false}
+                    loading="lazy"
+                    decoding="async"
+                  />
 
                   <div className="sp-about-board-image-overlay" />
 

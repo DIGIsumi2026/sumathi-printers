@@ -302,6 +302,8 @@ export default function AboutCompaniesSection() {
                   alt={company.name}
                   className="sp-client-logo-img sp-about-company-logo-img"
                   draggable={false}
+                  loading="lazy"
+                  decoding="async"
                 />
               </article>
             ))}

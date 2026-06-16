@@ -21,6 +21,9 @@ export default function ContactHeroSection() {
         alt="Sumathi Printers contact reception"
         className="sp-contact-hero-image"
         draggable={false}
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
       />
 
       <div className="sp-contact-hero-overlay" />

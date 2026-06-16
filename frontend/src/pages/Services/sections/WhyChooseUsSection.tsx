@@ -242,6 +242,8 @@ function WhyChooseLayerCard({
             className="sp-why-image"
             onLoad={extractColors}
             draggable={false}
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="sp-why-image-overlay" />

@@ -69,7 +69,13 @@ export default function GalleryGridSection() {
                 }
                 onClick={() => setActiveLightboxIndex(index)}
               >
-                <img src={item.image} alt={item.title} draggable={false} />
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  draggable={false}
+                  loading="lazy"
+                  decoding="async"
+                />
 
                 <span className="sp-gallery-card-shine" />
 

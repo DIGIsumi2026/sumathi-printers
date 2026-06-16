@@ -34,6 +34,8 @@ export default function ServicesCtaSection() {
             alt="Premium print finishing and printing services"
             className="sp-services-cta-image"
             draggable={false}
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="sp-services-cta-overlay" />

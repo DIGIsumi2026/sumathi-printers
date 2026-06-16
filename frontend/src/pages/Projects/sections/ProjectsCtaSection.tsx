@@ -32,6 +32,8 @@ export default function ProjectsCtaSection() {
             alt="Ready to start your next printing project"
             className="sp-projects-cta-image"
             draggable={false}
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="sp-projects-cta-overlay" />

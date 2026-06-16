@@ -81,6 +81,9 @@ export default function AboutIntroVideoSection() {
               src={imageAssets.about.thumbnail}
               alt="Sumathi Printers Sri Lankan staff working inside the printing facility"
               draggable={false}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
 
             <div className="sp-about-hero-thumb-overlay" />

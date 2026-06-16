@@ -40,6 +40,8 @@ export default function AboutVisionMissionSection() {
                   src={imageAssets.about.vision}
                   alt="Sumathi Printers vision"
                   draggable={false}
+                  loading="lazy"
+                  decoding="async"
                 />
 
                 <div className="sp-about-vm-image-overlay" />
@@ -203,6 +205,8 @@ export default function AboutVisionMissionSection() {
                   src={imageAssets.about.mission}
                   alt="Sumathi Printers mission"
                   draggable={false}
+                  loading="lazy"
+                  decoding="async"
                 />
 
                 <div className="sp-about-vm-image-overlay" />

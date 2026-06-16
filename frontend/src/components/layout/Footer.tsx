@@ -61,6 +61,8 @@ export default function Footer({
                 alt={company?.brand || "Sumathi Printers"}
                 className="sp-footer-logo"
                 draggable={false}
+                loading="lazy"
+                decoding="async"
               />
             </Link>
 

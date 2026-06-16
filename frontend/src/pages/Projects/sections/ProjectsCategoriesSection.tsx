@@ -75,7 +75,13 @@ export default function ProjectsCategoriesSection() {
                 ease: [0.22, 1, 0.36, 1]
               }}
             >
-              <img src={category.image} alt={category.title} draggable={false} />
+              <img
+                src={category.image}
+                alt={category.title}
+                draggable={false}
+                loading="lazy"
+                decoding="async"
+              />
 
               <div className="sp-projects-category-overlay" />
               <div className="sp-projects-category-bottom-fade" />

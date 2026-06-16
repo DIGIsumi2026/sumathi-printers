@@ -74,6 +74,8 @@ export default function AboutStorySection() {
               src={imageAssets.about.story}
               alt="Sumathi Printers Sri Lankan printing team"
               draggable={false}
+              loading="lazy"
+              decoding="async"
             />
 
             <div className="sp-about-story-image-overlay" />

@@ -186,6 +186,8 @@ export default function HomeProjectsSection() {
                     src={activeProject.image}
                     alt={activeProject.title}
                     draggable={false}
+                    loading="lazy"
+                    decoding="async"
                   />
 
                   <div className="sp-project-main-overlay" />
@@ -250,7 +252,13 @@ export default function HomeProjectsSection() {
                   }`}
                   onClick={() => goToProject(project.index)}
                 >
-                  <img src={project.image} alt={project.title} draggable={false} />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    draggable={false}
+                    loading="lazy"
+                    decoding="async"
+                  />
 
                   <span>
                     <small>{String(project.index + 1).padStart(2, "0")}</small>

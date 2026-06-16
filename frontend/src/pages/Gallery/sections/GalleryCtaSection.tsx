@@ -19,6 +19,8 @@ export default function GalleryCtaSection() {
             src={imageAssets.gallery.finalCta}
             alt="Inspired by our work"
             draggable={false}
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="sp-gallery-cta-overlay" />

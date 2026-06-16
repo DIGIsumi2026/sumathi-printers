@@ -265,6 +265,7 @@ export default function FinishingServicesSection() {
                     alt={service.title}
                     draggable={false}
                     loading="lazy"
+                    decoding="async"
                   />
 
                   <div className="sp-finishing-card-shade" />

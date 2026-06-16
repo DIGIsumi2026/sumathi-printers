@@ -172,6 +172,8 @@ export default function GalleryLightbox({
           <img
             src={activeItem.image}
             alt={activeItem.title}
+            loading="lazy"
+            decoding="async"
             style={
               {
                 "--gallery-zoom": zoom,
