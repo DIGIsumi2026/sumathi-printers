@@ -2,6 +2,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { imageAssets } from "../../data/imageAssets";
+import { socialLinks } from "../../data/socialLinks";
 import type { CompanyData } from "../../types/site";
 
 type NavigationBarProps = {
@@ -54,6 +55,25 @@ export default function NavigationBar({ company }: NavigationBarProps) {
   return (
     <header className={`sp-header ${isSticky ? "is-sticky" : ""}`}>
       <div className="container sp-nav-container">
+        <div className="sp-nav-socials" aria-label="Social links">
+          {socialLinks.map((social) => {
+            const Icon = social.icon;
+
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                aria-label={social.label}
+                className="sp-nav-social-link"
+                target={social.href === "#" ? undefined : "_blank"}
+                rel={social.href === "#" ? undefined : "noreferrer"}
+              >
+                <Icon width={22} height={22} />
+              </a>
+            );
+          })}
+        </div>
+
         <div className="sp-nav-shell">
           <Link to="/" className="sp-brand" onClick={closeMenu}>
             <img
@@ -79,73 +99,73 @@ export default function NavigationBar({ company }: NavigationBarProps) {
           </nav>
 
           <Link
-  to="/contact"
-  className="sp-nav-quote-final"
-  onClick={closeMenu}
-  data-cursor-label="Quote"
->
-  <span className="sp-nav-quote-final-bg" aria-hidden="true" />
+            to="/contact"
+            className="sp-nav-quote-final"
+            onClick={closeMenu}
+            data-cursor-label="Quote"
+          >
+            <span className="sp-nav-quote-final-bg" aria-hidden="true" />
 
-  <svg
-    className="sp-nav-quote-final-svg"
-    viewBox="0 0 178 58"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-  >
-    <defs>
-      <linearGradient
-        id="spNavQuoteFinalGradient"
-        x1="0%"
-        y1="0%"
-        x2="100%"
-        y2="0%"
-      >
-        <stop offset="0%" stopColor="#38c7ff" />
-        <stop offset="25%" stopColor="#4e8dff" />
-        <stop offset="48%" stopColor="#7a4dff" />
-        <stop offset="68%" stopColor="#e72a9a" />
-        <stop offset="84%" stopColor="#ff7a3d" />
-        <stop offset="100%" stopColor="#39d98a" />
-      </linearGradient>
-    </defs>
+            <svg
+              className="sp-nav-quote-final-svg"
+              viewBox="0 0 178 58"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient
+                  id="spNavQuoteFinalGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%"
+                >
+                  <stop offset="0%" stopColor="#38c7ff" />
+                  <stop offset="25%" stopColor="#4e8dff" />
+                  <stop offset="48%" stopColor="#7a4dff" />
+                  <stop offset="68%" stopColor="#e72a9a" />
+                  <stop offset="84%" stopColor="#ff7a3d" />
+                  <stop offset="100%" stopColor="#39d98a" />
+                </linearGradient>
+              </defs>
 
-    <rect
-      className="sp-nav-quote-final-track"
-      x="3"
-      y="3"
-      width="172"
-      height="52"
-      rx="26"
-      ry="26"
-      pathLength="100"
-    />
+              <rect
+                className="sp-nav-quote-final-track"
+                x="3"
+                y="3"
+                width="172"
+                height="52"
+                rx="26"
+                ry="26"
+                pathLength="100"
+              />
 
-    <rect
-      className="sp-nav-quote-final-runner-glow"
-      x="3"
-      y="3"
-      width="172"
-      height="52"
-      rx="26"
-      ry="26"
-      pathLength="100"
-    />
+              <rect
+                className="sp-nav-quote-final-runner-glow"
+                x="3"
+                y="3"
+                width="172"
+                height="52"
+                rx="26"
+                ry="26"
+                pathLength="100"
+              />
 
-    <rect
-      className="sp-nav-quote-final-runner"
-      x="3"
-      y="3"
-      width="172"
-      height="52"
-      rx="26"
-      ry="26"
-      pathLength="100"
-    />
-  </svg>
+              <rect
+                className="sp-nav-quote-final-runner"
+                x="3"
+                y="3"
+                width="172"
+                height="52"
+                rx="26"
+                ry="26"
+                pathLength="100"
+              />
+            </svg>
 
-  <span className="sp-nav-quote-final-shine" aria-hidden="true" />
-  <span className="sp-nav-quote-final-text">Get a Quote</span>
-</Link>
+            <span className="sp-nav-quote-final-shine" aria-hidden="true" />
+            <span className="sp-nav-quote-final-text">Get a Quote</span>
+          </Link>
           <button
             type="button"
             className="sp-mobile-toggle"
