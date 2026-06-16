@@ -14614,9 +14614,9 @@ body::-webkit-scrollbar-thumb:hover {
   padding: 7px 10px 7px 24px !important;
   border-radius: 999px !important;
   display: grid !important;
-  grid-template-columns: 120px minmax(0, 1fr) auto auto !important;
+  grid-template-columns: 140px minmax(0, 1fr) auto auto !important;
   align-items: center !important;
-  column-gap: clamp(16px, 1.8vw, 24px) !important;
+  column-gap: clamp(6px, 0.7vw, 10px) !important;
   overflow: visible !important;
   position: relative !important;
   isolation: isolate !important;
@@ -14639,9 +14639,9 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .sp-brand {
-  width: 120px !important;
-  min-width: 120px !important;
-  height: 58px !important;
+  width: 140px !important;
+  min-width: 140px !important;
+  height: 66px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: flex-start !important;
@@ -14654,17 +14654,17 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .sp-brand-logo {
-  width: 98px !important;
+  width: 132px !important;
   max-width: none !important;
   height: auto !important;
-  max-height: 42px !important;
+  max-height: 56px !important;
   object-fit: contain !important;
-  transform: scale(1.08) !important;
+  transform: scale(1) !important;
   transform-origin: left center !important;
 }
 
 .sp-nav-links {
-  justify-self: center !important;
+  justify-self: start !important;   /* left-align nav links – closes logo→Home gap */
   width: auto !important;
   min-width: 0 !important;
   height: 58px !important;
@@ -14877,6 +14877,21 @@ body::-webkit-scrollbar-thumb:hover {
   color: #111827 !important;
   background: rgba(15, 23, 42, 0.06) !important;
   box-shadow: none !important;
+  transition:
+    transform 0.28s ease,
+    color 0.3s ease,
+    filter 0.38s ease,
+    background 0.3s ease !important;
+}
+
+/* Colorful blue→pink glow replaces the old solid-black hover */
+.sp-mobile-toggle:hover {
+  background: rgba(15, 23, 42, 0.06) !important;
+  color: #38c7ff !important;
+  transform: translateY(-2px) !important;
+  filter:
+    drop-shadow(0 0 5px rgba(56, 199, 255, 0.95))
+    drop-shadow(0 0 12px rgba(231, 42, 154, 0.72)) !important;
 }
 
 .sp-mobile-menu-logo {
@@ -16199,7 +16214,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-nav-quote-final-track {
   fill: none !important;
-  stroke: rgba(56, 110, 180, 0.22) !important;
+  stroke: transparent !important;           /* static border removed */
   stroke-width: 1.8 !important;
 }
 
@@ -16257,28 +16272,27 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-nav-quote-final:hover {
   transform: translateY(-2px) scale(1.012) !important;
-  filter: saturate(1.12) !important;
+  filter:
+    drop-shadow(0 0 7px rgba(56, 199, 255, 0.5))
+    drop-shadow(0 0 16px rgba(231, 42, 154, 0.35)) !important;
 }
 
+/* SVG runners silenced – CSS pseudo-element chasing streak handles the effect */
 .sp-nav-quote-final:hover .sp-nav-quote-final-runner,
 .sp-nav-quote-final:hover .sp-nav-quote-final-runner-glow {
-  opacity: 1 !important;
-  animation: spNavQuoteFinalEdgeMove 1.05s linear infinite !important;
-}
-
-.sp-nav-quote-final:hover .sp-nav-quote-final-runner-glow {
-  opacity: 0.72 !important;
+  opacity: 0 !important;
+  animation: none !important;
 }
 
 .sp-nav-quote-final:hover .sp-nav-quote-final-track {
-  stroke: rgba(56, 110, 180, 0.08) !important;
+  stroke: transparent !important;
 }
 
 .sp-nav-quote-final:hover .sp-nav-quote-final-bg {
   box-shadow:
     0 14px 32px rgba(15, 23, 42, 0.12),
-    0 0 20px rgba(56, 199, 255, 0.14),
-    0 0 26px rgba(231, 42, 154, 0.1),
+    0 0 18px rgba(56, 199, 255, 0.18),
+    0 0 22px rgba(231, 42, 154, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.98),
     inset 0 -9px 18px rgba(15, 23, 42, 0.035) !important;
 }
@@ -16295,6 +16309,49 @@ body::-webkit-scrollbar-thumb:hover {
   100% {
     stroke-dashoffset: -100;
   }
+}
+
+/* ── Chasing border streak – slim blue/pink arc races around pill edge on hover ── */
+
+/* Typed custom property – browser interpolates every degree each frame */
+@property --sp-chase-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.sp-nav-quote-final::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0px !important;             /* flush with button edge – thin 4 px band */
+  z-index: 0 !important;
+  border-radius: 999px !important;
+  /*
+   * ~78 % of the conic wheel is transparent; only a tight ~22 % arc
+   * carries the blue→pink colors, producing a slim, precise border streak.
+   * Animating --sp-chase-angle moves that arc continuously round the pill.
+   */
+  background: conic-gradient(
+    from var(--sp-chase-angle),
+    transparent       0%,
+    transparent      72%,
+    #38c7ff          80%,
+    #e72a9a          93%,
+    transparent     100%
+  ) !important;
+  opacity: 0 !important;
+  transition: opacity 0.4s ease !important;
+  pointer-events: none !important;
+}
+
+.sp-nav-quote-final:hover::before {
+  opacity: 1 !important;
+  animation: spChaseStreak 3.2s linear infinite !important;  /* slower = smoother */
+}
+
+/* Drive the conic wheel one full revolution */
+@keyframes spChaseStreak {
+  to { --sp-chase-angle: 360deg; }
 }
 
 @media (max-width: 1180px) {
