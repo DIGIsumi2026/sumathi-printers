@@ -78,10 +78,74 @@ export default function NavigationBar({ company }: NavigationBarProps) {
             ))}
           </nav>
 
-          <Link to="/contact" className="sp-quote-button" onClick={closeMenu}>
-            <span>Get a Quote</span>
-          </Link>
+          <Link
+  to="/contact"
+  className="sp-nav-quote-final"
+  onClick={closeMenu}
+  data-cursor-label="Quote"
+>
+  <span className="sp-nav-quote-final-bg" aria-hidden="true" />
 
+  <svg
+    className="sp-nav-quote-final-svg"
+    viewBox="0 0 178 58"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+  >
+    <defs>
+      <linearGradient
+        id="spNavQuoteFinalGradient"
+        x1="0%"
+        y1="0%"
+        x2="100%"
+        y2="0%"
+      >
+        <stop offset="0%" stopColor="#38c7ff" />
+        <stop offset="25%" stopColor="#4e8dff" />
+        <stop offset="48%" stopColor="#7a4dff" />
+        <stop offset="68%" stopColor="#e72a9a" />
+        <stop offset="84%" stopColor="#ff7a3d" />
+        <stop offset="100%" stopColor="#39d98a" />
+      </linearGradient>
+    </defs>
+
+    <rect
+      className="sp-nav-quote-final-track"
+      x="3"
+      y="3"
+      width="172"
+      height="52"
+      rx="26"
+      ry="26"
+      pathLength="100"
+    />
+
+    <rect
+      className="sp-nav-quote-final-runner-glow"
+      x="3"
+      y="3"
+      width="172"
+      height="52"
+      rx="26"
+      ry="26"
+      pathLength="100"
+    />
+
+    <rect
+      className="sp-nav-quote-final-runner"
+      x="3"
+      y="3"
+      width="172"
+      height="52"
+      rx="26"
+      ry="26"
+      pathLength="100"
+    />
+  </svg>
+
+  <span className="sp-nav-quote-final-shine" aria-hidden="true" />
+  <span className="sp-nav-quote-final-text">Get a Quote</span>
+</Link>
           <button
             type="button"
             className="sp-mobile-toggle"
@@ -129,7 +193,11 @@ export default function NavigationBar({ company }: NavigationBarProps) {
             ))}
           </nav>
 
-          <Link to="/contact" className="sp-mobile-quote-button" onClick={closeMenu}>
+          <Link
+            to="/contact"
+            className="sp-mobile-quote-button"
+            onClick={closeMenu}
+          >
             <span>Get Quote</span>
           </Link>
         </aside>
