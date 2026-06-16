@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { ArrowDown, Sparkles } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
 import { imageAssets } from "../../../data/imageAssets";
 
@@ -13,23 +13,41 @@ export default function AboutIntroVideoSection() {
     offset: ["start start", "end start"]
   });
 
-  const heroScale = useTransform(
+  const heroScaleRaw = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.72, 1],
-    [1, 1, 0.84, 0.66]
+    [0, 0.18, 0.68, 1],
+    [1.08, 1.02, 0.9, 0.78]
   );
 
-  const heroOpacity = useTransform(
+  const heroOpacityRaw = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.75, 1],
-    [1, 1, 0.48, 0]
+    [0, 0.34, 0.78, 1],
+    [1, 1, 0.72, 0.36]
   );
 
-  const heroY = useTransform(
+  const heroYRaw = useTransform(
     scrollYProgress,
-    [0, 0.42, 1],
-    [0, -46, -180]
+    [0, 0.44, 1],
+    [0, -36, -128]
   );
+
+  const heroScale = useSpring(heroScaleRaw, {
+    stiffness: 92,
+    damping: 24,
+    mass: 0.35
+  });
+
+  const heroOpacity = useSpring(heroOpacityRaw, {
+    stiffness: 110,
+    damping: 26,
+    mass: 0.35
+  });
+
+  const heroY = useSpring(heroYRaw, {
+    stiffness: 88,
+    damping: 24,
+    mass: 0.35
+  });
 
   return (
     <section ref={sectionRef} className="sp-about-hero-video-section">
