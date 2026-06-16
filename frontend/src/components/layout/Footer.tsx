@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import {
   ArrowUpRight,
   Clock,
-  Globe2,
   MapPin,
   Phone
 } from "lucide-react";
@@ -62,17 +61,17 @@ const quickLinks = [
 const socialLinks = [
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/share/1cULUwBvV1/?mibextid=wwXIfr",
     icon: FacebookIcon
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/sumathiprinters?igsh=MXM3NHltMnJrYjU4dQ==",
     icon: InstagramIcon
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/sumathi-printers/",
     icon: LinkedInIcon
   }
 ];
