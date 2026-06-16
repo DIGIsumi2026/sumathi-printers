@@ -39,17 +39,12 @@ const contactItems = [
   {
     icon: Phone,
     label: "Direct Line",
-    value: "077 42 6900"
+    value: "(+94) 77 42 6900"
   },
   {
     icon: Globe,
     label: "Website",
     value: "www.sumathiprinters.com"
-  },
-  {
-    icon: Mail,
-    label: "Facebook",
-    value: "Sumathi Printers Facebook"
   },
   {
     icon: Clock,

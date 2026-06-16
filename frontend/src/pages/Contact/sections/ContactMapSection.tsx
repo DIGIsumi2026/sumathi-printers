@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const mapEmbedUrl =
   "https://www.google.com/maps?q=445%2F1%20Sirimavo%20Bandaranaike%20Mawatha%2C%20Colombo%2014%2C%20Sri%20Lanka&output=embed";
 
-const mapOpenUrl = "https://maps.app.goo.gl/Nw17Q4kt9Z8kUKok9";
+const mapOpenUrl = "https://maps.app.goo.gl/WnS6ukBa3SFakzY27";
 
 export default function ContactMapSection() {
   return (

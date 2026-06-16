@@ -23,7 +23,7 @@
 }
 
 .sp-contact-watermark-left {
-  left: -48px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
   writing-mode: vertical-rl;
@@ -32,7 +32,7 @@
 }
 
 .sp-contact-watermark-right {
-  right: -48px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
@@ -909,5 +909,93 @@
   .sp-contact-watermark-right {
     font-size: 62px;
     opacity: 0.55;
+  }
+}
+
+/* Stop both panels from stretching to the same height */
+.sp-contact-main-container {
+  align-items: start !important;
+}
+
+/* Keep form panel height only based on its content */
+.sp-contact-form-panel {
+  align-self: start !important;
+  padding: clamp(22px, 2.4vw, 34px) !important;
+  min-height: auto !important;
+}
+
+/* Make all form fields one row by one row */
+.sp-contact-form {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+  margin-top: 22px !important;
+}
+
+/* Compact label spacing */
+.sp-contact-form label {
+  gap: 6px !important;
+}
+
+/* Input field height adjusted */
+.sp-contact-form input,
+.sp-contact-form select {
+  min-height: 50px !important;
+  border-radius: 16px !important;
+  padding: 0 15px !important;
+}
+
+/* Message area reduced so the form doesn't become too tall */
+.sp-contact-form textarea {
+  min-height: 112px !important;
+  border-radius: 16px !important;
+  padding: 14px 15px !important;
+}
+
+/* Since all fields are already one column, no need for grid spanning */
+.sp-contact-message-field,
+.sp-contact-status,
+.sp-contact-submit-button {
+  grid-column: auto !important;
+}
+
+/* Reduce space above and below submit button */
+.sp-contact-submit-button {
+  min-height: 54px !important;
+  margin-top: 4px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Remove unwanted bottom empty feeling */
+.sp-contact-form-panel .sp-contact-form {
+  padding-bottom: 0 !important;
+}
+
+.sp-contact-form-panel::after {
+  display: none !important;
+}
+
+/* Keep heading compact */
+.sp-contact-form-head h2 {
+  margin-top: 14px !important;
+}
+
+.sp-contact-form-head p {
+  margin-top: 14px !important;
+  line-height: 1.55 !important;
+}
+
+/* Mobile remains clean */
+@media (max-width: 720px) {
+  .sp-contact-form-panel {
+    padding: 22px !important;
+  }
+
+  .sp-contact-form {
+    gap: 11px !important;
+  }
+
+  .sp-contact-form textarea {
+    min-height: 120px !important;
   }
 }
