@@ -1291,6 +1291,22 @@ body.sp-menu-open .sp-nav-shell {
   pointer-events: none !important;
 }
 
+.sp-three-scene {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  opacity: 0.46 !important;
+  overflow: hidden !important;
+}
+
+.sp-three-scene-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
 .sp-hero-container {
   position: relative !important;
   z-index: 8 !important;
@@ -1948,6 +1964,10 @@ body.sp-menu-open .sp-nav-shell {
 }
 
 @media (max-width: 720px) {
+  .sp-three-scene {
+    display: none !important;
+  }
+
   .sp-hero-section {
     padding-top: 104px !important;
     padding-bottom: 92px !important;
@@ -2033,6 +2053,12 @@ body.sp-menu-open .sp-nav-shell {
     top: 48% !important;
     width: 42px !important;
     height: 42px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-three-scene {
+    display: none !important;
   }
 }
 

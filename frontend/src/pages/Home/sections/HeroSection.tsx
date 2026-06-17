@@ -4,6 +4,7 @@ import { CheckCircle2, ArrowUpRight,MessageCircle  } from "lucide-react";
 import type { CompanyData } from "../../../types/site";
 import { imageAssets } from "../../../data/imageAssets";
 import { AnimatedButton } from "../../../components/common/Buttons";
+import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
 import { Link } from "react-router-dom";
 
 type HeroSectionProps = {
@@ -100,6 +101,7 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
 
       <div className="sp-hero-overlay" />
       <div className="sp-hero-grid-pattern" />
+      <FloatingPrintScene />
 
       <span className="sp-hero-shape sp-hero-shape-one" />
       <span className="sp-hero-shape sp-hero-shape-two" />
