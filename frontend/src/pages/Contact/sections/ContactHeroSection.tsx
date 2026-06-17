@@ -1,6 +1,7 @@
 import { ArrowDown, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { imageAssets } from "../../../data/imageAssets";
+import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
 
 export default function ContactHeroSection() {
   const scrollToForm = () => {
@@ -28,6 +29,7 @@ export default function ContactHeroSection() {
 
       <div className="sp-contact-hero-overlay" />
       <div className="sp-contact-hero-grid" />
+      <FloatingPrintScene variant="contact" density="hero" />
 
       <span className="sp-contact-watermark sp-contact-watermark-left">
         CONTACT

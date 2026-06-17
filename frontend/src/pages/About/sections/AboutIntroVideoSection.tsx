@@ -3,6 +3,7 @@ import { ArrowDown, Sparkles } from "lucide-react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
 import { imageAssets } from "../../../data/imageAssets";
+import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
 
 export default function AboutIntroVideoSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -87,6 +88,7 @@ export default function AboutIntroVideoSection() {
             />
 
             <div className="sp-about-hero-thumb-overlay" />
+            <FloatingPrintScene variant="about" density="hero" />
 
             <span className="sp-about-hero-float sp-about-hero-float-one" />
             <span className="sp-about-hero-float sp-about-hero-float-two" />

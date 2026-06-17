@@ -1,5 +1,6 @@
 import { Sparkles } from "lucide-react";
 import { videoAssets } from "../../../data/videoAssets";
+import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
 
 export default function GalleryHeroSection() {
   return (
@@ -16,6 +17,7 @@ export default function GalleryHeroSection() {
 
       <div className="sp-gallery-hero-overlay" />
       <div className="sp-gallery-hero-grid" />
+      <FloatingPrintScene variant="gallery" density="hero" />
 
       <span className="sp-gallery-watermark sp-gallery-watermark-left">
         GALLERY

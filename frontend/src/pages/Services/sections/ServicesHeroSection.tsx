@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
 import { imageAssets } from "../../../data/imageAssets";
+import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
 
 export default function ServicesHeroSection() {
   const [videoEnded, setVideoEnded] = useState(false);
@@ -57,6 +58,7 @@ export default function ServicesHeroSection() {
 
       <div className="sp-services-hero-overlay" />
       <div className="sp-services-hero-grid" />
+      <FloatingPrintScene variant="services" density="hero" />
 
       <span className="sp-services-hero-watermark">SERVICES</span>
 

@@ -2,6 +2,7 @@ import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
+import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
 
 export default function ProjectsHeroSection() {
   const scrollToProjects = () => {
@@ -29,6 +30,7 @@ export default function ProjectsHeroSection() {
 
       <div className="sp-projects-hero-overlay" />
       <div className="sp-projects-hero-grid" />
+      <FloatingPrintScene variant="projects" density="hero" />
 
       <span className="sp-projects-hero-watermark">OUR WORK</span>
 

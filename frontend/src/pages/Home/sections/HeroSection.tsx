@@ -101,7 +101,7 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
 
       <div className="sp-hero-overlay" />
       <div className="sp-hero-grid-pattern" />
-      <FloatingPrintScene />
+      <FloatingPrintScene variant="home" density="hero" />
 
       <span className="sp-hero-shape sp-hero-shape-one" />
       <span className="sp-hero-shape sp-hero-shape-two" />

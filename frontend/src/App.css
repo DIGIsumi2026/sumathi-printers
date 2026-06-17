@@ -1294,17 +1294,22 @@ body.sp-menu-open .sp-nav-shell {
 .sp-three-scene {
   position: absolute !important;
   inset: 0 !important;
-  z-index: -1 !important;
+  z-index: 3 !important;
   pointer-events: none !important;
-  opacity: 0.46 !important;
+  opacity: var(--sp-three-opacity, 0.42) !important;
   overflow: hidden !important;
 }
 
-.sp-three-scene-canvas {
+.sp-three-scene-canvas,
+.sp-three-scene canvas {
   width: 100% !important;
   height: 100% !important;
   display: block !important;
   pointer-events: none !important;
+}
+
+.sp-hero-section .sp-three-scene {
+  z-index: -1 !important;
 }
 
 .sp-hero-container {
@@ -1963,10 +1968,13 @@ body.sp-menu-open .sp-nav-shell {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 767px) {
   .sp-three-scene {
     display: none !important;
   }
+}
+
+@media (max-width: 720px) {
 
   .sp-hero-section {
     padding-top: 104px !important;
