@@ -321,6 +321,7 @@ export default function FloatingPrintScene({
     <div
       className={`sp-three-scene sp-three-scene-${variant} sp-three-scene-${density}`}
       aria-hidden="true"
+      data-gsap-hero-bg
       style={sceneStyle}
     >
       <Canvas

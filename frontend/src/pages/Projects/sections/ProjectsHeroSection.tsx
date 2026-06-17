@@ -1,10 +1,15 @@
+import { useRef } from "react";
 import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
 import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
+import { useGsapHeroParallax } from "../../../lib/useGsapAnimations";
 
 export default function ProjectsHeroSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  useGsapHeroParallax(sectionRef);
+
   const scrollToProjects = () => {
     const section = document.getElementById("project-categories");
 
@@ -17,7 +22,11 @@ export default function ProjectsHeroSection() {
   };
 
   return (
-    <section className="sp-projects-hero-section">
+    <section
+      ref={sectionRef}
+      className="sp-projects-hero-section"
+      data-gsap-hero
+    >
       <video
         className="sp-projects-hero-video"
         src={videoAssets.projects.hero}
@@ -44,6 +53,7 @@ export default function ProjectsHeroSection() {
       <div className="container sp-projects-hero-container">
         <motion.div
           className="sp-projects-hero-content"
+          data-gsap-hero-content
           initial={{ opacity: 0, y: 46, filter: "blur(14px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}

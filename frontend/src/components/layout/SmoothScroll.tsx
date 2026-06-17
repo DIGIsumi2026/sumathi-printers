@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { ScrollTrigger } from "../../lib/gsap";
 
 export default function SmoothScroll() {
   useEffect(() => {
@@ -26,10 +27,12 @@ export default function SmoothScroll() {
 
     const raf = (time: number) => {
       lenis.raf(time);
+      ScrollTrigger.update();
       frameId = window.requestAnimationFrame(raf);
     };
 
     frameId = window.requestAnimationFrame(raf);
+    ScrollTrigger.refresh();
 
     return () => {
       window.cancelAnimationFrame(frameId);

@@ -5,10 +5,13 @@ import { motion } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
 import { imageAssets } from "../../../data/imageAssets";
 import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
+import { useGsapHeroParallax } from "../../../lib/useGsapAnimations";
 
 export default function ServicesHeroSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [videoEnded, setVideoEnded] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  useGsapHeroParallax(sectionRef);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -30,7 +33,11 @@ export default function ServicesHeroSection() {
   };
 
   return (
-    <section className="sp-services-hero-section">
+    <section
+      ref={sectionRef}
+      className="sp-services-hero-section"
+      data-gsap-hero
+    >
       <div className="sp-services-hero-media">
         <video
           ref={videoRef}
@@ -71,6 +78,7 @@ export default function ServicesHeroSection() {
       <div className="container sp-services-hero-container">
         <motion.div
           className="sp-services-hero-content"
+          data-gsap-hero-content
           initial={{ opacity: 0, y: 42, filter: "blur(12px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}

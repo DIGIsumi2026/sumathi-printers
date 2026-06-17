@@ -928,6 +928,12 @@ body.sp-gallery-lightbox-open {
   will-change: transform, opacity, filter;
 }
 
+.sp-gallery-card[data-gsap-gallery-card] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: none;
+}
+
 @keyframes spGalleryCardPop {
   0% {
     opacity: 0;

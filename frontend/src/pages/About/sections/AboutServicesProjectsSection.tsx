@@ -1,11 +1,16 @@
+import { useRef } from "react";
 import { ArrowUpRight, BriefcaseBusiness, Layers3, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { imageAssets } from "../../../data/imageAssets";
+import { useGsapCtaReveal } from "../../../lib/useGsapAnimations";
 
 export default function AboutServicesProjectsSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  useGsapCtaReveal(sectionRef);
+
   return (
-    <section className="sp-about-bridge-section">
+    <section ref={sectionRef} className="sp-about-bridge-section">
       <span className="sp-about-bridge-watermark">EXPLORE</span>
 
       <span className="sp-about-bridge-orb sp-about-bridge-orb-one" />
@@ -16,6 +21,7 @@ export default function AboutServicesProjectsSection() {
       <div className="container sp-about-bridge-container">
         <motion.div
           className="sp-about-bridge-card"
+          data-gsap-cta
           initial={{ opacity: 0, y: 48, scale: 0.96, filter: "blur(16px)" }}
           whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.22 }}
@@ -25,6 +31,7 @@ export default function AboutServicesProjectsSection() {
             src={imageAssets.about.servicesProjectsBanner}
             alt="Sumathi Printers services and projects"
             className="sp-about-bridge-image"
+            data-gsap-cta-bg
             draggable={false}
             loading="lazy"
             decoding="async"
@@ -33,7 +40,7 @@ export default function AboutServicesProjectsSection() {
           <div className="sp-about-bridge-overlay" />
           <div className="sp-about-bridge-grid" />
 
-          <div className="sp-about-bridge-content">
+          <div className="sp-about-bridge-content" data-gsap-cta-content>
             <div className="sp-about-bridge-pill">
               <Sparkles size={15} />
               <span>Explore Our Work</span>

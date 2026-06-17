@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { imageAssets } from "../../../data/imageAssets";
+import { useGsapAboutTimeline } from "../../../lib/useGsapAnimations";
 
 const AUTO_SLIDE_DURATION = 2800;
 
@@ -69,6 +70,7 @@ const companies = [
 ];
 
 export default function AboutCompaniesSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
@@ -76,6 +78,7 @@ export default function AboutCompaniesSection() {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  useGsapAboutTimeline(sectionRef);
 
   const updateActiveLogo = useCallback(() => {
     const scrollElement = scrollRef.current;
@@ -214,7 +217,11 @@ export default function AboutCompaniesSection() {
   };
 
   return (
-    <section className="sp-about-companies-section">
+    <section
+      ref={sectionRef}
+      className="sp-about-companies-section"
+      data-gsap-about-timeline
+    >
       <span className="sp-about-companies-watermark">OUR COMPANIES</span>
 
       <span className="sp-client-bg-shape sp-client-bg-shape-one" />
@@ -226,6 +233,7 @@ export default function AboutCompaniesSection() {
       <div className="container sp-about-companies-container">
         <motion.div
           className="sp-about-companies-head"
+          data-gsap-about-item
           initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.35 }}
@@ -247,6 +255,7 @@ export default function AboutCompaniesSection() {
 
         <motion.div
           className="sp-client-floating-panel sp-about-companies-panel"
+          data-gsap-about-item
           initial={{ opacity: 0, y: 42, scale: 0.96, filter: "blur(12px)" }}
           whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.28 }}
@@ -293,6 +302,7 @@ export default function AboutCompaniesSection() {
             {companies.map((company, index) => (
               <article
                 key={company.name}
+                data-gsap-about-item
                 className={`sp-client-logo-card sp-about-company-logo-card ${
                   activeIndex === index ? "is-active" : ""
                 }`}

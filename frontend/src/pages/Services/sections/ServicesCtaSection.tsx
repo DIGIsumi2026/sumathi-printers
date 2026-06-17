@@ -1,7 +1,9 @@
+import { useRef } from "react";
 import { ArrowUpRight, MessageCircle, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { imageAssets } from "../../../data/imageAssets";
+import { useGsapCtaReveal } from "../../../lib/useGsapAnimations";
 
 const whatsappMessage = encodeURIComponent(
   "Hello Sumathi Printers, I would like to get a quote for a printing project."
@@ -10,8 +12,11 @@ const whatsappMessage = encodeURIComponent(
 const whatsappLink = `https://wa.me/9477426900?text=${whatsappMessage}`;
 
 export default function ServicesCtaSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  useGsapCtaReveal(sectionRef);
+
   return (
-    <section className="sp-services-cta-section">
+    <section ref={sectionRef} className="sp-services-cta-section">
       <span className="sp-services-cta-watermark">GET A QUOTE</span>
 
       <span className="sp-services-cta-orb sp-services-cta-orb-one" />
@@ -24,6 +29,7 @@ export default function ServicesCtaSection() {
       <div className="container sp-services-cta-container">
         <motion.div
           className="sp-services-cta-card"
+          data-gsap-cta
           initial={{ opacity: 0, y: 56, scale: 0.96, filter: "blur(16px)" }}
           whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.28 }}
@@ -33,6 +39,7 @@ export default function ServicesCtaSection() {
             src={imageAssets.services.ctaBanner}
             alt="Premium print finishing and printing services"
             className="sp-services-cta-image"
+            data-gsap-cta-bg
             draggable={false}
             loading="lazy"
             decoding="async"
@@ -48,6 +55,7 @@ export default function ServicesCtaSection() {
 
           <motion.div
             className="sp-services-cta-content"
+            data-gsap-cta-content
             initial={{ opacity: 0, x: -46, filter: "blur(14px)" }}
             whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.35 }}

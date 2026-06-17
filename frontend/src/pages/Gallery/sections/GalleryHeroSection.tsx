@@ -1,10 +1,19 @@
+import { useRef } from "react";
 import { Sparkles } from "lucide-react";
 import { videoAssets } from "../../../data/videoAssets";
 import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
+import { useGsapHeroParallax } from "../../../lib/useGsapAnimations";
 
 export default function GalleryHeroSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  useGsapHeroParallax(sectionRef);
+
   return (
-    <section className="sp-gallery-hero-section">
+    <section
+      ref={sectionRef}
+      className="sp-gallery-hero-section"
+      data-gsap-hero
+    >
       <video
         className="sp-gallery-hero-video"
         src={videoAssets.gallery.hero}
@@ -28,7 +37,7 @@ export default function GalleryHeroSection() {
       <span className="sp-gallery-float-ring sp-gallery-hero-ring-one" />
 
       <div className="container sp-gallery-hero-container">
-        <div className="sp-gallery-hero-content">
+        <div className="sp-gallery-hero-content" data-gsap-hero-content>
           <div className="sp-gallery-pill">
             <Sparkles size={15} />
             <span>Visual Portfolio</span>

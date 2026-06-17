@@ -4,10 +4,12 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
 import { imageAssets } from "../../../data/imageAssets";
 import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
+import { useGsapHeroParallax } from "../../../lib/useGsapAnimations";
 
 export default function AboutIntroVideoSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [hasVideoEnded, setHasVideoEnded] = useState(false);
+  useGsapHeroParallax(sectionRef);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -51,7 +53,11 @@ export default function AboutIntroVideoSection() {
   });
 
   return (
-    <section ref={sectionRef} className="sp-about-hero-video-section">
+    <section
+      ref={sectionRef}
+      className="sp-about-hero-video-section"
+      data-gsap-hero
+    >
       <div className="sp-about-hero-sticky">
         <motion.div
           className="sp-about-hero-visual"
@@ -98,6 +104,7 @@ export default function AboutIntroVideoSection() {
 
             <motion.div
               className="sp-about-hero-content"
+              data-gsap-hero-content
               initial={false}
               animate={
                 hasVideoEnded

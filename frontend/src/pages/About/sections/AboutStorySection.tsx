@@ -1,10 +1,19 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { imageAssets } from "../../../data/imageAssets";
+import { useGsapAboutTimeline } from "../../../lib/useGsapAnimations";
 
 export default function AboutStorySection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  useGsapAboutTimeline(sectionRef);
+
   return (
-    <section className="sp-about-story-section">
+    <section
+      ref={sectionRef}
+      className="sp-about-story-section"
+      data-gsap-about-timeline
+    >
       <span className="sp-about-story-watermark">ABOUT US</span>
 
       <span className="sp-about-story-shape sp-about-story-shape-one" />
@@ -18,44 +27,44 @@ export default function AboutStorySection() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="sp-about-story-badge">
+          <div className="sp-about-story-badge" data-gsap-about-item>
             <Sparkles size={15} />
             <span>About Us</span>
           </div>
 
-          <h2>Rooted In Publishing, Built For Modern Printing</h2>
+          <h2 data-gsap-about-item>Rooted In Publishing, Built For Modern Printing</h2>
 
           <div className="sp-about-story-text">
-            <p>
+            <p data-gsap-about-item>
               <strong>Sumathi Publishers</strong>, a partnership established in
               1984, was the forerunner to Sumathi Book Printing (Pvt) Ltd,
               which was incorporated in 1991.
             </p>
 
-            <p>
+            <p data-gsap-about-item>
               It was later renamed as <strong>Sumathi Printers (Pvt) Ltd</strong>{" "}
               in 2011, operating as a subsidiary of Sumathi Global Consolidated
               (Pvt) Ltd.
             </p>
 
-            <p>
+            <p data-gsap-about-item>
               The company has proudly been at the forefront of the printing and
               publishing industry in Sri Lanka for several decades.
             </p>
           </div>
 
           <div className="sp-about-story-years">
-            <span>
+            <span data-gsap-about-item>
               <strong>1984</strong>
               Established
             </span>
 
-            <span>
+            <span data-gsap-about-item>
               <strong>1991</strong>
               Incorporated
             </span>
 
-            <span>
+            <span data-gsap-about-item>
               <strong>2011</strong>
               Renamed
             </span>
@@ -69,7 +78,7 @@ export default function AboutStorySection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="sp-about-story-image-card">
+          <div className="sp-about-story-image-card" data-gsap-about-item>
             <img
               src={imageAssets.about.story}
               alt="Sumathi Printers Sri Lankan printing team"

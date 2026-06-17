@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import GalleryLightbox from "./GalleryLightbox";
+import { useGsapGalleryReveal } from "../../../lib/useGsapAnimations";
 import {
   galleryFilters,
   galleryItems,
@@ -8,11 +9,13 @@ import {
 } from "../galleryData";
 
 export default function GalleryGridSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [activeFilter, setActiveFilter] = useState<GalleryCategory>("All");
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(
     null
   );
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
+  useGsapGalleryReveal(sectionRef, activeFilter);
 
   const visibleItems = useMemo(() => {
     if (activeFilter === "All") return galleryItems;
@@ -28,7 +31,7 @@ export default function GalleryGridSection() {
 
   return (
     <>
-      <section className="sp-gallery-grid-section">
+      <section ref={sectionRef} className="sp-gallery-grid-section">
         <span className="sp-gallery-watermark sp-gallery-watermark-right">
           PORTFOLIO
         </span>
@@ -57,6 +60,7 @@ export default function GalleryGridSection() {
           <div
             key={activeFilter}
             className="sp-gallery-masonry-grid"
+            data-gsap-gallery-grid
           >
             {visibleItems.map((item, index) => {
               const loadKey = `${activeFilter}-${item.id}`;
@@ -66,6 +70,7 @@ export default function GalleryGridSection() {
                 <button
                   key={loadKey}
                   type="button"
+                  data-gsap-gallery-card
                   className={`sp-gallery-card ${item.size} ${
                     isLoaded ? "is-loaded" : "is-loading"
                   }`}

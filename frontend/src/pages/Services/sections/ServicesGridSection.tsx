@@ -1,8 +1,9 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { imageAssets } from "../../../data/imageAssets";
+import { useGsapServicesPin } from "../../../lib/useGsapAnimations";
 
 type ServiceItem = {
   id: number;
@@ -137,10 +138,12 @@ function chunkArray<T>(items: T[], size: number) {
 }
 
 export default function ServicesGridSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const rows = useMemo(() => chunkArray(services, 4), []);
   const [hoveredByRow, setHoveredByRow] = useState<Record<number, number | null>>(
     {}
   );
+  useGsapServicesPin(sectionRef);
 
   const scrollToFinishingServices = () => {
     const finishingSection = document.getElementById("finishing-services");
@@ -176,7 +179,11 @@ export default function ServicesGridSection() {
   };
 
   return (
-    <section id="all-services" className="sp-services-grid-section">
+    <section
+      id="all-services"
+      ref={sectionRef}
+      className="sp-services-grid-section"
+    >
       <span className="sp-services-grid-watermark">OUR SERVICES</span>
 
       <span className="sp-services-grid-orb sp-services-grid-orb-one" />
@@ -206,7 +213,7 @@ export default function ServicesGridSection() {
           </p>
         </div>
 
-        <div className="sp-services-grid-shell">
+        <div className="sp-services-grid-shell" data-gsap-services-pin>
           {rows.map((row, rowIndex) => {
             const hoveredId = hoveredByRow[rowIndex];
             const featuredId = DEFAULT_FEATURED_BY_ROW[rowIndex];
@@ -227,6 +234,7 @@ export default function ServicesGridSection() {
                   return (
                     <article
                       key={service.id}
+                      data-gsap-service-card
                       className={`sp-service-card ${
                         isExpanded ? "is-expanded" : ""
                       } ${isFeatured ? "is-featured" : ""}`}

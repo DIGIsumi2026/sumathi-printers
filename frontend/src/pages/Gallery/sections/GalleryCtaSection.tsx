@@ -1,10 +1,15 @@
+import { useRef } from "react";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { imageAssets } from "../../../data/imageAssets";
+import { useGsapCtaReveal } from "../../../lib/useGsapAnimations";
 
 export default function GalleryCtaSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  useGsapCtaReveal(sectionRef);
+
   return (
-    <section className="sp-gallery-cta-section">
+    <section ref={sectionRef} className="sp-gallery-cta-section">
       <span className="sp-gallery-watermark sp-gallery-watermark-right">
         INSPIRED
       </span>
@@ -14,10 +19,11 @@ export default function GalleryCtaSection() {
       <span className="sp-gallery-float-ring sp-gallery-cta-ring-one" />
 
       <div className="container sp-gallery-cta-container">
-        <div className="sp-gallery-cta-card">
+        <div className="sp-gallery-cta-card" data-gsap-cta>
           <img
             src={imageAssets.gallery.finalCta}
             alt="Inspired by our work"
+            data-gsap-cta-bg
             draggable={false}
             loading="lazy"
             decoding="async"
@@ -25,7 +31,7 @@ export default function GalleryCtaSection() {
 
           <div className="sp-gallery-cta-overlay" />
 
-          <div className="sp-gallery-cta-content">
+          <div className="sp-gallery-cta-content" data-gsap-cta-content>
             <div className="sp-gallery-pill">
               <Sparkles size={15} />
               <span>Start Your Print Project</span>

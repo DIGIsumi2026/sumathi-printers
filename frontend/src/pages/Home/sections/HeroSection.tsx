@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { CheckCircle2, ArrowUpRight,MessageCircle  } from "lucide-react";
 import type { CompanyData } from "../../../types/site";
 import { imageAssets } from "../../../data/imageAssets";
 import { AnimatedButton } from "../../../components/common/Buttons";
 import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
+import { useGsapHeroParallax } from "../../../lib/useGsapAnimations";
 import { Link } from "react-router-dom";
 
 type HeroSectionProps = {
@@ -59,8 +60,11 @@ const whatsappMessage = encodeURIComponent(
 const whatsappLink = `https://wa.me/9477426900?text=${whatsappMessage}`;
 
 export default function HeroSection({ company: _company }: HeroSectionProps) {
+  const heroRef = useRef<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeSlide = heroSlides[activeIndex];
+
+  useGsapHeroParallax(heroRef);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -82,7 +86,13 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
   );
 
   return (
-    <section id="home" className="sp-hero-section" style={heroStyle}>
+    <section
+      id="home"
+      ref={heroRef}
+      className="sp-hero-section"
+      style={heroStyle}
+      data-gsap-hero
+    >
       <div className="sp-hero-background">
         {heroSlides.map((slide, index) => (
           <img
@@ -109,7 +119,7 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
       <span className="sp-hero-watermark">SUMATHI PRINTERS</span>
 
       <div className="container sp-hero-container">
-        <div className="sp-hero-content">
+        <div className="sp-hero-content" data-gsap-hero-content>
           <div className="sp-hero-eyebrow">
             <span>{activeSlide.eyebrow}</span>
           </div>
