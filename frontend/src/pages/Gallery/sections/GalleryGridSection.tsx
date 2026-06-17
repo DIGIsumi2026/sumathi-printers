@@ -12,6 +12,7 @@ export default function GalleryGridSection() {
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(
     null
   );
+  const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
 
   const visibleItems = useMemo(() => {
     if (activeFilter === "All") return galleryItems;
@@ -57,36 +58,51 @@ export default function GalleryGridSection() {
             key={activeFilter}
             className="sp-gallery-masonry-grid"
           >
-            {visibleItems.map((item, index) => (
-              <button
-                key={`${activeFilter}-${item.id}`}
-                type="button"
-                className={`sp-gallery-card ${item.size}`}
-                style={
-                  {
-                    "--gallery-card-delay": `${Math.min(index * 55, 420)}ms`
-                  } as CSSProperties
-                }
-                onClick={() => setActiveLightboxIndex(index)}
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  draggable={false}
-                  loading="lazy"
-                  decoding="async"
-                />
+            {visibleItems.map((item, index) => {
+              const loadKey = `${activeFilter}-${item.id}`;
+              const isLoaded = loadedImages[loadKey];
 
-                <span className="sp-gallery-card-shine" />
+              return (
+                <button
+                  key={loadKey}
+                  type="button"
+                  className={`sp-gallery-card ${item.size} ${
+                    isLoaded ? "is-loaded" : "is-loading"
+                  }`}
+                  style={
+                    {
+                      "--gallery-card-delay": `${Math.min(index * 55, 420)}ms`
+                    } as CSSProperties
+                  }
+                  onClick={() => setActiveLightboxIndex(index)}
+                >
+                  <span className="sp-gallery-card-skeleton" aria-hidden="true" />
 
-                <span className="sp-gallery-card-overlay">
-                  <span className="sp-gallery-card-copy">
-                    <strong>{item.title}</strong>
-                    <small>{item.subtitle}</small>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    draggable={false}
+                    loading="lazy"
+                    decoding="async"
+                    onLoad={() =>
+                      setLoadedImages((current) => ({
+                        ...current,
+                        [loadKey]: true
+                      }))
+                    }
+                  />
+
+                  <span className="sp-gallery-card-shine" />
+
+                  <span className="sp-gallery-card-overlay">
+                    <span className="sp-gallery-card-copy">
+                      <strong>{item.title}</strong>
+                      <small>{item.subtitle}</small>
+                    </span>
                   </span>
-                </span>
-              </button>
-            ))}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>

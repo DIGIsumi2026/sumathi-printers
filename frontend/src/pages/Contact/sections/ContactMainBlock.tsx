@@ -1,4 +1,5 @@
-import type { FormEvent } from "react";
+import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import {
   Clock,
   Globe,
@@ -59,6 +60,35 @@ export default function ContactMainBlock({
   contactStatus,
   onSubmit
 }: ContactMainBlockProps) {
+  const [fieldValues, setFieldValues] = useState<Record<string, string>>({
+    service: "Offset Printing"
+  });
+
+  const handleFieldChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.currentTarget;
+
+    setFieldValues((current) => ({
+      ...current,
+      [name]: value
+    }));
+  };
+
+  const handleFormReset = () => {
+    setFieldValues({ service: "Offset Printing" });
+  };
+
+  const getFieldClassName = (name: string, className = "") => {
+    const classes = ["sp-contact-field", className];
+
+    if (fieldValues[name]) {
+      classes.push("has-value");
+    }
+
+    return classes.filter(Boolean).join(" ");
+  };
+
   return (
     <section id="contact-main-block" className="sp-contact-main-section">
       <span className="sp-contact-watermark sp-contact-watermark-right">
@@ -136,39 +166,50 @@ export default function ContactMainBlock({
             </p>
           </div>
 
-          <form className="sp-contact-form" onSubmit={onSubmit}>
-            <label>
+          <form
+            className="sp-contact-form"
+            onSubmit={onSubmit}
+            onReset={handleFormReset}
+          >
+            <label className={getFieldClassName("fullName")}>
               <span>Full Name *</span>
               <input
                 type="text"
                 name="fullName"
                 placeholder="Enter your full name"
                 required
+                onChange={handleFieldChange}
               />
             </label>
 
-            <label>
+            <label className={getFieldClassName("email")}>
               <span>Email Address *</span>
               <input
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
                 required
+                onChange={handleFieldChange}
               />
             </label>
 
-            <label>
+            <label className={getFieldClassName("phone")}>
               <span>Phone Number</span>
               <input
                 type="tel"
                 name="phone"
                 placeholder="Enter your phone number"
+                onChange={handleFieldChange}
               />
             </label>
 
-            <label>
+            <label className={getFieldClassName("service")}>
               <span>Service Required</span>
-              <select name="service" defaultValue="Offset Printing">
+              <select
+                name="service"
+                defaultValue="Offset Printing"
+                onChange={handleFieldChange}
+              >
                 <option>Offset Printing</option>
                 <option>Packaging & Boxes</option>
                 <option>Books & Magazines</option>
@@ -178,12 +219,18 @@ export default function ContactMainBlock({
               </select>
             </label>
 
-            <label className="sp-contact-message-field">
+            <label
+              className={getFieldClassName(
+                "message",
+                "sp-contact-message-field"
+              )}
+            >
               <span>Project Details / Message *</span>
               <textarea
                 name="message"
                 placeholder="Tell us about your project, quantity, paper type, size, finishing or deadline..."
                 required
+                onChange={handleFieldChange}
               />
             </label>
 
@@ -203,7 +250,9 @@ export default function ContactMainBlock({
 
             <button
               type="submit"
-              className="sp-contact-submit-button"
+              className={`sp-contact-submit-button${
+                contactStatus === "loading" ? " is-loading" : ""
+              }`}
               disabled={contactStatus === "loading"}
             >
               <span>
