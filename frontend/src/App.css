@@ -3717,6 +3717,287 @@ body.sp-menu-open .sp-nav-shell {
   }
 }
 
+/* Premium 3D cards: Home services only */
+.sp-home-services-grid {
+  gap: clamp(18px, 1.45vw, 24px);
+  perspective: 1200px;
+}
+
+.sp-home-service-card {
+  min-height: 300px;
+  padding: 26px 22px 24px;
+  overflow: hidden;
+  border: 1px solid rgba(101, 130, 201, 0.18);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 10% 5%, rgba(56, 199, 255, 0.08), transparent 34%),
+    radial-gradient(circle at 94% 8%, rgba(231, 42, 154, 0.055), transparent 32%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.995), rgba(247, 249, 255, 0.985));
+  box-shadow:
+    -4px 5px 0 rgba(56, 199, 255, 0.2),
+    4px 9px 0 rgba(122, 77, 255, 0.13),
+    8px 13px 0 rgba(231, 42, 154, 0.07),
+    0 25px 42px rgba(42, 54, 100, 0.17),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
+  transform: perspective(1200px) translate3d(0, 0, 0) rotateX(0.8deg) rotateY(-0.8deg);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  will-change: transform, box-shadow, filter;
+  transition:
+    transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 360ms ease,
+    filter 360ms ease;
+}
+
+.sp-home-service-card::before {
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(56, 199, 255, 0.42), transparent 22%) left bottom / 100% 2px no-repeat,
+    linear-gradient(180deg, rgba(122, 77, 255, 0.3), transparent 38%) left top / 2px 100% no-repeat,
+    linear-gradient(0deg, rgba(231, 42, 154, 0.26), transparent 38%) right bottom / 2px 100% no-repeat;
+  opacity: 0.68;
+  transition: opacity 360ms ease, filter 360ms ease;
+}
+
+.sp-home-service-card::after {
+  top: -35%;
+  bottom: -35%;
+  left: 0;
+  z-index: 6;
+  width: 42%;
+  height: auto;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(255, 255, 255, 0.14) 22%,
+    rgba(255, 255, 255, 0.86) 50%,
+    rgba(255, 255, 255, 0.14) 78%,
+    transparent
+  );
+  opacity: 0;
+  filter: blur(2px);
+  animation: none;
+  transform: skewX(-14deg) translate3d(-180%, 0, 0);
+  transition:
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease;
+  pointer-events: none;
+}
+
+.sp-home-service-card-glow {
+  z-index: 0;
+  background:
+    radial-gradient(circle, rgba(56, 199, 255, 0.26), rgba(122, 77, 255, 0.16) 46%, transparent 72%);
+  filter: blur(10px);
+  transform: scale(0.86);
+}
+
+.sp-home-service-icon {
+  position: relative;
+  z-index: 3;
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(89, 120, 199, 0.18);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(235, 247, 255, 0.99), rgba(240, 238, 255, 0.97));
+  box-shadow:
+    0 13px 26px rgba(64, 84, 158, 0.15),
+    0 2px 0 rgba(122, 77, 255, 0.12),
+    inset 0 1px 0 #ffffff;
+  transform: translateZ(30px);
+  transition:
+    transform 440ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 360ms ease,
+    background 360ms ease,
+    box-shadow 360ms ease,
+    filter 360ms ease;
+}
+
+.sp-home-service-card h3,
+.sp-home-service-card p {
+  position: relative;
+  z-index: 3;
+}
+
+.sp-home-service-card h3 {
+  margin-top: 30px;
+  letter-spacing: 0;
+  transform: translateZ(20px);
+}
+
+.sp-home-service-card p {
+  padding-right: 16px;
+  transform: translateZ(16px);
+}
+
+.sp-home-service-index {
+  position: absolute;
+  right: 17px;
+  bottom: 13px;
+  z-index: 3;
+  font-size: 42px;
+  transform: translateZ(12px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sp-home-service-card:hover {
+    z-index: 4;
+    border-color: rgba(101, 129, 204, 0.36);
+    background:
+      radial-gradient(circle at 10% 5%, rgba(56, 199, 255, 0.11), transparent 36%),
+      radial-gradient(circle at 94% 8%, rgba(231, 42, 154, 0.08), transparent 34%),
+      linear-gradient(145deg, #ffffff, rgba(248, 249, 255, 0.99));
+    box-shadow:
+      -6px 8px 0 rgba(56, 199, 255, 0.28),
+      6px 13px 0 rgba(122, 77, 255, 0.18),
+      10px 17px 0 rgba(231, 42, 154, 0.1),
+      0 36px 58px rgba(42, 54, 100, 0.24),
+      0 0 30px rgba(122, 77, 255, 0.09),
+      inset 0 1px 0 #ffffff;
+    transform: perspective(1200px) translate3d(0, -12px, 28px) rotateX(3deg) rotateY(-3deg);
+  }
+
+  .sp-home-service-card:hover::before {
+    opacity: 1;
+    filter: saturate(1.45);
+  }
+
+  .sp-home-service-card:hover::after {
+    opacity: 0.78;
+    animation: none;
+    transform: skewX(-14deg) translate3d(360%, 0, 0);
+  }
+
+  .sp-home-service-card:hover .sp-home-service-card-glow {
+    opacity: 1;
+    transform: scale(1.45);
+  }
+
+  .sp-home-service-card:hover .sp-home-service-icon {
+    color: #ffffff;
+    background: linear-gradient(135deg, #38c7ff, #7a4dff 56%, #e72a9a);
+    box-shadow:
+      0 18px 34px rgba(64, 84, 158, 0.24),
+      0 0 26px rgba(56, 199, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    filter: saturate(1.08);
+    transform: translate3d(0, -7px, 38px) rotate(-4deg) scale(1.08);
+  }
+
+  .sp-home-service-card:hover .sp-home-service-index {
+    opacity: 1;
+    -webkit-text-stroke-color: rgba(122, 77, 255, 0.4);
+    transform: translate3d(0, -3px, 18px);
+  }
+}
+
+@media (max-width: 1240px) {
+  .sp-home-services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sp-home-service-card {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sp-home-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sp-home-service-card {
+    min-height: 265px;
+    padding: 23px 20px 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .sp-home-services-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .sp-home-service-card {
+    min-height: 235px;
+    padding: 20px 18px;
+    border-radius: 23px;
+    box-shadow:
+      -3px 4px 0 rgba(56, 199, 255, 0.17),
+      3px 7px 0 rgba(122, 77, 255, 0.11),
+      0 19px 32px rgba(42, 54, 100, 0.15),
+      inset 0 1px 0 #ffffff;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .sp-home-service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+  }
+
+  .sp-home-service-card h3 {
+    margin-top: 23px;
+    font-size: 19px;
+  }
+
+  .sp-home-service-card p {
+    padding-right: 34px;
+    font-size: 12.5px;
+  }
+
+  .sp-home-service-index {
+    font-size: 38px;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .sp-home-service-card,
+  .sp-home-service-card:hover {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .sp-home-service-card::after {
+    display: none;
+  }
+
+  .sp-home-service-card:hover .sp-home-service-icon {
+    transform: translateZ(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-home-service-card,
+  .sp-home-service-card::before,
+  .sp-home-service-card::after,
+  .sp-home-service-card-glow,
+  .sp-home-service-icon,
+  .sp-home-service-index {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .sp-home-service-card,
+  .sp-home-service-card:hover {
+    transform: none !important;
+  }
+
+  .sp-home-service-card:hover .sp-home-service-card-glow,
+  .sp-home-service-card:hover .sp-home-service-icon,
+  .sp-home-service-card:hover .sp-home-service-index {
+    transform: none !important;
+  }
+
+  .sp-home-service-card::after {
+    display: none;
+  }
+}
+
 
 
 .site-header,
