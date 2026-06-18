@@ -37,6 +37,7 @@ export default function ServicesHeroSection() {
       ref={sectionRef}
       className="sp-services-hero-section"
       data-gsap-hero
+      data-watermark-section
     >
       <div className="sp-services-hero-media">
         <video
@@ -67,7 +68,7 @@ export default function ServicesHeroSection() {
       <div className="sp-services-hero-grid" />
       <FloatingPrintScene variant="services" density="hero" />
 
-      <span className="sp-services-hero-watermark">SERVICES</span>
+      <span className="sp-services-hero-watermark" data-section-watermark>SERVICES</span>
 
       <span className="sp-services-float sp-services-float-one" />
       <span className="sp-services-float sp-services-float-two" />

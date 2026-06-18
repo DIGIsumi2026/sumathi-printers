@@ -183,8 +183,9 @@ export default function ServicesGridSection() {
       id="all-services"
       ref={sectionRef}
       className="sp-services-grid-section"
+      data-watermark-section
     >
-      <span className="sp-services-grid-watermark">OUR SERVICES</span>
+      <span className="sp-services-grid-watermark" data-section-watermark>OUR SERVICES</span>
 
       <span className="sp-services-grid-orb sp-services-grid-orb-one" />
       <span className="sp-services-grid-orb sp-services-grid-orb-two" />

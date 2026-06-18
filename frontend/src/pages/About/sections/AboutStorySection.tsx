@@ -13,8 +13,9 @@ export default function AboutStorySection() {
       ref={sectionRef}
       className="sp-about-story-section"
       data-gsap-about-timeline
+      data-watermark-section
     >
-      <span className="sp-about-story-watermark">ABOUT US</span>
+      <span className="sp-about-story-watermark" data-section-watermark>ABOUT US</span>
 
       <span className="sp-about-story-shape sp-about-story-shape-one" />
       <span className="sp-about-story-shape sp-about-story-shape-two" />

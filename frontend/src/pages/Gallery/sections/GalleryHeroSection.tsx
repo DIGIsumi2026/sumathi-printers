@@ -13,6 +13,7 @@ export default function GalleryHeroSection() {
       ref={sectionRef}
       className="sp-gallery-hero-section"
       data-gsap-hero
+      data-watermark-section
     >
       <video
         className="sp-gallery-hero-video"
@@ -28,7 +29,7 @@ export default function GalleryHeroSection() {
       <div className="sp-gallery-hero-grid" />
       <FloatingPrintScene variant="gallery" density="hero" />
 
-      <span className="sp-gallery-watermark sp-gallery-watermark-left">
+      <span className="sp-gallery-watermark sp-gallery-watermark-left" data-section-watermark>
         GALLERY
       </span>
 

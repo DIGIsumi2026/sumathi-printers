@@ -31,8 +31,8 @@ export default function GalleryGridSection() {
 
   return (
     <>
-      <section ref={sectionRef} className="sp-gallery-grid-section">
-        <span className="sp-gallery-watermark sp-gallery-watermark-right">
+      <section ref={sectionRef} className="sp-gallery-grid-section" data-watermark-section>
+        <span className="sp-gallery-watermark sp-gallery-watermark-right" data-section-watermark>
           PORTFOLIO
         </span>
 

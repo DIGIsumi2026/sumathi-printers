@@ -4,8 +4,8 @@ import { videoAssets } from "../../../data/videoAssets";
 
 export default function ProjectsFacilitySection() {
   return (
-    <section className="sp-projects-facility-section">
-      <span className="sp-projects-facility-watermark">PRINTING ART</span>
+    <section className="sp-projects-facility-section" data-watermark-section>
+      <span className="sp-projects-facility-watermark" data-section-watermark>PRINTING ART</span>
 
       <span className="sp-projects-facility-orb sp-projects-facility-orb-one" />
       <span className="sp-projects-facility-orb sp-projects-facility-orb-two" />

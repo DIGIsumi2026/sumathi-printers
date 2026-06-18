@@ -92,6 +92,7 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
       className="sp-hero-section"
       style={heroStyle}
       data-gsap-hero
+      data-watermark-section
     >
       <div className="sp-hero-background">
         {heroSlides.map((slide, index) => (
@@ -116,7 +117,7 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
       <span className="sp-hero-shape sp-hero-shape-one" />
       <span className="sp-hero-shape sp-hero-shape-two" />
       <span className="sp-hero-shape sp-hero-shape-three" />
-      <span className="sp-hero-watermark">SUMATHI PRINTERS</span>
+      <span className="sp-hero-watermark" data-section-watermark>SUMATHI PRINTERS</span>
 
       <div className="container sp-hero-container">
         <div className="sp-hero-content" data-gsap-hero-content>

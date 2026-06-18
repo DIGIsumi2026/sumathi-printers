@@ -90,8 +90,8 @@ export default function ContactMainBlock({
   };
 
   return (
-    <section id="contact-main-block" className="sp-contact-main-section">
-      <span className="sp-contact-watermark sp-contact-watermark-right">
+    <section id="contact-main-block" className="sp-contact-main-section" data-watermark-section>
+      <span className="sp-contact-watermark sp-contact-watermark-right" data-section-watermark>
         INQUIRY
       </span>
 

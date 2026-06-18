@@ -5,8 +5,8 @@ import { imageAssets } from "../../../data/imageAssets";
 export default function AboutVisionMissionSection() {
   return (
     <section className="sp-about-vm-wrapper">
-      <section className="sp-about-vm-section sp-about-vm-vision">
-        <span className="sp-about-vm-watermark">VISION</span>
+      <section className="sp-about-vm-section sp-about-vm-vision" data-watermark-section>
+        <span className="sp-about-vm-watermark" data-section-watermark>VISION</span>
 
         <div className="container sp-about-vm-container">
           <motion.div
@@ -110,8 +110,8 @@ export default function AboutVisionMissionSection() {
         </div>
       </section>
 
-      <section className="sp-about-vm-section sp-about-vm-mission">
-        <span className="sp-about-vm-watermark">MISSION</span>
+      <section className="sp-about-vm-section sp-about-vm-mission" data-watermark-section>
+        <span className="sp-about-vm-watermark" data-section-watermark>MISSION</span>
 
         <div className="container sp-about-vm-container">
           <motion.div

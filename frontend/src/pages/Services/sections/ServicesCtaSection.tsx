@@ -16,8 +16,8 @@ export default function ServicesCtaSection() {
   useGsapCtaReveal(sectionRef);
 
   return (
-    <section ref={sectionRef} className="sp-services-cta-section">
-      <span className="sp-services-cta-watermark">GET A QUOTE</span>
+    <section ref={sectionRef} className="sp-services-cta-section" data-watermark-section>
+      <span className="sp-services-cta-watermark" data-section-watermark>GET A QUOTE</span>
 
       <span className="sp-services-cta-orb sp-services-cta-orb-one" />
       <span className="sp-services-cta-orb sp-services-cta-orb-two" />

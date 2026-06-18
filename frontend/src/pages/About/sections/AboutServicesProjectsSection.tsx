@@ -10,8 +10,8 @@ export default function AboutServicesProjectsSection() {
   useGsapCtaReveal(sectionRef);
 
   return (
-    <section ref={sectionRef} className="sp-about-bridge-section">
-      <span className="sp-about-bridge-watermark">EXPLORE</span>
+    <section ref={sectionRef} className="sp-about-bridge-section" data-watermark-section>
+      <span className="sp-about-bridge-watermark" data-section-watermark>EXPLORE</span>
 
       <span className="sp-about-bridge-orb sp-about-bridge-orb-one" />
       <span className="sp-about-bridge-orb sp-about-bridge-orb-two" />

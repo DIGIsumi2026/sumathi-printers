@@ -54,8 +54,8 @@ const boardMembers = [
 
 export default function AboutBoardSection() {
   return (
-    <section className="sp-about-board-section">
-      <span className="sp-about-board-watermark">BOARD OF MANAGEMENT</span>
+    <section className="sp-about-board-section" data-watermark-section>
+      <span className="sp-about-board-watermark" data-section-watermark>BOARD OF MANAGEMENT</span>
 
       <span className="sp-about-board-shape sp-about-board-shape-one" />
       <span className="sp-about-board-shape sp-about-board-shape-two" />

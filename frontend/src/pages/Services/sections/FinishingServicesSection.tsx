@@ -180,13 +180,14 @@ export default function FinishingServicesSection() {
     <section
       id="finishing-services"
       className="sp-finishing-section"
+      data-watermark-section
       style={
         {
           "--finish-active-accent": activeService.accent
         } as CSSProperties
       }
     >
-      <span className="sp-finishing-watermark">FINISHING</span>
+      <span className="sp-finishing-watermark" data-section-watermark>FINISHING</span>
 
       <div className="sp-finishing-bg-glow" />
       <div className="sp-finishing-bg-grid" />

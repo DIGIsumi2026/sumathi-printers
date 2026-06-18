@@ -25,6 +25,7 @@ export default function ContactHeroSection() {
       ref={sectionRef}
       className="sp-contact-hero-section"
       data-gsap-hero
+      data-watermark-section
     >
       <img
         src={imageAssets.contact.heroBanner}
@@ -40,7 +41,7 @@ export default function ContactHeroSection() {
       <div className="sp-contact-hero-grid" />
       <FloatingPrintScene variant="contact" density="hero" />
 
-      <span className="sp-contact-watermark sp-contact-watermark-left">
+      <span className="sp-contact-watermark sp-contact-watermark-left" data-section-watermark>
         CONTACT
       </span>
 

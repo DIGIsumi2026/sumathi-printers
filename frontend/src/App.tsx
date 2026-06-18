@@ -11,6 +11,7 @@ import Footer from "./components/layout/Footer";
 import CustomCursor from "./components/layout/CustomCursor";
 
 import { formToPayload, postForm } from "./lib/api";
+import useSectionWatermarkScroll from "./hooks/useSectionWatermarkScroll";
 import type { CompanyData, FormStatus } from "./types/site";
 
 import "./App.css";
@@ -33,6 +34,8 @@ export default function App() {
   const [newsletterStatus, setNewsletterStatus] = useState<FormStatus>("idle");
   const [contactStatus, setContactStatus] = useState<FormStatus>("idle");
   const [quoteStatus, setQuoteStatus] = useState<FormStatus>("idle");
+
+  useSectionWatermarkScroll(location.pathname, !loading);
 
   useEffect(() => {
     setLoading(true);

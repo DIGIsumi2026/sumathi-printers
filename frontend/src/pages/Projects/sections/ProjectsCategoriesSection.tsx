@@ -35,8 +35,8 @@ const categories = [
 
 export default function ProjectsCategoriesSection() {
   return (
-    <section id="project-categories" className="sp-projects-categories-section">
-      <span className="sp-projects-categories-watermark">PROJECTS</span>
+    <section id="project-categories" className="sp-projects-categories-section" data-watermark-section>
+      <span className="sp-projects-categories-watermark" data-section-watermark>PROJECTS</span>
 
       <span className="sp-projects-categories-orb sp-projects-categories-orb-one" />
       <span className="sp-projects-categories-orb sp-projects-categories-orb-two" />

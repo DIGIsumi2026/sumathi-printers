@@ -26,6 +26,7 @@ export default function ProjectsHeroSection() {
       ref={sectionRef}
       className="sp-projects-hero-section"
       data-gsap-hero
+      data-watermark-section
     >
       <video
         className="sp-projects-hero-video"
@@ -41,7 +42,7 @@ export default function ProjectsHeroSection() {
       <div className="sp-projects-hero-grid" />
       <FloatingPrintScene variant="projects" density="hero" />
 
-      <span className="sp-projects-hero-watermark">OUR WORK</span>
+      <span className="sp-projects-hero-watermark" data-section-watermark>OUR WORK</span>
 
       <span className="sp-projects-hero-orb sp-projects-hero-orb-one" />
       <span className="sp-projects-hero-orb sp-projects-hero-orb-two" />

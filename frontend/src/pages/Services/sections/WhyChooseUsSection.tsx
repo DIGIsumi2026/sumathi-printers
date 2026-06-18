@@ -410,8 +410,9 @@ export default function WhyChooseUsSection() {
       id="why-choose-us"
       ref={sectionRef}
       className="sp-why-section sp-why-layer-section"
+      data-watermark-section
     >
-      <span className="sp-why-watermark">WHY CHOOSE US</span>
+      <span className="sp-why-watermark" data-section-watermark>WHY CHOOSE US</span>
 
       <span className="sp-why-bg-orb sp-why-bg-orb-one" />
       <span className="sp-why-bg-orb sp-why-bg-orb-two" />

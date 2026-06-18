@@ -1,7 +1,7 @@
 export default function GalleryQualityDivider() {
   return (
-    <section className="sp-gallery-quality-section">
-      <span className="sp-gallery-watermark sp-gallery-watermark-left">
+    <section className="sp-gallery-quality-section" data-watermark-section>
+      <span className="sp-gallery-watermark sp-gallery-watermark-left" data-section-watermark>
         QUALITY
       </span>
 

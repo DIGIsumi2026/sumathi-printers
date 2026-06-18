@@ -9,8 +9,8 @@ export default function GalleryCtaSection() {
   useGsapCtaReveal(sectionRef);
 
   return (
-    <section ref={sectionRef} className="sp-gallery-cta-section">
-      <span className="sp-gallery-watermark sp-gallery-watermark-right">
+    <section ref={sectionRef} className="sp-gallery-cta-section" data-watermark-section>
+      <span className="sp-gallery-watermark sp-gallery-watermark-right" data-section-watermark>
         INSPIRED
       </span>
 

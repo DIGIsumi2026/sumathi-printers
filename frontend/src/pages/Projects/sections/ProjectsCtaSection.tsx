@@ -16,8 +16,8 @@ export default function ProjectsCtaSection() {
   useGsapCtaReveal(sectionRef);
 
   return (
-    <section ref={sectionRef} className="sp-projects-cta-section">
-      <span className="sp-projects-cta-watermark">START PROJECT</span>
+    <section ref={sectionRef} className="sp-projects-cta-section" data-watermark-section>
+      <span className="sp-projects-cta-watermark" data-section-watermark>START PROJECT</span>
 
       <span className="sp-projects-cta-orb sp-projects-cta-orb-one" />
       <span className="sp-projects-cta-orb sp-projects-cta-orb-two" />

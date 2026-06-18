@@ -112,8 +112,8 @@ export default function HomeProjectsSection() {
   }, [goNext, isPaused]);
 
   return (
-    <section id="home-projects" className="sp-home-projects-section">
-      <span className="sp-home-projects-watermark">PROJECT PORTFOLIO</span>
+    <section id="home-projects" className="sp-home-projects-section" data-watermark-section>
+      <span className="sp-home-projects-watermark" data-section-watermark>PROJECT PORTFOLIO</span>
 
       <span className="sp-project-bg-shape sp-project-bg-shape-one" />
       <span className="sp-project-bg-shape sp-project-bg-shape-two" />

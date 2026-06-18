@@ -67,8 +67,8 @@ const homeServices = [
 
 export default function HomeServicesSection() {
   return (
-    <section id="home-services" className="sp-home-services-section">
-      <span className="sp-home-services-watermark">OUR SERVICES</span>
+    <section id="home-services" className="sp-home-services-section" data-watermark-section>
+      <span className="sp-home-services-watermark" data-section-watermark>OUR SERVICES</span>
 
       <div className="container sp-home-services-container">
         <motion.div

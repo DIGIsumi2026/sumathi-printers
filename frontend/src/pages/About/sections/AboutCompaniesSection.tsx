@@ -221,8 +221,9 @@ export default function AboutCompaniesSection() {
       ref={sectionRef}
       className="sp-about-companies-section"
       data-gsap-about-timeline
+      data-watermark-section
     >
-      <span className="sp-about-companies-watermark">OUR COMPANIES</span>
+      <span className="sp-about-companies-watermark" data-section-watermark>OUR COMPANIES</span>
 
       <span className="sp-client-bg-shape sp-client-bg-shape-one" />
       <span className="sp-client-bg-shape sp-client-bg-shape-two" />

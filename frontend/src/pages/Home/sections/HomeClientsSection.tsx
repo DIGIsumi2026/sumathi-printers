@@ -185,14 +185,14 @@ export default function HomeClientsSection() {
   };
 
   return (
-    <section id="clients" className="sp-home-clients-section">
+    <section id="clients" className="sp-home-clients-section" data-watermark-section>
       <span className="sp-client-bg-shape sp-client-bg-shape-one" />
       <span className="sp-client-bg-shape sp-client-bg-shape-two" />
       <span className="sp-client-bg-shape sp-client-bg-shape-three" />
       <span className="sp-client-bg-ring sp-client-bg-ring-one" />
       <span className="sp-client-bg-ring sp-client-bg-ring-two" />
 
-      <span className="sp-home-clients-watermark">CLIENTS</span>
+      <span className="sp-home-clients-watermark" data-section-watermark>CLIENTS</span>
 
       <div className="container sp-home-clients-container">
         <motion.div

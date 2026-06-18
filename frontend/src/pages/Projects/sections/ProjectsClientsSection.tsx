@@ -21,7 +21,7 @@ export default function ProjectsClientsSection() {
   const marqueeClients = [...clients, ...clients];
 
   return (
-    <section className="sp-projects-clients-section">
+    <section className="sp-projects-clients-section" data-watermark-section>
       <img
         src={imageAssets.projectsPage.clientsBackground}
         alt="Trusted clients background"
@@ -34,7 +34,7 @@ export default function ProjectsClientsSection() {
       <div className="sp-projects-clients-overlay" />
       <div className="sp-projects-clients-grid-bg" />
 
-      <span className="sp-projects-clients-watermark">TRUSTED</span>
+      <span className="sp-projects-clients-watermark" data-section-watermark>TRUSTED</span>
 
       <div className="container sp-projects-clients-container">
         <motion.div

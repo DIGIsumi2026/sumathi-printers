@@ -48,8 +48,8 @@ export default function TechnologySection() {
   const activeSlide = technologySlides[activeIndex];
 
   return (
-    <section id="technology" className="sp-technology-section">
-      <span className="sp-technology-watermark">TECHNOLOGY</span>
+    <section id="technology" className="sp-technology-section" data-watermark-section>
+      <span className="sp-technology-watermark" data-section-watermark>TECHNOLOGY</span>
 
       <div className="container sp-technology-container">
         <motion.div

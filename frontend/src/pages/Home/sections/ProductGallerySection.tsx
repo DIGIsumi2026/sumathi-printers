@@ -102,6 +102,7 @@ export default function ProductGallerySection() {
       <div className="zoom-gallery-sticky">
         <motion.div
           className="zoom-gallery-stage"
+          data-watermark-section
           style={
             isMobileLayout
               ? undefined
@@ -114,7 +115,7 @@ export default function ProductGallerySection() {
         >
           <span className="zoom-gallery-shape zoom-gallery-shape-one" />
           <span className="zoom-gallery-shape zoom-gallery-shape-two" />
-          <span className="zoom-gallery-watermark">PRINT</span>
+          <span className="zoom-gallery-watermark" data-section-watermark>PRINT</span>
 
           <div className="zoom-gallery-grid">
             {galleryItems.map((item) => (

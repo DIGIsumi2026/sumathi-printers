@@ -8,8 +8,8 @@ const mapOpenUrl = "https://maps.app.goo.gl/WnS6ukBa3SFakzY27";
 
 export default function ContactMapSection() {
   return (
-    <section className="sp-contact-map-section">
-      <span className="sp-contact-watermark sp-contact-watermark-left">
+    <section className="sp-contact-map-section" data-watermark-section>
+      <span className="sp-contact-watermark sp-contact-watermark-left" data-section-watermark>
         LOCATION
       </span>
 

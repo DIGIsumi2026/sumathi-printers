@@ -16765,3 +16765,17 @@ body::-webkit-scrollbar-thumb:hover {
     display: none !important;
   }
 }
+
+[data-watermark-section] {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+[data-section-watermark] {
+  position: absolute !important;
+  top: 0 !important;
+  bottom: auto !important;
+  pointer-events: none !important;
+  will-change: transform !important;
+  z-index: 0 !important;
+}
