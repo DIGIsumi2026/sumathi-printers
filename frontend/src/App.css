@@ -25,10 +25,27 @@
   --container: 1450px;
   --cursor-x: 50vw;
   --cursor-y: 50vh;
+
+  /* ── Z-index scale ── */
+  --sp-z-content:   1;
+  --sp-z-float:   500;    /* WhatsApp / back-to-top */
+  --sp-z-header: 1200;    /* sticky nav */
+  --sp-z-backdrop: 90001; /* menu overlay – above everything */
+  --sp-z-sidebar:  90002; /* sidebar panel – above backdrop */
+  --sp-z-cursor:  999999; /* custom cursor */
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* ── Scroll-lock: applied by ScrollLockContext when sidebar is open ── */
+html.sp-menu-open,
+body.sp-menu-open {
+  overflow: hidden !important;
+  /* position:fixed keeps the visual position while overflow:hidden is active.
+     The JS saves scrollY and writes it as --sp-scroll-lock-top before locking,
+     and restores window.scrollTo on unlock. */
 }
 
 html {
@@ -324,77 +341,7 @@ body {
   opacity: 1 !important;
 }
 
-/* Quote button: static border normally, moving glow only on hover */
-.sp-quote-button,
-.sp-mobile-quote-button {
-  --quote-border: 3px;
-  position: relative !important;
-  min-height: 54px !important;
-  padding: 0 30px !important;
-  border-radius: 999px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: #111827 !important;
-  font-size: 16px !important;
-  font-weight: 900 !important;
-  line-height: 1 !important;
-  overflow: hidden !important;
-  isolation: isolate !important;
-  background: transparent !important;
-}
-
-.sp-quote-button::before,
-.sp-mobile-quote-button::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: -2 !important;
-  border-radius: inherit !important;
-  background: conic-gradient(
-    from 180deg,
-    #000000 0%,
-    #e72a9a 30%,
-    #fffc4d 66%,
-    #38c7ff 100%
-  ) !important;
-  animation: none !important;
-}
-
-.sp-quote-button::after,
-.sp-mobile-quote-button::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: var(--quote-border) !important;
-  z-index: -1 !important;
-  border-radius: inherit !important;
-  background: #ffffff !important;
-}
-
-.sp-quote-button:hover,
-.sp-mobile-quote-button:hover {
-  transform: translateY(-2px);
-  filter:
-    drop-shadow(0 0 10px rgba(56, 199, 255, 0.42))
-    drop-shadow(0 0 18px rgba(231, 42, 154, 0.32))
-    drop-shadow(0 0 30px rgba(122, 77, 255, 0.26));
-}
-
-.sp-quote-button:hover::before,
-.sp-mobile-quote-button:hover::before {
-  animation: spQuoteGradientSpin 1.15s linear infinite !important;
-}
-
-.sp-quote-button:hover::after,
-.sp-mobile-quote-button:hover::after {
-  inset: 4px !important;
-}
-
-@keyframes spQuoteGradientSpin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* [neutralised – duplicate quote button block removed; canonical is in the NAV GET A QUOTE section near end of file] */
 
 .sp-nav-shell {
   grid-template-columns: 112px auto 156px 52px !important;
@@ -541,6 +488,7 @@ body {
    ========================================================= */
 
 /* Hide main navigation bar when sidebar/menu is open */
+/* [neutralised – right-side menu placement override; canonical is in .sp-mobile-menu block above] */
 body.sp-menu-open .sp-nav-shell {
   opacity: 0 !important;
   visibility: hidden !important;
@@ -553,19 +501,29 @@ body.sp-menu-open .sp-header {
   pointer-events: none !important;
 }
 
-/* Backdrop */
+/* ── Backdrop (portalled into document.body) ── */
 .sp-mobile-backdrop {
   position: fixed !important;
   inset: 0 !important;
-  z-index: 90001 !important;
+  width: 100% !important;
+  height: 100dvh !important;
+  z-index: var(--sp-z-backdrop, 90001) !important;
   border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
   display: block !important;
-  background: rgba(15, 23, 42, 0.18) !important;
-  backdrop-filter: blur(9px) saturate(1.1) !important;
-  -webkit-backdrop-filter: blur(9px) saturate(1.1) !important;
+  /* Full blur + dark tint over everything including footer + floating actions */
+  background: rgba(15, 23, 42, 0.38) !important;
+  backdrop-filter: blur(10px) saturate(1.15) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(1.15) !important;
+  /* Fallback for browsers without backdrop-filter support */
+  @supports not (backdrop-filter: blur(1px)) {
+    background: rgba(8, 12, 28, 0.75) !important;
+  }
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+  cursor: default !important;
   transition:
     opacity 0.34s ease,
     visibility 0.34s ease !important;
@@ -577,22 +535,31 @@ body.sp-menu-open .sp-header {
   pointer-events: auto !important;
 }
 
-/* Main sidebar: left side, fully visible */
+/* ── Sidebar panel (portalled into document.body) ── */
 .sp-mobile-menu {
+  /* Placement: right side, constrained to visible viewport */
   position: fixed !important;
-  top: 28px !important;
-  left: 28px !important;
-  right: auto !important;
-  bottom: 28px !important;
-  z-index: 90002 !important;
+  top: 16px !important;
+  right: 16px !important;
+  bottom: 16px !important;
+  left: auto !important;
+  z-index: var(--sp-z-sidebar, 90002) !important;
 
-  width: min(420px, calc(100vw - 56px)) !important;
-  max-height: calc(100svh - 56px) !important;
+  /* Width: adapts from full-width on small phones to capped pill on desktop */
+  width: min(420px, calc(100vw - 32px)) !important;
+  /* max-height uses dvh so the panel never extends behind URL bars / footer */
+  max-height: calc(100dvh - 32px) !important;
 
   padding: 26px 22px 24px !important;
   border-radius: 38px !important;
+
+  /* Internal scroll: sidebar scrolls itself; page must not move */
   overflow-y: auto !important;
   overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+  scrollbar-gutter: stable !important;
 
   background:
     radial-gradient(circle at 12% 0%, rgba(56, 199, 255, 0.14), transparent 34%),
@@ -614,7 +581,7 @@ body.sp-menu-open .sp-header {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
-  transform: translateX(-34px) scale(0.94) !important;
+  transform: translateX(34px) scale(0.94) !important;
 
   transition:
     opacity 0.42s ease,
@@ -836,90 +803,17 @@ body.sp-menu-open .sp-header {
   }
 }
 
-/* Get Quote button fully visible */
-.sp-mobile-quote-button {
-  position: relative !important;
-  min-height: 60px !important;
-  width: 100% !important;
-  margin-top: 24px !important;
-  margin-bottom: 2px !important;
-  padding: 0 24px !important;
-  border-radius: 999px !important;
+/* [neutralised – duplicate .sp-mobile-quote-button block; canonical styles are in QuoteButtonLink's .sp-nav-quote-final classes] */
 
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-
-  overflow: hidden !important;
-  isolation: isolate !important;
-
-  color: #ffffff !important;
-  background: linear-gradient(105deg, #e72a9a, #7a4dff, #38c7ff) !important;
-  box-shadow:
-    0 22px 52px rgba(122, 77, 255, 0.3),
-    0 10px 26px rgba(231, 42, 154, 0.18) !important;
-
-  font-size: 15px !important;
-  font-weight: 950 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-
-  transition:
-    transform 0.32s ease,
-    box-shadow 0.32s ease !important;
-}
-
-.sp-mobile-quote-button::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -80% !important;
-  left: -70% !important;
-  width: 46% !important;
-  height: 260% !important;
-  transform: rotate(18deg) !important;
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.62),
-      transparent
-    ) !important;
-  opacity: 0 !important;
-}
-
-.sp-mobile-quote-button:hover {
-  color: #ffffff !important;
-  transform: translateY(-4px) !important;
-  box-shadow:
-    0 28px 66px rgba(122, 77, 255, 0.42),
-    0 14px 34px rgba(231, 42, 154, 0.24) !important;
-}
-
-.sp-mobile-quote-button:hover::before {
-  opacity: 1 !important;
-  animation: spSidebarQuoteShine 0.85s ease forwards !important;
-}
-
-@keyframes spSidebarQuoteShine {
-  from {
-    left: -70%;
-  }
-
-  to {
-    left: 135%;
-  }
-}
-
-/* Mobile sidebar */
+/* Viewport-constrained sidebar sizing for narrow screens */
 @media (max-width: 560px) {
   .sp-mobile-menu {
-    top: 14px !important;
-    left: 12px !important;
-    right: auto !important;
-    bottom: 14px !important;
+    top: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    left: auto !important;
     width: calc(100vw - 24px) !important;
-    max-height: calc(100svh - 28px) !important;
+    max-height: calc(100dvh - 24px) !important;
     border-radius: 30px !important;
     padding: 22px 18px !important;
   }
@@ -955,16 +849,7 @@ body.sp-menu-open .sp-nav-shell {
 
 /* Mobile right-side sidebar */
 @media (max-width: 560px) {
-  .sp-mobile-menu {
-    left: auto !important;
-    right: 12px !important;
-    width: calc(100vw - 24px) !important;
-    transform: translateX(28px) scale(0.94) !important;
-  }
-
-  .sp-mobile-menu.is-open {
-    transform: translateX(0) scale(1) !important;
-  }
+  /* [neutralised – duplicate right-side menu override; canonical placement is in .sp-mobile-menu block above] */
 }
 
 /* ============ custom curser ============ */
@@ -4158,8 +4043,8 @@ body.sp-menu-open .sp-nav-shell {
   opacity: 1 !important;
 }
 
-.sp-quote-button,
-.sp-mobile-quote-button {
+/* [neutralised duplicate quote-button references removed from co-selectors below] */
+.sp-quote-button {
   --quote-border: 3px;
   position: relative !important;
   z-index: 3 !important;
@@ -4185,15 +4070,13 @@ body.sp-menu-open .sp-nav-shell {
     filter 0.28s ease !important;
 }
 
-.sp-quote-button span,
-.sp-mobile-quote-button span {
+.sp-quote-button span {
   position: relative !important;
   z-index: 3 !important;
   display: block !important;
 }
 
-.sp-quote-button::before,
-.sp-mobile-quote-button::before {
+.sp-quote-button::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
@@ -4209,8 +4092,7 @@ body.sp-menu-open .sp-nav-shell {
   ) !important;
 }
 
-.sp-quote-button::after,
-.sp-mobile-quote-button::after {
+.sp-quote-button::after {
   content: "" !important;
   position: absolute !important;
   inset: var(--quote-border) !important;
@@ -4219,8 +4101,7 @@ body.sp-menu-open .sp-nav-shell {
   background: #ffffff !important;
 }
 
-.sp-quote-button:hover,
-.sp-mobile-quote-button:hover {
+.sp-quote-button:hover {
   color: #111827 !important;
   transform: translateY(-2px) !important;
   filter:
@@ -4228,15 +4109,8 @@ body.sp-menu-open .sp-nav-shell {
     drop-shadow(0 0 18px rgba(231, 42, 154, 0.32)) !important;
 }
 
-.sp-quote-button:hover::before,
-.sp-mobile-quote-button:hover::before {
+.sp-quote-button:hover::before {
   animation: spQuoteGradientSpin 1.1s linear infinite !important;
-}
-
-@keyframes spQuoteGradientSpin {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .sp-mobile-toggle {
@@ -4264,169 +4138,8 @@ body.sp-menu-open .sp-nav-shell {
   transform: translateY(-2px) !important;
 }
 
-/* -------------------------
-   Mobile / side menu
-   ------------------------- */
-
-.sp-mobile-menu {
-  position: fixed !important;
-  top: 92px !important;
-  right: 24px !important;
-  z-index: 90002 !important;
-  width: min(390px, calc(100vw - 32px)) !important;
-  padding: 20px !important;
-  border-radius: 34px !important;
-  display: block !important;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.94),
-      rgba(255, 255, 255, 0.72)
-    ) !important;
-  border: 1px solid rgba(122, 77, 255, 0.16) !important;
-  box-shadow:
-    0 34px 90px rgba(15, 23, 42, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
-  backdrop-filter: blur(24px) saturate(1.35) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.35) !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transform: translateY(-18px) scale(0.96) !important;
-  transition:
-    opacity 0.32s ease,
-    visibility 0.32s ease,
-    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1) !important;
-}
-
-.sp-mobile-menu.is-open {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  transform: translateY(0) scale(1) !important;
-}
-
-.sp-mobile-menu-head {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 16px !important;
-  margin-bottom: 18px !important;
-}
-
-.sp-mobile-menu-logo {
-  width: 92px !important;
-  height: auto !important;
-  display: block !important;
-}
-
-.sp-mobile-menu-close {
-  width: 46px !important;
-  height: 46px !important;
-  border: 0 !important;
-  border-radius: 999px !important;
-  display: grid !important;
-  place-items: center !important;
-  color: #111827 !important;
-  background: rgba(17, 24, 39, 0.06) !important;
-}
-
-.sp-mobile-nav-links {
-  display: grid !important;
-  gap: 10px !important;
-}
-
-.sp-mobile-nav-link {
-  position: relative !important;
-  min-height: 54px !important;
-  padding: 0 16px !important;
-  border-radius: 18px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 14px !important;
-  overflow: hidden !important;
-  color: rgba(17, 24, 39, 0.74) !important;
-  background: rgba(255, 255, 255, 0.5) !important;
-  border: 1px solid rgba(17, 24, 39, 0.06) !important;
-  font-size: 15px !important;
-  font-weight: 900 !important;
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-.sp-mobile-nav-link::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: -1 !important;
-  opacity: 0 !important;
-  background: linear-gradient(105deg, #38c7ff, #7a4dff, #e72a9a, #f6a13d) !important;
-  transition: opacity 0.26s ease !important;
-}
-
-.sp-mobile-nav-link span {
-  color: #38c7ff !important;
-  font-size: 12px !important;
-  font-weight: 950 !important;
-}
-
-.sp-mobile-nav-link:hover,
-.sp-mobile-nav-link.active {
-  color: #ffffff !important;
-  border-color: transparent !important;
-}
-
-.sp-mobile-nav-link:hover::before,
-.sp-mobile-nav-link.active::before {
-  opacity: 1 !important;
-}
-
-.sp-mobile-nav-link:hover span,
-.sp-mobile-nav-link.active span {
-  color: #ffffff !important;
-}
-
-.sp-mobile-quote-button {
-  width: 100% !important;
-  margin-top: 18px !important;
-  color: #ffffff !important;
-  background: linear-gradient(105deg, #e72a9a, #7a4dff, #38c7ff) !important;
-  box-shadow:
-    0 20px 48px rgba(122, 77, 255, 0.28),
-    0 8px 24px rgba(231, 42, 154, 0.18) !important;
-}
-
-.sp-mobile-quote-button::before,
-.sp-mobile-quote-button::after {
-  display: none !important;
-}
-
-.sp-mobile-backdrop {
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 90001 !important;
-  border: 0 !important;
-  display: block !important;
-  background: rgba(15, 23, 42, 0.18) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease !important;
-}
-
-.sp-mobile-backdrop.is-open {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-}
-
-body.sp-menu-open {
-  overflow: hidden !important;
-}
+/* [neutralised – duplicate sidebar/backdrop/menu-open block; canonical rules are
+   in the FINAL SIDEBAR LEFT LAYOUT FIX section and the sp-floating-actions section] */
 
 @media (max-width: 980px) {
   .sp-header {
@@ -4475,12 +4188,7 @@ body.sp-menu-open {
     height: 46px !important;
   }
 
-  .sp-mobile-menu {
-    top: 82px !important;
-    right: 12px !important;
-    width: calc(100vw - 24px) !important;
-    border-radius: 28px !important;
-  }
+  /* [neutralised – top:82px .sp-mobile-menu override replaced by canonical sizing] */
 }
 
 /* -------------------------
@@ -13231,7 +12939,8 @@ main:has(.sp-about-page-intro-section),
   position: fixed !important;
   right: 28px !important;
   bottom: 28px !important;
-  z-index: 999999 !important;
+  /* z-index is below the sidebar backdrop (90001) and sidebar (90002) */
+  z-index: var(--sp-z-float, 500) !important;
   width: 64px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -15294,8 +15003,8 @@ body::-webkit-scrollbar-thumb:hover {
   opacity: 1 !important;
 }
 
-.sp-quote-button,
-.sp-mobile-quote-button {
+/* [neutralised – duplicate .sp-quote-button / .sp-mobile-quote-button block; sidebar now uses .sp-nav-quote-final] */
+.sp-quote-button {
   --quote-border: 3px;
   position: relative !important;
   justify-self: end !important;
@@ -15318,52 +15027,6 @@ body::-webkit-scrollbar-thumb:hover {
   transition:
     transform 0.28s ease,
     filter 0.28s ease !important;
-}
-
-.sp-quote-button::before,
-.sp-mobile-quote-button::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: -2 !important;
-  border-radius: inherit !important;
-  background: conic-gradient(
-    from 180deg,
-    #7a4dff 0%,
-    #e72a9a 28%,
-    #f6a13d 62%,
-    #38c7ff 100%
-  ) !important;
-  animation: none !important;
-}
-
-.sp-quote-button::after,
-.sp-mobile-quote-button::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: var(--quote-border) !important;
-  z-index: -1 !important;
-  border-radius: inherit !important;
-  background: rgba(255, 255, 255, 0.96) !important;
-}
-
-.sp-quote-button:hover,
-.sp-mobile-quote-button:hover {
-  transform: translateY(-2px) !important;
-  filter:
-    drop-shadow(0 0 10px rgba(56, 199, 255, 0.42))
-    drop-shadow(0 0 18px rgba(231, 42, 154, 0.32)) !important;
-}
-
-.sp-quote-button:hover::before,
-.sp-mobile-quote-button:hover::before {
-  animation: spQuoteGradientSpin 1.15s linear infinite !important;
-}
-
-@keyframes spQuoteGradientSpin {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .sp-mobile-toggle {
@@ -16965,84 +16628,28 @@ body::-webkit-scrollbar-thumb:hover {
   to { --sp-chase-angle: 360deg; }
 }
 
-.sp-mobile-quote-button {
-  --sp-mobile-quote-fill:
-    radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.96), transparent 30%),
-    linear-gradient(
-      135deg,
-      rgba(231, 247, 255, 0.99) 0%,
-      rgba(247, 241, 255, 0.985) 48%,
-      rgba(255, 232, 246, 0.97) 100%
-    );
-  position: relative !important;
-  isolation: isolate !important;
-  overflow: visible !important;
-  color: #111827 !important;
-  background:
-    linear-gradient(
-      100deg,
-      rgba(56, 199, 255, 0.42) 0%,
-      rgba(122, 77, 255, 0.34) 46%,
-      rgba(231, 42, 154, 0.38) 100%
-    ) !important;
-  box-shadow:
-    0 18px 42px rgba(122, 77, 255, 0.16),
-    0 8px 20px rgba(15, 23, 42, 0.1) !important;
+/* [neutralised – .sp-mobile-quote-button replaced by .sp-quote-btn--sidebar modifier on .sp-nav-quote-final] */
+
+/* ── Sidebar variant of the quote button – full width, no left margin ── */
+/* The navbar hides .sp-nav-quote-final at <=1180px via the media query below.
+   The sidebar button carries .sp-quote-btn--sidebar so that hide rule
+   does NOT apply to it. The display:none rule below only targets the
+   navbar pill (without the sidebar modifier). */
+.sp-quote-btn--sidebar {
+  width: 100% !important;
+  min-width: 0 !important;
+  /* override the fixed 156px navbar width */
+  margin-left: 0 !important;
+  margin-top: 22px !important;
+  /* slightly taller than the navbar pill for easier tapping */
+  height: 62px !important;
+  min-height: 62px !important;
+  border-radius: 22px !important;
 }
 
-.sp-mobile-quote-button span {
-  position: relative !important;
-  z-index: 4 !important;
-}
-
-.sp-mobile-quote-button::before,
-.sp-mobile-quote-button::after {
-  content: "" !important;
-  position: absolute !important;
-  display: block !important;
-  border-radius: inherit !important;
-  pointer-events: none !important;
-}
-
-.sp-mobile-quote-button::before {
-  inset: 0 !important;
-  z-index: 1 !important;
-  background: conic-gradient(
-    from var(--sp-chase-angle),
-    transparent       0%,
-    transparent      66%,
-    #38c7ff          76%,
-    #7a4dff          85%,
-    #e72a9a          95%,
-    transparent     100%
-  ) !important;
-  opacity: 0 !important;
-  filter:
-    drop-shadow(0 0 7px rgba(56, 199, 255, 0.55))
-    drop-shadow(0 0 12px rgba(122, 77, 255, 0.34))
-    drop-shadow(0 0 15px rgba(231, 42, 154, 0.36)) !important;
-  transition: opacity 0.3s ease !important;
-}
-
-.sp-mobile-quote-button::after {
-  inset: 2px !important;
-  z-index: 2 !important;
-  background: var(--sp-mobile-quote-fill) !important;
-}
-
-.sp-mobile-quote-button:hover {
-  transform: translateY(-2px) scale(1.012) !important;
-  background: linear-gradient(100deg, #38c7ff 0%, #7a4dff 46%, #e72a9a 100%) !important;
-  filter: none !important;
-}
-
-.sp-mobile-quote-button:hover::before {
-  opacity: 1 !important;
-  animation: spChaseStreak 2.45s linear infinite !important;
-}
-
+/* Hide the NAVBAR pill on narrow screens (sidebar button is exempt via .sp-quote-btn--sidebar) */
 @media (max-width: 1180px) {
-  .sp-nav-quote-final {
+  .sp-nav-quote-final:not(.sp-quote-btn--sidebar) {
     display: none !important;
   }
 }

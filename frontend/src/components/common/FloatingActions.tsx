@@ -31,6 +31,7 @@ export default function FloatingActions() {
   };
 
   return (
+    // z-index is controlled by --sp-z-float in App.css (below the sidebar backdrop)
     <div className="sp-floating-actions" aria-label="Floating quick actions">
       <a
         href={whatsappLink}

@@ -13,15 +13,16 @@ import CustomCursor from "./components/layout/CustomCursor";
 import { formToPayload, postForm } from "./lib/api";
 import useSectionWatermarkScroll from "./hooks/useSectionWatermarkScroll";
 import type { CompanyData, FormStatus } from "./types/site";
+import { ScrollLockProvider } from "./contexts/ScrollLockContext";
 
 import "./App.css";
 
-const HomePage = lazy(() => import("./pages/Home/HomePage"));
-const AboutPage = lazy(() => import("./pages/About/AboutPage"));
+const HomePage     = lazy(() => import("./pages/Home/HomePage"));
+const AboutPage    = lazy(() => import("./pages/About/AboutPage"));
 const ServicesPage = lazy(() => import("./pages/Services/ServicesPage"));
 const ProjectsPage = lazy(() => import("./pages/Projects/ProjectsPage"));
-const GalleryPage = lazy(() => import("./pages/Gallery/GalleryPage"));
-const ContactPage = lazy(() => import("./pages/Contact/ContactPage"));
+const GalleryPage  = lazy(() => import("./pages/Gallery/GalleryPage"));
+const ContactPage  = lazy(() => import("./pages/Contact/ContactPage"));
 
 const company = companyJson as CompanyData;
 
@@ -30,10 +31,10 @@ const PAGE_LOADER_DURATION = 1500;
 export default function App() {
   const location = useLocation();
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading]                   = useState(true);
   const [newsletterStatus, setNewsletterStatus] = useState<FormStatus>("idle");
-  const [contactStatus, setContactStatus] = useState<FormStatus>("idle");
-  const [quoteStatus, setQuoteStatus] = useState<FormStatus>("idle");
+  const [contactStatus, setContactStatus]       = useState<FormStatus>("idle");
+  const [quoteStatus, setQuoteStatus]           = useState<FormStatus>("idle");
 
   useSectionWatermarkScroll(location.pathname, !loading);
 
@@ -67,7 +68,9 @@ export default function App() {
   };
 
   return (
-    <>
+    // ScrollLockProvider must wrap the whole tree so both SmoothScroll
+    // and NavigationBar can reach the same context instance.
+    <ScrollLockProvider>
       <Preloader visible={loading} />
       <ScrollManager loading={loading} />
 
@@ -96,22 +99,10 @@ export default function App() {
               }
             />
 
-            <Route path="/about" element={<AboutPage company={company} />} />
-
-            <Route
-              path="/services"
-              element={<ServicesPage company={company} />}
-            />
-
-            <Route
-              path="/projects"
-              element={<ProjectsPage company={company} />}
-            />
-
-            <Route
-              path="/gallery"
-              element={<GalleryPage company={company} />}
-            />
+            <Route path="/about"   element={<AboutPage company={company} />} />
+            <Route path="/services" element={<ServicesPage company={company} />} />
+            <Route path="/projects" element={<ProjectsPage company={company} />} />
+            <Route path="/gallery"  element={<GalleryPage company={company} />} />
 
             <Route
               path="/contact"
@@ -138,6 +129,6 @@ export default function App() {
       </div>
 
       <FloatingActions />
-    </>
+    </ScrollLockProvider>
   );
 }

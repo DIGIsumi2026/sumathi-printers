@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { ScrollTrigger } from "../../lib/gsap";
+import { useScrollLock } from "../../contexts/ScrollLockContext";
 
 export default function SmoothScroll() {
+  const { registerLenis } = useScrollLock();
+
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
@@ -23,6 +26,9 @@ export default function SmoothScroll() {
       touchMultiplier: 1.15
     });
 
+    // Register with context so NavigationBar can stop/start it.
+    registerLenis(lenis);
+
     let frameId = 0;
 
     const raf = (time: number) => {
@@ -36,9 +42,10 @@ export default function SmoothScroll() {
 
     return () => {
       window.cancelAnimationFrame(frameId);
+      registerLenis(null);
       lenis.destroy();
     };
-  }, []);
+  }, [registerLenis]);
 
   return null;
 }
