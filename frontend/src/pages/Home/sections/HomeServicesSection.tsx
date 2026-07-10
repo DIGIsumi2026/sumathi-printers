@@ -83,7 +83,7 @@ export default function HomeServicesSection() {
             <span>What We Do</span>
           </div>
 
-          <h2 className="sp-home-services-title">
+          <h2 className="sp-section-heading sp-home-services-title">
             Complete Printing Services For Every Business Need
           </h2>
 

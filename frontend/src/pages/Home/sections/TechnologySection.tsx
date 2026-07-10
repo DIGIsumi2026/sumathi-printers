@@ -123,7 +123,7 @@ export default function TechnologySection() {
             <span>Technology & Production</span>
           </div>
 
-          <h2 className="sp-technology-title">
+          <h2 className="sp-section-heading sp-technology-title">
             State Of The Art Machinery For Demanding Print Standards
           </h2>
 

@@ -46,7 +46,7 @@ export default function AboutServicesProjectsSection() {
               <span>Explore Our Work</span>
             </div>
 
-            <h2>Discover what we create, finish, and deliver.</h2>
+            <h2 className="sp-section-heading">Discover what we create, finish, and deliver.</h2>
 
             <p>
               From premium printing services to completed project showcases,

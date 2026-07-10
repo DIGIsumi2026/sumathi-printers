@@ -52,11 +52,11 @@ export default function ProjectsCtaSection() {
               <span>Ready To Start?</span>
             </div>
 
-            <h2>Ready to start your next printing project?</h2>
+            <h2 className="sp-section-heading">Ready to start your next printing project?</h2>
 
             <p>
               Partner with us for reliable, high-quality, and timely printing
-              solutions crafted with precision, consistency, and professional
+              solutions crafted with precision, consistency and professional
               finishing.
             </p>
 

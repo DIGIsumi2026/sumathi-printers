@@ -80,7 +80,7 @@ export default function AboutVisionMissionSection() {
                 <span>Our Vision</span>
               </div>
 
-              <h2>To Lead With Quality, Integrity And Innovation</h2>
+              <h2 className="sp-section-heading">To Lead With Quality, Integrity And Innovation</h2>
 
               <p>
                 To be a key player in the printing industry in the pursuit of
@@ -147,7 +147,7 @@ export default function AboutVisionMissionSection() {
                 <span>Our Mission</span>
               </div>
 
-              <h2>Comprehensive Printing Solutions With Lasting Value</h2>
+              <h2 className="sp-section-heading">Comprehensive Printing Solutions With Lasting Value</h2>
 
               <p>
                 We are committed to providing comprehensive printing solutions

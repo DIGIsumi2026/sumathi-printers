@@ -30,7 +30,7 @@ export default function ContactMapSection() {
             <span>Find Our Facility</span>
           </div>
 
-          <h2>Visit Sumathi Printers in Colombo 14.</h2>
+          <h2 className="sp-section-heading">Visit Sumathi Printers in Colombo 14.</h2>
 
           <p>
             Use the map below to locate our office and production facility at

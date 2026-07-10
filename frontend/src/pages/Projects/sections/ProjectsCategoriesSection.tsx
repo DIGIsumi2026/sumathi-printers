@@ -22,14 +22,14 @@ const categories = [
     caption: "Flyers, brochures, posters",
     image: imageAssets.projectsPage.marketingCollateral,
     description:
-      "Vibrant flyers, brochures, posters, and catalogs engineered for high-impact visibility and audience engagement."
+      "Vibrant flyers, brochures, posters, and catalogs engineered for high impact visibility and audience engagement."
   },
   {
     title: "Official Stationery & Secure Printing",
     caption: "Certificates, bill books, forms",
     image: imageAssets.projectsPage.securePrinting,
     description:
-      "Sophisticated bill books, envelopes, letterheads, and secure certificate printing with foiling and numbering."
+      "Sophisticated bill books, envelopes, letterheads and secure certificate printing with foiling and numbering."
   }
 ];
 
@@ -52,7 +52,12 @@ export default function ProjectsCategoriesSection() {
             <span>Featured Project Categories</span>
           </div>
 
-          <h2>Print Projects Built With Precision</h2>
+          <h2
+            className="sp-section-heading"
+            style={{ color: "#000000" }}
+          >
+            Print Projects Built With Precision
+          </h2>
 
           <p>
             Our portfolio covers publication printing, packaging, promotional

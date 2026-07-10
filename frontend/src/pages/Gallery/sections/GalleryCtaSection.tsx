@@ -37,7 +37,7 @@ export default function GalleryCtaSection() {
               <span>Start Your Print Project</span>
             </div>
 
-            <h2>Inspired by our work? Let’s print yours.</h2>
+            <h2 className="sp-section-heading">Inspired by our work? Let’s print yours.</h2>
 
             <p>
               Share your requirements, and our team will provide a customized

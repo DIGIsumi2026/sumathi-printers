@@ -203,7 +203,7 @@ export default function FinishingServicesSection() {
             <span>Finishing Services</span>
           </div>
 
-          <h2>Professional Finishing That Completes Every Print</h2>
+          <h2 className="sp-section-heading">Professional Finishing That Completes Every Print</h2>
 
           <p>
             From trimming and folding to binding, lamination and numbering, our

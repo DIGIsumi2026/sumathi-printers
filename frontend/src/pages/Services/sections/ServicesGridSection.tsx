@@ -85,7 +85,7 @@ const services: ServiceItem[] = [
     title: "Calendars & Diaries",
     caption: "Corporate gifts",
     description:
-      "Custom-branded, beautifully finished corporate gifts perfect for year-round brand presence. From wall calendars to premium executive diaries, we offer high-quality bindings and finishes that keep your business in sight every single day.",
+      "Custom-branded, beautifully finished corporate gifts perfect for year round brand presence. From wall calendars to premium executive diaries, we offer high quality bindings and finishes that keep your business in sight every single day.",
     image: imageAssets.serviceCards.calendarsDiariesstat,
     accent: "linear-gradient(135deg, #5caeff 0%, #6d6cff 55%, #d96eff 100%)"
   },
@@ -101,18 +101,18 @@ const services: ServiceItem[] = [
   {
     id: 10,
     title: "Books & Magazine Printing",
-    caption: "High-end publications",
+    caption: "High end publications",
     description:
-      "Flawless multi-page printing paired with superior binding for professional, high-end publications. Whether you need perfect binding or hard case finishing, we deliver crisp text and rich images for a premium reading experience.",
+      "Flawless multi page printing paired with superior binding for professional, high end publications. Whether you need perfect binding or hard case finishing, we deliver crisp text and rich images for a premium reading experience.",
     image: imageAssets.serviceCards.booksMagazinesPrintingstat,
     accent: "linear-gradient(135deg, #34c8ff 0%, #6f73ff 50%, #b95fff 100%)"
   },
   {
     id: 11,
     title: "Stickers & Labels",
-    caption: "Precision-cut branding",
+    caption: "Precision cut branding",
     description:
-      "Precision-cut, vibrant, and durable decals ideal for product branding and packaging details. Our labels are printed with high-adhesion materials and sharp graphics to ensure your products look professional and appealing.",
+      "Precision cut, vibrant, and durable decals ideal for product branding and packaging details. Our labels are printed with high adhesion materials and sharp graphics to ensure your products look professional and appealing.",
     image: imageAssets.serviceCards.stickersLabelsstat,
     accent: "linear-gradient(135deg, #2dd2ff 0%, #57a5ff 45%, #f154a6 100%)"
   },
@@ -203,7 +203,7 @@ export default function ServicesGridSection() {
             <span>Our Services</span>
           </div>
 
-          <h2 className="sp-services-grid-title">
+          <h2 className="sp-section-heading sp-services-grid-title">
             Premium Printing Solutions For Every Business Need
           </h2>
 

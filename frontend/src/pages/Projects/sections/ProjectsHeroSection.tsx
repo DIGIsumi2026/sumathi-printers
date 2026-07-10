@@ -64,12 +64,12 @@ export default function ProjectsHeroSection() {
             <span>Portfolio Showcase</span>
           </div>
 
-          <h1>Our Work</h1>
+          <h1 className="sp-section-heading">Our Work</h1>
 
-          <h2>Decades of Excellence in Print.</h2>
+          <h2 className="sp-section-heading">Decades of Excellence in Print.</h2>
 
           <p>
-            Explore our diverse portfolio of high-quality printing and packaging
+            Explore our diverse portfolio of high quality printing and packaging
             solutions. From large-scale government projects to premium corporate
             branding, we deliver precision, consistency, and craftsmanship that
             meets the highest international standards.

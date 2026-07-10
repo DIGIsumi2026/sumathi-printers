@@ -245,7 +245,7 @@ export default function AboutCompaniesSection() {
             <span>Our Companies</span>
           </div>
 
-          <h2>Part Of A Stronger Corporate Network</h2>
+          <h2 className="sp-section-heading">Part Of A Stronger Corporate Network</h2>
 
           <p>
             Sumathi Printers operates with the strength, vision and support of
@@ -267,7 +267,7 @@ export default function AboutCompaniesSection() {
           <div className="sp-client-panel-head">
             <div>
               <span>Corporate Group</span>
-              <h3>Our Companies</h3>
+              <h3><strong>Our Companies</strong></h3>
             </div>
 
             <div className="sp-client-arrows">

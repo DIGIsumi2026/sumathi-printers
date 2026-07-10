@@ -40,7 +40,7 @@ const heroSlides = [
     image: imageAssets.hero.packagingBoxPrinting,
     color: "#f6a13d",
     description:
-      "Premium custom packaging, folding cartons, product boxes, labels, and brand-focused packaging solutions for commercial products."
+      "Premium custom packaging, folding cartons, product boxes, labels, and brand focused packaging solutions for commercial products."
   },
   {
     id: "books-magazines-brochures",
@@ -49,7 +49,7 @@ const heroSlides = [
     image: imageAssets.hero.booksMagazinesBrochures,
     color: "#7a4dff",
     description:
-      "Professional books, magazines, catalogs, brochures, and bound publications with clean pages, strong covers, and dependable finishing."
+      "Professional books, magazines, catalogs, brochures, and bound publications with clean pages, strong covers and dependable finishing."
   }
 ];
 
@@ -125,7 +125,7 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
             <span>{activeSlide.eyebrow}</span>
           </div>
 
-          <h1 className="sp-hero-title">
+          <h1 className="sp-section-heading sp-hero-title">
             <span>Printing Solutions</span>
 
             <span key={activeSlide.word} className="sp-hero-changing-word">

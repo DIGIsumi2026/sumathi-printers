@@ -49,7 +49,7 @@ export default function HomeCtaSection() {
               <span>Let’s Print Something Exceptional</span>
             </div>
 
-            <h2>Ready To Bring Your Print Project To Life?</h2>
+            <h2 className="sp-section-heading">Ready To Bring Your Print Project To Life?</h2>
 
             <p>
               From books and brochures to packaging, leaflets, certificates and
@@ -68,7 +68,7 @@ export default function HomeCtaSection() {
               </a>
 
               <a
-                href="https://wa.me/94700000000"
+                href="https://wa.me/9477426900"
                 target="_blank"
                 rel="noreferrer"
                 className="sp-home-cta-button sp-home-cta-button-secondary"

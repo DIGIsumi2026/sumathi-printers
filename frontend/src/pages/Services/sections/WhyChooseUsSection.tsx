@@ -430,7 +430,7 @@ export default function WhyChooseUsSection() {
               <span>Why Choose Us</span>
             </div>
 
-            <h2>Why Businesses Trust Sumathi Printers</h2>
+            <h2 className="sp-section-heading">Why Businesses Trust Sumathi Printers</h2>
 
             <p>
               We combine premium print quality, modern production technology,

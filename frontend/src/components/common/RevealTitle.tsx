@@ -12,7 +12,7 @@ export default function RevealTitle({
   const words = text.split(" ");
 
   return (
-    <h2 className={`reveal-title ${className}`}>
+    <h2 className={`sp-section-heading reveal-title ${className}`}>
       {words.map((word, index) => (
         <motion.span
           key={`${word}-${index}`}

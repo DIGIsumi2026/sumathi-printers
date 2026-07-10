@@ -44,7 +44,7 @@ export default function GalleryHeroSection() {
             <span>Visual Portfolio</span>
           </div>
 
-          <h1>The Printing Gallery</h1>
+          <h1 className="sp-section-heading">The Printing Gallery</h1>
 
           <p>
             Four decades of precision printing, finishing, and packaging

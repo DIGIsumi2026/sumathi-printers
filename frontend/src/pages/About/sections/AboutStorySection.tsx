@@ -33,7 +33,7 @@ export default function AboutStorySection() {
             <span>About Us</span>
           </div>
 
-          <h2 data-gsap-about-item>Rooted In Publishing, Built For Modern Printing</h2>
+          <h2 className="sp-section-heading" data-gsap-about-item>Rooted In Publishing, Built For Modern Printing</h2>
 
           <div className="sp-about-story-text">
             <p data-gsap-about-item>

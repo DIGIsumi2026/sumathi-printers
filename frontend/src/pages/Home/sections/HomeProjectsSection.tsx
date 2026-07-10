@@ -36,7 +36,7 @@ const projects = [
     shortTitle: "Leaflets",
     category: "Promotional Printing",
     description:
-      "Vibrant leaflet printing for campaigns, events and business promotions with fast, colour-accurate output.",
+      "Vibrant leaflet printing for campaigns, events and business promotions with fast, colour accurate output.",
     image: imageAssets.projects.leaflets
   },
   {
@@ -133,7 +133,7 @@ export default function HomeProjectsSection() {
             <span>Project Gallery</span>
           </div>
 
-          <h2 className="sp-home-projects-title">
+          <h2 className="sp-section-heading sp-home-projects-title">
             Selected Printing Projects Delivered With Precision
           </h2>
 

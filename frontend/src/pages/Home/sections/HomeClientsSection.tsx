@@ -207,7 +207,7 @@ export default function HomeClientsSection() {
             <span>Trusted Clients</span>
           </div>
 
-          <h2 className="sp-home-clients-title">
+          <h2 className="sp-section-heading sp-home-clients-title">
             Trusted By Businesses, Institutions And Publishers
           </h2>
 

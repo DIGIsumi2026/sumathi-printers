@@ -118,7 +118,7 @@ export default function AboutIntroVideoSection() {
                 <span>About Sumathi Printers</span>
               </div>
 
-              <h1>Printing Excellence Powered By People And Precision</h1>
+              <h1 className="sp-section-heading">Printing Excellence Powered By People And Precision</h1>
 
               <p>
                 Discover our Sri Lankan team, modern printing technology and

@@ -93,7 +93,7 @@ export default function ServicesHeroSection() {
             </span>
           </div>
 
-          <h1>
+          <h1 className="sp-section-heading">
             Premium Printing Services Crafted With Precision
           </h1>
 

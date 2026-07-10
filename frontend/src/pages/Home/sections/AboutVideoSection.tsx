@@ -177,7 +177,7 @@ export default function AboutVideoSection() {
               <span>About Sumathi Printers</span>
             </div>
 
-            <h2 className="sp-about-video-title">
+            <h2 className="sp-section-heading sp-about-video-title">
               SUMATHI PRINTERS <span>(PVT) LTD</span>
             </h2>
 
@@ -188,7 +188,7 @@ export default function AboutVideoSection() {
               Limited in 2011, a subsidiary of Sumathi Global Consolidates
               (Pvt) Ltd. The company has been in the forefront of the printing
               and publishing industry in Sri Lanka for several decades,
-              specializing in publishing tabloids, magazines, high-speed soft
+              specializing in publishing tabloids, magazines, high speed soft
               cover book printing and finishing, with options such as UV
               varnish, foil and embossed soft covers.
             </p>

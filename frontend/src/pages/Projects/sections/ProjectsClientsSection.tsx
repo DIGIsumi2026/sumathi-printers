@@ -49,7 +49,7 @@ export default function ProjectsClientsSection() {
             <span>Our Trusted Clients</span>
           </div>
 
-          <h2>Trusted by Sri Lanka’s Leading Institutions</h2>
+          <h2 className="sp-section-heading">Trusted by Sri Lanka’s Leading Institutions</h2>
 
           <p>
             We are proud to be the chosen printing partner for major government

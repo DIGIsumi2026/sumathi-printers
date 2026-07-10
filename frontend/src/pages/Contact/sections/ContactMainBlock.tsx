@@ -113,7 +113,7 @@ export default function ContactMainBlock({
             <span>We’re Ready To Help</span>
           </div>
 
-          <h2>Talk to our team about your next print project.</h2>
+          <h2 className="sp-section-heading">Talk to our team about your next print project.</h2>
 
           <p>
             Reach out for printing, packaging, publishing, stationery, finishing
@@ -159,7 +159,7 @@ export default function ContactMainBlock({
         >
           <div className="sp-contact-form-head">
             <span>Request a Custom Quote</span>
-            <h2>Send us your project details.</h2>
+            <h2 className="sp-section-heading">Send us your project details.</h2>
             <p>
               Fill out the form below with your layout, volume, or finishing
               requirements, and our team will get back to you promptly.

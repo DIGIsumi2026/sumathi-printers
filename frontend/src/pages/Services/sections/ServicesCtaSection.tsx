@@ -66,7 +66,7 @@ export default function ServicesCtaSection() {
               <span>Ready To Start?</span>
             </div>
 
-            <h2>Let’s Finish Your Print Project With Premium Quality</h2>
+            <h2 className="sp-section-heading">Let’s Finish Your Print Project With Premium Quality</h2>
 
             <p>
               From printing and packaging to binding, trimming, lamination and

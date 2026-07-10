@@ -25,7 +25,7 @@ export default function ProjectsFacilitySection() {
             <span>Inside The Facility</span>
           </div>
 
-          <h2>The Art of Printing</h2>
+          <h2 className="sp-section-heading">The Art of Printing</h2>
 
           <p>
             Step inside our state-of-the-art facility. Witness the seamless

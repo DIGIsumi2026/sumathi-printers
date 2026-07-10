@@ -63,7 +63,7 @@ export default function ContactHeroSection() {
             <span>Contact Sumathi Printers</span>
           </div>
 
-          <h1>Get in Touch</h1>
+          <h1 className="sp-section-heading">Get in Touch</h1>
 
           <p>
             Have a project in mind? Let’s bring your printing and packaging

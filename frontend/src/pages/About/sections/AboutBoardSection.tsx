@@ -28,11 +28,10 @@ const boardMembers = [
     icon: Sparkles
   },
   {
-    name: "Mr. Dulantha Sumathipala",
+    name: "Mr. Sajantha Sumathipala",
     role: "Director",
-    image: imageAssets.board.dulantha,
-    profile:
-      "Second son of Mr. Thilanga Sumathipala. Climbed the ranks from Sumathi Printers and NAPCO Pvt Ltd to become a Segment Director, joining the holding company board in 2020.",
+    image: imageAssets.board.sajantha,
+    profile: "Second son of Mr. Thilanga Sumathipala. Climbed the ranks from Sumathi Printers and NAPCO Pvt Ltd to become a Segment Director, joining the holding company board in 2020.",
     highlights: [
       "Education: BSc. Hons. in International Management & Business from the University of Plymouth, England.",
       "Alma Mater: Royal College, Colombo."
@@ -40,16 +39,18 @@ const boardMembers = [
     icon: GraduationCap
   },
   {
-    name: "Mr. Sajantha Sumathipala",
+    name: "Mr. Dulantha Sumathipala",
     role: "Director",
-    image: imageAssets.board.sajantha,
-    profile: "Youngest son of the Sumathi family.",
+    image: imageAssets.board.dulantha,
+    profile:
+      "Youngest son of the Sumathi family.",
     highlights: [
       "Education: Holds a Master's degree in Business Management from foreign universities.",
       "Contributes to the next generation leadership of the Sumathi Group."
     ],
     icon: Award
   }
+  
 ];
 
 export default function AboutBoardSection() {
@@ -74,7 +75,7 @@ export default function AboutBoardSection() {
             <span>Leadership</span>
           </div>
 
-          <h2>Board Of Management</h2>
+          <h2 className="sp-section-heading">Board Of Management</h2>
 
           <p>
             Guided by experienced leadership, strategic vision and a commitment
@@ -120,7 +121,6 @@ export default function AboutBoardSection() {
 
                 <div className="sp-about-board-main">
                   <h3>{member.name}</h3>
-                  <span>{member.role}</span>
                 </div>
 
                 <div className="sp-about-board-dropdown">
