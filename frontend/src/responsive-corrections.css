@@ -1,0 +1,1436 @@
+/* ============================================================
+   SUMATHI PRINTERS — COMPREHENSIVE RESPONSIVE CORRECTIONS
+   Added: 2026-07-10
+   Strategy:
+     Desktop  ≥ 1200px — PRESERVED EXACTLY
+     Laptop   1024–1199px — minor tweaks
+     Tablet L  900–1023px
+     Tablet P  768–899px
+     Mobile   480–767px
+     Sm Mobile < 480px
+   ============================================================ */
+
+/* ────────────────────────────────────────────────────────────
+   GLOBAL SAFETY RULES
+   ──────────────────────────────────────────────────────────── */
+
+/* Prevent any direct children of body from causing horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Every grid/flex container must be able to shrink */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Responsive corrections: Global fluid images */
+img, video {
+  max-width: 100%;
+}
+
+/* Ensure iOS uses 16px+ for inputs (prevents auto-zoom) */
+input,
+select,
+textarea {
+  font-size: max(16px, 1em);
+}
+
+/* Watermark elements must never cause horizontal overflow */
+[data-section-watermark],
+.sp-hero-watermark,
+.sp-services-grid-watermark,
+.sp-services-hero-watermark,
+.sp-finishing-watermark,
+.sp-services-cta-watermark,
+.sp-technology-watermark,
+.sp-home-services-watermark,
+.sp-home-projects-watermark,
+.sp-home-clients-watermark,
+.sp-why-watermark,
+.sp-projects-hero-watermark,
+.sp-projects-categories-watermark,
+.sp-projects-facility-watermark,
+.sp-projects-clients-watermark,
+.sp-projects-cta-watermark,
+.sp-about-story-watermark,
+.sp-about-vm-watermark,
+.sp-about-board-watermark,
+.sp-about-companies-watermark,
+.sp-gallery-watermark-left,
+.sp-gallery-watermark-right,
+.sp-contact-watermark-left,
+.sp-contact-watermark-right {
+  pointer-events: none !important;
+  user-select: none !important;
+  overflow: hidden;
+}
+
+/* Responsive corrections: Container narrowing on mobile */
+@media (max-width: 480px) {
+  .container {
+    width: min(100% - 24px, 720px);
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Navigation / Header
+   ──────────────────────────────────────────────────────────── */
+
+/* Ensure sidebar does not cause overflow */
+.sp-nav-sidebar,
+.sp-sidebar {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: HERO SECTION (Home)
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .sp-hero-section {
+    min-height: 100svh;
+  }
+}
+
+@media (max-width: 767px) {
+  .sp-hero-section {
+    min-height: 100svh;
+    padding-top: 78px;
+  }
+
+  .sp-hero-content {
+    text-align: center;
+    align-items: center;
+  }
+
+  .sp-hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sp-hero-action-button {
+    flex: 1 1 auto;
+    min-width: 140px;
+    max-width: 220px;
+    justify-content: center;
+  }
+
+  .sp-hero-points {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Watermarks must not bleed out */
+  .sp-hero-watermark {
+    font-size: clamp(64px, 18vw, 110px);
+    opacity: 0.22;
+  }
+
+  /* Decorative shapes — prevent overflow */
+  .sp-hero-shape-one,
+  .sp-hero-shape-two,
+  .sp-hero-shape-three {
+    opacity: 0.36;
+    transform: scale(0.64);
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-hero-action-button {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: About Video Section (home and about)
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-about-video-section {
+    padding: 50px 0;
+  }
+
+  .sp-about-video-card {
+    min-height: 380px;
+  }
+
+  /* Caption repositioned so it doesn't overlap too much on mobile */
+  .sp-about-video-caption {
+    top: auto;
+    bottom: 18px;
+    right: 18px;
+    left: 18px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  /* Logo hotspot tap target improved */
+  .sp-about-logo-hotspot {
+    width: 22%;
+    height: 22%;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Home Services Section (mini cards)
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-home-services-section {
+    padding: 60px 0 80px;
+  }
+
+  .sp-home-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-home-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sp-home-service-card {
+    min-height: 72px;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Technology Section
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 1023px) {
+  .sp-technology-section {
+    padding: 64px 0;
+  }
+
+  .sp-technology-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 42px;
+  }
+
+  .sp-technology-image-column {
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .sp-technology-image-frame {
+    aspect-ratio: 16 / 10;
+    height: auto !important;
+  }
+
+  .sp-technology-content {
+    text-align: center;
+  }
+
+  .sp-technology-points {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .sp-technology-image-frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .sp-technology-watermark {
+    font-size: clamp(62px, 18vw, 110px);
+    opacity: 0.22;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Home Projects Section
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 1023px) {
+  .sp-project-gallery-shell {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sp-project-main-area {
+    width: 100%;
+  }
+
+  .sp-project-preview-area {
+    width: 100%;
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  .sp-project-preview-stack {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 6px;
+  }
+
+  .sp-project-preview-card-1,
+  .sp-project-preview-card-2,
+  .sp-project-preview-card-3 {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .sp-home-projects-section {
+    padding: 60px 0 80px;
+  }
+
+  .sp-project-main-image-wrap {
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+
+  .sp-project-gallery-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Product Gallery Section (home)
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-product-gallery-section {
+    padding: 60px 0;
+  }
+
+  .sp-product-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-product-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Home Clients Section
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-home-clients-section {
+    padding: 60px 0 80px;
+  }
+
+  /* The floating panel's logo scroll area */
+  .sp-client-logo-scroll {
+    /* Already has overflow-x handling — just ensure mobile safe area */
+    padding-inline: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Home CTA Section
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-home-cta-section {
+    padding: 60px 0;
+  }
+
+  .sp-home-cta-card {
+    border-radius: 28px;
+    min-height: auto;
+  }
+
+  .sp-home-cta-content {
+    padding: 28px 20px;
+    justify-content: flex-start;
+  }
+
+  .sp-home-cta-actions {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .sp-home-cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: SERVICES PAGE - Hero
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-services-hero-section {
+    min-height: 100svh;
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .sp-services-hero-content {
+    text-align: center;
+  }
+
+  .sp-services-hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sp-services-hero-button {
+    flex: 1 1 auto;
+    min-width: 140px;
+    max-width: 220px;
+    justify-content: center;
+  }
+
+  /* Thumbnail popup — hide on small screens to avoid covering content */
+  .sp-services-thumbnail-popup {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-services-hero-button {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: SERVICES PAGE - Grid Cards (touch access)
+   ──────────────────────────────────────────────────────────── */
+
+/* On touch devices, ensure cards show content since hover isn't reliable.
+   The `onClick` already triggers expansion via JS. We just need to ensure
+   that the featured card always shows its content at mobile. */
+@media (max-width: 767px) {
+  /* Make the featured/first card auto-expand to show title visibly */
+  .sp-service-card.is-featured .sp-service-card-expand {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 10px;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Keep transform subtle on tap */
+  .sp-service-card.is-expanded {
+    transform: translate3d(0, -3px, 0) scale(1.01) !important;
+  }
+
+  /* Reduce height slightly for mobile to show more cards */
+  .sp-service-card,
+  .sp-service-card-content {
+    height: 300px !important;
+    min-height: 300px !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: SERVICES PAGE - Why Choose Us
+   Disable touch scroll-jacking on mobile/tablet
+   ──────────────────────────────────────────────────────────── */
+
+/* NOTE: The JS touch-lock in WhyChooseUsSection.tsx is disabled
+   programmatically via a breakpoint check in the modified component.
+   The CSS below provides the visual fallback layout. */
+
+@media (max-width: 767px) {
+  /* Convert layered deck to vertical flow on mobile */
+  .sp-why-layer-section {
+    min-height: auto !important;
+    padding-bottom: 60px !important;
+  }
+
+  .sp-why-sticky {
+    position: static !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 60px 0 20px;
+  }
+
+  .sp-why-deck-stage {
+    position: static !important;
+    height: auto !important;
+    min-height: auto !important;
+    perspective: none !important;
+    margin-bottom: 24px;
+  }
+
+  .sp-why-deck {
+    position: static !important;
+    width: 100%;
+    height: auto !important;
+  }
+
+  /* Stack all cards naturally, visible one at a time managed by dots */
+  .sp-why-layer-card {
+    position: static !important;
+    width: 100% !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .sp-why-layer-card.is-active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .sp-why-layer-card.is-active .sp-why-media-wrap,
+  .sp-why-layer-card.is-active .sp-why-text-panel {
+    width: 100% !important;
+    order: initial !important;
+  }
+
+  .sp-why-layer-card.is-active .sp-why-media {
+    aspect-ratio: 16 / 10;
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  .sp-why-layer-card.is-active .sp-why-text-glass {
+    width: 100% !important;
+    transform: none !important;
+    opacity: 1 !important;
+    padding: 18px !important;
+  }
+
+  .sp-why-layer-count {
+    display: none;
+  }
+
+  .sp-why-layer-dots {
+    position: static !important;
+    transform: none !important;
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    gap: 10px;
+  }
+}
+
+/* Tablet — keep layered deck but reduce size and ensure proper heights */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sp-why-layer-section {
+    min-height: 130vh !important;
+    padding-bottom: 140px !important;
+  }
+
+  .sp-why-sticky {
+    padding: 72px 0 80px;
+    min-height: auto;
+  }
+
+  .sp-why-deck-stage {
+    height: 440px !important;
+    min-height: 440px !important;
+    margin-bottom: 32px;
+  }
+
+  .sp-why-layer-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sp-why-media-wrap {
+    width: min(280px, 75vw) !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: SERVICES PAGE - Finishing Services
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .sp-finishing-section {
+    min-height: auto !important;
+    padding: 64px 0;
+  }
+
+  .sp-finishing-container {
+    overflow-x: hidden;
+  }
+
+  .sp-finishing-carousel-stage {
+    --finish-shift: 90px !important;
+    height: 390px !important;
+    margin-top: 36px;
+    overflow: hidden;
+  }
+
+  .sp-finishing-card {
+    width: min(230px, 68vw) !important;
+    height: 310px !important;
+  }
+
+  .sp-finishing-controls {
+    margin-top: 22px;
+  }
+
+  .sp-finishing-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sp-finishing-action {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  /* Prevent watermark overflow */
+  .sp-finishing-watermark {
+    font-size: clamp(56px, 14vw, 86px);
+    opacity: 0.3;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  .sp-finishing-orb-one,
+  .sp-finishing-orb-two {
+    opacity: 0.3;
+    max-width: 160px;
+    max-height: 160px;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: SERVICES PAGE - CTA
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-services-cta-section {
+    padding: 64px 0;
+  }
+
+  .sp-services-cta-card {
+    min-height: auto;
+    padding-bottom: clamp(200px, 40vw, 340px);
+  }
+
+  .sp-services-cta-content {
+    padding: 28px 24px;
+    width: 100%;
+  }
+
+  .sp-services-cta-mini-card {
+    position: static !important;
+    margin: 0 20px 20px;
+    width: auto !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: GALLERY PAGE - Hero
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-gallery-hero-section {
+    min-height: 72svh;
+    padding: 90px 0 60px;
+  }
+
+  .sp-gallery-hero-content h1 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Decorative rings must not overflow */
+  .sp-gallery-hero-ring-one {
+    right: -20px;
+    opacity: 0.3;
+  }
+
+  .sp-gallery-hero-orb-one {
+    left: -80px;
+    opacity: 0.3;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: GALLERY PAGE - Filter bar mobile
+   ──────────────────────────────────────────────────────────── */
+
+/* Ensure filter area is fully scrollable on mobile */
+@media (max-width: 767px) {
+  .sp-gallery-filter-area {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    /* Pad enough so the filter bar doesn't clip at the right */
+    padding-inline: 4px;
+    padding-bottom: 6px;
+    /* Remove justify-content so the bar can scroll freely */
+    justify-content: flex-start !important;
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* Full-bleed so the sticky bar can escape container padding */
+    margin-inline: calc(var(--container-bleed, 0px) * -1);
+    padding-inline: var(--container-bleed, 0px);
+  }
+
+  .sp-gallery-filter-area::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sp-gallery-filter-bar {
+    /* Prevent wrapping — allow horizontal scroll instead */
+    flex-wrap: nowrap !important;
+    width: max-content !important;
+    /* Reset the sticky so it scrolls with the filter area */
+    position: relative !important;
+    top: auto !important;
+    /* Minimum inter-button tap targets */
+    gap: 6px;
+  }
+
+  .sp-gallery-filter-bar button {
+    white-space: nowrap;
+    min-height: 44px;
+    padding: 0 14px;
+    flex-shrink: 0;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: GALLERY PAGE - Masonry grid
+   ──────────────────────────────────────────────────────────── */
+
+/* Two columns on tablet */
+@media (max-width: 1023px) and (min-width: 641px) {
+  .sp-gallery-masonry-grid {
+    columns: 2 !important;
+  }
+}
+
+/* One column on small mobile */
+@media (max-width: 480px) {
+  .sp-gallery-masonry-grid {
+    columns: 1 !important;
+  }
+
+  .sp-gallery-card,
+  .sp-gallery-card.tall,
+  .sp-gallery-card.wide,
+  .sp-gallery-card.normal {
+    min-height: 280px !important;
+  }
+}
+
+/* Ensure card overlay is visible on touch (not just on hover) */
+@media (hover: none), (pointer: coarse) {
+  .sp-gallery-card-overlay {
+    opacity: 1 !important;
+    background: linear-gradient(
+      180deg,
+      transparent 40%,
+      rgba(0, 0, 0, 0.7) 74%,
+      rgba(0, 0, 0, 0.9) 100%
+    ) !important;
+  }
+
+  .sp-gallery-card-copy {
+    transform: translateY(0) !important;
+  }
+
+  /* Disable hover transform that can get stuck on touch */
+  .sp-gallery-card:hover {
+    transform: translateY(0) scale(1) !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: GALLERY PAGE - Lightbox
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-gallery-lightbox {
+    padding: 12px !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sp-gallery-lightbox-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-height: auto !important;
+    gap: 14px !important;
+    /* Account for fixed close/nav buttons */
+    padding-top: 56px;
+    padding-bottom: 70px;
+  }
+
+  .sp-gallery-lightbox-media {
+    width: 100% !important;
+    height: min(52vmax, 54vh) !important;
+    border-radius: 18px !important;
+  }
+
+  .sp-gallery-lightbox-details {
+    padding: 18px !important;
+    border-radius: 18px !important;
+    max-height: none;
+    overflow-y: auto;
+  }
+
+  .sp-gallery-lightbox-details h3 {
+    font-size: clamp(28px, 7vw, 44px) !important;
+  }
+
+  /* Close button — top right */
+  .sp-gallery-lightbox-close {
+    top: 14px !important;
+    right: 14px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  /* Nav buttons — positioned at the bottom on mobile */
+  .sp-gallery-lightbox-nav.previous {
+    left: 14px !important;
+    top: auto !important;
+    bottom: 16px !important;
+    transform: none !important;
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .sp-gallery-lightbox-nav.next {
+    right: 14px !important;
+    top: auto !important;
+    bottom: 16px !important;
+    transform: none !important;
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  /* Zoom controls on mobile */
+  .sp-gallery-lightbox-zoom-controls {
+    left: 14px !important;
+    top: 14px !important;
+  }
+
+  /* Disable wheel zoom on touch to avoid conflict with pinch-zoom */
+}
+
+/* Don't allow lightbox to scroll when open (body lock maintained by JS) */
+body.sp-gallery-lightbox-open {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: GALLERY PAGE - CTA
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-gallery-cta-section {
+    padding: 64px 0;
+  }
+
+  .sp-gallery-cta-card {
+    min-height: auto;
+    border-radius: 28px;
+  }
+
+  .sp-gallery-cta-content {
+    min-height: auto;
+    padding: 28px 22px 32px;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: GALLERY PAGE - Quality divider
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .sp-gallery-quality-container {
+    grid-template-columns: 1fr !important;
+    gap: 18px;
+  }
+
+  .sp-gallery-quality-line {
+    height: 1px;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .sp-gallery-quality-container p {
+    font-size: clamp(16px, 5vw, 26px);
+    text-align: center;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: CONTACT PAGE - Hero
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-contact-hero-section {
+    min-height: 100svh;
+    padding-top: 78px;
+    padding-bottom: 60px;
+  }
+
+  .sp-contact-hero-content h1 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .sp-contact-hero-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: CONTACT PAGE - Form section
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-contact-main-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* All form inputs: ensure 16px+ to prevent iOS auto-zoom */
+  .sp-contact-form input,
+  .sp-contact-form select,
+  .sp-contact-form textarea {
+    font-size: 16px !important;
+    -webkit-text-size-adjust: none;
+  }
+
+  .sp-contact-form {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sp-contact-whatsapp-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: CONTACT PAGE - Map
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-contact-map-section {
+    padding: 60px 0;
+  }
+
+  .sp-contact-map-card {
+    min-height: clamp(320px, 60vw, 480px) !important;
+  }
+
+  .sp-contact-map-card iframe {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .sp-contact-map-floating-card {
+    left: 14px !important;
+    bottom: 14px !important;
+    width: calc(100% - 28px) !important;
+    max-width: 100%;
+    grid-template-columns: 46px 1fr !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: ABOUT PAGE - General
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  /* Story section */
+  .sp-about-story-section {
+    padding: 60px 0;
+  }
+
+  /* About grid sections */
+  .sp-about-vm-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .sp-about-vm-image-wrap {
+    width: 100% !important;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .sp-about-vm-image-card {
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+
+  .sp-about-vm-text-card {
+    width: 100% !important;
+  }
+
+  /* Board section */
+  .sp-about-board-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-about-board-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sp-about-board-card {
+    min-height: auto;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: ABOUT PAGE - Companies section
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-about-companies-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px;
+  }
+
+  .sp-about-companies-logo {
+    max-width: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-about-companies-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: PROJECTS PAGE - Hero
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-projects-hero-section {
+    min-height: 100svh;
+    padding-top: 78px;
+  }
+
+  .sp-projects-hero-content h1 {
+    font-size: clamp(56px, 14vw, 90px) !important;
+  }
+
+  .sp-projects-hero-content h2 {
+    font-size: clamp(26px, 6vw, 40px) !important;
+  }
+
+  .sp-projects-hero-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sp-projects-hero-button {
+    flex: 1 1 auto;
+    min-width: 140px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-projects-hero-button {
+    width: 100%;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: PROJECTS PAGE - Category cards
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-projects-category-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .sp-projects-category-card {
+    min-height: 260px !important;
+  }
+
+  /* Make hover-only description visible on touch */
+  .sp-projects-category-hover {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    max-height: none !important;
+    padding-top: 8px !important;
+  }
+
+  .sp-projects-category-hover p {
+    color: rgba(255, 255, 255, 0.82) !important;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sp-projects-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: PROJECTS PAGE - Clients section
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-projects-clients-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px;
+  }
+
+  .sp-projects-clients-logo {
+    max-width: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-projects-clients-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: PROJECTS PAGE - CTA
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-projects-cta-section {
+    padding: 64px 0;
+  }
+
+  .sp-projects-cta-card {
+    min-height: auto;
+    border-radius: 28px;
+  }
+
+  .sp-projects-cta-content {
+    padding: 28px 22px 32px;
+    width: 100%;
+  }
+
+  .sp-projects-cta-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sp-projects-cta-button {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: FOOTER
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-footer {
+    padding: 60px 0 40px;
+  }
+
+  .sp-footer-grid,
+  .sp-footer-inner {
+    grid-template-columns: 1fr !important;
+    gap: 32px;
+  }
+
+  .sp-footer-logo-col {
+    text-align: center;
+  }
+
+  .sp-footer-social {
+    justify-content: center;
+  }
+
+  .sp-footer-links {
+    text-align: left;
+  }
+
+  .sp-footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  /* Prevent contact info overflow */
+  .sp-footer address,
+  .sp-footer a {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Floating actions
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .sp-floating-actions {
+    /* Move to safe area on mobile */
+    right: max(16px, env(safe-area-inset-right, 16px));
+    bottom: max(20px, env(safe-area-inset-bottom, 20px));
+  }
+
+  .sp-floating-actions button,
+  .sp-floating-actions a {
+    /* Ensure adequate touch targets */
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: PRELOADER
+   ──────────────────────────────────────────────────────────── */
+
+.sp-preloader,
+.sp-preloader-overlay {
+  /* Ensure preloader always covers full viewport */
+  width: 100dvw;
+  height: 100dvh;
+}
+
+@media (max-width: 767px) {
+  .sp-preloader-logo {
+    width: min(160px, 42vw);
+    height: auto;
+  }
+
+  .sp-preloader-video {
+    width: min(200px, 52vw);
+    height: auto;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Touch device hover states
+   Remove hover transforms that can get stuck on touch
+   ──────────────────────────────────────────────────────────── */
+
+@media (hover: none), (pointer: coarse) {
+  /* Services cards */
+  .sp-service-card:hover {
+    transform: translate3d(0, 0, 0) scale(1) !important;
+  }
+
+  /* Contact info items */
+  .sp-contact-info-item:hover {
+    transform: none !important;
+  }
+
+  /* Gallery CTA button */
+  .sp-gallery-cta-button:hover {
+    transform: none !important;
+  }
+
+  /* Services CTA button */
+  .sp-services-cta-button:hover {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* Projects button */
+  .sp-projects-hero-button:hover,
+  .sp-projects-cta-button:hover {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* Services grid button */
+  .sp-services-grid-button:hover {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* Why choose dots */
+  .sp-why-layer-dots button:hover {
+    transform: none !important;
+  }
+
+  /* Custom cursor — disable on touch */
+  .sp-cursor,
+  [data-cursor],
+  [data-cursor-label] {
+    cursor: auto !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Motion reduction
+   ──────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-gallery-float-orb,
+  .sp-gallery-float-ring,
+  .sp-gallery-float-shape,
+  .sp-contact-orb,
+  .sp-contact-ring,
+  .sp-contact-shape,
+  .sp-finishing-orb-one,
+  .sp-finishing-orb-two,
+  .sp-finishing-ring-one,
+  .sp-finishing-ring-two,
+  .sp-finishing-bg-glow,
+  .sp-services-cta-orb-one,
+  .sp-services-cta-orb-two {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Short landscape screens (e.g. iPhone landscape)
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .sp-hero-section,
+  .sp-services-hero-section,
+  .sp-gallery-hero-section,
+  .sp-contact-hero-section,
+  .sp-projects-hero-section {
+    min-height: max(100dvh, 480px);
+    padding-top: 56px;
+  }
+
+  .sp-hero-content,
+  .sp-services-hero-content,
+  .sp-gallery-hero-content,
+  .sp-contact-hero-content,
+  .sp-projects-hero-content {
+    padding-block: 16px;
+  }
+
+  /* Lightbox on short landscape */
+  .sp-gallery-lightbox-layout {
+    flex-direction: row !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    align-items: flex-start;
+  }
+
+  .sp-gallery-lightbox-media {
+    flex: 1;
+    height: calc(100dvh - 28px) !important;
+    width: auto !important;
+  }
+
+  .sp-gallery-lightbox-details {
+    flex: 0 0 260px;
+    max-height: calc(100dvh - 28px);
+    overflow-y: auto;
+  }
+
+  /* Navigation sidebar on short landscape */
+  .sp-nav-sidebar {
+    max-height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Safe area insets
+   ──────────────────────────────────────────────────────────── */
+
+.sp-header,
+.sp-nav {
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+.sp-footer {
+  padding-bottom: max(40px, env(safe-area-inset-bottom, 0px));
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Min-width: 0 on grid/flex children
+   Prevents text/content overflow in grid layouts
+   ──────────────────────────────────────────────────────────── */
+
+.sp-services-grid-row > * {
+  min-width: 0;
+}
+
+.sp-contact-main-container > * {
+  min-width: 0;
+}
+
+.sp-about-vm-grid > * {
+  min-width: 0;
+}
+
+.sp-projects-category-grid > * {
+  min-width: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Section headings — word break safety
+   ──────────────────────────────────────────────────────────── */
+
+.sp-section-heading {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* ────────────────────────────────────────────────────────────
+   Responsive corrections: Button groups — wrapping
+   ──────────────────────────────────────────────────────────── */
+
+.sp-hero-actions,
+.sp-services-hero-actions,
+.sp-services-cta-actions,
+.sp-projects-hero-actions,
+.sp-projects-cta-actions,
+.sp-services-grid-actions {
+  flex-wrap: wrap;
+}
+
+/* All buttons are keyboard accessible */
+button:focus-visible,
+a:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid #38c7ff;
+  outline-offset: 2px;
+}

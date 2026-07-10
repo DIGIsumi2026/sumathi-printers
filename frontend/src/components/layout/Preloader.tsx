@@ -31,7 +31,6 @@ export default function Preloader({ visible }: PreloaderProps) {
         muted
         playsInline
         autoPlay
-        loop
         preload="auto"
       />
     </div>

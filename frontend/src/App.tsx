@@ -16,6 +16,7 @@ import type { CompanyData, FormStatus } from "./types/site";
 import { ScrollLockProvider } from "./contexts/ScrollLockContext";
 
 import "./App.css";
+import "./responsive-corrections.css";
 
 const HomePage     = lazy(() => import("./pages/Home/HomePage"));
 const AboutPage    = lazy(() => import("./pages/About/AboutPage"));
@@ -26,7 +27,7 @@ const ContactPage  = lazy(() => import("./pages/Contact/ContactPage"));
 
 const company = companyJson as CompanyData;
 
-const PAGE_LOADER_DURATION = 1500;
+const PAGE_LOADER_DURATION = 4000;
 
 export default function App() {
   const location = useLocation();

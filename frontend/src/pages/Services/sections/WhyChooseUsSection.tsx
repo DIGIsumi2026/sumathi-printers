@@ -298,7 +298,15 @@ export default function WhyChooseUsSection() {
     const wheelThreshold = 14;
     const touchThreshold = 42;
 
+    // ── Responsive correction: Disable scroll-jacking on touch / mobile devices.
+    // On screens ≤ 767px or coarse-pointer devices the layered deck collapses into
+    // a static vertical layout (via CSS), so intercepting scroll events would trap
+    // the user on a static section. We check on every event so resizing works too.
+    const isTouchDevice = () =>
+      window.matchMedia("(max-width: 767px), (pointer: coarse)").matches;
+
     const isSectionReadyToLock = () => {
+      if (isTouchDevice()) return false;
       const section = sectionRef.current;
       if (!section) return false;
 

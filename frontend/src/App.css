@@ -8274,18 +8274,19 @@ main:has(.sp-about-page-intro-section),
   position: relative;
   z-index: 2;
   display: block;
-  width: clamp(150px, 21vw, 230px);
-  height: clamp(150px, 21vw, 230px);
-  max-width: 48vw;
-  max-height: 48vw;
+
+  width: clamp(180px, 22vw, 320px);
+  height: clamp(180px, 22vw, 320px);
+
   object-fit: contain;
-  background: transparent !important;
-  user-select: none;
+  background: transparent;
   pointer-events: none;
-  transform: none;
+  user-select: none;
+
   filter:
     drop-shadow(0 24px 44px rgba(15, 23, 42, 0.22))
     drop-shadow(0 0 24px rgba(56, 199, 255, 0.16));
+
   animation: spLoaderSoftFloat 2.45s ease-in-out infinite;
 }
 
