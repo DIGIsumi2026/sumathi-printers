@@ -6,7 +6,7 @@ const clients = [
   "Ministry of Health",
   "Health Promotion Bureau",
   "Inland Revenue Department",
-  "Sri Lanka Rūpavāhinī Corporation",
+  "Sri Lanka Rupawahini Corporation",
   "University of Colombo",
   "Sri Lanka Insurance",
   "National Savings Bank",

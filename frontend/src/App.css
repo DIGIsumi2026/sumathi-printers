@@ -3046,9 +3046,9 @@ body.sp-menu-open .sp-nav-shell {
 .sp-technology-title {
   margin: 22px 0 0;
   color: #111827;
-  font-size: clamp(44px, 5.4vw, 82px);
+  font-size: clamp(44px, 2vw, 82px);
   line-height: 0.94;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.0065em;
   font-weight: 950;
 }
 

@@ -97,11 +97,6 @@ export default function ProjectsCategoriesSection() {
 
                   <div className="sp-projects-category-hover">
                     <p>{category.description}</p>
-
-                    <small>
-                      View Category
-                      <ArrowUpRight size={15} />
-                    </small>
                   </div>
                 </div>
               </div>
