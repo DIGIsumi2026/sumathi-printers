@@ -68,7 +68,7 @@ body {
 .sp-section-heading {
   margin: 22px 0 0;
   color: #ffffff;
-  font-size: clamp(44px, 0.5vw, 82px);
+  font-size: clamp(44px, calc(44px + 18 * ((100vw - 360px) / 664)), 62px);
   line-height: 0.94;
   letter-spacing: -0.00065em;
   font-weight: 700;
@@ -386,7 +386,7 @@ body {
 
 /* Keep spacing balanced after logo increase */
 .sp-nav-links {
-  gap: clamp(18px, 1.55vw, 26px) !important;
+  gap: clamp(18px, calc(18px + 2 * ((100vw - 360px) / 664)), 20px) !important;
 }
 
 /* Mobile logo also clearer */
@@ -1197,7 +1197,7 @@ body.sp-menu-open .sp-nav-shell {
   grid-template-columns: auto minmax(0, 920px) !important;
   justify-content: start !important;
   align-items: center !important;
-  gap: clamp(16px, 2.4vw, 34px) !important;
+  gap: clamp(16px, calc(16px + 10 * ((100vw - 360px) / 664)), 26px) !important;
 }
 
 .sp-hero-content {
@@ -1273,7 +1273,7 @@ body.sp-menu-open .sp-nav-shell {
   max-width: 780px !important;
   margin: 18px 0 0 !important;
   color: rgba(255, 255, 255, 0.78) !important;
-  font-size: clamp(16px, 1.24vw, 20px) !important;
+  font-size: clamp(16px, calc(16px + 0 * ((100vw - 360px) / 664)), 16px) !important;
   line-height: 1.6 !important;
   font-weight: 750 !important;
   text-align: left !important;
@@ -1538,7 +1538,7 @@ body.sp-menu-open .sp-nav-shell {
   writing-mode: vertical-rl !important;
   color: transparent !important;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.14) !important;
-  font-size: clamp(72px, 8vw, 138px) !important;
+  font-size: clamp(72px, calc(72px + 32 * ((100vw - 360px) / 664)), 104px) !important;
   font-weight: 900 !important;
   line-height: 0.88 !important;
   letter-spacing: -0.08em !important;
@@ -1771,7 +1771,7 @@ body.sp-menu-open .sp-nav-shell {
   z-index: 1;
   color: transparent;
   -webkit-text-stroke: 2px rgba(122, 77, 255, 0.14);
-  font-size: clamp(84px, 10vw, 150px);
+  font-size: clamp(84px, calc(84px + 29 * ((100vw - 360px) / 664)), 113px);
   font-weight: 950;
   line-height: 0.78;
   letter-spacing: -0.08em;
@@ -2197,7 +2197,7 @@ body.sp-menu-open .sp-nav-shell {
   position: absolute;
   z-index: 12;
   top: 22%;
-  right: clamp(30px, 6vw, 84px);
+  right: clamp(30px, calc(30px + 33 * ((100vw - 360px) / 664)), 63px);
   width: min(590px, 44%);
   color: #ffffff;
   pointer-events: none;
@@ -2253,9 +2253,9 @@ body.sp-menu-open .sp-nav-shell {
   margin: 18px 0 0;
   max-width: 560px;
   color: rgba(255, 255, 255, 0.84);
-  font-size: clamp(13px, 15px, 15.5px);
+  font-size: clamp(13px, calc(13px + 0 * ((100vw - 360px) / 664)), 13px);
   line-height: 1.58;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .sp-about-video-readmore {
@@ -2455,7 +2455,7 @@ body.sp-menu-open .sp-nav-shell {
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.24);
-  font-size: clamp(82px, 10vw, 160px);
+  font-size: clamp(82px, calc(82px + 38 * ((100vw - 360px) / 664)), 120px);
   line-height: 0.82;
   letter-spacing: -0.075em;
   font-weight: 950;
@@ -2468,7 +2468,7 @@ body.sp-menu-open .sp-nav-shell {
   z-index: 3;
   display: grid;
   grid-template-columns: minmax(360px, 500px) 1fr;
-  gap: clamp(42px, 7vw, 92px);
+  gap: clamp(42px, calc(42px + 27 * ((100vw - 360px) / 664)), 69px);
   align-items: center;
   padding-left: 26px;
 }
@@ -2637,7 +2637,7 @@ body.sp-menu-open .sp-nav-shell {
 .sp-technology-slide-caption strong {
   display: block;
   color: #ffffff;
-  font-size: clamp(24px, 2.5vw, 34px);
+  font-size: clamp(24px, calc(24px + 2 * ((100vw - 360px) / 664)), 26px);
   line-height: 1;
   letter-spacing: -0.05em;
   font-weight: 950;
@@ -2709,7 +2709,7 @@ body.sp-menu-open .sp-nav-shell {
 .sp-technology-text {
   margin: 22px 0 0;
   color: rgba(17, 24, 39, 0.66);
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.75;
   font-weight: 650;
 }
@@ -2886,7 +2886,7 @@ body.sp-menu-open .sp-nav-shell {
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.18);
-  font-size: clamp(78px, 9vw, 150px);
+  font-size: clamp(78px, calc(78px + 35 * ((100vw - 360px) / 664)), 113px);
   line-height: 0.82;
   letter-spacing: -0.075em;
   font-weight: 950;
@@ -2941,7 +2941,7 @@ body.sp-menu-open .sp-nav-shell {
   width: min(760px, 100%);
   margin: 22px auto 0;
   color: rgba(17, 24, 39, 0.64);
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.72;
   font-weight: 650;
 }
@@ -3255,7 +3255,7 @@ body.sp-menu-open .sp-nav-shell {
 
 /* Premium 3D cards: Home services only */
 .sp-home-services-grid {
-  gap: clamp(18px, 1.45vw, 24px);
+  gap: clamp(18px, calc(18px + 0 * ((100vw - 360px) / 664)), 18px);
   perspective: 1200px;
 }
 
@@ -3641,7 +3641,7 @@ body.sp-menu-open .sp-nav-shell {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: clamp(18px, 2.2vw, 34px) !important;
+  gap: clamp(18px, calc(18px + 8 * ((100vw - 360px) / 664)), 26px) !important;
   min-width: 0 !important;
 }
 
@@ -4016,7 +4016,7 @@ body.sp-menu-open .sp-nav-shell {
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.16);
-  font-size: clamp(82px, 10vw, 158px);
+  font-size: clamp(82px, calc(82px + 37 * ((100vw - 360px) / 664)), 119px);
   line-height: 0.82;
   letter-spacing: -0.075em;
   font-weight: 950;
@@ -4174,7 +4174,7 @@ body.sp-menu-open .sp-nav-shell {
   width: min(760px, 100%);
   margin: 22px auto 0;
   color: rgba(17, 24, 39, 0.64);
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.72;
   font-weight: 650;
 }
@@ -4291,7 +4291,7 @@ body.sp-menu-open .sp-nav-shell {
 }
 
 .sp-client-arrow-line {
-  width: clamp(78px, 10vw, 150px);
+  width: clamp(78px, calc(78px + 35 * ((100vw - 360px) / 664)), 113px);
   height: 3px;
   margin: 0 !important;
   border-radius: 999px;
@@ -4620,7 +4620,7 @@ body.sp-menu-open .sp-nav-shell {
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.18);
-  font-size: clamp(68px, 8.5vw, 128px);
+  font-size: clamp(68px, calc(68px + 28 * ((100vw - 360px) / 664)), 96px);
   line-height: 0.82;
   letter-spacing: -0.075em;
   font-weight: 950;
@@ -4772,7 +4772,7 @@ body.sp-menu-open .sp-nav-shell {
   width: min(760px, 100%);
   margin: 22px auto 0;
   color: rgba(17, 24, 39, 0.64);
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.72;
   font-weight: 650;
 }
@@ -4825,8 +4825,8 @@ body.sp-menu-open .sp-nav-shell {
 
 .sp-project-main-caption {
   position: absolute;
-  left: clamp(24px, 4vw, 48px);
-  bottom: clamp(24px, 4vw, 42px);
+  left: clamp(24px, calc(24px + 12 * ((100vw - 360px) / 664)), 36px);
+  bottom: clamp(24px, calc(24px + 8 * ((100vw - 360px) / 664)), 32px);
   width: min(560px, calc(100% - 48px));
   color: #ffffff;
 }
@@ -4843,14 +4843,14 @@ body.sp-menu-open .sp-nav-shell {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .sp-project-main-caption h3 {
   margin: 16px 0 0;
-  font-size: clamp(34px, 4vw, 64px);
+  font-size: clamp(34px, calc(34px + 14 * ((100vw - 360px) / 664)), 48px);
   line-height: 0.94;
   letter-spacing: -0.075em;
   font-weight: 950;
@@ -4941,7 +4941,7 @@ body.sp-menu-open .sp-nav-shell {
 }
 
 .sp-project-arrows > span {
-  width: clamp(72px, 8vw, 122px);
+  width: clamp(72px, calc(72px + 20 * ((100vw - 360px) / 664)), 92px);
   height: 3px;
   border-radius: 999px;
   background: linear-gradient(90deg, #e72a9a, #7a4dff, #38c7ff);
@@ -5258,8 +5258,8 @@ body.sp-menu-open .sp-nav-shell {
 
 .sp-home-cta-card {
   position: relative;
-  min-height: clamp(430px, 44vw, 620px);
-  border-radius: clamp(32px, 4vw, 56px);
+  min-height: clamp(430px, calc(430px + 35 * ((100vw - 360px) / 664)), 465px);
+  border-radius: clamp(32px, calc(32px + 10 * ((100vw - 360px) / 664)), 42px);
   overflow: hidden;
   isolation: isolate;
   background: #050816;
@@ -5348,7 +5348,7 @@ body.sp-menu-open .sp-nav-shell {
   position: relative;
   z-index: 5;
   width: min(730px, calc(100% - 58px));
-  padding: clamp(38px, 6vw, 86px);
+  padding: clamp(38px, calc(38px + 27 * ((100vw - 360px) / 664)), 65px);
   color: #ffffff;
 }
 
@@ -5381,7 +5381,7 @@ body.sp-menu-open .sp-nav-shell {
   width: min(700px, 100%);
   margin: 20px 0 0;
   color: #ffffff;
-  font-size: clamp(42px, 5.6vw, 88px);
+  font-size: clamp(42px, calc(42px + 24 * ((100vw - 360px) / 664)), 66px);
   line-height: 0.9;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -5392,7 +5392,7 @@ body.sp-menu-open .sp-nav-shell {
   width: min(620px, 100%);
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.76);
-  font-size: clamp(14px, 1.16vw, 18px);
+  font-size: clamp(14px, calc(14px + 0 * ((100vw - 360px) / 664)), 14px);
   line-height: 1.7;
   font-weight: 700;
 }
@@ -5458,8 +5458,8 @@ body.sp-menu-open .sp-nav-shell {
 
 .sp-home-cta-mini-card {
   position: absolute;
-  right: clamp(24px, 5vw, 74px);
-  bottom: clamp(24px, 5vw, 62px);
+  right: clamp(24px, calc(24px + 32 * ((100vw - 360px) / 664)), 56px);
+  bottom: clamp(24px, calc(24px + 23 * ((100vw - 360px) / 664)), 47px);
   z-index: 5;
   width: min(230px, calc(100% - 48px));
   padding: 22px 24px;
@@ -5649,7 +5649,7 @@ body.sp-menu-open .sp-nav-shell {
   }
 
   .sp-home-cta-content h2 {
-    font-size: clamp(36px, 12vw, 56px);
+    font-size: clamp(36px, calc(36px + 6 * ((100vw - 360px) / 664)), 42px);
   }
 
   .sp-home-cta-actions {
@@ -5934,8 +5934,8 @@ main:has(.sp-about-page-intro-section),
 .sp-about-hero-content,
 .sp-about-page-thumb-content {
   position: absolute !important;
-  left: clamp(34px, 7vw, 96px) !important;
-  bottom: clamp(34px, 7vw, 86px) !important;
+  left: clamp(34px, calc(34px + 38 * ((100vw - 360px) / 664)), 72px) !important;
+  bottom: clamp(34px, calc(34px + 31 * ((100vw - 360px) / 664)), 65px) !important;
   z-index: 5 !important;
   width: min(740px, calc(100vw - 68px)) !important;
   max-width: none !important;
@@ -5974,10 +5974,10 @@ main:has(.sp-about-page-intro-section),
 .sp-about-page-thumb-content h1 {
   margin: 18px 0 0 !important;
   color: #ffffff !important;
-  font-size: clamp(42px, 6.4vw, 92px) !important;
+  font-size: clamp(36px, calc(36px + 0 * ((100vw - 360px) / 664)), 36px) !important;
   line-height: 0.9 !important;
-  letter-spacing: -0.085em !important;
-  font-weight: 950 !important;
+  letter-spacing: -0.0085em !important;
+  font-weight: 600 !important;
   text-wrap: balance !important;
 }
 
@@ -5986,7 +5986,7 @@ main:has(.sp-about-page-intro-section),
   width: min(620px, 100%) !important;
   margin: 18px 0 0 !important;
   color: rgba(255, 255, 255, 0.78) !important;
-  font-size: clamp(14px, 1.2vw, 18px) !important;
+  font-size: clamp(14px, calc(14px + 0 * ((100vw - 360px) / 664)), 14px) !important;
   line-height: 1.68 !important;
   font-weight: 700 !important;
 }
@@ -6124,7 +6124,7 @@ main:has(.sp-about-page-intro-section),
 
   .sp-about-hero-content h1,
   .sp-about-page-thumb-content h1 {
-    font-size: clamp(36px, 13vw, 58px) !important;
+    font-size: clamp(36px, calc(36px + 0 * ((100vw - 360px) / 664)), 36px) !important;
     letter-spacing: -0.075em !important;
   }
 
@@ -6167,7 +6167,7 @@ main:has(.sp-about-page-intro-section),
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.14);
-  font-size: clamp(76px, 9vw, 148px);
+  font-size: clamp(76px, calc(76px + 35 * ((100vw - 360px) / 664)), 111px);
   line-height: 0.82;
   letter-spacing: -0.075em;
   font-weight: 950;
@@ -6231,7 +6231,7 @@ main:has(.sp-about-page-intro-section),
   z-index: 3;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
-  gap: clamp(42px, 6vw, 86px);
+  gap: clamp(42px, calc(42px + 23 * ((100vw - 360px) / 664)), 65px);
   align-items: center;
 }
 
@@ -6268,10 +6268,10 @@ main:has(.sp-about-page-intro-section),
   width: min(760px, 100%);
   margin: 22px 0 0;
   color: #111827;
-  font-size: clamp(42px, 5.4vw, 82px);
+  font-size: clamp(42px, calc(42px + 20 * ((100vw - 360px) / 664)), 62px);
   line-height: 0.94;
-  letter-spacing: -0.078em;
-  font-weight: 950;
+  letter-spacing: -0.0078em;
+  font-weight: 600;
 }
 
 .sp-about-story-text {
@@ -6284,7 +6284,7 @@ main:has(.sp-about-page-intro-section),
 .sp-about-story-text p {
   margin: 0;
   color: rgba(17, 24, 39, 0.66);
-  font-size: clamp(15px, 1.18vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.78;
   font-weight: 650;
 }
@@ -6428,7 +6428,7 @@ main:has(.sp-about-page-intro-section),
   display: block;
   margin-top: 5px;
   color: #ffffff;
-  font-size: clamp(18px, 2vw, 26px);
+  font-size: clamp(18px, calc(18px + 2 * ((100vw - 360px) / 664)), 20px);
   line-height: 1;
   letter-spacing: -0.05em;
   font-weight: 950;
@@ -6459,7 +6459,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-about-story-content h2 {
-    font-size: clamp(38px, 12vw, 58px);
+    font-size: clamp(38px, calc(38px + 6 * ((100vw - 360px) / 664)), 44px);
   }
 
   .sp-about-story-text p {
@@ -6530,7 +6530,7 @@ main:has(.sp-about-page-intro-section),
   z-index: 1;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.14);
-  font-size: clamp(86px, 10vw, 168px);
+  font-size: clamp(86px, calc(86px + 40 * ((100vw - 360px) / 664)), 126px);
   line-height: 0.82;
   letter-spacing: -0.075em;
   font-weight: 950;
@@ -6561,7 +6561,7 @@ main:has(.sp-about-page-intro-section),
   position: relative;
   display: grid;
   align-items: center;
-  gap: clamp(28px, 3.5vw, 58px);
+  gap: clamp(28px, calc(28px + 16 * ((100vw - 360px) / 664)), 44px);
 }
 
 .sp-about-vm-grid-vision {
@@ -6712,7 +6712,7 @@ main:has(.sp-about-page-intro-section),
   position: relative;
   z-index: 3;
   min-width: 0;
-  padding: clamp(30px, 4vw, 54px);
+  padding: clamp(30px, calc(30px + 11 * ((100vw - 360px) / 664)), 41px);
   border-radius: 38px;
   overflow: hidden;
   isolation: isolate;
@@ -6804,17 +6804,17 @@ main:has(.sp-about-page-intro-section),
   width: min(780px, 100%);
   margin: 20px 0 0;
   color: #111827;
-  font-size: clamp(36px, 4.8vw, 72px);
+  font-size: clamp(36px, calc(36px + 18 * ((100vw - 360px) / 664)), 54px);
   line-height: 0.94;
-  letter-spacing: -0.078em;
-  font-weight: 950;
+  letter-spacing: -0.0078em;
+  font-weight: 600;
 }
 
 .sp-about-vm-text-card p {
   width: min(720px, 100%);
   margin: 22px 0 0;
   color: rgba(17, 24, 39, 0.66);
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.76;
   font-weight: 650;
 }
@@ -6984,7 +6984,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-about-vm-text-card h2 {
-    font-size: clamp(34px, 11.5vw, 54px);
+    font-size: clamp(34px, calc(34px + 7 * ((100vw - 360px) / 664)), 41px);
     letter-spacing: -0.07em;
   }
 
@@ -7030,7 +7030,7 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-about-vm-text-card {
-  padding: clamp(28px, 3.4vw, 46px) !important;
+  padding: clamp(28px, calc(28px + 7 * ((100vw - 360px) / 664)), 35px) !important;
 }
 
 /* Tablet */
@@ -7084,7 +7084,7 @@ main:has(.sp-about-page-intro-section),
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.13);
-  font-size: clamp(68px, 8.8vw, 146px);
+  font-size: clamp(68px, calc(68px + 42 * ((100vw - 360px) / 664)), 110px);
   line-height: 0.82;
   letter-spacing: -0.08em;
   font-weight: 950;
@@ -7204,17 +7204,17 @@ main:has(.sp-about-page-intro-section),
 .sp-about-board-head h2 {
   margin: 22px 0 0;
   color: #111827;
-  font-size: clamp(42px, 5.8vw, 86px);
+  font-size: clamp(42px, calc(42px + 23 * ((100vw - 360px) / 664)), 65px);
   line-height: 0.94;
-  letter-spacing: -0.08em;
-  font-weight: 950;
+  letter-spacing: -0.008em;
+  font-weight: 600;
 }
 
 .sp-about-board-head p {
   width: min(720px, 100%);
   margin: 20px 0 0;
   color: rgba(17, 24, 39, 0.66);
-  font-size: clamp(15px, 1.18vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.76;
   font-weight: 650;
 }
@@ -7222,7 +7222,7 @@ main:has(.sp-about-page-intro-section),
 .sp-about-board-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(20px, 2vw, 28px);
+  gap: clamp(20px, calc(20px + 1 * ((100vw - 360px) / 664)), 21px);
   align-items: start;
 }
 
@@ -7385,7 +7385,7 @@ main:has(.sp-about-page-intro-section),
 .sp-about-board-main h3 {
   margin: 0;
   color: #111827;
-  font-size: clamp(19px, 1.6vw, 24px);
+  font-size: clamp(19px, calc(19px + 0 * ((100vw - 360px) / 664)), 19px);
   line-height: 1.04;
   letter-spacing: -0.055em;
   font-weight: 950;
@@ -7567,7 +7567,7 @@ main:has(.sp-about-page-intro-section),
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.13);
-  font-size: clamp(68px, 8.6vw, 146px);
+  font-size: clamp(68px, calc(68px + 42 * ((100vw - 360px) / 664)), 110px);
   line-height: 0.82;
   letter-spacing: -0.08em;
   font-weight: 950;
@@ -7613,17 +7613,17 @@ main:has(.sp-about-page-intro-section),
 .sp-about-companies-head h2 {
   margin: 22px 0 0;
   color: #111827;
-  font-size: clamp(42px, 5.8vw, 86px);
+  font-size: clamp(42px, calc(42px + 23 * ((100vw - 360px) / 664)), 65px);
   line-height: 0.94;
-  letter-spacing: -0.08em;
-  font-weight: 950;
+  letter-spacing: -0.008em;
+  font-weight: 600;
 }
 
 .sp-about-companies-head p {
   width: min(720px, 100%);
   margin: 20px 0 0;
   color: rgba(17, 24, 39, 0.66);
-  font-size: clamp(15px, 1.18vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.76;
   font-weight: 650;
 }
@@ -7641,7 +7641,7 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-about-company-logo-card {
-  flex: 0 0 clamp(180px, 18vw, 240px);
+  flex: 0 0 clamp(180px, calc(180px + 0 * ((100vw - 360px) / 664)), 180px);
 }
 
 .sp-about-company-logo-img {
@@ -7674,7 +7674,7 @@ main:has(.sp-about-page-intro-section),
 /* fix */
 
 .sp-about-company-logo-card {
-  flex: 0 0 clamp(210px, 20vw, 260px) !important;
+  flex: 0 0 clamp(210px, calc(210px + 0 * ((100vw - 360px) / 664)), 210px) !important;
   min-height: 154px !important;
   padding: 28px 26px !important;
   display: grid !important;
@@ -7759,9 +7759,9 @@ main:has(.sp-about-page-intro-section),
 
 .sp-about-companies-panel .sp-client-arrows > span {
   display: block !important;
-  width: clamp(72px, 10vw, 140px) !important;
+  width: clamp(72px, calc(72px + 33 * ((100vw - 360px) / 664)), 105px) !important;
   height: 3px !important;
-  flex: 0 0 clamp(72px, 10vw, 140px) !important;
+  flex: 0 0 clamp(72px, calc(72px + 33 * ((100vw - 360px) / 664)), 105px) !important;
   border-radius: 999px !important;
   background: linear-gradient(90deg, #7a4dff, #e72a9a, #38c7ff) !important;
   box-shadow:
@@ -7881,8 +7881,8 @@ main:has(.sp-about-page-intro-section),
 .sp-page-loader-video-wrap {
   position: relative;
   z-index: 2;
-  width: clamp(150px, 16vw, 230px);
-  height: clamp(150px, 16vw, 230px);
+  width: clamp(150px, calc(150px + 23 * ((100vw - 360px) / 664)), 173px);
+  height: clamp(150px, calc(150px + 23 * ((100vw - 360px) / 664)), 173px);
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
@@ -7906,8 +7906,8 @@ main:has(.sp-about-page-intro-section),
   z-index: 2;
   display: block;
 
-  width: clamp(180px, 22vw, 320px);
-  height: clamp(180px, 22vw, 320px);
+  width: clamp(180px, calc(180px + 60 * ((100vw - 360px) / 664)), 240px);
+  height: clamp(180px, calc(180px + 60 * ((100vw - 360px) / 664)), 240px);
 
   object-fit: contain;
   background: transparent;
@@ -7955,16 +7955,16 @@ main:has(.sp-about-page-intro-section),
 @media (max-width: 900px) {
   .sp-page-loader-video,
   .sp-page-loader-video-wrap {
-    width: clamp(140px, 24vw, 210px);
-    height: clamp(140px, 24vw, 210px);
+    width: clamp(140px, calc(140px + 18 * ((100vw - 360px) / 664)), 158px);
+    height: clamp(140px, calc(140px + 18 * ((100vw - 360px) / 664)), 158px);
   }
 }
 
 @media (max-width: 560px) {
   .sp-page-loader-video,
   .sp-page-loader-video-wrap {
-    width: clamp(126px, 40vw, 176px);
-    height: clamp(126px, 40vw, 176px);
+    width: clamp(126px, calc(126px + 6 * ((100vw - 360px) / 664)), 132px);
+    height: clamp(126px, calc(126px + 6 * ((100vw - 360px) / 664)), 132px);
     max-width: 54vw;
     max-height: 54vw;
   }
@@ -8084,7 +8084,7 @@ main:has(.sp-about-page-intro-section),
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.12);
-  font-size: clamp(82px, 9vw, 160px);
+  font-size: clamp(82px, calc(82px + 38 * ((100vw - 360px) / 664)), 120px);
   line-height: 0.82;
   letter-spacing: -0.08em;
   font-weight: 950;
@@ -8135,10 +8135,10 @@ main:has(.sp-about-page-intro-section),
 .sp-services-hero-content h1 {
   margin: 22px 0 0;
   color: #ffffff;
-  font-size: clamp(48px, 6.6vw, 104px);
+  font-size: clamp(48px, calc(48px + 30 * ((100vw - 360px) / 664)), 78px);
   line-height: 0.9;
-  letter-spacing: -0.09em;
-  font-weight: 950;
+  letter-spacing: -0.009em;
+  font-weight: 600;
   text-wrap: balance;
 }
 
@@ -8146,7 +8146,7 @@ main:has(.sp-about-page-intro-section),
   width: min(650px, 100%);
   margin: 24px 0 0;
   color: rgba(255, 255, 255, 0.76);
-  font-size: clamp(15px, 1.16vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.74;
   font-weight: 700;
 }
@@ -8226,8 +8226,8 @@ main:has(.sp-about-page-intro-section),
 
 .sp-services-thumbnail-popup {
   position: absolute;
-  right: clamp(22px, 5vw, 76px);
-  bottom: clamp(30px, 7vh, 76px);
+  right: clamp(22px, calc(22px + 35 * ((100vw - 360px) / 664)), 57px);
+  bottom: clamp(30px, calc(30px + 27 * ((100vw - 360px) / 664)), 57px);
   z-index: 8;
   width: min(290px, calc(100% - 44px));
   padding: 22px 24px;
@@ -8280,7 +8280,7 @@ main:has(.sp-about-page-intro-section),
   color: #ffffff;
   background: linear-gradient(105deg, #7a4dff, #e72a9a);
   font-size: 12px;
-  font-weight: 950;
+  font-weight: 600;
 }
 
 @media (max-width: 900px) {
@@ -8318,7 +8318,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-services-hero-content h1 {
-    font-size: clamp(42px, 13vw, 64px);
+    font-size: clamp(42px, calc(42px + 6 * ((100vw - 360px) / 664)), 48px);
   }
 
   .sp-services-hero-actions {
@@ -8380,7 +8380,7 @@ main:has(.sp-about-page-intro-section),
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.15);
-  font-size: clamp(76px, 8.8vw, 156px);
+  font-size: clamp(76px, calc(76px + 41 * ((100vw - 360px) / 664)), 117px);
   line-height: 0.82;
   letter-spacing: -0.08em;
   font-weight: 950;
@@ -8563,7 +8563,7 @@ main:has(.sp-about-page-intro-section),
 .sp-why-header h2 {
   margin: 14px 0 0;
   color: #111827;
-  font-size: clamp(32px, 4.35vw, 60px);
+  font-size: clamp(32px, calc(32px + 13 * ((100vw - 360px) / 664)), 45px);
   line-height: 0.94;
   letter-spacing: -0.075em;
   font-weight: 950;
@@ -8573,7 +8573,7 @@ main:has(.sp-about-page-intro-section),
   width: min(620px, 100%);
   margin: 12px auto 0;
   color: rgba(17, 24, 39, 0.66);
-  font-size: clamp(13px, 1vw, 15px);
+  font-size: clamp(13px, calc(13px + 0 * ((100vw - 360px) / 664)), 13px);
   line-height: 1.5;
   font-weight: 650;
 }
@@ -8581,7 +8581,7 @@ main:has(.sp-about-page-intro-section),
 .sp-why-deck-stage {
   position: relative;
   width: min(1080px, 100%);
-  height: clamp(390px, 48svh, 490px);
+  height: clamp(390px, calc(390px + 0 * ((100vw - 360px) / 664)), 390px);
   min-height: 390px;
   margin: 0 auto 34px;
 }
@@ -8606,7 +8606,7 @@ main:has(.sp-about-page-intro-section),
   inset: 0;
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 0.88fr);
-  gap: clamp(18px, 3vw, 44px);
+  gap: clamp(18px, calc(18px + 15 * ((100vw - 360px) / 664)), 33px);
   align-items: center;
   opacity: 0;
   pointer-events: none;
@@ -8806,7 +8806,7 @@ main:has(.sp-about-page-intro-section),
 .sp-why-text-glass {
   position: relative;
   width: min(460px, 100%);
-  padding: clamp(18px, 2vw, 25px);
+  padding: clamp(18px, calc(18px + 1 * ((100vw - 360px) / 664)), 19px);
   border-radius: 28px;
   overflow: hidden;
   background:
@@ -8893,7 +8893,7 @@ main:has(.sp-about-page-intro-section),
 .sp-why-text-glass h3 {
   margin: 14px 0 0;
   color: #111827;
-  font-size: clamp(24px, 2.35vw, 36px);
+  font-size: clamp(24px, calc(24px + 3 * ((100vw - 360px) / 664)), 27px);
   line-height: 0.98;
   letter-spacing: -0.065em;
   font-weight: 950;
@@ -9098,7 +9098,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-why-header h2 {
-    font-size: clamp(32px, 10vw, 48px);
+    font-size: clamp(32px, calc(32px + 4 * ((100vw - 360px) / 664)), 36px);
   }
 
   .sp-why-header p {
@@ -9166,7 +9166,7 @@ main:has(.sp-about-page-intro-section),
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  padding: clamp(96px, 8vw, 132px) 0;
+  padding: clamp(96px, calc(96px + 3 * ((100vw - 360px) / 664)), 99px) 0;
   background:
     radial-gradient(circle at 16% 18%, rgba(90, 189, 255, 0.18), transparent 30%),
     radial-gradient(circle at 86% 14%, rgba(243, 81, 164, 0.16), transparent 28%),
@@ -9188,7 +9188,7 @@ main:has(.sp-about-page-intro-section),
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.14);
-  font-size: clamp(76px, 8.8vw, 156px);
+  font-size: clamp(76px, calc(76px + 41 * ((100vw - 360px) / 664)), 117px);
   line-height: 0.82;
   letter-spacing: -0.08em;
   font-weight: 950;
@@ -9407,7 +9407,7 @@ main:has(.sp-about-page-intro-section),
   margin: 20px auto 0;
   max-width: 700px;
   color: rgba(17, 24, 39, 0.66);
-  font-size: clamp(15px, 1.12vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.75;
   font-weight: 650;
 }
@@ -9656,7 +9656,7 @@ main:has(.sp-about-page-intro-section),
 .sp-service-card-title {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(22px, 2vw, 34px);
+  font-size: clamp(22px, calc(22px + 4 * ((100vw - 360px) / 664)), 26px);
   line-height: 0.96;
   font-weight: 950;
   letter-spacing: -0.06em;
@@ -10127,7 +10127,7 @@ main:has(.sp-about-page-intro-section),
 .sp-service-card-title {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(22px, 1.9vw, 31px);
+  font-size: clamp(22px, calc(22px + 1 * ((100vw - 360px) / 664)), 23px);
   line-height: 0.96;
   font-weight: 950;
   letter-spacing: -0.06em;
@@ -10253,7 +10253,7 @@ main:has(.sp-about-page-intro-section),
 
   position: relative;
   min-height: 860px;
-  padding: clamp(96px, 8vw, 132px) 0;
+  padding: clamp(96px, calc(96px + 3 * ((100vw - 360px) / 664)), 99px) 0;
   overflow: hidden;
   isolation: isolate;
   background:
@@ -10276,7 +10276,7 @@ main:has(.sp-about-page-intro-section),
   transform: translate(-50%, -50%);
   color: transparent;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.06);
-  font-size: clamp(86px, 15vw, 230px);
+  font-size: clamp(86px, calc(86px + 87 * ((100vw - 360px) / 664)), 173px);
   line-height: 0.82;
   letter-spacing: -0.09em;
   font-weight: 950;
@@ -10439,7 +10439,7 @@ main:has(.sp-about-page-intro-section),
 .sp-finishing-header h2 {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(42px, 6vw, 88px);
+  font-size: clamp(42px, calc(42px + 24 * ((100vw - 360px) / 664)), 66px);
   line-height: 0.92;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -10449,7 +10449,7 @@ main:has(.sp-about-page-intro-section),
   width: min(700px, 100%);
   margin: 20px auto 0;
   color: rgba(255, 255, 255, 0.62);
-  font-size: clamp(15px, 1.1vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.72;
   font-weight: 650;
 }
@@ -10457,11 +10457,11 @@ main:has(.sp-about-page-intro-section),
 /* carousel */
 
 .sp-finishing-carousel-stage {
-  --finish-shift: clamp(145px, 19vw, 280px);
+  --finish-shift: clamp(145px, calc(145px + 65 * ((100vw - 360px) / 664)), 210px);
 
   position: relative;
   width: 100%;
-  height: clamp(430px, 48vw, 530px);
+  height: clamp(430px, calc(430px + 0 * ((100vw - 360px) / 664)), 430px);
   margin: 58px auto 0;
   perspective: 1200px;
   transform-style: preserve-3d;
@@ -10501,8 +10501,8 @@ main:has(.sp-about-page-intro-section),
   left: 50%;
   top: 22px;
   z-index: var(--finish-z);
-  width: clamp(220px, 22vw, 305px);
-  height: clamp(330px, 36vw, 430px);
+  width: clamp(220px, calc(220px + 9 * ((100vw - 360px) / 664)), 229px);
+  height: clamp(330px, calc(330px + 0 * ((100vw - 360px) / 664)), 330px);
   border-radius: 28px;
   overflow: hidden;
   isolation: isolate;
@@ -10645,7 +10645,7 @@ main:has(.sp-about-page-intro-section),
 .sp-finishing-card-info h3 {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(24px, 2.2vw, 34px);
+  font-size: clamp(24px, calc(24px + 2 * ((100vw - 360px) / 664)), 26px);
   line-height: 0.96;
   letter-spacing: -0.07em;
   font-weight: 950;
@@ -10764,7 +10764,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-finishing-carousel-stage {
-    --finish-shift: clamp(120px, 24vw, 220px);
+    --finish-shift: clamp(120px, calc(120px + 45 * ((100vw - 360px) / 664)), 165px);
   }
 }
 
@@ -10774,7 +10774,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-finishing-header h2 {
-    font-size: clamp(38px, 12vw, 58px);
+    font-size: clamp(38px, calc(38px + 6 * ((100vw - 360px) / 664)), 44px);
   }
 
   .sp-finishing-header p {
@@ -10816,7 +10816,7 @@ main:has(.sp-about-page-intro-section),
 
 .sp-services-cta-section {
   position: relative;
-  padding: clamp(90px, 8vw, 130px) 0;
+  padding: clamp(90px, calc(90px + 8 * ((100vw - 360px) / 664)), 98px) 0;
   overflow: hidden;
   isolation: isolate;
   background:
@@ -10840,7 +10840,7 @@ main:has(.sp-about-page-intro-section),
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.08);
-  font-size: clamp(76px, 8.6vw, 152px);
+  font-size: clamp(76px, calc(76px + 38 * ((100vw - 360px) / 664)), 114px);
   line-height: 0.82;
   letter-spacing: -0.08em;
   font-weight: 950;
@@ -10970,8 +10970,8 @@ main:has(.sp-about-page-intro-section),
 
 .sp-services-cta-card {
   position: relative;
-  min-height: clamp(520px, 48vw, 660px);
-  border-radius: clamp(30px, 4vw, 52px);
+  min-height: clamp(520px, calc(520px + 0 * ((100vw - 360px) / 664)), 520px);
+  border-radius: clamp(30px, calc(30px + 9 * ((100vw - 360px) / 664)), 39px);
   overflow: hidden;
   isolation: isolate;
   background: #050505;
@@ -11094,7 +11094,7 @@ main:has(.sp-about-page-intro-section),
   z-index: 5;
   width: min(680px, 100%);
   min-height: inherit;
-  padding: clamp(34px, 5vw, 72px);
+  padding: clamp(34px, calc(34px + 20 * ((100vw - 360px) / 664)), 54px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11129,7 +11129,7 @@ main:has(.sp-about-page-intro-section),
 .sp-services-cta-content h2 {
   margin: 20px 0 0;
   color: #ffffff;
-  font-size: clamp(42px, 6.2vw, 88px);
+  font-size: clamp(42px, calc(42px + 24 * ((100vw - 360px) / 664)), 66px);
   line-height: 0.92;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -11139,7 +11139,7 @@ main:has(.sp-about-page-intro-section),
   width: min(600px, 100%);
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(15px, 1.1vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.76;
   font-weight: 650;
 }
@@ -11196,8 +11196,8 @@ main:has(.sp-about-page-intro-section),
 
 .sp-services-cta-mini-card {
   position: absolute;
-  right: clamp(24px, 4vw, 64px);
-  bottom: clamp(24px, 4vw, 58px);
+  right: clamp(24px, calc(24px + 24 * ((100vw - 360px) / 664)), 48px);
+  bottom: clamp(24px, calc(24px + 20 * ((100vw - 360px) / 664)), 44px);
   z-index: 6;
   width: min(280px, calc(100% - 48px));
   padding: 22px;
@@ -11277,7 +11277,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-services-cta-content h2 {
-    font-size: clamp(38px, 11vw, 58px);
+    font-size: clamp(38px, calc(38px + 6 * ((100vw - 360px) / 664)), 44px);
   }
 
   .sp-services-cta-content p {
@@ -11392,7 +11392,7 @@ main:has(.sp-about-page-intro-section),
 
 .sp-projects-hero-content h1 {
   margin: 22px 0 0;
-  font-size: clamp(72px, 9vw, 180px);
+  font-size: clamp(72px, calc(72px + 63 * ((100vw - 360px) / 664)), 135px);
   line-height: 0.78;
   letter-spacing: -0.005em;
   font-weight: 900;
@@ -11400,7 +11400,7 @@ main:has(.sp-about-page-intro-section),
 
 .sp-projects-hero-content h2 {
   margin: 24px 0 0;
-  font-size: clamp(32px, 2vw, 72px);
+  font-size: clamp(32px, calc(32px + 22 * ((100vw - 360px) / 664)), 54px);
   line-height: 0.92;
   letter-spacing: -0.005em;
   font-weight: 900;
@@ -11410,7 +11410,7 @@ main:has(.sp-about-page-intro-section),
   width: min(690px, 100%);
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.76;
   font-weight: 650;
 }
@@ -11487,7 +11487,7 @@ main:has(.sp-about-page-intro-section),
   transform: translateY(-50%);
   writing-mode: vertical-rl;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.08);
-  font-size: clamp(80px, 9vw, 160px);
+  font-size: clamp(80px, calc(80px + 40 * ((100vw - 360px) / 664)), 120px);
   line-height: 0.82;
   letter-spacing: -0.08em;
 }
@@ -11508,7 +11508,7 @@ main:has(.sp-about-page-intro-section),
 
 .sp-projects-facility-section {
   position: relative;
-  padding: clamp(96px, 8vw, 132px) 0;
+  padding: clamp(96px, calc(96px + 3 * ((100vw - 360px) / 664)), 99px) 0;
   overflow: hidden;
   isolation: isolate;
   background:
@@ -11527,7 +11527,7 @@ main:has(.sp-about-page-intro-section),
   top: 10%;
   transform: translate(-50%, -50%);
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.055);
-  font-size: clamp(76px, 12vw, 180px);
+  font-size: clamp(76px, calc(76px + 59 * ((100vw - 360px) / 664)), 135px);
   line-height: 0.82;
   letter-spacing: -0.09em;
   white-space: nowrap;
@@ -11546,7 +11546,7 @@ main:has(.sp-about-page-intro-section),
 .sp-projects-categories-header h2,
 .sp-projects-clients-header h2 {
   margin: 18px 0 0;
-  font-size: clamp(42px, 6vw, 88px);
+  font-size: clamp(42px, calc(42px + 24 * ((100vw - 360px) / 664)), 66px);
   line-height: 0.92;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -11558,7 +11558,7 @@ main:has(.sp-about-page-intro-section),
   width: min(700px, 100%);
   margin: 20px auto 0;
   color: rgba(255, 255, 255, 0.64);
-  font-size: clamp(15px, 1.1vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.72;
   font-weight: 650;
 }
@@ -11633,7 +11633,7 @@ main:has(.sp-about-page-intro-section),
 .sp-projects-video-content h3 {
   width: min(540px, 100%);
   margin: 14px 0 0;
-  font-size: clamp(25px, 3vw, 46px);
+  font-size: clamp(25px, calc(25px + 10 * ((100vw - 360px) / 664)), 35px);
   line-height: 0.96;
   letter-spacing: -0.07em;
   font-weight: 950;
@@ -11643,7 +11643,7 @@ main:has(.sp-about-page-intro-section),
 
 .sp-projects-categories-section {
   position: relative;
-  padding: clamp(96px, 8vw, 132px) 0;
+  padding: clamp(96px, calc(96px + 3 * ((100vw - 360px) / 664)), 99px) 0;
   overflow: hidden;
   isolation: isolate;
   background:
@@ -11678,7 +11678,7 @@ main:has(.sp-about-page-intro-section),
   transform: translateY(-50%);
   writing-mode: vertical-rl;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.14);
-  font-size: clamp(76px, 8.8vw, 156px);
+  font-size: clamp(76px, calc(76px + 41 * ((100vw - 360px) / 664)), 117px);
   line-height: 0.82;
   letter-spacing: -0.08em;
 }
@@ -11785,7 +11785,7 @@ main:has(.sp-about-page-intro-section),
 
 .sp-projects-category-info h3 {
   margin: 0;
-  font-size: clamp(24px, 2.2vw, 36px);
+  font-size: clamp(24px, calc(24px + 3 * ((100vw - 360px) / 664)), 27px);
   line-height: 0.95;
   letter-spacing: -0.07em;
   font-weight: 950;
@@ -11833,7 +11833,7 @@ main:has(.sp-about-page-intro-section),
 .sp-projects-clients-section {
   position: relative;
   min-height: 700px;
-  padding: clamp(96px, 8vw, 132px) 0;
+  padding: clamp(96px, calc(96px + 3 * ((100vw - 360px) / 664)), 99px) 0;
   overflow: hidden;
   isolation: isolate;
   display: grid;
@@ -11880,7 +11880,7 @@ main:has(.sp-about-page-intro-section),
   top: 90%;
   transform: translate(-50%, -50%);
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.055);
-  font-size: clamp(90px, 14vw, 220px);
+  font-size: clamp(90px, calc(90px + 75 * ((100vw - 360px) / 664)), 165px);
   line-height: 0.82;
   letter-spacing: -0.09em;
   white-space: nowrap;
@@ -11932,7 +11932,7 @@ main:has(.sp-about-page-intro-section),
 
 .sp-projects-cta-section {
   position: relative;
-  padding: clamp(96px, 8vw, 132px) 0;
+  padding: clamp(96px, calc(96px + 3 * ((100vw - 360px) / 664)), 99px) 0;
   overflow: hidden;
   isolation: isolate;
   background:
@@ -11952,15 +11952,15 @@ main:has(.sp-about-page-intro-section),
   transform: translateY(-50%);
   writing-mode: vertical-rl;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.12);
-  font-size: clamp(68px, 8vw, 140px);
+  font-size: clamp(68px, calc(68px + 37 * ((100vw - 360px) / 664)), 105px);
   line-height: 0.82;
   letter-spacing: -0.08em;
 }
 
 .sp-projects-cta-card {
   position: relative;
-  min-height: clamp(520px, 48vw, 660px);
-  border-radius: clamp(30px, 4vw, 52px);
+  min-height: clamp(520px, calc(520px + 0 * ((100vw - 360px) / 664)), 520px);
+  border-radius: clamp(30px, calc(30px + 9 * ((100vw - 360px) / 664)), 39px);
   overflow: hidden;
   isolation: isolate;
   background: #050505;
@@ -12018,7 +12018,7 @@ main:has(.sp-about-page-intro-section),
   z-index: 5;
   width: min(680px, 100%);
   min-height: inherit;
-  padding: clamp(34px, 5vw, 72px);
+  padding: clamp(34px, calc(34px + 20 * ((100vw - 360px) / 664)), 54px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12027,7 +12027,7 @@ main:has(.sp-about-page-intro-section),
 
 .sp-projects-cta-content h2 {
   margin: 20px 0 0;
-  font-size: clamp(42px, 6.2vw, 88px);
+  font-size: clamp(42px, calc(42px + 24 * ((100vw - 360px) / 664)), 66px);
   line-height: 0.92;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -12037,7 +12037,7 @@ main:has(.sp-about-page-intro-section),
   width: min(600px, 100%);
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(15px, 1.1vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.76;
   font-weight: 650;
 }
@@ -12061,7 +12061,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-projects-hero-content h1 {
-    font-size: clamp(72px, 23vw, 116px);
+    font-size: clamp(72px, calc(72px + 15 * ((100vw - 360px) / 664)), 87px);
   }
 
   .sp-projects-hero-content h2,
@@ -12069,7 +12069,7 @@ main:has(.sp-about-page-intro-section),
   .sp-projects-categories-header h2,
   .sp-projects-clients-header h2,
   .sp-projects-cta-content h2 {
-    font-size: clamp(38px, 12vw, 58px);
+    font-size: clamp(38px, calc(38px + 6 * ((100vw - 360px) / 664)), 44px);
   }
 
   .sp-projects-video-grid,
@@ -12107,7 +12107,7 @@ main:has(.sp-about-page-intro-section),
 .sp-projects-clients-section {
   position: relative;
   min-height: 760px;
-  padding: clamp(110px, 9vw, 150px) 0;
+  padding: clamp(110px, calc(110px + 3 * ((100vw - 360px) / 664)), 113px) 0;
   overflow: hidden;
   isolation: isolate;
   display: flex;
@@ -12162,7 +12162,7 @@ main:has(.sp-about-page-intro-section),
   transform: translate(-50%, -50%);
   color: transparent;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.075);
-  font-size: clamp(90px, 14vw, 220px);
+  font-size: clamp(90px, calc(90px + 75 * ((100vw - 360px) / 664)), 165px);
   line-height: 0.82;
   letter-spacing: -0.09em;
   font-weight: 950;
@@ -12183,7 +12183,7 @@ main:has(.sp-about-page-intro-section),
   z-index: 12;
   width: min(620px, 100%);
   margin: 0;
-  padding: clamp(24px, 3vw, 36px);
+  padding: clamp(24px, calc(24px + 3 * ((100vw - 360px) / 664)), 27px);
   border-radius: 32px;
   text-align: left;
   color: #ffffff;
@@ -12229,7 +12229,7 @@ main:has(.sp-about-page-intro-section),
 .sp-projects-clients-header h2 {
   margin: 18px 0 0;
   color: #ffffff;
-  font-size: clamp(38px, 5.3vw, 78px);
+  font-size: clamp(38px, calc(38px + 21 * ((100vw - 360px) / 664)), 59px);
   line-height: 0.92;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -12242,7 +12242,7 @@ main:has(.sp-about-page-intro-section),
   width: min(560px, 100%);
   margin: 20px 0 0;
   color: rgba(255, 255, 255, 0.74);
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: clamp(14px, calc(14px + 0 * ((100vw - 360px) / 664)), 14px);
   line-height: 1.72;
   font-weight: 650;
 }
@@ -12310,7 +12310,7 @@ main:has(.sp-about-page-intro-section),
   }
 
   .sp-projects-clients-header h2 {
-    font-size: clamp(36px, 11vw, 56px);
+    font-size: clamp(36px, calc(36px + 6 * ((100vw - 360px) / 664)), 42px);
   }
 
   .sp-projects-clients-header p {
@@ -12636,7 +12636,7 @@ body::-webkit-scrollbar-thumb:hover {
   transform: translateY(-50%) rotate(180deg);
   writing-mode: vertical-rl;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.075);
-  font-size: clamp(78px, 8.8vw, 158px);
+  font-size: clamp(78px, calc(78px + 41 * ((100vw - 360px) / 664)), 119px);
 }
 
 .sp-project-watermark-right {
@@ -12645,7 +12645,7 @@ body::-webkit-scrollbar-thumb:hover {
   transform: translateY(-50%);
   writing-mode: vertical-rl;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.075);
-  font-size: clamp(78px, 8.8vw, 158px);
+  font-size: clamp(78px, calc(78px + 41 * ((100vw - 360px) / 664)), 119px);
 }
 
 .sp-project-case-section .sp-project-watermark-left,
@@ -12850,7 +12850,7 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-project-hero-content h1 {
   margin: 22px 0 0;
   width: min(860px, 100%);
-  font-size: clamp(56px, 5vw, 122px);
+  font-size: clamp(56px, calc(56px + 36 * ((100vw - 360px) / 664)), 92px);
   line-height: 0.86;
   letter-spacing: -0.0005em;
   font-weight: 950;
@@ -12860,7 +12860,7 @@ body::-webkit-scrollbar-thumb:hover {
   width: min(660px, 100%);
   margin: 24px 0 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(15px, 1.18vw, 19px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.74;
   font-weight: 450;
 }
@@ -12910,7 +12910,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-project-gallery-section {
   min-height: 1120px;
-  padding: clamp(100px, 8vw, 142px) 0 clamp(120px, 9vw, 160px);
+  padding: clamp(100px, calc(100px + 7 * ((100vw - 360px) / 664)), 107px) 0 clamp(120px, calc(120px + 0 * ((100vw - 360px) / 664)), 120px);
   background:
     radial-gradient(circle at 10% 18%, rgba(56, 199, 255, 0.14), transparent 32%),
     radial-gradient(circle at 92% 28%, rgba(255, 36, 79, 0.18), transparent 34%),
@@ -12935,7 +12935,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-project-gallery-header h2 {
   margin: 18px 0 0;
-  font-size: clamp(42px, 6vw, 90px);
+  font-size: clamp(42px, calc(42px + 26 * ((100vw - 360px) / 664)), 68px);
   line-height: 0.9;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -12945,7 +12945,7 @@ body::-webkit-scrollbar-thumb:hover {
   width: min(700px, 100%);
   margin: 20px auto 0;
   color: rgba(255, 255, 255, 0.62);
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: clamp(14px, calc(14px + 0 * ((100vw - 360px) / 664)), 14px);
   line-height: 1.72;
   font-weight: 650;
 }
@@ -12991,12 +12991,12 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .sp-project-gallery-stage {
-  --gallery-shift: clamp(220px, 29vw, 405px);
+  --gallery-shift: clamp(220px, calc(220px + 84 * ((100vw - 360px) / 664)), 304px);
   --project-gallery-duration: 3300ms;
 
   position: relative;
-  min-height: clamp(650px, 62vw, 780px);
-  border-radius: clamp(30px, 4vw, 52px);
+  min-height: clamp(650px, calc(650px + 0 * ((100vw - 360px) / 664)), 650px);
+  border-radius: clamp(30px, calc(30px + 9 * ((100vw - 360px) / 664)), 39px);
   overflow: hidden;
   isolation: isolate;
   background: #050505;
@@ -13041,7 +13041,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-project-gallery-copy {
   position: absolute;
-  left: clamp(24px, 4vw, 62px);
+  left: clamp(24px, calc(24px + 23 * ((100vw - 360px) / 664)), 47px);
   top: 50%;
   z-index: 8;
   width: min(430px, calc(100% - 48px));
@@ -13069,7 +13069,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-project-gallery-copy h3 {
   margin: 22px 0 0;
-  font-size: clamp(44px, 6vw, 94px);
+  font-size: clamp(44px, calc(44px + 27 * ((100vw - 360px) / 664)), 71px);
   line-height: 0.83;
   letter-spacing: -0.095em;
   font-weight: 950;
@@ -13079,7 +13079,7 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-project-gallery-copy p {
   margin: 20px 0 0;
   color: rgba(255, 255, 255, 0.74);
-  font-size: clamp(14px, 1.12vw, 17px);
+  font-size: clamp(14px, calc(14px + 0 * ((100vw - 360px) / 664)), 14px);
   line-height: 1.65;
   font-weight: 650;
   animation: spProjectGalleryTextIn 0.72s 0.04s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -13137,7 +13137,7 @@ body::-webkit-scrollbar-thumb:hover {
   top: 50%;
   z-index: var(--gallery-z);
   width: var(--gallery-width);
-  height: clamp(330px, 43vw, 545px);
+  height: clamp(330px, calc(330px + 79 * ((100vw - 360px) / 664)), 409px);
   padding: 0;
   border: 0;
   border-radius: 24px;
@@ -13207,7 +13207,7 @@ body::-webkit-scrollbar-thumb:hover {
   z-index: 2;
   color: #ffffff;
   text-align: left;
-  font-size: clamp(17px, 1.8vw, 25px);
+  font-size: clamp(17px, calc(17px + 2 * ((100vw - 360px) / 664)), 19px);
   line-height: 1;
   letter-spacing: -0.04em;
   font-weight: 950;
@@ -13226,8 +13226,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-project-gallery-bottom {
   position: absolute;
-  left: clamp(24px, 4vw, 62px);
-  right: clamp(24px, 4vw, 62px);
+  left: clamp(24px, calc(24px + 23 * ((100vw - 360px) / 664)), 47px);
+  right: clamp(24px, calc(24px + 23 * ((100vw - 360px) / 664)), 47px);
   bottom: 34px;
   z-index: 8;
   display: grid;
@@ -13421,7 +13421,7 @@ body::-webkit-scrollbar-thumb:hover {
 /* ===================== case studies ====================================*/
 
 .sp-project-case-section {
-  padding: clamp(100px, 8vw, 142px) 0;
+  padding: clamp(100px, calc(100px + 7 * ((100vw - 360px) / 664)), 107px) 0;
   background:
     radial-gradient(circle at 16% 18%, rgba(56, 199, 255, 0.16), transparent 32%),
     radial-gradient(circle at 92% 28%, rgba(231, 42, 154, 0.14), transparent 34%),
@@ -13446,7 +13446,7 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-project-case-header h2 {
   margin: 18px 0 0;
   color: #111827;
-  font-size: clamp(42px, 6vw, 88px);
+  font-size: clamp(42px, calc(42px + 24 * ((100vw - 360px) / 664)), 66px);
   line-height: 0.92;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -13456,7 +13456,7 @@ body::-webkit-scrollbar-thumb:hover {
   width: min(700px, 100%);
   margin: 20px auto 0;
   color: rgba(17, 24, 39, 0.64);
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: clamp(14px, calc(14px + 0 * ((100vw - 360px) / 664)), 14px);
   line-height: 1.72;
   font-weight: 650;
 }
@@ -13469,9 +13469,9 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-project-case-card {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  gap: clamp(22px, 4vw, 58px);
+  gap: clamp(22px, calc(22px + 22 * ((100vw - 360px) / 664)), 44px);
   align-items: center;
-  padding: clamp(18px, 2vw, 26px);
+  padding: clamp(18px, calc(18px + 2 * ((100vw - 360px) / 664)), 20px);
   border-radius: 42px;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.46));
@@ -13526,7 +13526,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .sp-project-case-content {
-  padding: clamp(14px, 2.4vw, 28px);
+  padding: clamp(14px, calc(14px + 7 * ((100vw - 360px) / 664)), 21px);
 }
 
 .sp-project-case-content > span {
@@ -13547,7 +13547,7 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-project-case-content h3 {
   margin: 18px 0 0;
   color: #111827;
-  font-size: clamp(34px, 4.2vw, 66px);
+  font-size: clamp(34px, calc(34px + 16 * ((100vw - 360px) / 664)), 50px);
   line-height: 0.9;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -13556,7 +13556,7 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-project-case-content p {
   margin: 20px 0 0;
   color: rgba(17, 24, 39, 0.66);
-  font-size: clamp(14px, 1vw, 17px);
+  font-size: clamp(14px, calc(14px + 0 * ((100vw - 360px) / 664)), 14px);
   line-height: 1.72;
   font-weight: 650;
 }
@@ -13629,7 +13629,7 @@ body::-webkit-scrollbar-thumb:hover {
 /* ==================== facility ===================================== */
 
 .sp-project-facility-section {
-  padding: clamp(100px, 8vw, 142px) 0;
+  padding: clamp(100px, calc(100px + 7 * ((100vw - 360px) / 664)), 107px) 0;
   background:
     radial-gradient(circle at 18% 20%, rgba(56, 199, 255, 0.14), transparent 30%),
     radial-gradient(circle at 88% 26%, rgba(255, 36, 79, 0.2), transparent 34%),
@@ -13641,7 +13641,7 @@ body::-webkit-scrollbar-thumb:hover {
   z-index: 6;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(28px, 5vw, 72px);
+  gap: clamp(28px, calc(28px + 26 * ((100vw - 360px) / 664)), 54px);
   align-items: center;
 }
 
@@ -13679,7 +13679,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-project-facility-content h2 {
   margin: 20px 0 0;
-  font-size: clamp(42px, 6vw, 86px);
+  font-size: clamp(42px, calc(42px + 23 * ((100vw - 360px) / 664)), 65px);
   line-height: 0.92;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -13688,7 +13688,7 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-project-facility-content p {
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.7);
-  font-size: clamp(15px, 1.1vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.76;
   font-weight: 650;
 }
@@ -13754,7 +13754,7 @@ body::-webkit-scrollbar-thumb:hover {
 /* ========================= cta ================================*/
 
 .sp-project-final-cta-section {
-  padding: clamp(100px, 8vw, 142px) 0;
+  padding: clamp(100px, calc(100px + 7 * ((100vw - 360px) / 664)), 107px) 0;
   background:
     radial-gradient(circle at 16% 18%, rgba(56, 199, 255, 0.18), transparent 32%),
     radial-gradient(circle at 86% 18%, rgba(231, 42, 154, 0.18), transparent 32%),
@@ -13768,8 +13768,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-project-final-cta-card {
   position: relative;
-  min-height: clamp(540px, 48vw, 680px);
-  border-radius: clamp(30px, 4vw, 52px);
+  min-height: clamp(540px, calc(540px + 0 * ((100vw - 360px) / 664)), 540px);
+  border-radius: clamp(30px, calc(30px + 9 * ((100vw - 360px) / 664)), 39px);
   overflow: hidden;
   isolation: isolate;
   background: #050505;
@@ -13827,7 +13827,7 @@ body::-webkit-scrollbar-thumb:hover {
   z-index: 5;
   width: min(700px, 100%);
   min-height: inherit;
-  padding: clamp(34px, 5vw, 76px);
+  padding: clamp(34px, calc(34px + 23 * ((100vw - 360px) / 664)), 57px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13836,7 +13836,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-project-final-cta-content h2 {
   margin: 20px 0 0;
-  font-size: clamp(42px, 6.2vw, 88px);
+  font-size: clamp(42px, calc(42px + 24 * ((100vw - 360px) / 664)), 66px);
   line-height: 0.92;
   letter-spacing: -0.085em;
   font-weight: 950;
@@ -13846,7 +13846,7 @@ body::-webkit-scrollbar-thumb:hover {
   width: min(600px, 100%);
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(15px, 1.1vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.76;
   font-weight: 650;
 }
@@ -13919,7 +13919,7 @@ body::-webkit-scrollbar-thumb:hover {
   .sp-project-case-header h2,
   .sp-project-facility-content h2,
   .sp-project-final-cta-content h2 {
-    font-size: clamp(40px, 13vw, 64px);
+    font-size: clamp(40px, calc(40px + 8 * ((100vw - 360px) / 664)), 48px);
   }
 
   .sp-project-hero-actions,
@@ -13948,7 +13948,7 @@ body::-webkit-scrollbar-thumb:hover {
   }
 
   .sp-project-gallery-copy h3 {
-    font-size: clamp(38px, 12vw, 58px);
+    font-size: clamp(38px, calc(38px + 6 * ((100vw - 360px) / 664)), 44px);
   }
 
   .sp-project-gallery-rail {
@@ -14281,7 +14281,7 @@ body::-webkit-scrollbar-thumb:hover {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: clamp(18px, 1.55vw, 26px) !important;
+  gap: clamp(18px, calc(18px + 2 * ((100vw - 360px) / 664)), 20px) !important;
   margin-right: 0 !important;
   overflow: visible !important;
   position: relative !important;
@@ -14540,7 +14540,7 @@ body::-webkit-scrollbar-thumb:hover {
   }
 
   .sp-nav-links {
-    gap: clamp(13px, 1.4vw, 18px) !important;
+    gap: clamp(13px, calc(13px + 1 * ((100vw - 360px) / 664)), 14px) !important;
   }
 }
 
@@ -14668,7 +14668,7 @@ body::-webkit-scrollbar-thumb:hover {
     minmax(180px, 0.64fr)
     minmax(270px, 1fr)
     minmax(280px, 1fr);
-  gap: clamp(22px, 2.6vw, 38px);
+  gap: clamp(22px, calc(22px + 7 * ((100vw - 360px) / 664)), 29px);
   align-items: start;
 }
 
@@ -15244,7 +15244,7 @@ body::-webkit-scrollbar-thumb:hover {
 @media (max-width: 1180px) {
   .sp-hero-container {
     grid-template-columns: auto minmax(0, 1fr) !important;
-    gap: clamp(14px, 2vw, 26px) !important;
+    gap: clamp(14px, calc(14px + 6 * ((100vw - 360px) / 664)), 20px) !important;
   }
 }
 
@@ -15299,7 +15299,7 @@ body::-webkit-scrollbar-thumb:hover {
     0 0 34px rgba(56, 199, 255, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.24) !important;
   font-size: 15px !important;
-  font-weight: 950 !important;
+  font-weight: 600 !important;
   line-height: 1 !important;
   overflow: hidden !important;
   isolation: isolate !important;
@@ -15363,7 +15363,7 @@ body::-webkit-scrollbar-thumb:hover {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  padding: clamp(82px, 7vw, 124px) 0;
+  padding: clamp(82px, calc(82px + 11 * ((100vw - 360px) / 664)), 93px) 0;
   background:
     radial-gradient(circle at 12% 18%, rgba(56, 199, 255, 0.16), transparent 34%),
     radial-gradient(circle at 90% 28%, rgba(231, 42, 154, 0.15), transparent 36%),
@@ -15377,8 +15377,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 .sp-about-bridge-card {
   position: relative;
-  min-height: clamp(520px, 52vw, 720px);
-  border-radius: clamp(32px, 4vw, 54px);
+  min-height: clamp(520px, calc(520px + 20 * ((100vw - 360px) / 664)), 540px);
+  border-radius: clamp(32px, calc(32px + 9 * ((100vw - 360px) / 664)), 41px);
   overflow: hidden;
   background: #050508;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -15434,7 +15434,7 @@ body::-webkit-scrollbar-thumb:hover {
   z-index: 4;
   width: min(720px, 100%);
   min-height: inherit;
-  padding: clamp(34px, 5vw, 72px);
+  padding: clamp(34px, calc(34px + 20 * ((100vw - 360px) / 664)), 54px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15470,17 +15470,17 @@ body::-webkit-scrollbar-thumb:hover {
   margin: 22px 0 0;
   max-width: 650px;
   color: #ffffff;
-  font-size: clamp(42px, 5.8vw, 86px);
+  font-size: clamp(42px, calc(42px + 23 * ((100vw - 360px) / 664)), 65px);
   line-height: 0.9;
-  letter-spacing: -0.09em;
-  font-weight: 950;
+  letter-spacing: -0.009em;
+  font-weight: 600;
 }
 
 .sp-about-bridge-content p {
   width: min(620px, 100%);
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: clamp(15px, calc(15px + 0 * ((100vw - 360px) / 664)), 15px);
   line-height: 1.72;
   font-weight: 700;
 }
@@ -15578,7 +15578,7 @@ body::-webkit-scrollbar-thumb:hover {
   writing-mode: vertical-rl;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 72, 180, 0.12);
-  font-size: clamp(74px, 8vw, 148px);
+  font-size: clamp(74px, calc(74px + 37 * ((100vw - 360px) / 664)), 111px);
   line-height: 0.82;
   letter-spacing: -0.09em;
   font-weight: 950;
@@ -15712,7 +15712,7 @@ body::-webkit-scrollbar-thumb:hover {
   }
 
   .sp-about-bridge-content h2 {
-    font-size: clamp(38px, 12vw, 60px);
+    font-size: clamp(38px, calc(38px + 7 * ((100vw - 360px) / 664)), 45px);
   }
 
   .sp-about-bridge-actions {

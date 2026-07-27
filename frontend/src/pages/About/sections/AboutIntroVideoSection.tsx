@@ -140,10 +140,6 @@ export default function AboutIntroVideoSection() {
                 }
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="sp-about-hero-badge">
-                  <Sparkles size={15} />
-                  <span>About Sumathi Printers</span>
-                </div>
 
                 <h1 className="sp-section-heading">Printing Excellence Powered By People And Precision</h1>
 
@@ -204,11 +200,6 @@ export default function AboutIntroVideoSection() {
               }
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="sp-about-hero-badge">
-                <Sparkles size={15} />
-                <span>About Sumathi Printers</span>
-              </div>
-
               <h1 className="sp-section-heading">Printing Excellence Powered By People And Precision</h1>
 
               <p>

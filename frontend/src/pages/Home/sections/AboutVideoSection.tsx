@@ -184,10 +184,6 @@ export default function AboutVideoSection() {
               ease: [0.22, 1, 0.36, 1]
             }}
           >
-            <div className="sp-about-video-badge">
-              <Sparkles size={15} />
-              <span>About Sumathi Printers</span>
-            </div>
 
             <h2 className="sp-section-heading sp-about-video-title">
               SUMATHI PRINTERS <span>(PVT) LTD</span>

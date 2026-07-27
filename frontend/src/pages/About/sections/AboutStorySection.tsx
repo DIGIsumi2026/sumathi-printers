@@ -37,13 +37,13 @@ export default function AboutStorySection() {
 
           <div className="sp-about-story-text">
             <p data-gsap-about-item>
-              <strong>Sumathi Publishers</strong>, a partnership established in
+              Sumathi Publishers, a partnership established in
               1984, was the forerunner to Sumathi Book Printing (Pvt) Ltd,
               which was incorporated in 1991.
             </p>
 
             <p data-gsap-about-item>
-              It was later renamed as <strong>Sumathi Printers (Pvt) Ltd</strong>{" "}
+              It was later renamed as Sumathi Printers (Pvt) Ltd{" "}
               in 2011, operating as a subsidiary of Sumathi Global Consolidated
               (Pvt) Ltd.
             </p>

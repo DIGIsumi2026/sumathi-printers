@@ -110,7 +110,7 @@ textarea {
 
   /* Watermarks must not bleed out */
   .sp-hero-watermark {
-    font-size: clamp(64px, 18vw, 110px);
+    font-size: clamp(64px, calc(64px + 19 * ((100vw - 360px) / 664)), 83px);
     opacity: 0.22;
   }
 }
@@ -212,7 +212,7 @@ textarea {
   }
 
   .sp-technology-watermark {
-    font-size: clamp(62px, 18vw, 110px);
+    font-size: clamp(62px, calc(62px + 21 * ((100vw - 360px) / 664)), 83px);
     opacity: 0.22;
   }
 }
@@ -571,7 +571,7 @@ textarea {
 
   /* Prevent watermark overflow */
   .sp-finishing-watermark {
-    font-size: clamp(56px, 14vw, 86px);
+    font-size: clamp(56px, calc(56px + 9 * ((100vw - 360px) / 664)), 65px);
     opacity: 0.3;
     overflow: hidden;
     max-width: 100%;
@@ -597,7 +597,7 @@ textarea {
 
   .sp-services-cta-card {
     min-height: auto;
-    padding-bottom: clamp(200px, 40vw, 340px);
+    padding-bottom: clamp(200px, calc(200px + 55 * ((100vw - 360px) / 664)), 255px);
   }
 
   .sp-services-cta-content {
@@ -760,7 +760,7 @@ textarea {
   }
 
   .sp-gallery-lightbox-details h3 {
-    font-size: clamp(28px, 7vw, 44px) !important;
+    font-size: clamp(28px, calc(28px + 5 * ((100vw - 360px) / 664)), 33px) !important;
   }
 
   /* Close button — top right */
@@ -843,7 +843,7 @@ body.sp-gallery-lightbox-open {
   }
 
   .sp-gallery-quality-container p {
-    font-size: clamp(16px, 5vw, 26px);
+    font-size: clamp(16px, calc(16px + 4 * ((100vw - 360px) / 664)), 20px);
     text-align: center;
   }
 }
@@ -907,7 +907,7 @@ body.sp-gallery-lightbox-open {
   }
 
   .sp-contact-map-card {
-    min-height: clamp(320px, 60vw, 480px) !important;
+    min-height: clamp(320px, calc(320px + 40 * ((100vw - 360px) / 664)), 360px) !important;
   }
 
   .sp-contact-map-card iframe {
@@ -1005,11 +1005,11 @@ body.sp-gallery-lightbox-open {
   }
 
   .sp-projects-hero-content h1 {
-    font-size: clamp(56px, 14vw, 90px) !important;
+    font-size: clamp(56px, calc(56px + 12 * ((100vw - 360px) / 664)), 68px) !important;
   }
 
   .sp-projects-hero-content h2 {
-    font-size: clamp(26px, 6vw, 40px) !important;
+    font-size: clamp(26px, calc(26px + 4 * ((100vw - 360px) / 664)), 30px) !important;
   }
 
   .sp-projects-hero-actions {
@@ -1454,7 +1454,7 @@ a:focus-visible,
 
   .sp-about-video-caption h2,
   .sp-about-video-title {
-    font-size: clamp(28px, 7.5vw, 46px) !important;
+    font-size: clamp(28px, calc(28px + 7 * ((100vw - 360px) / 664)), 35px) !important;
     line-height: 1 !important;
     letter-spacing: -0.04em !important;
     word-break: break-word;
@@ -1529,7 +1529,7 @@ a:focus-visible,
 
 @media (max-width: 560px) {
   .sp-services-cta-card {
-    padding-bottom: clamp(180px, 46vw, 300px) !important;
+    padding-bottom: clamp(180px, calc(180px + 45 * ((100vw - 360px) / 664)), 225px) !important;
     min-height: unset !important;
   }
 
@@ -1541,7 +1541,7 @@ a:focus-visible,
   }
 
   .sp-services-cta-content h2 {
-    font-size: clamp(32px, 10vw, 52px) !important;
+    font-size: clamp(32px, calc(32px + 7 * ((100vw - 360px) / 664)), 39px) !important;
     line-height: 0.96 !important;
   }
 
@@ -1757,7 +1757,7 @@ a:focus-visible,
 
   /* Caption: slightly larger title, better padding */
   .sp-project-main-caption h3 {
-    font-size: clamp(28px, 8vw, 48px) !important;
+    font-size: clamp(28px, calc(28px + 8 * ((100vw - 360px) / 664)), 36px) !important;
     line-height: 0.95 !important;
   }
 
@@ -1794,7 +1794,7 @@ a:focus-visible,
     position: relative !important;
     right: auto !important;
     top: auto !important;
-    flex: 0 0 clamp(140px, 40vw, 200px) !important;
+    flex: 0 0 clamp(140px, calc(140px + 10 * ((100vw - 360px) / 664)), 150px) !important;
     height: 120px !important;
     width: auto !important;
     transform: none !important;
@@ -1834,7 +1834,7 @@ a:focus-visible,
   }
 
   .sp-project-main-caption h3 {
-    font-size: clamp(26px, 7.5vw, 42px) !important;
+    font-size: clamp(26px, calc(26px + 6 * ((100vw - 360px) / 664)), 32px) !important;
   }
 
   /* On smallest screens, 2 preview cards visible at once */
@@ -1842,6 +1842,28 @@ a:focus-visible,
     flex: 0 0 calc(50vw - 20px) !important;
     height: 110px !important;
   }
+}
+
+/* ────────────────────────────────────────────────────────────
+   GLOBAL TYPOGRAPHY STANDARDIZATIONS (2026-07-27)
+   ──────────────────────────────────────────────────────────── */
+
+/* 1. Global Heading Styles */
+h1, h2, h3, h4, h5, h6,
+.sp-section-heading {
+  letter-spacing: -0.009em !important;
+  font-weight: 600 !important;
+}
+
+/* 2. Global Button Styles */
+button,
+[class*="button"],
+[class*="-btn"],
+.sp-nav-link,
+.sp-project-see-more,
+.sp-gallery-cta-button,
+a.button {
+  font-weight: 600 !important;
 }
 
 /* ── E. SERVICES PAGE — Mobile Grid Fix ──────── */
@@ -1867,7 +1889,7 @@ a:focus-visible,
   }
 
   .sp-service-card-title {
-    font-size: clamp(16px, 5vw, 20px) !important;
+    font-size: clamp(16px, calc(16px + 0 * ((100vw - 360px) / 664)), 16px) !important;
     line-height: 1.1 !important;
   }
 

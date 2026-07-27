@@ -46,12 +46,12 @@ export default function AboutServicesProjectsSection() {
               <span>Explore Our Work</span>
             </div>
 
-            <h2 className="sp-section-heading">Discover what we create, finish, and deliver.</h2>
+            <h2 className="sp-section-heading">Discover what we create, finish and deliver.</h2>
 
             <p>
               From premium printing services to completed project showcases,
               explore how Sumathi Printers transforms ideas into professional,
-              high-quality printed products.
+              high quality printed products.
             </p>
 
             <div className="sp-about-bridge-actions">
