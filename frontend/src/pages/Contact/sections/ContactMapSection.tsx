@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const mapEmbedUrl =
   "https://www.google.com/maps?q=445%2F1%20Sirimavo%20Bandaranaike%20Mawatha%2C%20Colombo%2014%2C%20Sri%20Lanka&output=embed";
 
-const mapOpenUrl = "https://maps.app.goo.gl/WnS6ukBa3SFakzY27";
+const mapOpenUrl = "https://maps.app.goo.gl/yKypEqwmrBJJGSCj6";
 
 export default function ContactMapSection() {
   return (
@@ -25,11 +25,7 @@ export default function ContactMapSection() {
           viewport={{ once: true, amount: 0.24 }}
           transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="sp-contact-pill sp-contact-pill-light">
-            <Sparkles size={15} />
-            <span>Find Our Facility</span>
-          </div>
-
+          
           <h2 className="sp-section-heading">Visit Sumathi Printers in Colombo 14.</h2>
 
           <p>

@@ -2,150 +2,150 @@
 import sumathiLogo from "../assets/images/logo/sumathi-logo.png";
 
 //hero section 
-import offsetPrinting from "../assets/images/hero-section/offset-printing.png";
-import graphicDesigning from "../assets/images/hero-section/graphic-designing.png";
-import packagingBoxPrinting from "../assets/images/hero-section/packaging-box-printing-h.png";
-import booksMagazinesBrochures from "../assets/images/hero-section/books-magazines-brochures.png";
+import offsetPrinting from "../assets/images/hero-section/offset-printing.webp";
+import graphicDesigning from "../assets/images/hero-section/graphic-designing.webp";
+import packagingBoxPrinting from "../assets/images/hero-section/packaging-box-printing-h.webp";
+import booksMagazinesBrochures from "../assets/images/hero-section/books-magazines-brochures.webp";
 import cap from "../assets/images/hero-section/cap.png";
 
 //hero-product section 
-import flyersLeaflets from  "../assets/images/hero-section/service-gallery/flyers-leaflets.png";
-import postersBanners from  "../assets/images/hero-section/service-gallery/posters-banners.png";
-import billBooksLetterheads from  "../assets/images/hero-section/service-gallery/bill-books-letterheads.png";
-import calendarsDiaries from  "../assets/images/hero-section/service-gallery/calendars-diaries.png";
-import letterheadsEnvelopes from  "../assets/images/hero-section/service-gallery/letterheads-envelopes.png";
-import certificatesPrinting from  "../assets/images/hero-section/service-gallery/certificates-printing.png";
-import stickersLabels from  "../assets/images/hero-section/service-gallery/stickers-labels.png";
-import packagingBoxPrintingGallery from  "../assets/images/hero-section/service-gallery/packaging-box-printing.png";
-import brochuresCatalogs from  "../assets/images/hero-section/service-gallery/brochures-catalogs.png";
-import booksMagazinesPrinting from  "../assets/images/hero-section/service-gallery/books-magazines-printing.png";
+import flyersLeaflets from  "../assets/images/hero-section/service-gallery/flyers-leaflets.webp";
+import postersBanners from  "../assets/images/hero-section/service-gallery/posters-banners.webp";
+import billBooksLetterheads from  "../assets/images/hero-section/service-gallery/bill-books-letterheads.webp";
+import calendarsDiaries from  "../assets/images/hero-section/service-gallery/calendars-diaries.webp";
+import letterheadsEnvelopes from  "../assets/images/hero-section/service-gallery/letterheads-envelopes.webp";
+import certificatesPrinting from  "../assets/images/hero-section/service-gallery/certificates-printing.webp";
+import stickersLabels from  "../assets/images/hero-section/service-gallery/stickers-labels.webp";
+import packagingBoxPrintingGallery from  "../assets/images/hero-section/service-gallery/packaging-box-printing.webp";
+import brochuresCatalogs from  "../assets/images/hero-section/service-gallery/brochures-catalogs.webp";
+import booksMagazinesPrinting from  "../assets/images/hero-section/service-gallery/books-magazines-printing.webp";
 
 //hero-technology 
-import technologyPrinting from "../assets/images/hero-section/technology/printing-machinery.png";
-import technologyBinding from "../assets/images/hero-section/technology/binding-machinery.png";
-import technologyPackaging from "../assets/images/hero-section/technology/packaging-machinery.png";
-import technologyFinishing from "../assets/images/hero-section/technology/finishing-machinery.png";
+import technologyPrinting from "../assets/images/hero-section/technology/printing-machinery.webp";
+import technologyBinding from "../assets/images/hero-section/technology/binding-machinery.webp";
+import technologyPackaging from "../assets/images/hero-section/technology/packaging-machinery.webp";
+import technologyFinishing from "../assets/images/hero-section/technology/finishing-machinery.webp";
 
 //hero clients 
-import clientLogo01 from "../assets/images/hero-section/clients/ministry-health.png";
-import clientLogo02 from "../assets/images/hero-section/clients/rupawahini.png";
-import clientLogo03 from "../assets/images/hero-section/clients/family-health.png";
-import clientLogo04 from "../assets/images/hero-section/clients/heath-promotion.png";
-import clientLogo05 from "../assets/images/hero-section/clients/bcc.png";
-import clientLogo06 from "../assets/images/hero-section/clients/japura.png";
-import clientLogo07 from "../assets/images/hero-section/clients/colombo.png";
-import clientLogo08 from "../assets/images/hero-section/clients/NAITA.png";
-import clientLogo09 from "../assets/images/hero-section/clients/revenue-department.png";
-import clientLogo10 from "../assets/images/hero-section/clients/RDB.png";
-import clientLogo11 from "../assets/images/hero-section/clients/sri-lanka-insurance.png";
-import clientLogo12 from "../assets/images/hero-section/clients/NSB.png";
-import clientLogo13 from "../assets/images/hero-section/clients/national-water-suply.png";
-import clientLogo14 from "../assets/images/hero-section/clients/colombo-text.png";
-import clientLogo15 from "../assets/images/hero-section/clients/national-cancer.png";
+import clientLogo01 from "../assets/images/hero-section/clients/ministry-health.webp";
+import clientLogo02 from "../assets/images/hero-section/clients/rupawahini.webp";
+import clientLogo03 from "../assets/images/hero-section/clients/family-health.webp";
+import clientLogo04 from "../assets/images/hero-section/clients/heath-promotion.webp";
+import clientLogo05 from "../assets/images/hero-section/clients/bcc.webp";
+import clientLogo06 from "../assets/images/hero-section/clients/japura.webp";
+import clientLogo07 from "../assets/images/hero-section/clients/colombo.webp";
+import clientLogo08 from "../assets/images/hero-section/clients/NAITA.webp";
+import clientLogo09 from "../assets/images/hero-section/clients/revenue-department.webp";
+import clientLogo10 from "../assets/images/hero-section/clients/RDB.webp";
+import clientLogo11 from "../assets/images/hero-section/clients/sri-lanka-insurance.webp";
+import clientLogo12 from "../assets/images/hero-section/clients/NSB.webp";
+import clientLogo13 from "../assets/images/hero-section/clients/national-water-suply.webp";
+import clientLogo14 from "../assets/images/hero-section/clients/colombo-text.webp";
+import clientLogo15 from "../assets/images/hero-section/clients/national-cancer.webp";
 
 //hero-projects
-import projectSchoolBooks from "../assets/images/hero-section/projects/school-books-printing.png";
-import projectHealthCards from "../assets/images/hero-section/projects/health-cards-printing.png";
-import projectExamPapers from "../assets/images/hero-section/projects/exam-papers-printing.png";
-import projectLeaflets from "../assets/images/hero-section/projects/leaflets-printing.png";
-import projectTshirtPrinting from "../assets/images/hero-section/projects/tshirt-printing.png";
+import projectSchoolBooks from "../assets/images/hero-section/projects/school-books-printing.webp";
+import projectHealthCards from "../assets/images/hero-section/projects/health-cards-printing.webp";
+import projectExamPapers from "../assets/images/hero-section/projects/exam-papers-printing.webp";
+import projectLeaflets from "../assets/images/hero-section/projects/leaflets-printing.webp";
+import projectTshirtPrinting from "../assets/images/hero-section/projects/tshirt-printing.webp";
 
 //hero-cta 
-import ctaBindingScene from "../assets/images/hero-section/cta/cta-binding-scene.png";
+import ctaBindingScene from "../assets/images/hero-section/cta/cta-binding-scene.webp";
 
 //about us page 
 //hero
-import aboutIntroThumbnail from "../assets/images/about/about-intro-thumbnail.png";
+import aboutIntroThumbnail from "../assets/images/about/about-intro-thumbnail.webp";
 
 //about-story
-import aboutStoryImage from "../assets/images/about/about-story.png";
+import aboutStoryImage from "../assets/images/about/about-story.webp";
 
 //visiion, mission 
-import visionImage from "../assets/images/about/vision.png";
-import missionImage from "../assets/images/about/mission.png";
+import visionImage from "../assets/images/about/vision.webp";
+import missionImage from "../assets/images/about/mission.webp";
 
 //board management
-import boardThilanga from "../assets/images/about/board/thilanga-sumathipala.png";
-import boardSamadara from "../assets/images/about/board/samadara-sumathipala.png";
-import boardDulantha from "../assets/images/about/board/dulantha-sumathipala.png";
-import boardSajantha from "../assets/images/about/board/sajantha-sumathipala.png";
+import boardThilanga from "../assets/images/about/board/thilanga-sumathipala.webp";
+import boardSamadara from "../assets/images/about/board/samadara-sumathipala.webp";
+import boardDulantha from "../assets/images/about/board/dulantha-sumathipala.webp";
+import boardSajantha from "../assets/images/about/board/sajantha-sumathipala.webp";
 
 //companies
-import companyLogo1 from "../assets/images/about/companies/company1.png";
-import companyLogo2 from "../assets/images/about/companies/company2.png";
-import companyLogo3 from "../assets/images/about/companies/company3.png";
-import companyLogo4 from "../assets/images/about/companies/company4.png";
-import companyLogo5 from "../assets/images/about/companies/company5.png";
-import companyLogo6 from "../assets/images/about/companies/company6.png";
-import companyLogo7 from "../assets/images/about/companies/company7.png";
-import companyLogo8 from "../assets/images/about/companies/company8.png";
-import companyLogo9 from "../assets/images/about/companies/company9.png";
-import companyLogo10 from "../assets/images/about/companies/company10.png";
-import companyLogo11 from "../assets/images/about/companies/company11.png";
-import companyLogo12 from "../assets/images/about/companies/company12.png";
-import companyLogo13 from "../assets/images/about/companies/company13.png";
-import companyLogo14 from "../assets/images/about/companies/company14.png";
-import companyLogo15 from "../assets/images/about/companies/company15.png";
+import companyLogo1 from "../assets/images/about/companies/company1.webp";
+import companyLogo2 from "../assets/images/about/companies/company2.webp";
+import companyLogo3 from "../assets/images/about/companies/company3.webp";
+import companyLogo4 from "../assets/images/about/companies/company4.webp";
+import companyLogo5 from "../assets/images/about/companies/company5.webp";
+import companyLogo6 from "../assets/images/about/companies/company6.webp";
+import companyLogo7 from "../assets/images/about/companies/company7.webp";
+import companyLogo8 from "../assets/images/about/companies/company8.webp";
+import companyLogo9 from "../assets/images/about/companies/company9.webp";
+import companyLogo10 from "../assets/images/about/companies/company10.webp";
+import companyLogo11 from "../assets/images/about/companies/company11.webp";
+import companyLogo12 from "../assets/images/about/companies/company12.webp";
+import companyLogo13 from "../assets/images/about/companies/company13.webp";
+import companyLogo14 from "../assets/images/about/companies/company14.webp";
+import companyLogo15 from "../assets/images/about/companies/company15.webp";
 
 //services-proteacts banner 
-import  aboutServicesProjectsBanner from "../assets/images/about/about-services-projects-banner.png";
+import  aboutServicesProjectsBanner from "../assets/images/about/about-services-projects-banner.webp";
 
 //service page
-import servicesHeroThumbnail from "../assets/images/services/services-hero-thumbnail.png";
-import whyChoose01 from "../assets/images/services/why-choose-01.png";
-import whyChoose02 from "../assets/images/services/why-choose-02.png";
-import whyChoose03 from "../assets/images/services/why-choose-03.png";
+import servicesHeroThumbnail from "../assets/images/services/services-hero-thumbnail.webp";
+import whyChoose01 from "../assets/images/services/why-choose-01.webp";
+import whyChoose02 from "../assets/images/services/why-choose-02.webp";
+import whyChoose03 from "../assets/images/services/why-choose-03.webp";
 
 //service stat cards 
-import offsetPrintingstat from "../assets/images/services/service-offset-printing.png";
-import graphicDesigningstat from "../assets/images/services/service-graphic-designing.png";
-import flyersLeafletsstat from "../assets/images/services/service-flyers-leaflets.png";
-import billBooksLetterheadsstat from "../assets/images/services/service-bill-books-letterheads.png";
-import envelopesstat from "../assets/images/services/service-envelopes.png";
-import certificatePrintingstat from "../assets/images/services/service-certificate-printing.png";
-import postersBannersstat from "../assets/images/services/service-posters-banners.png";
-import calendarsDiariesstat from "../assets/images/services/service-calendars-diaries.png";
-import  packagingBoxPrintingstat from "../assets/images/services/service-packaging-box-printing.png";
-import booksMagazinesPrintingstat from "../assets/images/services/service-books-magazines.png";
-import  stickersLabelsstat from "../assets/images/services/service-stickers-labels.png";
-import  brochuresCatalogsstat from "../assets/images/services/service-brochures-catalogs.png";
+import offsetPrintingstat from "../assets/images/services/service-offset-printing.webp";
+import graphicDesigningstat from "../assets/images/services/service-graphic-designing.webp";
+import flyersLeafletsstat from "../assets/images/services/service-flyers-leaflets.webp";
+import billBooksLetterheadsstat from "../assets/images/services/service-bill-books-letterheads.webp";
+import envelopesstat from "../assets/images/services/service-envelopes.webp";
+import certificatePrintingstat from "../assets/images/services/service-certificate-printing.webp";
+import postersBannersstat from "../assets/images/services/service-posters-banners.webp";
+import calendarsDiariesstat from "../assets/images/services/service-calendars-diaries.webp";
+import  packagingBoxPrintingstat from "../assets/images/services/service-packaging-box-printing.webp";
+import booksMagazinesPrintingstat from "../assets/images/services/service-books-magazines.webp";
+import  stickersLabelsstat from "../assets/images/services/service-stickers-labels.webp";
+import  brochuresCatalogsstat from "../assets/images/services/service-brochures-catalogs.webp";
 
 //finishing-ervice-cards
-import  finishingCuttingTrimming from  "../assets/images/services/finishing/finishing-cutting-trimming.png";
-import  finishingFolding  from  "../assets/images/services/finishing/finishing-folding.png";
-import  finishingBinding from  "../assets/images/services/finishing/finishing-binding.png";
-import  finishingLamination from  "../assets/images/services/finishing/finishing-lamination.png";
-import  finishingNumbering from  "../assets/images/services/finishing/finishing-numbering.png";
+import  finishingCuttingTrimming from  "../assets/images/services/finishing/finishing-cutting-trimming.webp";
+import  finishingFolding  from  "../assets/images/services/finishing/finishing-folding.webp";
+import  finishingBinding from  "../assets/images/services/finishing/finishing-binding.webp";
+import  finishingLamination from  "../assets/images/services/finishing/finishing-lamination.webp";
+import  finishingNumbering from  "../assets/images/services/finishing/finishing-numbering.webp";
 
 //service-cta 
-import serviceCtaBanner from "../assets/images/services/services-cta-banner.png";
+import serviceCtaBanner from "../assets/images/services/services-cta-banner.webp";
 
 //project page 
-import projectCorporatePublications from "../assets/images/projects/project-corporate-publications.png";
-import projectPackagingSolutions from "../assets/images/projects/project-packaging-solutions.png";
-import projectMarketingCollateral from "../assets/images/projects/project-marketing-collateral.png";
-import projectSecurePrinting from "../assets/images/projects/project-secure-printing.png";
-import projectClientsBackground from "../assets/images/projects/project-clients-background.png";
-import projectCtaBanner from "../assets/images/projects/project-cta-banner.png";
+import projectCorporatePublications from "../assets/images/projects/project-corporate-publications.webp";
+import projectPackagingSolutions from "../assets/images/projects/project-packaging-solutions.webp";
+import projectMarketingCollateral from "../assets/images/projects/project-marketing-collateral.webp";
+import projectSecurePrinting from "../assets/images/projects/project-secure-printing.webp";
+import projectClientsBackground from "../assets/images/projects/project-clients-background.webp";
+import projectCtaBanner from "../assets/images/projects/project-cta-banner.webp";
 import projectsHeroPoster from "../assets/images/projects/projects-hero-poster.webp";
 
 //gallery page 
-import galleryCorporatePublications from "../assets/images/gallery/gallery-corporate-publications.png";
-import galleryPrecisionPrinting from "../assets/images/gallery/gallery-precision-printing.png";
-import galleryPackagingSolutions from "../assets/images/gallery/gallery-packaging-solutions.png";
-import  galleryPackagingDetail from "../assets/images/gallery/gallery-packaging-detail.png";
-import galleryMarketingCollateral from "../assets/images/gallery/gallery-marketing-collateral.png";
-import galleryCollaborationReview from "../assets/images/gallery/gallery-collaboration-review.png";
-import gallerySecureOfficial from "../assets/images/gallery/gallery-secure-official.png";
-import galleryFinishingExcellence from "../assets/images/gallery/gallery-finishing-excellence.png";
-import galleryPublicSector from "../assets/images/gallery/gallery-public-sector.png";
-import galleryStructuralPackaging from "../assets/images/gallery/gallery-structural-packaging.png";
-import galleryAcademicCorporate from "../assets/images/gallery/gallery-academic-corporate.png";
-import galleryFinalCta from "../assets/images/gallery/gallery-final-cta.png";
+import galleryCorporatePublications from "../assets/images/gallery/gallery-corporate-publications.webp";
+import galleryPrecisionPrinting from "../assets/images/gallery/gallery-precision-printing.webp";
+import galleryPackagingSolutions from "../assets/images/gallery/gallery-packaging-solutions.webp";
+import  galleryPackagingDetail from "../assets/images/gallery/gallery-packaging-detail.webp";
+import galleryMarketingCollateral from "../assets/images/gallery/gallery-marketing-collateral.webp";
+import galleryCollaborationReview from "../assets/images/gallery/gallery-collaboration-review.webp";
+import gallerySecureOfficial from "../assets/images/gallery/gallery-secure-official.webp";
+import galleryFinishingExcellence from "../assets/images/gallery/gallery-finishing-excellence.webp";
+import galleryPublicSector from "../assets/images/gallery/gallery-public-sector.webp";
+import galleryStructuralPackaging from "../assets/images/gallery/gallery-structural-packaging.webp";
+import galleryAcademicCorporate from "../assets/images/gallery/gallery-academic-corporate.webp";
+import galleryFinalCta from "../assets/images/gallery/gallery-final-cta.webp";
 import galleryHeroPoster from "../assets/images/gallery/gallery-hero-poster.webp";
 
 //contact page 
-import contactHeroBanner from "../assets/images/contact/contact-hero-banner.png";
+import contactHeroBanner from "../assets/images/contact/contact-hero-banner.webp";
 
 export const imageAssets = {
   logo: {

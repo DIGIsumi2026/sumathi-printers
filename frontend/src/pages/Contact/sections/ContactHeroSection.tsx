@@ -61,10 +61,6 @@ export default function ContactHeroSection() {
             ease: [0.22, 1, 0.36, 1]
           }}
         >
-          <div className="sp-contact-pill">
-            <Sparkles size={15} />
-            <span>Contact Sumathi Printers</span>
-          </div>
 
           <h1 className="sp-section-heading">Get in Touch</h1>
 

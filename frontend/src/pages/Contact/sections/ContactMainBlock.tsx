@@ -108,10 +108,7 @@ export default function ContactMainBlock({
           viewport={{ once: true, amount: 0.26 }}
           transition={{ duration: 0.76, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="sp-contact-pill sp-contact-pill-light">
-            <Sparkles size={15} />
-            <span>We’re Ready To Help</span>
-          </div>
+          
 
           <h2 className="sp-section-heading">Talk to our team about your next print project.</h2>
 
@@ -158,7 +155,6 @@ export default function ContactMainBlock({
           transition={{ duration: 0.76, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="sp-contact-form-head">
-            <span>Request a Custom Quote</span>
             <h2 className="sp-section-heading">Send us your project details.</h2>
             <p>
               Fill out the form below with your layout, volume, or finishing
