@@ -1390,3 +1390,532 @@ a:focus-visible,
   outline: 2px solid #38c7ff;
   outline-offset: 2px;
 }
+
+/* ────────────────────────────────────────────────────────────
+   NEW FIXES (2026-07-27)
+   ──────────────────────────────────────────────────────────── */
+
+/* ── 1. NAV: Hamburger toggle anchored to the absolute right ─── */
+
+@media (max-width: 1180px) {
+  .sp-mobile-toggle {
+    margin-left: auto !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .sp-nav-shell {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .sp-mobile-toggle {
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+  }
+}
+
+/* ── 2. HOME CLIENTS: Hide prev/next arrows on mobile ────────── */
+
+@media (max-width: 767px) {
+  .sp-home-clients-section .sp-client-arrows {
+    display: none !important;
+  }
+
+  .sp-home-clients-section .sp-client-panel-head {
+    justify-content: flex-start !important;
+    gap: 0 !important;
+  }
+}
+
+/* ── 3. HOME CTA: Remove "Since 1984" mini-card globally ─────── */
+
+.sp-home-cta-mini-card {
+  display: none !important;
+}
+
+/* ── 4. HOME ABOUT VIDEO: Mobile text layout fixes ───────────── */
+
+@media (max-width: 767px) {
+  .sp-about-video-section .container {
+    overflow: hidden;
+  }
+
+  .sp-about-video-card {
+    overflow: hidden;
+  }
+
+  .sp-about-video-caption {
+    padding: 16px !important;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .sp-about-video-caption h2,
+  .sp-about-video-title {
+    font-size: clamp(28px, 7.5vw, 46px) !important;
+    line-height: 1 !important;
+    letter-spacing: -0.04em !important;
+    word-break: break-word;
+    white-space: normal !important;
+  }
+
+  .sp-about-video-text {
+    font-size: 13px !important;
+    line-height: 1.58 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sp-about-preview-button {
+    margin-top: 12px !important;
+  }
+}
+
+/* ── 5. ABOUT COMPANIES: Hide prev/next arrows on mobile ─────── */
+
+@media (max-width: 767px) {
+  .sp-about-companies-section .sp-client-arrows,
+  .sp-about-companies-panel .sp-client-arrows {
+    display: none !important;
+  }
+
+  .sp-about-companies-panel .sp-client-panel-head {
+    justify-content: flex-start !important;
+    gap: 0 !important;
+  }
+}
+
+/* ── 6. ABOUT BOARD: Descriptions always visible on mobile ───── */
+
+@media (max-width: 767px) {
+  .sp-about-board-card {
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  .sp-about-board-image-wrap {
+    overflow: hidden;
+    border-radius: 24px 24px 0 0;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .sp-about-board-dropdown {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 14px 14px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    border-radius: 0 0 20px 20px !important;
+    box-shadow:
+      0 8px 24px rgba(15, 23, 42, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .sp-about-board-card:hover .sp-about-board-dropdown,
+  .sp-about-board-card:focus-within .sp-about-board-dropdown {
+    transform: none !important;
+  }
+}
+
+/* ── 7. SERVICES CTA: Mobile card stacking fix ───────────────── */
+
+@media (max-width: 560px) {
+  .sp-services-cta-card {
+    padding-bottom: clamp(180px, 46vw, 300px) !important;
+    min-height: unset !important;
+  }
+
+  .sp-services-cta-content {
+    padding: 24px 18px !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  .sp-services-cta-content h2 {
+    font-size: clamp(32px, 10vw, 52px) !important;
+    line-height: 0.96 !important;
+  }
+
+  .sp-services-cta-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .sp-services-cta-button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .sp-services-cta-mini-card {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: 18px !important;
+    width: auto !important;
+    position: absolute !important;
+  }
+}
+
+/* ── 8. GALLERY FILTER: Hide scrollbar on the filter bar ─────── */
+
+@media (max-width: 767px) {
+  .sp-gallery-filter-bar::-webkit-scrollbar {
+    display: none;
+    height: 0;
+    width: 0;
+  }
+
+  .sp-gallery-filter-bar {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   NEW FIXES (2026-07-27 — Batch 2)
+   ──────────────────────────────────────────────────────────── */
+
+/* ── A. GALLERY FILTER PILLS — Infinite marquee ticker on mobile ─ */
+
+/* On desktop: show the static bar, hide the ticker */
+.sp-gallery-filter-ticker {
+  display: none;
+}
+
+.sp-gallery-filter-bar-desktop {
+  display: flex; /* inherits the existing filter-bar display */
+}
+
+/* On mobile: hide static bar, show ticker */
+@media (max-width: 767px) {
+  .sp-gallery-filter-bar-desktop {
+    display: none !important;
+  }
+
+  .sp-gallery-filter-ticker {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    /* Fade edges so the scroll looks continuous */
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+  }
+
+  /* Track: two copies of the pills placed inline */
+  .sp-gallery-filter-ticker-track {
+    display: flex;
+    gap: 7px;
+    width: max-content;
+    /* Pause on touch so user can tap a pill */
+    animation: spFilterTickerScroll 18s linear infinite;
+    will-change: transform;
+  }
+
+  /* Pause animation when user touches the ticker */
+  .sp-gallery-filter-ticker:active .sp-gallery-filter-ticker-track,
+  .sp-gallery-filter-ticker:focus-within .sp-gallery-filter-ticker-track {
+    animation-play-state: paused;
+  }
+
+  /* Pills inside the ticker inherit ALL existing filter-bar button styles.
+     The selector mirrors .sp-gallery-filter-bar button exactly. */
+  .sp-gallery-filter-ticker-track button {
+    flex-shrink: 0;
+    /* Inherit the same values as .sp-gallery-filter-bar button */
+    min-height: 38px;
+    padding: 0 15px;
+    border-radius: 999px;
+    border: 0;
+    color: rgba(17, 24, 39, 0.68);
+    background: transparent;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 900;
+    /* Visual container from .sp-gallery-filter-bar */
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    box-shadow:
+      0 20px 58px rgba(27, 40, 90, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(18px) saturate(1.22);
+    -webkit-backdrop-filter: blur(18px) saturate(1.22);
+    transition:
+      color 0.28s ease,
+      background 0.28s ease,
+      transform 0.28s ease,
+      box-shadow 0.28s ease;
+    white-space: nowrap;
+  }
+
+  .sp-gallery-filter-ticker-track button.is-active {
+    color: #ffffff;
+    background: linear-gradient(105deg, #38c7ff, #7a4dff, #e72a9a);
+    border-color: transparent;
+    box-shadow:
+      0 14px 32px rgba(122, 77, 255, 0.18),
+      0 0 26px rgba(56, 199, 255, 0.14);
+  }
+
+  /* Also style the filter-area wrapper on mobile to support the ticker */
+  .sp-gallery-filter-area {
+    justify-content: flex-start !important;
+    overflow: hidden !important;
+    padding-inline: 0 !important;
+    margin-inline: 0 !important;
+  }
+}
+
+/* Marquee keyframe: scroll one full set width then loop */
+@keyframes spFilterTickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 50% = one set of pills. The browser auto-loops via infinite. */
+    transform: translateX(-50%);
+  }
+}
+
+/* ── B. GALLERY CARD — Text always visible on mobile (no hover) ── */
+
+/* Previous session's rule used (hover:none) media query but
+   that doesn't force the translateY reset on `.sp-gallery-card-copy`.
+   These rules explicitly override for small screens.           */
+@media (max-width: 767px) {
+  .sp-gallery-card-overlay {
+    opacity: 1 !important;
+    background: linear-gradient(
+      180deg,
+      transparent 30%,
+      rgba(0, 0, 0, 0.72) 68%,
+      rgba(0, 0, 0, 0.92) 100%
+    ) !important;
+  }
+
+  .sp-gallery-card-copy {
+    transform: translateY(0) !important;
+  }
+
+  /* Shine still shows on tap — leave as-is */
+  /* Disable hover lift so tapping doesn't freeze the transform */
+  .sp-gallery-card:hover,
+  .sp-gallery-card:active {
+    transform: translateY(0) scale(1) !important;
+  }
+
+  .sp-gallery-card.is-loaded:hover img {
+    transform: scale(1) !important;
+    filter: none !important;
+  }
+}
+
+/* ── C. HOME PROJECTS — Hide Prev/Next arrows on mobile ──────── */
+
+@media (max-width: 767px) {
+  .sp-project-arrows {
+    display: none !important;
+  }
+
+  /* When arrows are gone, center the "See More" button */
+  .sp-project-gallery-actions {
+    justify-content: center !important;
+  }
+}
+
+/* ── D. HOME PROJECTS — Mobile layout improvements ───────────── */
+
+@media (max-width: 767px) {
+  /* Increase the main card height so content reads well */
+  .sp-project-main-card {
+    height: auto !important;
+    min-height: 460px;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Caption: slightly larger title, better padding */
+  .sp-project-main-caption h3 {
+    font-size: clamp(28px, 8vw, 48px) !important;
+    line-height: 0.95 !important;
+  }
+
+  .sp-project-main-caption p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin-top: 10px !important;
+  }
+
+  /* Progress bar: slightly taller tap target */
+  .sp-project-progress {
+    height: 5px;
+  }
+
+  /* Preview stack: horizontal scrolling strip (no stacked pile) */
+  .sp-project-preview-stack {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 6px !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .sp-project-preview-stack::-webkit-scrollbar {
+    display: none;
+    height: 0;
+  }
+
+  .sp-project-preview-card {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    flex: 0 0 clamp(140px, 40vw, 200px) !important;
+    height: 120px !important;
+    width: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    scroll-snap-align: start !important;
+    border-radius: 16px !important;
+  }
+
+  .sp-project-preview-card-1,
+  .sp-project-preview-card-2,
+  .sp-project-preview-card-3 {
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  /* Meta card: full width, less margin */
+  .sp-project-current-meta {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 16px !important;
+    padding: 16px !important;
+  }
+
+  /* Reduce section padding slightly on very small screens */
+  .sp-home-projects-section {
+    padding: 60px 0 72px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-project-main-card {
+    min-height: 380px;
+  }
+
+  .sp-project-main-caption h3 {
+    font-size: clamp(26px, 7.5vw, 42px) !important;
+  }
+
+  /* On smallest screens, 2 preview cards visible at once */
+  .sp-project-preview-card {
+    flex: 0 0 calc(50vw - 20px) !important;
+    height: 110px !important;
+  }
+}
+
+/* ── E. SERVICES PAGE — Mobile Grid Fix ──────── */
+
+@media (max-width: 767px) {
+  /* Enforce 2 columns for the grid */
+  .sp-services-grid-row {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  /* Make the card height auto to hold the text, but guarantee a min-height */
+  .sp-service-card,
+  .sp-service-card-content {
+    height: auto !important;
+    min-height: 480px !important;
+  }
+
+  /* Adjust padding and font sizes for narrow columns */
+  .sp-service-card-content {
+    padding: 14px !important;
+  }
+
+  .sp-service-card-title {
+    font-size: clamp(16px, 5vw, 20px) !important;
+    line-height: 1.1 !important;
+  }
+
+  .sp-service-card-text {
+    font-size: 11px !important;
+    padding: 10px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Always expand the card text (disable hover) */
+  .sp-service-card-expand {
+    grid-template-rows: 1fr !important;
+    opacity: 1 !important;
+    margin-top: 10px !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+  
+  /* Lock in the expanded visual states (overlay, gradients, images) */
+  .sp-service-card-overlay {
+    background:
+      linear-gradient(
+        125deg,
+        rgba(9, 13, 26, 0.78) 0%,
+        rgba(13, 21, 43, 0.62) 42%,
+        rgba(23, 17, 38, 0.9) 100%
+      ) !important;
+  }
+  
+  .sp-service-card-overlay-gradient {
+    opacity: 0.56 !important;
+  }
+  
+  .sp-service-card-image-mono {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) scale(1.075) !important;
+  }
+  
+  .sp-service-card-image-color {
+    opacity: 0.18 !important;
+  }
+  
+  /* Disable pointer events on the card itself to prevent the JS click handler from re-triggering hover state */
+  .sp-service-card {
+    pointer-events: none !important;
+  }
+  
+  /* Enable pointer events on internal links/buttons if there are any */
+  .sp-service-card * {
+    pointer-events: auto;
+  }
+}

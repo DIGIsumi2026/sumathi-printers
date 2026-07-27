@@ -4342,6 +4342,9 @@ body.sp-menu-open .sp-nav-shell {
   cursor: grab;
   user-select: none;
   -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar on all browsers */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .sp-client-logo-scroll.is-dragging {
@@ -4350,17 +4353,9 @@ body.sp-menu-open .sp-nav-shell {
 }
 
 .sp-client-logo-scroll::-webkit-scrollbar {
-  height: 8px;
-}
-
-.sp-client-logo-scroll::-webkit-scrollbar-track {
-  border-radius: 999px;
-  background: rgba(17, 24, 39, 0.06);
-}
-
-.sp-client-logo-scroll::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: linear-gradient(90deg, #38c7ff, #7a4dff, #e72a9a);
+  display: none;
+  height: 0;
+  width: 0;
 }
 
 .sp-client-logo-card {

@@ -43,7 +43,8 @@ export default function GalleryGridSection() {
 
         <div className="container sp-gallery-grid-container">
           <div className="sp-gallery-filter-area">
-            <div className="sp-gallery-filter-bar">
+            {/* Desktop: static filter bar (hidden on mobile via CSS) */}
+            <div className="sp-gallery-filter-bar sp-gallery-filter-bar-desktop">
               {galleryFilters.map((filter) => (
                 <button
                   key={filter}
@@ -54,6 +55,36 @@ export default function GalleryGridSection() {
                   {filter}
                 </button>
               ))}
+            </div>
+
+            {/* Mobile: infinite ticker (hidden on desktop via CSS) */}
+            <div className="sp-gallery-filter-ticker" aria-hidden="false">
+              <div className="sp-gallery-filter-ticker-track">
+                {/* First set */}
+                {galleryFilters.map((filter) => (
+                  <button
+                    key={`a-${filter}`}
+                    type="button"
+                    className={activeFilter === filter ? "is-active" : ""}
+                    onClick={() => setActiveFilter(filter)}
+                  >
+                    {filter}
+                  </button>
+                ))}
+                {/* Duplicate set for seamless loop */}
+                {galleryFilters.map((filter) => (
+                  <button
+                    key={`b-${filter}`}
+                    type="button"
+                    className={activeFilter === filter ? "is-active" : ""}
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    onClick={() => setActiveFilter(filter)}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
