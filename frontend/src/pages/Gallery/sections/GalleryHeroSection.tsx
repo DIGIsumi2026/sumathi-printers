@@ -1,12 +1,20 @@
 import { useRef } from "react";
 import { Sparkles } from "lucide-react";
 import { videoAssets } from "../../../data/videoAssets";
-import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
+import { imageAssets } from "../../../data/imageAssets";
 import { useGsapHeroParallax } from "../../../lib/useGsapAnimations";
+import {
+  useManagedHeroVideo,
+  useMediaPlaybackPolicy
+} from "../../../hooks/useMediaPlaybackPolicy";
 
 export default function GalleryHeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const { shouldPlayHeroVideo } = useMediaPlaybackPolicy();
+
   useGsapHeroParallax(sectionRef);
+  useManagedHeroVideo(videoRef, sectionRef, shouldPlayHeroVideo);
 
   return (
     <section
@@ -15,27 +23,35 @@ export default function GalleryHeroSection() {
       data-gsap-hero
       data-watermark-section
     >
-      <video
-        className="sp-gallery-hero-video"
-        src={videoAssets.gallery.hero}
-        muted
-        playsInline
-        autoPlay
-        loop
-        preload="auto"
+      <img
+        className="sp-gallery-hero-poster"
+        src={imageAssets.gallery.heroPoster}
+        alt="Sumathi Printers gallery of finished printing projects"
+        draggable={false}
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
       />
+
+      {shouldPlayHeroVideo && (
+        <video
+          ref={videoRef}
+          className="sp-gallery-hero-video"
+          src={videoAssets.gallery.hero}
+          muted
+          playsInline
+          loop
+          preload="metadata"
+          poster={imageAssets.gallery.heroPoster}
+        />
+      )}
 
       <div className="sp-gallery-hero-overlay" />
       <div className="sp-gallery-hero-grid" />
-      <FloatingPrintScene variant="gallery" density="hero" />
 
       <span className="sp-gallery-watermark sp-gallery-watermark-left" data-section-watermark>
         GALLERY
       </span>
-
-      <span className="sp-gallery-float-orb sp-gallery-hero-orb-one" />
-      <span className="sp-gallery-float-orb sp-gallery-hero-orb-two" />
-      <span className="sp-gallery-float-ring sp-gallery-hero-ring-one" />
 
       <div className="container sp-gallery-hero-container">
         <div className="sp-gallery-hero-content" data-gsap-hero-content>

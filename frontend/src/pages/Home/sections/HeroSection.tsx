@@ -1,12 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { CheckCircle2, ArrowUpRight,MessageCircle  } from "lucide-react";
 import type { CompanyData } from "../../../types/site";
 import { imageAssets } from "../../../data/imageAssets";
-import { AnimatedButton } from "../../../components/common/Buttons";
-import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
 import { useGsapHeroParallax } from "../../../lib/useGsapAnimations";
-import { Link } from "react-router-dom";
 
 type HeroSectionProps = {
   company: CompanyData;
@@ -53,15 +49,12 @@ const heroSlides = [
   }
 ];
 
-const whatsappMessage = encodeURIComponent(
-  "Hello Sumathi Printers, I would like to get a quote for a printing project."
-);
-
-const whatsappLink = `https://wa.me/9477426900?text=${whatsappMessage}`;
-
 export default function HeroSection({ company: _company }: HeroSectionProps) {
   const heroRef = useRef<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [loadedSlideIndexes, setLoadedSlideIndexes] = useState<Set<number>>(
+    () => new Set([0])
+  );
   const activeSlide = heroSlides[activeIndex];
 
   useGsapHeroParallax(heroRef);
@@ -75,6 +68,70 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
       window.clearTimeout(timer);
     };
   }, [activeIndex]);
+
+  useEffect(() => {
+    setLoadedSlideIndexes((current) => {
+      if (current.has(activeIndex)) return current;
+      const next = new Set(current);
+      next.add(activeIndex);
+      return next;
+    });
+  }, [activeIndex]);
+
+  useEffect(() => {
+    let cancelled = false;
+    let idleId: number | null = null;
+    const nextIndex = (activeIndex + 1) % heroSlides.length;
+    const image = new Image();
+
+    image.src = activeSlide.image;
+
+    const loadNextSlide = () => {
+      if (cancelled) return;
+
+      setLoadedSlideIndexes((current) => {
+        if (current.has(nextIndex)) return current;
+        const next = new Set(current);
+        next.add(nextIndex);
+        return next;
+      });
+    };
+
+    const scheduleNextSlide = () => {
+      const requestIdle = (
+        window as Window & {
+          requestIdleCallback?: (callback: () => void) => number;
+        }
+      ).requestIdleCallback;
+
+      if (requestIdle) {
+        idleId = requestIdle(loadNextSlide);
+      } else {
+        idleId = window.setTimeout(loadNextSlide, 220);
+      }
+    };
+
+    const decode = image.decode?.() ?? Promise.resolve();
+    decode.then(scheduleNextSlide).catch(scheduleNextSlide);
+
+    return () => {
+      cancelled = true;
+
+      if (idleId !== null) {
+        const cancelIdle = (
+          window as Window & {
+            cancelIdleCallback?: (id: number) => void;
+          }
+        ).cancelIdleCallback;
+
+        if (cancelIdle) {
+          cancelIdle(idleId);
+        } else {
+          window.clearTimeout(idleId);
+        }
+      }
+    };
+  }, [activeIndex, activeSlide.image]);
 
   const heroStyle = useMemo(
     () =>
@@ -95,7 +152,7 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
       data-watermark-section
     >
       <div className="sp-hero-background">
-        {heroSlides.map((slide, index) => (
+        {heroSlides.map((slide, index) => loadedSlideIndexes.has(index) && (
           <img
             key={slide.id}
             src={slide.image}
@@ -112,14 +169,25 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
 
       <div className="sp-hero-overlay" />
       <div className="sp-hero-grid-pattern" />
-      <FloatingPrintScene variant="home" density="hero" />
 
-      <span className="sp-hero-shape sp-hero-shape-one" />
-      <span className="sp-hero-shape sp-hero-shape-two" />
-      <span className="sp-hero-shape sp-hero-shape-three" />
       <span className="sp-hero-watermark" data-section-watermark>SUMATHI PRINTERS</span>
 
       <div className="container sp-hero-container">
+        <div className="sp-hero-process-wrap" aria-label="Hero slide progress">
+          {heroSlides.map((slide, index) => (
+            <button
+              key={slide.id}
+              type="button"
+              aria-label={`Show ${slide.eyebrow}`}
+              aria-current={activeIndex === index ? "true" : undefined}
+              className={`sp-hero-process-dot ${
+                activeIndex === index ? "is-active" : ""
+              }`}
+              onClick={() => setActiveIndex(index)}
+            />
+          ))}
+        </div>
+
         <div className="sp-hero-content" data-gsap-hero-content>
           <div className="sp-hero-eyebrow">
             <span>{activeSlide.eyebrow}</span>
@@ -138,64 +206,6 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
           <p key={activeSlide.id} className="sp-hero-description">
             {activeSlide.description}
           </p>
-
-          <div className="sp-hero-actions">
-            <Link
-              to="/contact"
-              className="sp-hero-action-button sp-hero-action-primary"
-              data-cursor-label="Quote"
-            >
-          <span>
-            <ArrowUpRight size={18} />
-          </span>
-            Request Quote
-          </Link>
-
-        <a
-          href={whatsappLink}
-          target="_blank"
-          rel="noreferrer"
-          className="sp-hero-action-button sp-hero-action-secondary"
-          data-cursor-label="WhatsApp"
-        >
-          <span>
-            <MessageCircle size={18} />
-          </span>
-            Get In Touch
-          </a>
-      </div>
-
-          <ul className="sp-hero-points">
-            <li>
-              <CheckCircle2 size={16} />
-              <span>Established roots since 1984</span>
-            </li>
-
-            <li>
-              <CheckCircle2 size={16} />
-              <span>Modern printing equipment</span>
-            </li>
-
-            <li>
-              <CheckCircle2 size={16} />
-              <span>Fast and reliable delivery</span>
-            </li>
-          </ul>
-
-          <div className="sp-hero-process-wrap" aria-label="Hero slide progress">
-            {heroSlides.map((slide, index) => (
-              <button
-                key={slide.id}
-                type="button"
-                aria-label={`Show ${slide.eyebrow}`}
-                aria-current={activeIndex === index ? "true" : undefined}
-                className={`sp-hero-process-dot ${
-                  activeIndex === index ? "is-active" : ""
-                }`}
-                onClick={() => setActiveIndex(index)}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>

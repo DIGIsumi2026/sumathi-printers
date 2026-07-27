@@ -4,22 +4,27 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
 import { imageAssets } from "../../../data/imageAssets";
-import FloatingPrintScene from "../../../components/three/FloatingPrintScene";
 import { useGsapHeroParallax } from "../../../lib/useGsapAnimations";
+import {
+  useManagedHeroVideo,
+  useMediaPlaybackPolicy
+} from "../../../hooks/useMediaPlaybackPolicy";
 
 export default function ServicesHeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [videoEnded, setVideoEnded] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const { shouldPlayHeroVideo, shouldAnimateHeavy } = useMediaPlaybackPolicy();
+  const contentVisible = !shouldPlayHeroVideo || videoEnded;
+
   useGsapHeroParallax(sectionRef);
+  useManagedHeroVideo(videoRef, sectionRef, shouldPlayHeroVideo && !videoEnded);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.currentTime = 0;
-    video.play().catch(() => {});
-  }, []);
+    if (!shouldPlayHeroVideo) {
+      setVideoEnded(false);
+    }
+  }, [shouldPlayHeroVideo]);
 
   const scrollToServices = () => {
     const section = document.getElementById("all-services");
@@ -40,22 +45,26 @@ export default function ServicesHeroSection() {
       data-watermark-section
     >
       <div className="sp-services-hero-media">
-        <video
-          ref={videoRef}
-          className={`sp-services-hero-video ${videoEnded ? "is-hidden" : ""}`}
-          src={videoAssets.services.hero}
-          muted
-          playsInline
-          autoPlay
-          preload="auto"
-          onEnded={() => setVideoEnded(true)}
-        />
+        {shouldPlayHeroVideo && (
+          <video
+            ref={videoRef}
+            className={`sp-services-hero-video ${
+              videoEnded ? "is-hidden" : ""
+            }`}
+            src={videoAssets.services.hero}
+            muted
+            playsInline
+            preload="metadata"
+            poster={imageAssets.services.heroThumbnail}
+            onEnded={() => setVideoEnded(true)}
+          />
+        )}
 
         <img
           src={imageAssets.services.heroThumbnail}
           alt="Sumathi Printers professional printing services"
           className={`sp-services-hero-thumbnail ${
-            videoEnded ? "is-visible" : ""
+            contentVisible ? "is-visible" : ""
           }`}
           draggable={false}
           loading="eager"
@@ -66,28 +75,28 @@ export default function ServicesHeroSection() {
 
       <div className="sp-services-hero-overlay" />
       <div className="sp-services-hero-grid" />
-      <FloatingPrintScene variant="services" density="hero" />
 
       <span className="sp-services-hero-watermark" data-section-watermark>SERVICES</span>
-
-      <span className="sp-services-float sp-services-float-one" />
-      <span className="sp-services-float sp-services-float-two" />
-      <span className="sp-services-float sp-services-float-three" />
-      <span className="sp-services-ring sp-services-ring-one" />
-      <span className="sp-services-ring sp-services-ring-two" />
 
       <div className="container sp-services-hero-container">
         <motion.div
           className="sp-services-hero-content"
           data-gsap-hero-content
-          initial={{ opacity: 0, y: 42, filter: "blur(12px)" }}
+          initial={
+            shouldAnimateHeavy
+              ? { opacity: 0, y: 42, filter: "blur(12px)" }
+              : false
+          }
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            duration: shouldAnimateHeavy ? 0.82 : 0.18,
+            ease: [0.22, 1, 0.36, 1]
+          }}
         >
           <div className="sp-services-hero-badge">
-            {videoEnded ? <Sparkles size={15} /> : <Play size={15} />}
+            {contentVisible ? <Sparkles size={15} /> : <Play size={15} />}
             <span>
-              {videoEnded
+              {contentVisible
                 ? "Explore Our Printing Expertise"
                 : "Quality In Every Detail"}
             </span>
@@ -105,7 +114,7 @@ export default function ServicesHeroSection() {
 
           <div
             className={`sp-services-hero-actions ${
-              videoEnded ? "is-visible" : ""
+              contentVisible ? "is-visible" : ""
             }`}
           >
             <button
@@ -129,11 +138,11 @@ export default function ServicesHeroSection() {
 
         <motion.div
           className={`sp-services-thumbnail-popup ${
-            videoEnded ? "is-visible" : ""
+            contentVisible ? "is-visible" : ""
           }`}
           initial={false}
           animate={
-            videoEnded
+            contentVisible
               ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
               : { opacity: 0, y: 34, scale: 0.92, filter: "blur(12px)" }
           }

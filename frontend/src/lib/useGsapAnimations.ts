@@ -1,7 +1,8 @@
 import type { RefObject } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "./gsap";
+import { getMediaPlaybackPolicy } from "../hooks/useMediaPlaybackPolicy";
 
-const motionQuery = "(min-width: 768px) and (prefers-reduced-motion: no-preference)";
+const motionQuery = "(min-width: 1025px) and (prefers-reduced-motion: no-preference)";
 
 export function useGsapHeroParallax(scope: RefObject<HTMLElement>) {
   useGSAP(
@@ -12,6 +13,8 @@ export function useGsapHeroParallax(scope: RefObject<HTMLElement>) {
       const mm = gsap.matchMedia();
 
       mm.add(motionQuery, () => {
+        if (!getMediaPlaybackPolicy().shouldAnimateHeavy) return;
+
         const bg = root.querySelector<HTMLElement>("[data-gsap-hero-bg]");
         if (bg) {
           gsap.to(bg, {
@@ -44,6 +47,8 @@ export function useGsapServicesPin(scope: RefObject<HTMLElement>) {
       const mm = gsap.matchMedia();
 
       mm.add(motionQuery, () => {
+        if (!getMediaPlaybackPolicy().shouldAnimateHeavy) return;
+
         const cards = gsap.utils.toArray<HTMLElement>(
           root.querySelectorAll("[data-gsap-service-card]")
         );
@@ -95,6 +100,8 @@ export function useGsapGalleryReveal(
       const mm = gsap.matchMedia();
 
       mm.add(motionQuery, () => {
+        if (!getMediaPlaybackPolicy().shouldAnimateHeavy) return;
+
         const grid = root.querySelector<HTMLElement>("[data-gsap-gallery-grid]");
         const cards = gsap.utils.toArray<HTMLElement>(
           root.querySelectorAll("[data-gsap-gallery-card]")
@@ -142,6 +149,8 @@ export function useGsapAboutTimeline(scope: RefObject<HTMLElement>) {
       const mm = gsap.matchMedia();
 
       mm.add(motionQuery, () => {
+        if (!getMediaPlaybackPolicy().shouldAnimateHeavy) return;
+
         const items = gsap.utils.toArray<HTMLElement>(
           root.querySelectorAll("[data-gsap-about-item]")
         );
@@ -185,6 +194,8 @@ export function useGsapCtaReveal(scope: RefObject<HTMLElement>) {
       const mm = gsap.matchMedia();
 
       mm.add(motionQuery, () => {
+        if (!getMediaPlaybackPolicy().shouldAnimateHeavy) return;
+
         const cta = root.querySelector<HTMLElement>("[data-gsap-cta]");
         const bg = root.querySelector<HTMLElement>("[data-gsap-cta-bg]");
         const content = root.querySelector<HTMLElement>("[data-gsap-cta-content]");
@@ -202,7 +213,7 @@ export function useGsapCtaReveal(scope: RefObject<HTMLElement>) {
 
         timeline.fromTo(
           cta,
-          { opacity: 0, y: 60, scale: 0.96 },
+            { opacity: 0, y: 42, scale: 0.98 },
           { opacity: 1, y: 0, scale: 1, ease: "power2.out", duration: 1 },
           0
         );
@@ -210,8 +221,8 @@ export function useGsapCtaReveal(scope: RefObject<HTMLElement>) {
         if (bg) {
           timeline.fromTo(
             bg,
-            { y: 42, scale: 1.06, opacity: 0.82 },
-            { y: -18, scale: 1, opacity: 1, ease: "none", duration: 1 },
+            { y: 28, scale: 1.035, opacity: 0.88 },
+            { y: -12, scale: 1, opacity: 1, ease: "none", duration: 1 },
             0
           );
         }
@@ -219,7 +230,7 @@ export function useGsapCtaReveal(scope: RefObject<HTMLElement>) {
         if (content) {
           timeline.fromTo(
             content,
-            { opacity: 0, y: 36 },
+            { opacity: 0, y: 24 },
             { opacity: 1, y: 0, ease: "power2.out", duration: 0.82 },
             0.16
           );

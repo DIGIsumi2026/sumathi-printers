@@ -1,8 +1,12 @@
 import { Play, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
+import { imageAssets } from "../../../data/imageAssets";
+import { useMediaPlaybackPolicy } from "../../../hooks/useMediaPlaybackPolicy";
 
 export default function ProjectsFacilitySection() {
+  const { shouldPlayHeroVideo } = useMediaPlaybackPolicy();
+
   return (
     <section className="sp-projects-facility-section" data-watermark-section>
       <span className="sp-projects-facility-watermark" data-section-watermark>PRINTING ART</span>
@@ -43,14 +47,23 @@ export default function ProjectsFacilitySection() {
             viewport={{ once: true, amount: 0.28 }}
             transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
           >
-            <video
-              src={videoAssets.projects.facility}
-              muted
-              playsInline
-              autoPlay
-              loop
-              preload="auto"
-            />
+            {shouldPlayHeroVideo ? (
+              <video
+                src={videoAssets.projects.facility}
+                muted
+                playsInline
+                autoPlay
+                loop
+                preload="metadata"
+              />
+            ) : (
+              <img
+                src={imageAssets.projectsPage.heroPoster}
+                alt="Sumathi Printers facility walkthrough preview"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
 
             <div className="sp-projects-video-overlay" />
 
@@ -71,14 +84,23 @@ export default function ProjectsFacilitySection() {
             viewport={{ once: true, amount: 0.28 }}
             transition={{ duration: 0.78, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
-            <video
-              src={videoAssets.projects.process}
-              muted
-              playsInline
-              autoPlay
-              loop
-              preload="auto"
-            />
+            {shouldPlayHeroVideo ? (
+              <video
+                src={videoAssets.projects.process}
+                muted
+                playsInline
+                autoPlay
+                loop
+                preload="metadata"
+              />
+            ) : (
+              <img
+                src={imageAssets.projectsPage.corporatePublications}
+                alt="Sumathi Printers print process preview"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
 
             <div className="sp-projects-video-overlay" />
 

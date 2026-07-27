@@ -142,7 +142,8 @@
   background: #050508;
 }
 
-.sp-gallery-hero-video {
+.sp-gallery-hero-video,
+.sp-gallery-hero-poster {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -206,30 +207,6 @@
   font-size: clamp(15px, 1.18vw, 19px);
   line-height: 1.72;
   font-weight: 650;
-}
-
-.sp-gallery-hero-orb-one {
-  width: 340px;
-  height: 340px;
-  left: -120px;
-  top: 18%;
-  background: radial-gradient(circle, rgba(56, 199, 255, 0.2), transparent 70%);
-}
-
-.sp-gallery-hero-orb-two {
-  width: 420px;
-  height: 420px;
-  right: -150px;
-  bottom: -14%;
-  background: radial-gradient(circle, rgba(231, 42, 154, 0.18), transparent 70%);
-  animation-direction: reverse;
-}
-
-.sp-gallery-hero-ring-one {
-  width: 230px;
-  height: 230px;
-  right: 12%;
-  top: 22%;
 }
 
 /* GRID */

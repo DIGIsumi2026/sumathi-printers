@@ -127,6 +127,7 @@ import projectMarketingCollateral from "../assets/images/projects/project-market
 import projectSecurePrinting from "../assets/images/projects/project-secure-printing.png";
 import projectClientsBackground from "../assets/images/projects/project-clients-background.png";
 import projectCtaBanner from "../assets/images/projects/project-cta-banner.png";
+import projectsHeroPoster from "../assets/images/projects/projects-hero-poster.webp";
 
 //gallery page 
 import galleryCorporatePublications from "../assets/images/gallery/gallery-corporate-publications.png";
@@ -141,6 +142,7 @@ import galleryPublicSector from "../assets/images/gallery/gallery-public-sector.
 import galleryStructuralPackaging from "../assets/images/gallery/gallery-structural-packaging.png";
 import galleryAcademicCorporate from "../assets/images/gallery/gallery-academic-corporate.png";
 import galleryFinalCta from "../assets/images/gallery/gallery-final-cta.png";
+import galleryHeroPoster from "../assets/images/gallery/gallery-hero-poster.webp";
 
 //contact page 
 import contactHeroBanner from "../assets/images/contact/contact-hero-banner.png";
@@ -278,7 +280,8 @@ services: {
   marketingCollateral: projectMarketingCollateral,
   securePrinting: projectSecurePrinting,
   clientsBackground: projectClientsBackground,
-  ctaBanner: projectCtaBanner
+  ctaBanner: projectCtaBanner,
+  heroPoster: projectsHeroPoster
 },
 
  gallery: {
@@ -293,7 +296,8 @@ services: {
   publicSector: galleryPublicSector,
   structuralPackaging: galleryStructuralPackaging,
   academicCorporate: galleryAcademicCorporate,
-  finalCta: galleryFinalCta
+  finalCta: galleryFinalCta,
+  heroPoster: galleryHeroPoster
 },
 
 contact:{

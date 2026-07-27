@@ -26,8 +26,9 @@ const GalleryPage  = lazy(() => import("./pages/Gallery/GalleryPage"));
 const ContactPage  = lazy(() => import("./pages/Contact/ContactPage"));
 
 const company = companyJson as CompanyData;
-
-const PAGE_LOADER_DURATION = 4000;
+const PAGE_LOADER_MAX_DURATION = 850;
+const PAGE_READY_SETTLE_DURATION = 120;
+const PAGE_FAST_READY_DURATION = 420;
 
 export default function App() {
   const location = useLocation();
@@ -40,16 +41,37 @@ export default function App() {
   useSectionWatermarkScroll(location.pathname, !loading);
 
   useEffect(() => {
-    setLoading(true);
+    let finished = false;
+    let settleTimer = 0;
 
-    const timer = window.setTimeout(() => {
-      setLoading(false);
-    }, PAGE_LOADER_DURATION);
+    const finish = (delay = 0) => {
+      if (finished) return;
+      finished = true;
+      settleTimer = window.setTimeout(() => {
+        setLoading(false);
+      }, delay);
+    };
+
+    const maxTimer = window.setTimeout(() => {
+      finish();
+    }, PAGE_LOADER_MAX_DURATION);
+
+    const handleLoad = () => {
+      finish(PAGE_READY_SETTLE_DURATION);
+    };
+
+    if (document.readyState === "complete") {
+      finish(PAGE_FAST_READY_DURATION);
+    } else {
+      window.addEventListener("load", handleLoad, { once: true });
+    }
 
     return () => {
-      window.clearTimeout(timer);
+      window.clearTimeout(maxTimer);
+      window.clearTimeout(settleTimer);
+      window.removeEventListener("load", handleLoad);
     };
-  }, [location.pathname]);
+  }, []);
 
   const submitForm = async (
     event: FormEvent<HTMLFormElement>,

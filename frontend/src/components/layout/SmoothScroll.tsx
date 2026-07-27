@@ -2,20 +2,19 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import { ScrollTrigger } from "../../lib/gsap";
 import { useScrollLock } from "../../contexts/ScrollLockContext";
+import { useMediaPlaybackPolicy } from "../../hooks/useMediaPlaybackPolicy";
 
 export default function SmoothScroll() {
   const { registerLenis } = useScrollLock();
+  const { shouldUseSmoothScroll } = useMediaPlaybackPolicy();
 
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) {
+    if (!shouldUseSmoothScroll) {
+      registerLenis(null);
       return;
     }
 
@@ -45,7 +44,7 @@ export default function SmoothScroll() {
       registerLenis(null);
       lenis.destroy();
     };
-  }, [registerLenis]);
+  }, [registerLenis, shouldUseSmoothScroll]);
 
   return null;
 }

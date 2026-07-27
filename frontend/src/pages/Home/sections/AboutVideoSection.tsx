@@ -3,6 +3,7 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { videoAssets } from "../../../data/videoAssets";
 import { Link } from "react-router-dom";
+import { useMediaPlaybackPolicy } from "../../../hooks/useMediaPlaybackPolicy";
 
 const CAPTION_REVEAL_AT_SECONDS = 1.2;
 const LOGO_REPLAY_DELAY = 420;
@@ -16,8 +17,17 @@ export default function AboutVideoSection() {
   const [captionVisible, setCaptionVisible] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
   const [logoHovering, setLogoHovering] = useState(false);
+  const { shouldPlayHeroVideo } = useMediaPlaybackPolicy();
 
   useEffect(() => {
+    if (!shouldPlayHeroVideo) {
+      setHasStarted(true);
+      setCaptionVisible(true);
+      setVideoEnded(true);
+      setLogoHovering(false);
+      return;
+    }
+
     const section = sectionRef.current;
     const video = videoRef.current;
 
@@ -54,7 +64,7 @@ export default function AboutVideoSection() {
         window.clearTimeout(replayTimerRef.current);
       }
     };
-  }, [hasStarted]);
+  }, [hasStarted, shouldPlayHeroVideo]);
 
   const handleTimeUpdate = () => {
     const video = videoRef.current;
@@ -105,17 +115,19 @@ export default function AboutVideoSection() {
             captionVisible ? "is-caption-visible" : ""
           } ${videoEnded ? "is-video-ended" : ""}`}
         >
-          <video
-            ref={videoRef}
-            className="sp-about-video"
-            src={videoAssets.about.intro}
-            poster={videoAssets.about.thumbnail}
-            muted
-            playsInline
-            preload="auto"
-            onTimeUpdate={handleTimeUpdate}
-            onEnded={handleVideoEnded}
-          />
+          {shouldPlayHeroVideo && (
+            <video
+              ref={videoRef}
+              className="sp-about-video"
+              src={videoAssets.about.intro}
+              poster={videoAssets.about.thumbnail}
+              muted
+              playsInline
+              preload="metadata"
+              onTimeUpdate={handleTimeUpdate}
+              onEnded={handleVideoEnded}
+            />
+          )}
 
           <img
             className={`sp-about-video-thumbnail ${

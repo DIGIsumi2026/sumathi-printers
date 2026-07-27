@@ -242,43 +242,6 @@
   filter: saturate(1.14);
 }
 
-.sp-contact-hero-orb-one {
-  width: 340px;
-  height: 340px;
-  left: -120px;
-  top: 18%;
-  background: radial-gradient(circle, rgba(56, 199, 255, 0.2), transparent 70%);
-}
-
-.sp-contact-hero-orb-two {
-  width: 440px;
-  height: 440px;
-  right: -160px;
-  bottom: 4%;
-  background: radial-gradient(circle, rgba(231, 42, 154, 0.2), transparent 70%);
-  animation-direction: reverse;
-}
-
-.sp-contact-hero-ring-one {
-  width: 230px;
-  height: 230px;
-  right: 12%;
-  top: 20%;
-}
-
-.sp-contact-hero-shape-one {
-  width: 96px;
-  height: 96px;
-  right: 20%;
-  bottom: 16%;
-  background: linear-gradient(
-    135deg,
-    rgba(56, 199, 255, 0.28),
-    rgba(122, 77, 255, 0.22),
-    rgba(255, 63, 143, 0.26)
-  );
-}
-
 /*inquiry form */
 
 .sp-contact-main-section {

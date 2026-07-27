@@ -104,47 +104,14 @@ textarea {
   }
 
   .sp-hero-content {
-    text-align: center;
-    align-items: center;
-  }
-
-  .sp-hero-actions {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .sp-hero-action-button {
-    flex: 1 1 auto;
-    min-width: 140px;
-    max-width: 220px;
-    justify-content: center;
-  }
-
-  .sp-hero-points {
-    justify-content: center;
-    flex-wrap: wrap;
+    text-align: left;
+    align-items: flex-start;
   }
 
   /* Watermarks must not bleed out */
   .sp-hero-watermark {
     font-size: clamp(64px, 18vw, 110px);
     opacity: 0.22;
-  }
-
-  /* Decorative shapes — prevent overflow */
-  .sp-hero-shape-one,
-  .sp-hero-shape-two,
-  .sp-hero-shape-three {
-    opacity: 0.36;
-    transform: scale(0.64);
-  }
-}
-
-@media (max-width: 480px) {
-  .sp-hero-action-button {
-    width: 100%;
-    max-width: 100%;
   }
 }
 
@@ -660,16 +627,6 @@ textarea {
     overflow-wrap: break-word;
   }
 
-  /* Decorative rings must not overflow */
-  .sp-gallery-hero-ring-one {
-    right: -20px;
-    opacity: 0.3;
-  }
-
-  .sp-gallery-hero-orb-one {
-    left: -80px;
-    opacity: 0.3;
-  }
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -1418,7 +1375,6 @@ body.sp-gallery-lightbox-open {
    Responsive corrections: Button groups — wrapping
    ──────────────────────────────────────────────────────────── */
 
-.sp-hero-actions,
 .sp-services-hero-actions,
 .sp-services-cta-actions,
 .sp-projects-hero-actions,
