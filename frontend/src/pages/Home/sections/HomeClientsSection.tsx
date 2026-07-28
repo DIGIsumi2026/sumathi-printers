@@ -269,8 +269,6 @@ export default function HomeClientsSection() {
                 />
 
                 <span>{client.name}</span>
-
-                <small>{String(index + 1).padStart(2, "0")}</small>
               </article>
             ))}
           </div>

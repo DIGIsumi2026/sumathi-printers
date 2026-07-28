@@ -169,9 +169,6 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
 
       <div className="sp-hero-overlay" />
       <div className="sp-hero-grid-pattern" />
-
-      <span className="sp-hero-watermark" data-section-watermark>SUMATHI PRINTERS</span>
-
       <div className="container sp-hero-container">
         <div className="sp-hero-process-wrap" aria-label="Hero slide progress">
           {heroSlides.map((slide, index) => (
@@ -196,11 +193,11 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
           <h1 className="sp-section-heading sp-hero-title">
             <span>Printing Solutions</span>
 
+            <span>For Your Brand</span>
+
             <span key={activeSlide.word} className="sp-hero-changing-word">
               {activeSlide.word}
             </span>
-
-            <span>For Your Brand</span>
           </h1>
 
           <p key={activeSlide.id} className="sp-hero-description">

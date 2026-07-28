@@ -9,7 +9,7 @@ const whatsappMessage = encodeURIComponent(
   "Hello Sumathi Printers, I would like to get a quote for a printing project."
 );
 
-const whatsappLink = `https://wa.me/9477426900?text=${whatsappMessage}`;
+const whatsappLink = `https://wa.me/94776426900?text=${whatsappMessage}`;
 
 export default function ServicesCtaSection() {
   const sectionRef = useRef<HTMLElement | null>(null);

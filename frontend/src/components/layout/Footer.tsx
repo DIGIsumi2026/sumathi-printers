@@ -125,12 +125,12 @@ export default function Footer({
                 </p>
               </a>
 
-              <a href="tel:+9477426900" className="sp-footer-contact-item">
+              <a href="tel:+94776426900" className="sp-footer-contact-item">
                 <span>
                   <Phone size={18} />
                 </span>
 
-                <p>+94 77 42 6900</p>
+                <p>(+94)77 642 6900</p>
               </a>
 
               <div className="sp-footer-contact-item">

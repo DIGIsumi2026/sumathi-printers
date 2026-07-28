@@ -68,7 +68,7 @@ export default function HomeCtaSection() {
               </a>
 
               <a
-                href="https://wa.me/9477426900"
+                href="https://wa.me/94776426900"
                 target="_blank"
                 rel="noreferrer"
                 className="sp-home-cta-button sp-home-cta-button-secondary"

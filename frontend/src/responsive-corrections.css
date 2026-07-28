@@ -1866,6 +1866,22 @@ a.button {
   font-weight: 600 !important;
 }
 
+/* ────────────────────────────────────────────────────────────
+   LOGO RESIZING (2026-07-28)
+   ──────────────────────────────────────────────────────────── */
+
+/* Increase logo size in default and sticky navbar without affecting grid */
+.sp-brand-logo {
+  transform: scale(1.35) !important;
+  transform-origin: left center !important;
+}
+
+/* Increase logo size in mobile sidebar menu */
+.sp-mobile-menu-logo {
+  transform: scale(1.25) !important;
+  transform-origin: left center !important;
+}
+
 /* ── E. SERVICES PAGE — Mobile Grid Fix ──────── */
 
 @media (max-width: 767px) {
