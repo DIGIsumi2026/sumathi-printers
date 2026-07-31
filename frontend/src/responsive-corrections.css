@@ -2028,3 +2028,11 @@ a.button {
     pointer-events: auto;
   }
 }
+
+/* Hide sidebar scrollbar */
+.sp-mobile-menu {
+  scrollbar-width: none !important;
+}
+.sp-mobile-menu::-webkit-scrollbar {
+  display: none !important;
+}
