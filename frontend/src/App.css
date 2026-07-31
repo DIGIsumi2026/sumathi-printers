@@ -2637,24 +2637,48 @@ body.sp-menu-open .sp-nav-shell {
 }
 
 .sp-technology-dots button {
+  position: relative;
   width: 10px;
   height: 10px;
   border: 0;
   border-radius: 999px;
   background: rgba(17, 24, 39, 0.18);
+  overflow: hidden;
   cursor: pointer;
   transition:
-    width 0.32s ease,
-    background 0.32s ease,
-    box-shadow 0.32s ease;
+    width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.32s ease;
 }
 
 .sp-technology-dots button.is-active {
   width: 34px;
-  background: linear-gradient(90deg, #38c7ff, #7a4dff, #e72a9a);
-  box-shadow:
-    0 0 14px rgba(56, 199, 255, 0.35),
-    0 0 18px rgba(231, 42, 154, 0.22);
+  background: rgba(17, 24, 39, 0.1);
+  box-shadow: none;
+}
+
+/* Left→right gradient fill, timed to --tech-duration */
+.sp-technology-dots button.is-active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: auto;
+  /* NO !important — animation must override this */
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #38c7ff 0%,
+    #7a4dff 50%,
+    #e72a9a 100%
+  );
+  animation: spTechProgressFill var(--tech-duration, 3800ms) linear forwards;
+}
+
+@keyframes spTechProgressFill {
+  0%   { width: 0%; }
+  100% { width: 100%; }
 }
 
 .sp-technology-content {
@@ -10662,24 +10686,49 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-finishing-controls button {
+  position: relative;
   width: 11px;
   height: 11px;
   padding: 0;
   border: 0;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+  cursor: pointer;
   transition:
-    width 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.34s ease,
-    box-shadow 0.34s ease;
+    width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.34s ease;
 }
 
 .sp-finishing-controls button.is-active {
   width: 42px;
-  background: linear-gradient(90deg, #ff244f, #ff3f8f, #36c7ff);
-  box-shadow:
-    0 0 20px rgba(255, 36, 79, 0.44),
-    0 0 34px rgba(255, 63, 143, 0.24);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+/* Left→right gradient fill, timed to --finish-duration */
+.sp-finishing-controls button.is-active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: auto;
+  /* NO !important — animation must override this */
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #ff244f 0%,
+    #ff3f8f 50%,
+    #36c7ff 100%
+  );
+  animation: spFinishProgressFill var(--finish-duration, 1700ms) linear forwards;
+}
+
+@keyframes spFinishProgressFill {
+  0%   { width: 0%; }
+  100% { width: 100%; }
 }
 
 

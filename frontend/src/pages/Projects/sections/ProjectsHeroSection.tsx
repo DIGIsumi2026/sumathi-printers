@@ -79,10 +79,6 @@ export default function ProjectsHeroSection() {
             ease: [0.22, 1, 0.36, 1]
           }}
         >
-          <div className="sp-projects-hero-badge">
-            <Sparkles size={15} />
-            <span>Portfolio Showcase</span>
-          </div>
 
           <h1 className="sp-section-heading">Our Work</h1>
 

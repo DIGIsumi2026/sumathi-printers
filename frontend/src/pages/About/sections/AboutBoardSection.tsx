@@ -70,11 +70,6 @@ export default function AboutBoardSection() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="sp-about-board-badge">
-            <Sparkles size={15} />
-            <span>Leadership</span>
-          </div>
-
           <h2 className="sp-section-heading">Board Of Management</h2>
 
           <p>

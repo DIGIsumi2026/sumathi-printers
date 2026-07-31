@@ -32,10 +32,6 @@ export default function GalleryCtaSection() {
           <div className="sp-gallery-cta-overlay" />
 
           <div className="sp-gallery-cta-content" data-gsap-cta-content>
-            <div className="sp-gallery-pill">
-              <Sparkles size={15} />
-              <span>Start Your Print Project</span>
-            </div>
 
             <h2 className="sp-section-heading">Inspired by our work? Let’s print yours.</h2>
 

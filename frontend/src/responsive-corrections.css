@@ -1853,6 +1853,12 @@ h1, h2, h3, h4, h5, h6,
 .sp-section-heading {
   letter-spacing: -0.009em !important;
   font-weight: 600 !important;
+  line-height: 1.12 !important;
+}
+
+/* 1.5. Global Paragraph Spacing */
+p {
+  line-height: 1.65 !important;
 }
 
 /* 2. Global Button Styles */
@@ -1876,20 +1882,90 @@ a.button {
   transform-origin: left center !important;
 }
 
+/* Header Auto-hide Behavior */
+.sp-header {
+  transition: transform 0.4s cubic-bezier(0.2, 0.86, 0.2, 1) !important;
+}
+.sp-header.is-hidden {
+  transform: translateY(-150%) !important;
+}
+
+
+
+
 /* Increase logo size in mobile sidebar menu */
 .sp-mobile-menu-logo {
   transform: scale(1.25) !important;
   transform-origin: left center !important;
 }
 
-/* ── E. SERVICES PAGE — Mobile Grid Fix ──────── */
+/* ── E. SERVICES PAGE — Mobile & Tablet Swipeable Grid Fix ──────── */
 
-@media (max-width: 767px) {
-  /* Enforce 2 columns for the grid */
+/* Globally remove line-clamp so full description is visible when expanded */
+.sp-service-card-text {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  overflow: visible !important;
+}
+
+.sp-services-swipe-indicator {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  /* Swipe Indicator Animation */
+  .sp-services-swipe-indicator {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(17, 24, 39, 0.5);
+    animation: swipePulse 2s ease-in-out infinite;
+  }
+  @keyframes swipePulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; transform: scale(1.02); }
+  }
+  .sp-swipe-arrow {
+    animation: bounceHoriz 2s ease-in-out infinite;
+  }
+  @keyframes bounceHoriz {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+
+  /* Hide bottom fade */
+  .sp-service-card-bottom-fade {
+    display: none !important;
+  }
+
+  /* Enforce horizontal swipe for the grid */
   .sp-services-grid-row {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 12px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    gap: 16px !important;
+    padding-bottom: 24px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none !important; /* Firefox */
+  }
+  
+  .sp-services-grid-row::-webkit-scrollbar {
+    display: none !important; /* Chrome/Safari */
+  }
+
+  .sp-service-card {
+    flex: 0 0 calc(85vw - 32px) !important;
+    max-width: 380px !important;
+    scroll-snap-align: start;
+    pointer-events: auto !important;
   }
 
   /* Make the card height auto to hold the text, but guarantee a min-height */
@@ -1905,14 +1981,14 @@ a.button {
   }
 
   .sp-service-card-title {
-    font-size: clamp(16px, calc(16px + 0 * ((100vw - 360px) / 664)), 16px) !important;
-    line-height: 1.1 !important;
+    font-size: 24px !important;
+    line-height: 1.2 !important;
   }
 
   .sp-service-card-text {
-    font-size: 11px !important;
-    padding: 10px !important;
-    line-height: 1.45 !important;
+    font-size: 13px !important;
+    padding: 12px !important;
+    line-height: 1.55 !important;
   }
 
   /* Always expand the card text (disable hover) */
@@ -1945,11 +2021,6 @@ a.button {
   
   .sp-service-card-image-color {
     opacity: 0.18 !important;
-  }
-  
-  /* Disable pointer events on the card itself to prevent the JS click handler from re-triggering hover state */
-  .sp-service-card {
-    pointer-events: none !important;
   }
   
   /* Enable pointer events on internal links/buttons if there are any */

@@ -212,6 +212,12 @@ export default function ServicesGridSection() {
             publishing and finishing services crafted with precision, quality
             and dependable production standards.
           </p>
+
+          <div className="sp-services-swipe-indicator">
+            <span className="sp-swipe-arrow">←</span>
+            <span>Swipe to explore services</span>
+            <span className="sp-swipe-arrow">→</span>
+          </div>
         </div>
 
         <div className="sp-services-grid-shell" data-gsap-services-pin>
@@ -278,10 +284,6 @@ export default function ServicesGridSection() {
                         <div className="sp-service-card-topline">
                           <span className="sp-service-card-number">
                             {String(service.id).padStart(2, "0")}
-                          </span>
-
-                          <span className="sp-service-card-badge">
-                            Print Solution
                           </span>
                         </div>
 

@@ -44,10 +44,6 @@ export default function HomeCtaSection() {
             viewport={{ once: true, amount: 0.38 }}
             transition={{ duration: 0.78, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="sp-home-cta-badge">
-              <Sparkles size={15} />
-              <span>Let’s Print Something Exceptional</span>
-            </div>
 
             <h2 className="sp-section-heading">Ready To Bring Your Print Project To Life?</h2>
 

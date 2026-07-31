@@ -55,10 +55,6 @@ export default function GalleryHeroSection() {
 
       <div className="container sp-gallery-hero-container">
         <div className="sp-gallery-hero-content" data-gsap-hero-content>
-          <div className="sp-gallery-pill">
-            <Sparkles size={15} />
-            <span>Visual Portfolio</span>
-          </div>
 
           <h1 className="sp-section-heading">The Printing Gallery</h1>
 

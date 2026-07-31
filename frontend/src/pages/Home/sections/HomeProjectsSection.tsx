@@ -39,14 +39,6 @@ const projects = [
       "Vibrant leaflet printing for campaigns, events and business promotions with fast, colour accurate output.",
     image: imageAssets.projects.leaflets
   },
-  {
-    title: "T-Shirt Printing",
-    shortTitle: "T-Shirts",
-    category: "Garment Printing",
-    description:
-      "Custom T-shirt printing with vivid colour output, careful finishing and professional quality inspection.",
-    image: imageAssets.projects.tshirtPrinting
-  }
 ];
 
 export default function HomeProjectsSection() {

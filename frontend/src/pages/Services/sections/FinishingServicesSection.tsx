@@ -183,7 +183,8 @@ export default function FinishingServicesSection() {
       data-watermark-section
       style={
         {
-          "--finish-active-accent": activeService.accent
+          "--finish-active-accent": activeService.accent,
+          "--finish-duration": `${LOOP_INTERVAL}ms`
         } as CSSProperties
       }
     >
@@ -297,7 +298,7 @@ export default function FinishingServicesSection() {
         <div className="sp-finishing-controls">
           {finishingServices.map((service, index) => (
             <button
-              key={service.id}
+              key={activeIndex === index ? `${service.id}-active-${activeIndex}` : service.id}
               type="button"
               aria-label={`Show ${service.title}`}
               className={activeIndex === index ? "is-active" : ""}

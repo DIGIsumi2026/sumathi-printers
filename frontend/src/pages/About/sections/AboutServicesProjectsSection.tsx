@@ -41,10 +41,6 @@ export default function AboutServicesProjectsSection() {
           <div className="sp-about-bridge-grid" />
 
           <div className="sp-about-bridge-content" data-gsap-cta-content>
-            <div className="sp-about-bridge-pill">
-              <Sparkles size={15} />
-              <span>Explore Our Work</span>
-            </div>
 
             <h2 className="sp-section-heading">Discover what we create, finish and deliver.</h2>
 

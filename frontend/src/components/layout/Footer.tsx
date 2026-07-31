@@ -130,7 +130,7 @@ export default function Footer({
                   <Phone size={18} />
                 </span>
 
-                <p>(+94)77 642 6900</p>
+                <p>+94 77 642 6900</p>
               </a>
 
               <div className="sp-footer-contact-item">

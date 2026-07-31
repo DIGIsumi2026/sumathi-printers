@@ -30,13 +30,40 @@ export default function NavigationBar({ company }: NavigationBarProps) {
   // Ref to the toggle button so we can restore focus when the menu closes.
   const toggleRef = useRef<HTMLButtonElement>(null);
 
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const hideTimeout = useRef<number | null>(null);
+
   /* ------------------------------------------------------------------ */
-  /*  Sticky detection                                                    */
+  /*  Sticky & Auto-hide detection                                        */
   /* ------------------------------------------------------------------ */
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      
+      setIsSticky(currentScrollY > 20);
+
+      if (currentScrollY <= 20) {
+        // At the top, always visible
+        setIsVisible(true);
+        if (hideTimeout.current) window.clearTimeout(hideTimeout.current);
+      } else {
+        // We are scrolled down
+        if (currentScrollY < lastScrollY.current) {
+          // Scrolling UP
+          setIsVisible(true);
+          if (hideTimeout.current) window.clearTimeout(hideTimeout.current);
+          hideTimeout.current = window.setTimeout(() => {
+            setIsVisible(false);
+          }, 3000);
+        } else if (currentScrollY > lastScrollY.current) {
+          // Scrolling DOWN
+          setIsVisible(false);
+        }
+      }
+      
+      lastScrollY.current = currentScrollY;
     };
 
     handleScroll();
@@ -44,6 +71,7 @@ export default function NavigationBar({ company }: NavigationBarProps) {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (hideTimeout.current) window.clearTimeout(hideTimeout.current);
     };
   }, []);
 
@@ -118,7 +146,7 @@ export default function NavigationBar({ company }: NavigationBarProps) {
   return (
     <>
       {/* ── Normal nav shell (stays inside the header) ── */}
-      <header className={`sp-header ${isSticky ? "is-sticky" : ""}`}>
+      <header className={`sp-header ${isSticky ? "is-sticky" : ""} ${!isVisible ? "is-hidden" : ""}`}>
         <div className="container sp-nav-container">
           <div className="sp-nav-socials" aria-label="Social links">
             {socialLinks.map((social) => {

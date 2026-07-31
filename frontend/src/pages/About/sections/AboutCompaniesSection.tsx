@@ -266,7 +266,6 @@ export default function AboutCompaniesSection() {
         >
           <div className="sp-client-panel-head">
             <div>
-              <h3>Our Companies</h3>
             </div>
 
             <div className="sp-client-arrows">

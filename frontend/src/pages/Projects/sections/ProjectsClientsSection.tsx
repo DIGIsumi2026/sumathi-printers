@@ -44,10 +44,6 @@ export default function ProjectsClientsSection() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="sp-projects-clients-badge">
-            <Sparkles size={15} />
-            <span>Our Trusted Clients</span>
-          </div>
 
           <h2 className="sp-section-heading">Trusted by Sri Lanka’s Leading Institutions</h2>
 

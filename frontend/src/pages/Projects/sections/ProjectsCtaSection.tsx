@@ -47,10 +47,6 @@ export default function ProjectsCtaSection() {
           <div className="sp-projects-cta-grid" />
 
           <div className="sp-projects-cta-content" data-gsap-cta-content>
-            <div className="sp-projects-cta-badge">
-              <Sparkles size={15} />
-              <span>Ready To Start?</span>
-            </div>
 
             <h2 className="sp-section-heading">Ready to start your next printing project?</h2>
 

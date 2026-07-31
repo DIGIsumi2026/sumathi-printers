@@ -61,10 +61,6 @@ export default function ServicesCtaSection() {
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.78, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="sp-services-cta-badge">
-              <Sparkles size={15} />
-              <span>Ready To Start?</span>
-            </div>
 
             <h2 className="sp-section-heading">Let’s Finish Your Print Project With Premium Quality</h2>
 

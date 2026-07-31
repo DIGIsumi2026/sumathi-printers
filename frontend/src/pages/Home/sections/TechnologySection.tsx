@@ -101,7 +101,7 @@ export default function TechnologySection() {
           <div className="sp-technology-dots">
             {technologySlides.map((slide, index) => (
               <button
-                key={slide.title}
+                key={index === activeIndex ? `${slide.title}-active-${activeIndex}` : slide.title}
                 type="button"
                 className={index === activeIndex ? "is-active" : ""}
                 aria-label={`Show ${slide.title}`}
