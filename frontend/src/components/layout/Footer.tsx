@@ -119,7 +119,7 @@ export default function Footer({
                 </span>
 
                 <p>
-                  445/1, Sirimawo Bandaranayaka Mawatha,
+                  445 Sirimavo Bandaranaike Mawatha,
                   <br />
                   Colombo 14, Sri Lanka
                 </p>

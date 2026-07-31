@@ -173,7 +173,7 @@ export default function HeroSection({ company: _company }: HeroSectionProps) {
         <div className="sp-hero-process-wrap" aria-label="Hero slide progress">
           {heroSlides.map((slide, index) => (
             <button
-              key={slide.id}
+              key={index === activeIndex ? `${slide.id}-active-${activeIndex}` : slide.id}
               type="button"
               aria-label={`Show ${slide.eyebrow}`}
               aria-current={activeIndex === index ? "true" : undefined}
