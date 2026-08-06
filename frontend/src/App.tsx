@@ -1,5 +1,5 @@
 import { FormEvent, lazy, Suspense, useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import companyJson from "./data/company.json";
 import ScrollManager from "./components/layout/ScrollManager";
 import SmoothScroll from "./components/layout/SmoothScroll";
@@ -139,6 +139,12 @@ export default function App() {
                 />
               }
             />
+
+            {/* Redirect legacy /home.html from old site directly to root */}
+            <Route path="/home.html" element={<Navigate to="/" replace />} />
+            
+            {/* Catch-all route to prevent empty layout rendering on unknown URLs */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
 
