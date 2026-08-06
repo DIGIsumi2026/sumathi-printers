@@ -1,9 +1,22 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
+    RewriteEngine On
+    RewriteBase /
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+    # Force HTTPS + WWW
+    RewriteCond %{HTTPS} off [OR]
+    RewriteCond %{HTTP_HOST} !^www\.sumathiprinters\.lk$ [NC]
+    RewriteRule ^(.*)$ https://www.sumathiprinters.lk/$1 [R=301,L]
 
-  RewriteRule ^ index.html [L]
+    # Redirect old HTML pages
+    RewriteRule ^home\.html$ / [R=301,L]
+    RewriteRule ^about\.html$ /about [R=301,L]
+    RewriteRule ^services\.html$ /services [R=301,L]
+    RewriteRule ^projects\.html$ /projects [R=301,L]
+    RewriteRule ^gallery\.html$ /gallery [R=301,L]
+    RewriteRule ^contact\.html$ /contact [R=301,L]
+
+    # React Router SPA fallback
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
 </IfModule>

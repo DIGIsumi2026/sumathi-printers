@@ -31,16 +31,16 @@ const contactItems = [
     label: "Office & Facility",
     value: (
       <>
-        445/1, Sirimawo Bandaranayaka Mawatha,
-        <br />
-        Colombo 14, Sri Lanka
+        445 Sirimavo Bandaranaike Mawatha, 
+        <br/>
+        Colombo 01400.
       </>
     )
   },
   {
     icon: Phone,
     label: "Direct Line",
-    value: "(+94) 77 42 6900"
+    value: "+94 77 642 6900"
   },
   {
     icon: Clock,

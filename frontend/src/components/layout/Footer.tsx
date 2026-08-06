@@ -28,7 +28,7 @@ const quickLinks = [
 const mapOpenUrl = "https://maps.app.goo.gl/Nw17Q4kt9Z8kUKok9";
 
 const mapEmbedUrl =
-  "https://www.google.com/maps?q=445%2F1%20Sirimavo%20Bandaranaike%20Mawatha%2C%20Colombo%2014%2C%20Sri%20Lanka&output=embed";
+  "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d247.53178567137434!2d79.871671!3d6.9491766!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae258f854d3df25%3A0xe4f0cde8e9167140!2s445%20Sirimavo%20Bandaranaike%20Mawatha%2C%20Colombo%2001400!5e0!3m2!1sen!2slk!4v1785997317016!5m2!1sen!2slk";
 
 export default function Footer({
   company,
