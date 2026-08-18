@@ -72,7 +72,7 @@ import boardSajantha from "../assets/images/about/board/sajantha-sumathipala.web
 
 //companies
 import companyLogo1 from "../assets/images/about/companies/company1.webp";
-import companyLogo2 from "../assets/images/about/companies/company2.webp";
+import companyLogo2 from "../assets/images/about/companies/company1.webp"; // TEMP FIX: company2.webp is missing
 import companyLogo3 from "../assets/images/about/companies/company3.webp";
 import companyLogo4 from "../assets/images/about/companies/company4.webp";
 import companyLogo5 from "../assets/images/about/companies/company5.webp";
