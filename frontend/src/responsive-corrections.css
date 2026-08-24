@@ -2647,3 +2647,99 @@ a.button {
     font-size: 11px !important;
   }
 }
+
+/* ============================================================
+   ABOUT BOARD SECTION - DESKTOP 5 COLUMNS & MOBILE SCROLL
+   ============================================================ */
+
+/* Desktop: 5 columns */
+@media (min-width: 1181px) {
+  .sp-about-board-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+  /* Reduce font sizes and padding slightly to fit 5 columns */
+  .sp-about-board-main {
+    padding: 16px 16px 18px !important;
+  }
+  .sp-about-board-main h3 {
+    font-size: 16px !important;
+  }
+  .sp-about-board-main span {
+    font-size: 12px !important;
+  }
+  .sp-about-board-role-pill {
+    min-height: 32px !important;
+    padding: 0 10px !important;
+    font-size: 11px !important;
+    left: 12px !important;
+    bottom: 12px !important;
+  }
+  .sp-about-board-dropdown {
+    padding: 14px 14px 16px !important;
+  }
+  .sp-about-board-dropdown p {
+    font-size: 12px !important;
+  }
+  .sp-about-board-dropdown li {
+    font-size: 11px !important;
+    padding-left: 12px !important;
+  }
+  .sp-about-board-dropdown li::before {
+    width: 5px !important;
+    height: 5px !important;
+    top: 0.6em !important;
+  }
+}
+
+/* Mobile Ken Burns */
+@keyframes spKenBurnsMobile {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 767px) {
+  .sp-about-board-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding: 0 16px !important;
+    padding: 0 16px 24px !important;
+    margin: 0 -16px !important; /* bleed to edge */
+    gap: 16px !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  .sp-about-board-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .sp-about-board-card {
+    flex: 0 0 calc(85vw - 16px) !important;
+    scroll-snap-align: center !important;
+  }
+
+  .sp-about-board-image-wrap img {
+    animation: spKenBurnsMobile 15s ease-in-out infinite !important;
+  }
+
+  /* Summarized description on mobile */
+  .sp-about-board-dropdown {
+    display: none !important; /* Hide full hover dropdown on mobile */
+  }
+
+  .sp-about-board-mobile-summary {
+    display: block !important;
+    margin-top: 12px;
+    color: rgba(17, 24, 39, 0.76);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 768px) {
+  .sp-about-board-mobile-summary {
+    display: none !important;
+  }
+}

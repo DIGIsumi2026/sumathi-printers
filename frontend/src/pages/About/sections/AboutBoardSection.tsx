@@ -16,6 +16,17 @@ const boardMembers = [
     icon: BriefcaseBusiness
   },
   {
+  name: "Mr. Udhantha Sumathipala",
+  role: "Executive Director",
+  image: imageAssets.board.udhantha,
+  profile: "Oldest son of Mr. Thilanga Sumathipala; joined Sumathi Universal (Pvt) Ltd in 2018 and currently leads its subsidiary companies.",
+  highlights: [
+    "Education: Bachelor's degree in Architectural Science from Curtin University, Perth, Australia. Awarded university colors from the University of Limkokwing.",
+    "Alma Mater: Royal College, Colombo."
+  ],
+  icon: BriefcaseBusiness
+},
+  {
     name: "Mrs. Samadara Sumathipala",
     role: "Director",
     image: imageAssets.board.samadara,
@@ -28,9 +39,9 @@ const boardMembers = [
     icon: Sparkles
   },
   {
-    name: "Mr. Sajantha Sumathipala",
+    name: "Mr. Dulantha Sumathipala",
     role: "Director",
-    image: imageAssets.board.sajantha,
+    image: imageAssets.board.dulantha,
     profile: "Second son of Mr. Thilanga Sumathipala. Climbed the ranks from Sumathi Printers and NAPCO Pvt Ltd to become a Segment Director, joining the holding company board in 2020.",
     highlights: [
       "Education: BSc. Hons. in International Management & Business from the University of Plymouth, England.",
@@ -39,13 +50,13 @@ const boardMembers = [
     icon: GraduationCap
   },
   {
-    name: "Mr. Dulantha Sumathipala",
+    name: "Mr. Sajantha Sumathipala",
     role: "Director",
-    image: imageAssets.board.dulantha,
+    image: imageAssets.board.sajantha,
     profile:
       "Youngest son of the Sumathi family.",
     highlights: [
-      "Education: Holds a Master's degree in Business Management from foreign universities.",
+      "Education: Holds a Master's degree in Business Management from foreign university.",
       "Contributes to the next generation leadership of the Sumathi Group."
     ],
     icon: Award
@@ -116,6 +127,9 @@ export default function AboutBoardSection() {
 
                 <div className="sp-about-board-main">
                   <h3>{member.name}</h3>
+                  <div className="sp-about-board-mobile-summary">
+                    {member.profile}
+                  </div>
                 </div>
 
                 <div className="sp-about-board-dropdown">

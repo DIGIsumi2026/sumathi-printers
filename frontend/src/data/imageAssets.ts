@@ -69,6 +69,7 @@ import boardThilanga from "../assets/images/about/board/thilanga-sumathipala.web
 import boardSamadara from "../assets/images/about/board/samadara-sumathipala.webp";
 import boardDulantha from "../assets/images/about/board/dulantha-sumathipala.webp";
 import boardSajantha from "../assets/images/about/board/sajantha-sumathipala.webp";
+import boardUdhantha from "../assets/images/about/board/udhantha-sumathipala.webp";
 
 //companies
 import companyLogo1 from "../assets/images/about/companies/company1.webp";
@@ -222,7 +223,8 @@ board: {
   thilanga: boardThilanga,
   samadara: boardSamadara,
   dulantha: boardDulantha,
-  sajantha: boardSajantha
+  sajantha: boardSajantha,
+  udhantha: boardUdhantha,
 },
 
 companies: {
