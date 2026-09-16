@@ -56,7 +56,7 @@ const boardMembers = [
     profile:
       "Youngest son of the Sumathi family.",
     highlights: [
-      "Education: Holds a Master's degree in Business Management from foreign university.",
+      "Education: Holds a Master's degree in Business Management from a foreign university.",
       "Contributes to the next generation leadership of the Sumathi Group."
     ],
     icon: Award
