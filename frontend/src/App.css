@@ -69,10 +69,7 @@ body {
   margin: 22px 0 0;
   color: #ffffff;
   font-size: clamp(44px, calc(44px + 18 * ((100vw - 360px) / 664)), 62px);
-  line-height: 0.94;
-  letter-spacing: -0.00065em;
-  font-weight: 700;
-  max-width: 100%;
+     
   overflow-wrap: normal;
 }
 
