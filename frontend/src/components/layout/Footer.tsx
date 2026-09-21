@@ -4,7 +4,8 @@ import {
   ArrowUpRight,
   Clock,
   MapPin,
-  Phone
+  Phone,
+  Mail
 } from "lucide-react";
 import { imageAssets } from "../../data/imageAssets";
 import { socialLinks } from "../../data/socialLinks";
@@ -133,17 +134,12 @@ export default function Footer({
                 <p>+94 77 642 6900</p>
               </a>
 
-              <div className="sp-footer-contact-item">
+              <a href="mailto:info@sumathiprinters.lk" className="sp-footer-contact-item">
                 <span>
-                  <Clock size={18} />
+                  <Mail size={18} />
                 </span>
-
-                <p>
-                  Monday – Friday: 8:30 AM – 5:00 PM
-                  <br />
-                  Saturday & Sunday: Closed
-                </p>
-              </div>
+                <p>info@sumathiprinters.lk</p>
+              </a>
             </div>
           </div>
 

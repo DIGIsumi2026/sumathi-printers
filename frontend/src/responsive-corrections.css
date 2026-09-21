@@ -2743,3 +2743,55 @@ a.button {
     display: none !important;
   }
 }
+
+/* ============================================================
+   USER REQUEST: REMOVE BLUR BG FROM FOOTER CONTACT ITEMS
+   ============================================================ */
+.sp-footer-contact-item {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ============================================================
+   USER REQUEST: AUTO-HIDE SCROLLBAR
+   ============================================================ */
+@media (min-width: 1025px) {
+  /* PC mode: auto-hide scrollbar using .is-scrolling class set via JS */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 9px !important;
+    background-color: transparent !important;
+  }
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track {
+    background-color: transparent !important;
+  }
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background-color: transparent !important;
+    border: 2px solid transparent !important;
+  }
+  
+  body.is-scrolling::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(122, 77, 255, 0.5) !important;
+    background-clip: padding-box !important;
+    border-radius: 999px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Mobile and tablet mode: remove scrollbar completely */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+  }
+  * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+}
