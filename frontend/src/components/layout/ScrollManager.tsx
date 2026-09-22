@@ -1,5 +1,6 @@
 ﻿import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import DesktopScrollbar from "./DesktopScrollbar";
 
 type ScrollManagerProps = {
   loading: boolean;
@@ -13,22 +14,6 @@ function getRouteKey(pathname: string, search: string) {
 
 export default function ScrollManager({ loading }: ScrollManagerProps) {
   const location = useLocation();
-
-  useEffect(() => {
-    let scrollTimeout: number;
-    const handleScroll = () => {
-      document.body.classList.add("is-scrolling");
-      window.clearTimeout(scrollTimeout);
-      scrollTimeout = window.setTimeout(() => {
-        document.body.classList.remove("is-scrolling");
-      }, 1000);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.clearTimeout(scrollTimeout);
-    };
-  }, []);
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -95,5 +80,5 @@ export default function ScrollManager({ loading }: ScrollManagerProps) {
     };
   }, [location.pathname, location.search, location.hash, loading]);
 
-  return null;
+  return <DesktopScrollbar />;
 }
