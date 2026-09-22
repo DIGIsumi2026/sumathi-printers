@@ -33,6 +33,28 @@ export default function NavigationBar({ company }: NavigationBarProps) {
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
   const hideTimeout = useRef<number | null>(null);
+  const isHovered = useRef(false);
+  const lastScrollDirection = useRef<"up" | "down">("up");
+
+  const handleMouseEnter = () => {
+    isHovered.current = true;
+    if (hideTimeout.current !== null) window.clearTimeout(hideTimeout.current);
+    hideTimeout.current = null;
+    setIsVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    isHovered.current = false;
+    if (window.scrollY <= 20) return;
+    if (lastScrollDirection.current === "down") {
+      setIsVisible(false);
+      return;
+    }
+    hideTimeout.current = window.setTimeout(() => {
+      if (!isHovered.current) setIsVisible(false);
+      hideTimeout.current = null;
+    }, 3000);
+  };
 
   /* ------------------------------------------------------------------ */
   /*  Sticky & Auto-hide detection                                        */
@@ -47,19 +69,26 @@ export default function NavigationBar({ company }: NavigationBarProps) {
       if (currentScrollY <= 20) {
         // At the top, always visible
         setIsVisible(true);
-        if (hideTimeout.current) window.clearTimeout(hideTimeout.current);
+        if (hideTimeout.current !== null) window.clearTimeout(hideTimeout.current);
+        hideTimeout.current = null;
       } else {
         // We are scrolled down
         if (currentScrollY < lastScrollY.current) {
           // Scrolling UP
+          lastScrollDirection.current = "up";
           setIsVisible(true);
-          if (hideTimeout.current) window.clearTimeout(hideTimeout.current);
-          hideTimeout.current = window.setTimeout(() => {
-            setIsVisible(false);
-          }, 3000);
+          if (hideTimeout.current !== null) window.clearTimeout(hideTimeout.current);
+          hideTimeout.current = null;
+          if (!isHovered.current) {
+            hideTimeout.current = window.setTimeout(() => {
+              if (!isHovered.current) setIsVisible(false);
+              hideTimeout.current = null;
+            }, 3000);
+          }
         } else if (currentScrollY > lastScrollY.current) {
           // Scrolling DOWN
-          setIsVisible(false);
+          lastScrollDirection.current = "down";
+          if (!isHovered.current) setIsVisible(false);
         }
       }
       
@@ -71,7 +100,7 @@ export default function NavigationBar({ company }: NavigationBarProps) {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (hideTimeout.current) window.clearTimeout(hideTimeout.current);
+      if (hideTimeout.current !== null) window.clearTimeout(hideTimeout.current);
     };
   }, []);
 
@@ -146,7 +175,11 @@ export default function NavigationBar({ company }: NavigationBarProps) {
   return (
     <>
       {/* ── Normal nav shell (stays inside the header) ── */}
-      <header className={`sp-header ${isSticky ? "is-sticky" : ""} ${!isVisible ? "is-hidden" : ""}`}>
+      <header
+        className={`sp-header ${isSticky ? "is-sticky" : ""} ${!isVisible ? "is-hidden" : ""}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="container sp-nav-container">
           <div className="sp-nav-socials" aria-label="Social links">
             {socialLinks.map((social) => {
