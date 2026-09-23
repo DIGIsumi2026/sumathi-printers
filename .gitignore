@@ -61,6 +61,10 @@ backend/.env.development.local
 backend/.env.test.local
 backend/.env.production.local
 
+# Private production mail credentials
+smtp-config.php
+frontend/HOSTINGER_CONTACT_DEPLOYMENT.md
+
 # Keep example env files tracked
 !.env.example
 !frontend/.env.example

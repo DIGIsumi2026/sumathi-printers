@@ -10,7 +10,7 @@ import NavigationBar from "./components/layout/NavigationBar";
 import Footer from "./components/layout/Footer";
 import CustomCursor from "./components/layout/CustomCursor";
 
-import { formToPayload, postForm } from "./lib/api";
+import { formToPayload, postContactForm, postForm } from "./lib/api";
 import useSectionWatermarkScroll from "./hooks/useSectionWatermarkScroll";
 import type { CompanyData, FormStatus } from "./types/site";
 import { ScrollLockProvider } from "./contexts/ScrollLockContext";
@@ -75,18 +75,33 @@ export default function App() {
 
   const submitForm = async (
     event: FormEvent<HTMLFormElement>,
-    endpoint: "/contact" | "/newsletter" | "/quote",
+    endpoint: "/newsletter" | "/quote",
     setStatus: (status: FormStatus) => void
   ) => {
     event.preventDefault();
+    const form = event.currentTarget;
     setStatus("loading");
 
     try {
-      await postForm(endpoint, formToPayload(event.currentTarget));
-      event.currentTarget.reset();
+      await postForm(endpoint, formToPayload(form));
+      form.reset();
       setStatus("success");
     } catch {
       setStatus("error");
+    }
+  };
+
+  const submitContactForm = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setContactStatus("loading");
+
+    try {
+      await postContactForm(formToPayload(form));
+      form.reset();
+      setContactStatus("success");
+    } catch {
+      setContactStatus("error");
     }
   };
 
@@ -112,9 +127,7 @@ export default function App() {
                   company={company}
                   contactStatus={contactStatus}
                   quoteStatus={quoteStatus}
-                  onContactSubmit={(event: FormEvent<HTMLFormElement>) =>
-                    submitForm(event, "/contact", setContactStatus)
-                  }
+                  onContactSubmit={submitContactForm}
                   onQuoteSubmit={(event: FormEvent<HTMLFormElement>) =>
                     submitForm(event, "/quote", setQuoteStatus)
                   }
@@ -133,9 +146,7 @@ export default function App() {
                 <ContactPage
                   company={company}
                   contactStatus={contactStatus}
-                  onSubmit={(event: FormEvent<HTMLFormElement>) =>
-                    submitForm(event, "/contact", setContactStatus)
-                  }
+                  onSubmit={submitContactForm}
                 />
               }
             />

@@ -2,11 +2,23 @@ import type { FormStatus } from '../types/site';
 
 export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
-export async function postForm(endpoint: string, payload: Record<string, FormDataEntryValue>) {
-  const response = await fetch(`${API_URL}${endpoint}`, {
+const CONTACT_ENDPOINT =
+  import.meta.env.VITE_CONTACT_ENDPOINT ||
+  (import.meta.env.DEV ? `${API_URL}/contact` : '/contact.php');
+
+function serializePayload(payload: Record<string, FormDataEntryValue>) {
+  return JSON.stringify(
+    Object.fromEntries(
+      Object.entries(payload).map(([key, value]) => [key, String(value)])
+    )
+  );
+}
+
+async function postJson(url: string, payload: Record<string, FormDataEntryValue>) {
+  const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(Object.fromEntries(Object.entries(payload).map(([key, value]) => [key, String(value)])))
+    body: serializePayload(payload)
   });
 
   if (!response.ok) {
@@ -14,6 +26,14 @@ export async function postForm(endpoint: string, payload: Record<string, FormDat
   }
 
   return response.json();
+}
+
+export async function postForm(endpoint: string, payload: Record<string, FormDataEntryValue>) {
+  return postJson(`${API_URL}${endpoint}`, payload);
+}
+
+export async function postContactForm(payload: Record<string, FormDataEntryValue>) {
+  return postJson(CONTACT_ENDPOINT, payload);
 }
 
 export function formToPayload(form: HTMLFormElement) {

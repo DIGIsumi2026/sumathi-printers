@@ -411,6 +411,18 @@
   gap: 14px;
 }
 
+.sp-contact-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 .sp-contact-form label {
   min-width: 0;
   display: grid;

@@ -167,6 +167,15 @@ export default function ContactMainBlock({
             onSubmit={onSubmit}
             onReset={handleFormReset}
           >
+            <input
+              type="text"
+              name="website"
+              className="sp-contact-honeypot"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
+
             <label className={getFieldClassName("fullName")}>
               <span>Full Name *</span>
               <input
