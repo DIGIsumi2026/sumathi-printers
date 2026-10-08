@@ -118,9 +118,7 @@ desktop.ini
 # =========================
 # Editor / IDE files
 # =========================
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
+.vscode/
 
 .idea/
 *.suo

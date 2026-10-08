@@ -73,7 +73,6 @@ import boardUdhantha from "../assets/images/about/board/udhantha-sumathipala.web
 
 //companies
 import companyLogo1 from "../assets/images/about/companies/company1.webp";
-import companyLogo2 from "../assets/images/about/companies/company1.webp"; // TEMP FIX: company2.webp is missing
 import companyLogo3 from "../assets/images/about/companies/company3.webp";
 import companyLogo4 from "../assets/images/about/companies/company4.webp";
 import companyLogo5 from "../assets/images/about/companies/company5.webp";
@@ -229,7 +228,6 @@ board: {
 
 companies: {
   company01: companyLogo1,
-  company02: companyLogo2,
   company03: companyLogo3,
   company04: companyLogo4,
   company05: companyLogo5,

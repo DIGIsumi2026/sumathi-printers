@@ -1,0 +1,97 @@
+.logoloop {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-block: 28px;
+  background: #ffffff;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.logoloop.is-dragging { cursor: grabbing; }
+
+.logoloop:focus-visible {
+  outline: 2px solid #7a4dff;
+  outline-offset: 4px;
+}
+
+.logoloop__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.logoloop__list {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logoloop__item {
+  flex: 0 0 auto;
+  margin-right: var(--logoloop-gap);
+}
+
+.logoloop__item img {
+  display: block;
+  width: 208px;
+  height: var(--logoloop-logoHeight);
+  object-fit: contain;
+  filter: none;
+  opacity: 1;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoloop--fade::before,
+.logoloop--fade::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  width: min(8%, 100px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.logoloop--fade::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.logoloop--fade::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .logoloop--scale-hover:not(.is-dragging) .logoloop__item:hover img {
+    transform: scale(1.12);
+  }
+}
+
+@media (max-width: 1024px) {
+  .logoloop__item { margin-right: min(var(--logoloop-gap), 44px); }
+  .logoloop__item img { width: 174px; height: min(var(--logoloop-logoHeight), 92px); }
+}
+
+@media (max-width: 600px) {
+  .logoloop { padding-block: 20px; }
+  .logoloop__item { margin-right: min(var(--logoloop-gap), 32px); }
+  .logoloop__item img { width: 144px; height: min(var(--logoloop-logoHeight), 78px); }
+}
+
+.logoloop--reduced {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.logoloop--reduced .logoloop__track { will-change: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .logoloop__item img { transition: none; transform: none !important; }
+}

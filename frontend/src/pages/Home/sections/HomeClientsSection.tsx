@@ -1,10 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import LogoLoop from "../../../components/common/LogoLoop";
 import { imageAssets } from "../../../data/imageAssets";
-
-const AUTO_SLIDE_DURATION = 3200;
 
 const clients = [
   { name: "Ministry Of Health", logo: imageAssets.clients.client01 },
@@ -24,174 +21,11 @@ const clients = [
   { name: "National Cancer Control Programme", logo: imageAssets.clients.client15 }
 ];
 
+const clientLogos = clients.map(({ name, logo }) => ({ src: logo, alt: name }));
+
 export default function HomeClientsSection() {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  const activeIndexRef = useRef(0);
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const setActiveLogo = useCallback((index: number) => {
-    activeIndexRef.current = index;
-    setActiveIndex(index);
-  }, []);
-
-  const updateActiveLogo = useCallback(() => {
-    const scroller = scrollRef.current;
-
-    if (!scroller) return;
-
-    const cards = Array.from(
-      scroller.querySelectorAll<HTMLElement>(".sp-client-logo-card")
-    );
-
-    const scrollerRect = scroller.getBoundingClientRect();
-    const scrollerCenter = scrollerRect.left + scrollerRect.width / 2;
-
-    let closestIndex = 0;
-    let closestDistance = Number.POSITIVE_INFINITY;
-
-    cards.forEach((card, index) => {
-      const cardRect = card.getBoundingClientRect();
-      const cardCenter = cardRect.left + cardRect.width / 2;
-      const distance = Math.abs(scrollerCenter - cardCenter);
-
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = index;
-      }
-    });
-
-    setActiveLogo(closestIndex);
-  }, [setActiveLogo]);
-
-  const scrollToLogo = useCallback(
-    (index: number) => {
-      const scroller = scrollRef.current;
-
-      if (!scroller) return;
-
-      const cards = Array.from(
-        scroller.querySelectorAll<HTMLElement>(".sp-client-logo-card")
-      );
-
-      const targetCard = cards[index];
-
-      if (!targetCard) return;
-
-      const targetLeft =
-        targetCard.offsetLeft -
-        scroller.clientWidth / 2 +
-        targetCard.clientWidth / 2;
-
-      scroller.scrollTo({
-        left: targetLeft,
-        behavior: "smooth"
-      });
-
-      setActiveLogo(index);
-    },
-    [setActiveLogo]
-  );
-
-  const goPrevious = () => {
-    const nextIndex =
-      activeIndexRef.current === 0
-        ? clients.length - 1
-        : activeIndexRef.current - 1;
-
-    scrollToLogo(nextIndex);
-  };
-
-  const goNext = useCallback(() => {
-    const nextIndex =
-      activeIndexRef.current === clients.length - 1
-        ? 0
-        : activeIndexRef.current + 1;
-
-    scrollToLogo(nextIndex);
-  }, [scrollToLogo]);
-
-  useEffect(() => {
-    const scroller = scrollRef.current;
-
-    if (!scroller) return;
-
-    const handleWheel = (event: WheelEvent) => {
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-
-      event.preventDefault();
-      scroller.scrollLeft += event.deltaY;
-      window.requestAnimationFrame(updateActiveLogo);
-    };
-
-    const handleScroll = () => {
-      window.requestAnimationFrame(updateActiveLogo);
-    };
-
-    scroller.addEventListener("wheel", handleWheel, { passive: false });
-    scroller.addEventListener("scroll", handleScroll, { passive: true });
-
-    updateActiveLogo();
-
-    return () => {
-      scroller.removeEventListener("wheel", handleWheel);
-      scroller.removeEventListener("scroll", handleScroll);
-    };
-  }, [updateActiveLogo]);
-
-  useEffect(() => {
-    if (isPaused || isDragging) return;
-
-    const timer = window.setInterval(() => {
-      goNext();
-    }, AUTO_SLIDE_DURATION);
-
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, [goNext, isPaused, isDragging]);
-
-  const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
-    const scroller = scrollRef.current;
-
-    if (!scroller) return;
-
-    setIsDragging(true);
-    setIsPaused(true);
-
-    const startX = event.pageX - scroller.offsetLeft;
-    const startScrollLeft = scroller.scrollLeft;
-
-    const handleMouseMove = (moveEvent: globalThis.MouseEvent) => {
-      const x = moveEvent.pageX - scroller.offsetLeft;
-      const distance = (x - startX) * 1.35;
-
-      scroller.scrollLeft = startScrollLeft - distance;
-      updateActiveLogo();
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-      setIsPaused(false);
-
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
-  };
-
   return (
     <section id="clients" className="sp-home-clients-section" data-watermark-section>
-      <span className="sp-client-bg-shape sp-client-bg-shape-one" />
-      <span className="sp-client-bg-shape sp-client-bg-shape-two" />
-      <span className="sp-client-bg-shape sp-client-bg-shape-three" />
-      <span className="sp-client-bg-ring sp-client-bg-ring-one" />
-      <span className="sp-client-bg-ring sp-client-bg-ring-two" />
-
       <span className="sp-home-clients-watermark" data-section-watermark>CLIENTS</span>
 
       <div className="container sp-home-clients-container">
@@ -218,61 +52,23 @@ export default function HomeClientsSection() {
           </p>
         </motion.div>
 
-        <motion.div
-          className="sp-client-floating-panel"
-          initial={{ opacity: 0, y: 46, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="sp-home-clients-portfolio">
           <div className="sp-client-panel-head">
-            <div>
-              <strong>Client Portfolio</strong>
-            </div>
-
-            <div className="sp-client-arrows">
-              <button type="button" aria-label="Previous client" onClick={goPrevious}>
-                <ChevronLeft size={21} />
-              </button>
-
-              <span className="sp-client-arrow-line" />
-
-              <button type="button" aria-label="Next client" onClick={goNext}>
-                <ChevronRight size={21} />
-              </button>
-            </div>
+            <strong>Client Portfolio</strong>
           </div>
 
-          <div
-            ref={scrollRef}
-            className={`sp-client-logo-scroll ${isDragging ? "is-dragging" : ""}`}
-            onMouseDown={handleMouseDown}
-            onTouchStart={() => setIsPaused(true)}
-            onTouchEnd={() => setIsPaused(false)}
-          >
-            {clients.map((client, index) => (
-              <article
-                key={client.name}
-                className={`sp-client-logo-card ${
-                  index === activeIndex ? "is-active" : ""
-                }`}
-              >
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="sp-client-logo-img"
-                  draggable={false}
-                  loading="lazy"
-                  decoding="async"
-                />
-
-                <span>{client.name}</span>
-              </article>
-            ))}
-          </div>
-        </motion.div>
+          <LogoLoop
+            logos={clientLogos}
+            speed={55}
+            direction="left"
+            logoHeight={104}
+            gap={64}
+            hoverSpeed={0}
+            scaleOnHover
+            fadeOut
+            ariaLabel="Client Portfolio"
+          />
+        </div>
       </div>
     </section>
   );

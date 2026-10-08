@@ -3984,25 +3984,11 @@ body.sp-menu-open .sp-nav-shell {
   position: relative;
   padding: 118px 0;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 8% 18%, rgba(56, 199, 255, 0.24), transparent 30%),
-    radial-gradient(circle at 88% 14%, rgba(231, 42, 154, 0.18), transparent 32%),
-    radial-gradient(circle at 44% 95%, rgba(246, 161, 61, 0.16), transparent 34%),
-    linear-gradient(135deg, #eef7ff 0%, #f6efff 46%, #fff7f2 100%);
+  background: #ffffff;
 }
 
 .sp-home-clients-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(to right, rgba(122, 77, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(122, 77, 255, 0.035) 1px, transparent 1px);
-  background-size: 86px 86px;
-  mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
-  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
-  opacity: 0.52;
+  content: none;
 }
 
 .sp-home-clients-watermark {
@@ -4128,6 +4114,10 @@ body.sp-menu-open .sp-nav-shell {
 .sp-home-clients-container {
   position: relative;
   z-index: 3;
+}
+
+.sp-home-clients-portfolio {
+  margin-top: 58px;
 }
 
 .sp-home-clients-header {
@@ -4483,6 +4473,10 @@ body.sp-menu-open .sp-nav-shell {
 @media (max-width: 900px) {
   .sp-home-clients-section {
     padding: 92px 0;
+  }
+
+  .sp-home-clients-portfolio {
+    margin-top: 44px;
   }
 
   .sp-client-floating-panel {
@@ -7548,10 +7542,7 @@ main:has(.sp-about-page-intro-section),
   position: relative;
   padding: 112px 0 124px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 10% 18%, rgba(56, 199, 255, 0.14), transparent 32%),
-    radial-gradient(circle at 88% 42%, rgba(231, 42, 154, 0.12), transparent 36%),
-    linear-gradient(180deg, #ffffff 0%, #f8f4ff 52%, #ffffff 100%);
+  background: #ffffff;
 }
 
 .sp-about-companies-watermark {
@@ -7626,10 +7617,22 @@ main:has(.sp-about-page-intro-section),
 
 .sp-about-companies-panel {
   position: relative;
+  padding: 30px !important;
+  border-radius: 38px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(122, 77, 255, 0.16) !important;
+  box-shadow:
+    0 30px 80px rgba(15, 23, 42, 0.1),
+    0 12px 34px rgba(122, 77, 255, 0.07),
+    inset 0 1px 0 #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .sp-about-company-logo-scroll {
   cursor: grab;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y;
 }
 
 .sp-about-company-logo-scroll:active {
@@ -7675,6 +7678,11 @@ main:has(.sp-about-page-intro-section),
   padding: 28px 26px !important;
   display: grid !important;
   place-items: center !important;
+  background: #ffffff !important;
+  border-color: rgba(17, 24, 39, 0.09) !important;
+  box-shadow:
+    0 16px 38px rgba(15, 23, 42, 0.07),
+    inset 0 1px 0 #ffffff !important;
 }
 
 .sp-about-company-logo-img {
@@ -7683,7 +7691,9 @@ main:has(.sp-about-page-intro-section),
   max-width: 86% !important;
   max-height: 96px !important;
   object-fit: contain !important;
-  transform: scale(1.12) !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
   transition:
     transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.32s ease,
@@ -7691,12 +7701,13 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-about-company-logo-card.is-active .sp-about-company-logo-img {
-  transform: scale(1.28) !important;
-  filter: saturate(1.08) contrast(1.05) !important;
+  transform: scale(1.2) !important;
+  filter: saturate(1.06) contrast(1.03) !important;
 }
 
 .sp-about-company-logo-card:hover .sp-about-company-logo-img {
-  transform: scale(1.22) !important;
+  transform: scale(1.16) !important;
+  filter: saturate(1.04) !important;
 }
 
 .sp-about-company-logo-card.is-active {
@@ -7710,8 +7721,16 @@ main:has(.sp-about-page-intro-section),
       rgba(255, 255, 255, 0.72)
     ) !important;
   box-shadow:
-    0 24px 64px rgba(122, 77, 255, 0.14),
+    0 24px 58px rgba(122, 77, 255, 0.13),
+    0 10px 26px rgba(56, 199, 255, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+.sp-about-company-logo-card:hover {
+  border-color: rgba(56, 199, 255, 0.3) !important;
+  box-shadow:
+    0 22px 52px rgba(15, 23, 42, 0.11),
+    0 9px 24px rgba(122, 77, 255, 0.08) !important;
 }
 
 /* fix */
@@ -7784,7 +7803,8 @@ main:has(.sp-about-page-intro-section),
 }
 
 .sp-about-company-logo-scroll {
-  padding: 8px 0 30px !important;
+  padding: 10px max(18px, calc(50% - 105px)) 32px !important;
+  scroll-padding-inline: max(18px, calc(50% - 105px));
 }
 
 /* Mobile */
@@ -7798,11 +7818,18 @@ main:has(.sp-about-page-intro-section),
   .sp-about-company-logo-img {
     max-width: 88% !important;
     max-height: 82px !important;
-    transform: scale(1.08) !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transform: scale(1.06) !important;
   }
 
   .sp-about-company-logo-card.is-active .sp-about-company-logo-img {
-    transform: scale(1.18) !important;
+    transform: scale(1.14) !important;
+  }
+
+  .sp-about-company-logo-scroll {
+    padding-inline: max(14px, calc(50% - 92.5px)) !important;
+    scroll-padding-inline: max(14px, calc(50% - 92.5px));
   }
 
   .sp-about-companies-panel .sp-client-arrows > span {
@@ -7819,6 +7846,20 @@ main:has(.sp-about-page-intro-section),
   .sp-about-companies-panel .sp-client-panel-head {
     align-items: flex-start !important;
     gap: 18px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-about-company-logo-scroll {
+    padding-inline: max(14px, calc(50% - 85px)) !important;
+    scroll-padding-inline: max(14px, calc(50% - 85px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-about-company-logo-card,
+  .sp-about-company-logo-img {
+    transition: none !important;
   }
 }
 
