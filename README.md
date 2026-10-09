@@ -69,11 +69,12 @@ frontend/src/
 
 ## Run backend
 
-The backend uses only built-in Node.js modules.
+The backend uses Node.js's built-in HTTP server with `dotenv` and `nodemailer`. Install its dependencies before starting it.
 
 ```powershell
 cd backend
-node src/server.js
+npm ci
+npm run dev
 ```
 
 Backend URL:
