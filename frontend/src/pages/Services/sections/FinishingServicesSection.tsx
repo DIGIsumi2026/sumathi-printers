@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { ArrowUp, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUp, ArrowUpRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { imageAssets } from "../../../data/imageAssets";
 
@@ -13,7 +13,7 @@ type FinishingService = {
   accent: string;
 };
 
-const LOOP_INTERVAL = 1700;
+const CARD_TRANSITION_DURATION = 950;
 
 const finishingServices: FinishingService[] = [
   {
@@ -140,29 +140,49 @@ function getSlotVisual(slot: number) {
 export default function FinishingServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [repositioningIndices, setRepositioningIndices] = useState<number[]>([]);
+  const transitionTimerRef = useRef<number | null>(null);
 
-  const isPaused = hoveredIndex !== null;
   const activeService = finishingServices[activeIndex];
 
   useEffect(() => {
-    if (isPaused) return;
-
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % finishingServices.length);
-    }, LOOP_INTERVAL);
-
     return () => {
-      window.clearInterval(timer);
+      if (transitionTimerRef.current !== null) {
+        window.clearTimeout(transitionTimerRef.current);
+      }
     };
-  }, [isPaused]);
+  }, []);
 
-  const handleCardEnter = (index: number) => {
-    setHoveredIndex(index);
-    setActiveIndex(index);
+  const selectSlide = (nextIndex: number) => {
+    if (transitionTimerRef.current !== null || nextIndex === activeIndex) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Reposition wrapping cards invisibly instead of sliding them across the center.
+    const wrappingIndices = finishingServices.flatMap((_, index) => {
+      const previousSlot = getLoopSlot(index, activeIndex, finishingServices.length);
+      const nextSlot = getLoopSlot(index, nextIndex, finishingServices.length);
+      return Math.abs(nextSlot - previousSlot) > finishingServices.length / 2
+        ? [index]
+        : [];
+    });
+    setHoveredIndex(null);
+    setRepositioningIndices(reducedMotion ? [] : wrappingIndices);
+    setActiveIndex(nextIndex);
+    if (reducedMotion) return;
+
+    setIsTransitioning(true);
+    transitionTimerRef.current = window.setTimeout(() => {
+      transitionTimerRef.current = null;
+      setRepositioningIndices([]);
+      setIsTransitioning(false);
+    }, CARD_TRANSITION_DURATION);
   };
 
-  const handleStageLeave = () => {
-    setHoveredIndex(null);
+  const changeSlide = (direction: number) => {
+    selectSlide(
+      (activeIndex + direction + finishingServices.length) % finishingServices.length
+    );
   };
 
   const scrollToTopServices = () => {
@@ -183,8 +203,7 @@ export default function FinishingServicesSection() {
       data-watermark-section
       style={
         {
-          "--finish-active-accent": activeService.accent,
-          "--finish-duration": `${LOOP_INTERVAL}ms`
+          "--finish-active-accent": activeService.accent
         } as CSSProperties
       }
     >
@@ -214,12 +233,43 @@ export default function FinishingServicesSection() {
         </div>
 
         <div
-          className={`sp-finishing-carousel-stage ${
-            isPaused ? "is-paused" : ""
-          }`}
-          onPointerLeave={handleStageLeave}
+          id="finishing-carousel"
+          className="sp-finishing-carousel-stage"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Finishing services"
+          onPointerLeave={() => setHoveredIndex(null)}
+          onKeyDown={(event) => {
+            if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+            event.preventDefault();
+            changeSlide(event.key === "ArrowRight" ? 1 : -1);
+          }}
         >
           <div className="sp-finishing-red-spotlight" />
+
+          <button
+            type="button"
+            className="sp-finishing-nav sp-finishing-nav-prev"
+            aria-label="Previous finishing service"
+            title="Previous finishing service"
+            aria-controls="finishing-carousel"
+            disabled={isTransitioning}
+            onClick={() => changeSlide(-1)}
+          >
+            <ChevronLeft size={22} aria-hidden="true" />
+          </button>
+
+          <button
+            type="button"
+            className="sp-finishing-nav sp-finishing-nav-next"
+            aria-label="Next finishing service"
+            title="Next finishing service"
+            aria-controls="finishing-carousel"
+            disabled={isTransitioning}
+            onClick={() => changeSlide(1)}
+          >
+            <ChevronRight size={22} aria-hidden="true" />
+          </button>
 
           {finishingServices.map((service, index) => {
             const slot = getLoopSlot(
@@ -230,8 +280,9 @@ export default function FinishingServicesSection() {
 
             const visual = getSlotVisual(slot);
             const isCenter = slot === 0;
-            const isHovered = hoveredIndex === index;
-            const isMuted = isPaused && !isHovered;
+            const isHovered = isCenter && hoveredIndex === index && !isTransitioning;
+            const isMuted = hoveredIndex === activeIndex && !isHovered && !isTransitioning;
+            const isRepositioning = repositioningIndices.includes(index);
 
             const cardStyle =
               {
@@ -254,12 +305,26 @@ export default function FinishingServicesSection() {
                   isCenter ? "is-center" : ""
                 } ${isHovered ? "is-hovered" : ""} ${
                   isMuted ? "is-muted" : ""
-                }`}
+                } ${isRepositioning ? "is-repositioning" : ""}`}
                 style={cardStyle}
-                onPointerEnter={() => handleCardEnter(index)}
-                onFocus={() => handleCardEnter(index)}
-                onClick={() => handleCardEnter(index)}
-                tabIndex={0}
+                onPointerEnter={(event) => {
+                  if (isCenter && event.pointerType !== "touch") setHoveredIndex(index);
+                }}
+                onPointerLeave={() => setHoveredIndex(null)}
+                onFocus={() => {
+                  if (isCenter) setHoveredIndex(index);
+                }}
+                onBlur={() => setHoveredIndex(null)}
+                onClick={() => selectSlide(index)}
+                onKeyDown={(event) => {
+                  if (event.key !== "Enter" && event.key !== " ") return;
+                  event.preventDefault();
+                  selectSlide(index);
+                }}
+                role="button"
+                aria-label={`Show ${service.title}`}
+                aria-current={isCenter ? "true" : undefined}
+                tabIndex={isRepositioning ? -1 : 0}
               >
                 <div className="sp-finishing-card-media">
                   <img
@@ -298,14 +363,13 @@ export default function FinishingServicesSection() {
         <div className="sp-finishing-controls">
           {finishingServices.map((service, index) => (
             <button
-              key={activeIndex === index ? `${service.id}-active-${activeIndex}` : service.id}
+              key={service.id}
               type="button"
               aria-label={`Show ${service.title}`}
+              aria-pressed={activeIndex === index}
               className={activeIndex === index ? "is-active" : ""}
-              onClick={() => {
-                setActiveIndex(index);
-                setHoveredIndex(null);
-              }}
+              disabled={isTransitioning}
+              onClick={() => selectSlide(index)}
             />
           ))}
         </div>

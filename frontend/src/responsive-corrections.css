@@ -412,9 +412,8 @@ textarea {
    Disable touch scroll-jacking on mobile/tablet
    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-/* NOTE: The JS touch-lock in WhyChooseUsSection.tsx is disabled
-   programmatically via a breakpoint check in the modified component.
-   The CSS below provides the visual fallback layout. */
+/* The showcase allows normal vertical scrolling on every device.
+   Mobile keeps one active slide in flow with horizontal swipe navigation. */
 
 @media (max-width: 767px) {
   /* Convert layered deck to vertical flow on mobile */
@@ -444,7 +443,7 @@ textarea {
     height: auto !important;
   }
 
-  /* Stack all cards naturally, visible one at a time managed by dots */
+  /* Stack cards naturally, with autoplay, swipes and dots selecting one slide. */
   .sp-why-layer-card {
     position: static !important;
     width: 100% !important;

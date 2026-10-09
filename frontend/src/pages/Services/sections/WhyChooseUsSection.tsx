@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { CSSProperties } from "react";
+import type { CSSProperties, PointerEvent } from "react";
 import { CheckCircle2, Layers3, Sparkles } from "lucide-react";
 import { imageAssets } from "../../../data/imageAssets";
 
@@ -229,6 +229,7 @@ function WhyChooseLayerCard({
         imageRight ? "image-right" : "image-left"
       }`}
       style={style}
+      aria-hidden={index !== activeIndex}
     >
       <div className="sp-why-media-wrap">
         <span className="sp-why-image-glow" />
@@ -280,143 +281,98 @@ function WhyChooseLayerCard({
 }
 
 export default function WhyChooseUsSection() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const activeIndexRef = useRef(0);
-  const isLayerChangingRef = useRef(false);
-  const layerChangeTimerRef = useRef<number | null>(null);
-  const touchStartYRef = useRef<number | null>(null);
-
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const gestureRef = useRef<{
+    pointerId: number;
+    startX: number;
+    startY: number;
+  } | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const [isDocumentVisible, setIsDocumentVisible] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isKeyboardFocused, setIsKeyboardFocused] = useState(false);
 
   useEffect(() => {
-    activeIndexRef.current = activeIndex;
-  }, [activeIndex]);
+    const stage = stageRef.current;
+    if (!stage) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting && entry.intersectionRatio >= 0.2),
+      { threshold: [0, 0.2] }
+    );
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
-    const maxIndex = whyChooseItems.length - 1;
-    const transitionDuration = 760;
-    const wheelThreshold = 14;
-    const touchThreshold = 42;
-
-    // ── Responsive correction: Disable scroll-jacking on touch / mobile devices.
-    // On screens ≤ 767px or coarse-pointer devices the layered deck collapses into
-    // a static vertical layout (via CSS), so intercepting scroll events would trap
-    // the user on a static section. We check on every event so resizing works too.
-    const isTouchDevice = () =>
-      window.matchMedia("(max-width: 767px), (pointer: coarse)").matches;
-
-    const isSectionReadyToLock = () => {
-      if (isTouchDevice()) return false;
-      const section = sectionRef.current;
-      if (!section) return false;
-
-      const rect = section.getBoundingClientRect();
-
-      return (
-        rect.top <= window.innerHeight * 0.16 &&
-        rect.bottom >= window.innerHeight * 0.72
-      );
-    };
-
-    const changeLayer = (nextIndex: number) => {
-      const safeNextIndex = Math.min(Math.max(nextIndex, 0), maxIndex);
-
-      if (safeNextIndex === activeIndexRef.current) return;
-
-      isLayerChangingRef.current = true;
-      activeIndexRef.current = safeNextIndex;
-      setActiveIndex(safeNextIndex);
-
-      if (layerChangeTimerRef.current) {
-        window.clearTimeout(layerChangeTimerRef.current);
-      }
-
-      layerChangeTimerRef.current = window.setTimeout(() => {
-        isLayerChangingRef.current = false;
-      }, transitionDuration);
-    };
-
-    const handleWheel = (event: WheelEvent) => {
-      if (!isSectionReadyToLock()) return;
-
-      const currentIndex = activeIndexRef.current;
-      const isScrollingDown = event.deltaY > wheelThreshold;
-      const isScrollingUp = event.deltaY < -wheelThreshold;
-
-      if (!isScrollingDown && !isScrollingUp) return;
-
-      if (isLayerChangingRef.current) {
-        event.preventDefault();
-        return;
-      }
-
-      if (isScrollingDown && currentIndex < maxIndex) {
-        event.preventDefault();
-        changeLayer(currentIndex + 1);
-        return;
-      }
-
-      if (isScrollingUp && currentIndex > 0) {
-        event.preventDefault();
-        changeLayer(currentIndex - 1);
-      }
-    };
-
-    const handleTouchStart = (event: TouchEvent) => {
-      touchStartYRef.current = event.touches[0]?.clientY ?? null;
-    };
-
-    const handleTouchMove = (event: TouchEvent) => {
-      if (!isSectionReadyToLock()) return;
-      if (touchStartYRef.current === null) return;
-
-      const currentY = event.touches[0]?.clientY ?? touchStartYRef.current;
-      const deltaY = touchStartYRef.current - currentY;
-
-      const currentIndex = activeIndexRef.current;
-      const isSwipingDownPage = deltaY > touchThreshold;
-      const isSwipingUpPage = deltaY < -touchThreshold;
-
-      if (!isSwipingDownPage && !isSwipingUpPage) return;
-
-      if (isLayerChangingRef.current) {
-        event.preventDefault();
-        return;
-      }
-
-      if (isSwipingDownPage && currentIndex < maxIndex) {
-        event.preventDefault();
-        touchStartYRef.current = currentY;
-        changeLayer(currentIndex + 1);
-        return;
-      }
-
-      if (isSwipingUpPage && currentIndex > 0) {
-        event.preventDefault();
-        touchStartYRef.current = currentY;
-        changeLayer(currentIndex - 1);
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotion = () => setPrefersReducedMotion(motionQuery.matches);
+    const updateVisibility = () => setIsDocumentVisible(!document.hidden);
+    updateMotion();
+    updateVisibility();
+    motionQuery.addEventListener("change", updateMotion);
+    document.addEventListener("visibilitychange", updateVisibility);
 
     return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-
-      if (layerChangeTimerRef.current) {
-        window.clearTimeout(layerChangeTimerRef.current);
-      }
+      motionQuery.removeEventListener("change", updateMotion);
+      document.removeEventListener("visibilitychange", updateVisibility);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isInView || !isDocumentVisible || prefersReducedMotion ||
+        isHovered || isDragging || isKeyboardFocused) return;
+
+    const timer = window.setTimeout(() => {
+      setActiveIndex((current) => (current + 1) % whyChooseItems.length);
+    }, 4500);
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, isInView, isDocumentVisible, prefersReducedMotion,
+      isHovered, isDragging, isKeyboardFocused]);
+
+  const changeSlide = (direction: number) => {
+    setActiveIndex((current) =>
+      (current + direction + whyChooseItems.length) % whyChooseItems.length
+    );
+  };
+
+  const cancelGesture = () => {
+    gestureRef.current = null;
+    setIsDragging(false);
+  };
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (!event.isPrimary || event.button !== 0 || gestureRef.current) return;
+    gestureRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setIsDragging(true);
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    const gesture = gestureRef.current;
+    if (!gesture || gesture.pointerId !== event.pointerId) return;
+    const deltaX = event.clientX - gesture.startX;
+    const deltaY = event.clientY - gesture.startY;
+    cancelGesture();
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    // Horizontal swipes navigate; vertical gestures remain normal page scrolling.
+    if (Math.abs(deltaX) >= 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) {
+      changeSlide(deltaX < 0 ? 1 : -1);
+    }
+  };
 
   return (
     <section
       id="why-choose-us"
-      ref={sectionRef}
       className="sp-why-section sp-why-layer-section"
       data-watermark-section
     >
@@ -447,13 +403,44 @@ export default function WhyChooseUsSection() {
             </p>
           </div>
 
-          <div className="sp-why-deck-stage">
+          <div
+            ref={stageRef}
+            className="sp-why-deck-stage"
+            onPointerEnter={(event) => {
+              if (event.pointerType !== "touch") setIsHovered(true);
+            }}
+            onPointerLeave={() => setIsHovered(false)}
+            onPointerDownCapture={() => setIsKeyboardFocused(false)}
+            onFocus={(event) => {
+              if (event.target.matches(":focus-visible")) setIsKeyboardFocused(true);
+            }}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                setIsKeyboardFocused(false);
+              }
+            }}
+          >
             <div className="sp-why-layer-count">
               <span>{String(activeIndex + 1).padStart(2, "0")}</span>
               <small>/ 03</small>
             </div>
 
-            <div className="sp-why-deck">
+            <div
+              className={`sp-why-deck${isDragging ? " is-dragging" : ""}`}
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Why choose Sumathi Printers"
+              tabIndex={0}
+              onPointerDown={handlePointerDown}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={cancelGesture}
+              onLostPointerCapture={cancelGesture}
+              onKeyDown={(event) => {
+                if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+                event.preventDefault();
+                changeSlide(event.key === "ArrowRight" ? 1 : -1);
+              }}
+            >
               {whyChooseItems.map((item, index) => (
                 <WhyChooseLayerCard
                   key={item.id}
@@ -471,10 +458,8 @@ export default function WhyChooseUsSection() {
                   type="button"
                   className={activeIndex === index ? "is-active" : ""}
                   aria-label={`Show ${item.kicker}`}
-                  onClick={() => {
-                    activeIndexRef.current = index;
-                    setActiveIndex(index);
-                  }}
+                  aria-pressed={activeIndex === index}
+                  onClick={() => setActiveIndex(index)}
                 />
               ))}
             </div>

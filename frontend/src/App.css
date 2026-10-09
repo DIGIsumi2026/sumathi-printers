@@ -8628,6 +8628,27 @@ main:has(.sp-about-page-intro-section),
   height: 100%;
   perspective: 1800px;
   transform-style: preserve-3d;
+  touch-action: pan-y pinch-zoom;
+  cursor: grab;
+}
+
+.sp-why-deck.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.sp-why-deck:focus-visible {
+  outline: 2px solid #7a4dff;
+  outline-offset: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-why-layer-card,
+  .sp-why-text-glass,
+  .sp-why-media,
+  .sp-why-image {
+    transition: none !important;
+  }
 }
 
 .sp-why-layer-card {
@@ -10497,7 +10518,8 @@ main:has(.sp-about-page-intro-section),
   height: clamp(430px, calc(430px + 0 * ((100vw - 360px) / 664)), 430px);
   margin: 58px auto 0;
   perspective: 1200px;
-  transform-style: preserve-3d;
+  /* Composite cards separately so tilted neighbors cannot intersect the center. */
+  transform-style: flat;
 }
 
 .sp-finishing-red-spotlight {
@@ -10582,6 +10604,17 @@ main:has(.sp-about-page-intro-section),
 .sp-finishing-card.is-muted {
   opacity: 0.18 !important;
   filter: blur(4px) saturate(0.48) brightness(0.62);
+}
+
+.sp-finishing-card.is-repositioning {
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: none;
+}
+
+.sp-finishing-card:focus-visible {
+  outline: 2px solid var(--finish-card-accent);
+  outline-offset: 4px;
 }
 
 .sp-finishing-card-media {
@@ -10711,6 +10744,74 @@ main:has(.sp-about-page-intro-section),
 
 /* controls */
 
+.sp-finishing-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(17, 17, 17, 0.88);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sp-finishing-nav-prev {
+  left: 4px;
+}
+
+.sp-finishing-nav-next {
+  right: 4px;
+}
+
+.sp-finishing-nav:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.sp-finishing-nav:focus-visible,
+.sp-finishing-controls button:focus-visible {
+  outline: 2px solid #36c7ff;
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sp-finishing-nav:hover:not(:disabled) {
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 8px 26px color-mix(in srgb, var(--finish-active-accent) 34%, transparent);
+  }
+}
+
+@media (max-width: 640px) {
+  .sp-finishing-nav {
+    top: auto;
+    bottom: 0;
+    width: 44px;
+    height: 44px;
+    transform: none;
+  }
+
+  .sp-finishing-nav:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-finishing-card,
+  .sp-finishing-card-media img,
+  .sp-finishing-card-info p,
+  .sp-finishing-nav {
+    transition: none !important;
+  }
+}
+
 .sp-finishing-controls {
   position: relative;
   z-index: 6;
@@ -10737,33 +10838,8 @@ main:has(.sp-about-page-intro-section),
 
 .sp-finishing-controls button.is-active {
   width: 42px;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(90deg, #ff244f 0%, #ff3f8f 50%, #36c7ff 100%);
   box-shadow: none;
-}
-
-/* Left→right gradient fill, timed to --finish-duration */
-.sp-finishing-controls button.is-active::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: auto;
-  /* NO !important — animation must override this */
-  width: 0%;
-  border-radius: inherit;
-  background: linear-gradient(
-    90deg,
-    #ff244f 0%,
-    #ff3f8f 50%,
-    #36c7ff 100%
-  );
-  animation: spFinishProgressFill var(--finish-duration, 1700ms) linear forwards;
-}
-
-@keyframes spFinishProgressFill {
-  0%   { width: 0%; }
-  100% { width: 100%; }
 }
 
 
