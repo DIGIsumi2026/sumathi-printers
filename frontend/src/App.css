@@ -7540,9 +7540,13 @@ main:has(.sp-about-page-intro-section),
 
 .sp-about-companies-section {
   position: relative;
-  padding: 112px 0 124px;
+  padding: 112px 0 0;
   overflow: hidden;
   background: #ffffff;
+}
+
+.sp-about-companies-section .logoloop {
+  padding-bottom: 12px;
 }
 
 .sp-about-companies-watermark {
@@ -7652,7 +7656,7 @@ main:has(.sp-about-page-intro-section),
 /* Mobile */
 @media (max-width: 720px) {
   .sp-about-companies-section {
-    padding: 82px 0 92px;
+    padding: 82px 0 0;
   }
 
   .sp-about-companies-head {

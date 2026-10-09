@@ -2823,3 +2823,76 @@ html.sp-menu-open .sp-page-scrollbar {
     transition: none;
   }
 }
+
+/* Section titles share a smaller scale; headings inside hero wrappers are excluded. */
+#root :is(h1, h2).sp-section-heading:not([class*="hero"] .sp-section-heading) {
+  font-size: 42px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal !important;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #root :is(h1, h2).sp-section-heading:not([class*="hero"] .sp-section-heading) {
+    font-size: 36px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #root :is(h1, h2).sp-section-heading:not([class*="hero"] .sp-section-heading) {
+    font-size: 30px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  #root :is(h1, h2).sp-section-heading:not([class*="hero"] .sp-section-heading) {
+    font-size: 26px !important;
+  }
+}
+
+/* Inner-page heroes use a restrained scale without changing Home or About. */
+:is(.sp-services-hero-content, .sp-projects-hero-content, .sp-gallery-hero-content, .sp-contact-hero-content) {
+  --sp-inner-hero-title-size: 56px;
+  --sp-inner-hero-subtitle-size: 36px;
+}
+
+#root :is(.sp-services-hero-content, .sp-projects-hero-content, .sp-gallery-hero-content, .sp-contact-hero-content) :is(h1, h2) {
+  letter-spacing: 0 !important;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+#root :is(.sp-services-hero-content, .sp-projects-hero-content, .sp-gallery-hero-content, .sp-contact-hero-content) h1 {
+  font-size: var(--sp-inner-hero-title-size) !important;
+}
+
+#root :is(.sp-services-hero-content, .sp-projects-hero-content, .sp-gallery-hero-content, .sp-contact-hero-content) h2 {
+  font-size: var(--sp-inner-hero-subtitle-size) !important;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  :is(.sp-services-hero-content, .sp-projects-hero-content, .sp-gallery-hero-content, .sp-contact-hero-content) {
+    --sp-inner-hero-title-size: 44px;
+    --sp-inner-hero-subtitle-size: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  :is(.sp-services-hero-content, .sp-projects-hero-content, .sp-gallery-hero-content, .sp-contact-hero-content) {
+    --sp-inner-hero-title-size: 36px;
+    --sp-inner-hero-subtitle-size: 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  :is(.sp-services-hero-content, .sp-projects-hero-content, .sp-gallery-hero-content, .sp-contact-hero-content) {
+    --sp-inner-hero-title-size: 32px;
+    --sp-inner-hero-subtitle-size: 22px;
+  }
+}
