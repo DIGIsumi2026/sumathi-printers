@@ -112,6 +112,17 @@ export default function NavigationBar({ company }: NavigationBarProps) {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 981px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setIsMenuOpen(false);
+    };
+
+    closeOnDesktop();
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
   /* ------------------------------------------------------------------ */
   /*  Lenis scroll-lock + Escape key                                      */
   /* ------------------------------------------------------------------ */

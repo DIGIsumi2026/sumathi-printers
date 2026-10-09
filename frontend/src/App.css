@@ -14440,6 +14440,7 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-nav-link:hover::after {
   width: 30px !important;
   opacity: 1 !important;
+  transform: translateX(-50%) scaleX(1) !important;
 }
 
 .sp-nav-link.active,
@@ -14459,6 +14460,7 @@ body::-webkit-scrollbar-thumb:hover {
 .sp-nav-link[aria-current="page"]::after {
   width: 34px !important;
   opacity: 1 !important;
+  transform: translateX(-50%) scaleX(1) !important;
 }
 
 /* [neutralised – duplicate .sp-quote-button / .sp-mobile-quote-button block; sidebar now uses .sp-nav-quote-final] */

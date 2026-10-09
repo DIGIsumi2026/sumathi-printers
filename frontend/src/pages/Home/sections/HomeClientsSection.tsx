@@ -53,9 +53,6 @@ export default function HomeClientsSection() {
         </motion.div>
 
         <div className="sp-home-clients-portfolio">
-          <div className="sp-client-panel-head">
-            <strong>Client Portfolio</strong>
-          </div>
 
           <LogoLoop
             logos={clientLogos}
