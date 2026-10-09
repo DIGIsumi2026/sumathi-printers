@@ -24,19 +24,13 @@ function AnimatedAboutHeroVisual({ sectionRef, children }: AboutHeroVisualProps)
   const heroScaleRaw = useTransform(
     scrollYProgress,
     [0, 0.18, 0.68, 1],
-    [1.08, 1.02, 0.9, 0.78]
+    [1.08, 1.04, 1.01, 1]
   );
 
   const heroOpacityRaw = useTransform(
     scrollYProgress,
     [0, 0.34, 0.78, 1],
     [1, 1, 0.72, 0.36]
-  );
-
-  const heroYRaw = useTransform(
-    scrollYProgress,
-    [0, 0.44, 1],
-    [0, -36, -128]
   );
 
   const heroScale = useSpring(heroScaleRaw, {
@@ -51,19 +45,12 @@ function AnimatedAboutHeroVisual({ sectionRef, children }: AboutHeroVisualProps)
     mass: 0.35
   });
 
-  const heroY = useSpring(heroYRaw, {
-    stiffness: 88,
-    damping: 24,
-    mass: 0.35
-  });
-
   return (
     <motion.div
       className="sp-about-hero-visual"
       style={{
         scale: heroScale,
-        opacity: heroOpacity,
-        y: heroY
+        opacity: heroOpacity
       }}
     >
       {children}

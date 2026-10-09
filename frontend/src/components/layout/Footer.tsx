@@ -173,7 +173,7 @@ export default function Footer({
         <div className="sp-footer-bottom">
           <p>© {currentYear} Sumathi Printers. All rights reserved.</p>
 
-          <span>Designed for premium print excellence.</span>
+          <span>Developed by Digital Team</span>
         </div>
       </div>
     </footer>

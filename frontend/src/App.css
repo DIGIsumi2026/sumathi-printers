@@ -5687,7 +5687,7 @@ main:has(.sp-about-page-intro-section),
 .sp-about-page-intro-section {
   position: relative !important;
   width: 100% !important;
-  min-height: 165vh !important;
+  min-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   overflow: clip !important;
@@ -5696,12 +5696,12 @@ main:has(.sp-about-page-intro-section),
 
 .sp-about-hero-sticky,
 .sp-about-page-intro-sticky {
-  position: sticky !important;
+  position: relative !important;
   top: 0 !important;
   width: 100% !important;
   height: 100vh !important;
   height: 100svh !important;
-  min-height: 100vh !important;
+  min-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   display: block !important;
@@ -5717,7 +5717,7 @@ main:has(.sp-about-page-intro-section),
   max-width: none !important;
   height: 100vh !important;
   height: 100svh !important;
-  min-height: 100vh !important;
+  min-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   aspect-ratio: auto !important;
@@ -6066,11 +6066,6 @@ main:has(.sp-about-page-intro-section),
 
 
 @media (max-width: 900px) {
-  .sp-about-hero-video-section,
-  .sp-about-page-intro-section {
-    min-height: 145vh !important;
-  }
-
   .sp-about-hero-content,
   .sp-about-page-thumb-content {
     left: 28px !important;
