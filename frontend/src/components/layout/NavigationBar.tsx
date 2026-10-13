@@ -262,7 +262,7 @@ export default function NavigationBar({ company }: NavigationBarProps) {
             anchorRef={shellRef}
             toggleRef={toggleRef}
             links={navItems}
-            contact={company?.contact ?? company?.topBar}
+            contact={{ ...(company?.contact ?? company?.topBar), phoneLabel: "(+94)77 42 6900" }}
             socials={socialLinks}
           >
             <QuoteButtonLink variant="sidebar" onClick={closeMenuAndRestoreFocus} />

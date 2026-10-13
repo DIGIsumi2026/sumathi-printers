@@ -11,7 +11,7 @@ type MobileSidebarProps = {
   anchorRef: RefObject<HTMLDivElement>;
   toggleRef: RefObject<HTMLButtonElement>;
   links: ReadonlyArray<{ label: string; to: string }>;
-  contact?: { email?: string; phone?: string };
+  contact?: { email?: string; phone?: string; phoneLabel?: string };
   socials: ReadonlyArray<{
     label: string;
     href: string;
@@ -170,7 +170,7 @@ function MobileSidebarPanel({
         {(contact?.email || contact?.phone) && (
           <motion.div variants={contactVariants} className="sp-mobile-sidebar-contact">
             {contact.email && <a href={`mailto:${contact.email}`}>{contact.email}</a>}
-            {contact.phone && <a href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`}>{contact.phone}</a>}
+            {contact.phone && <a href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`}>{contact.phoneLabel ?? contact.phone}</a>}
           </motion.div>
         )}
         {socials.length > 0 && (
