@@ -1,12 +1,12 @@
-import { Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { imageAssets } from "../../data/imageAssets";
 import { socialLinks } from "../../data/socialLinks";
 import type { CompanyData } from "../../types/site";
 import { useScrollLock } from "../../contexts/ScrollLockContext";
 import QuoteButtonLink from "../common/QuoteButtonLink";
+
+const MobileSidebar = lazy(() => import("../common/MobileSidebar"));
 
 type NavigationBarProps = {
   company?: CompanyData;
@@ -23,12 +23,39 @@ const navItems = [
 
 export default function NavigationBar({ company }: NavigationBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuPresent, setIsMenuPresent] = useState(false);
+  const [isMobileNavigation, setIsMobileNavigation] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const location = useLocation();
   const { lock, unlock } = useScrollLock();
 
   // Ref to the toggle button so we can restore focus when the menu closes.
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const shellRef = useRef<HTMLDivElement>(null);
+  const menuOpenRef = useRef(false);
+  const focusFrameRef = useRef<number | null>(null);
+  const isMenuActive = isMenuOpen || isMenuPresent;
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    lock();
+    // Unlock before route scroll restoration runs, without waiting for the exit animation.
+    return unlock;
+  }, [isMenuOpen, lock, unlock]);
+
+  const closeMenu = useCallback(() => {
+    menuOpenRef.current = false;
+    setIsMenuOpen(false);
+  }, []);
+
+  const closeMenuAndRestoreFocus = useCallback(() => {
+    closeMenu();
+    if (focusFrameRef.current !== null) cancelAnimationFrame(focusFrameRef.current);
+    focusFrameRef.current = requestAnimationFrame(() => {
+      toggleRef.current?.focus({ preventScroll: true });
+      focusFrameRef.current = null;
+    });
+  }, [closeMenu]);
 
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -109,75 +136,33 @@ export default function NavigationBar({ company }: NavigationBarProps) {
   /* ------------------------------------------------------------------ */
 
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location.pathname]);
+    closeMenu();
+  }, [location.key, closeMenu]);
 
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 981px)");
     const closeOnDesktop = () => {
-      if (desktop.matches) setIsMenuOpen(false);
+      setIsMobileNavigation(!desktop.matches);
+      if (desktop.matches) {
+        closeMenu();
+        setIsMenuPresent(false);
+      }
     };
 
     closeOnDesktop();
     desktop.addEventListener("change", closeOnDesktop);
     return () => desktop.removeEventListener("change", closeOnDesktop);
-  }, []);
+  }, [closeMenu]);
 
   /* ------------------------------------------------------------------ */
-  /*  Lenis scroll-lock + Escape key                                      */
-  /* ------------------------------------------------------------------ */
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      lock();
-    } else {
-      unlock();
-    }
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isMenuOpen) {
-        closeMenu();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMenuOpen]);
-
-  /* ------------------------------------------------------------------ */
-  /*  Cleanup: ensure body is never permanently locked                    */
+  /*  Cleanup pending focus restoration                                  */
   /* ------------------------------------------------------------------ */
 
   useEffect(() => {
     return () => {
-      unlock();
+      if (focusFrameRef.current !== null) cancelAnimationFrame(focusFrameRef.current);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  /* ------------------------------------------------------------------ */
-  /*  Helpers                                                             */
-  /* ------------------------------------------------------------------ */
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    // Restore focus to the toggle button.
-    requestAnimationFrame(() => {
-      toggleRef.current?.focus();
-    });
-  };
-
-  /* ------------------------------------------------------------------ */
-  /*  Portal targets                                                       */
-  /* ------------------------------------------------------------------ */
-
-  // Backdrop and sidebar are portalled directly into document.body so they
-  // escape the header's stacking context and sit above everything else.
-  const portalTarget =
-    typeof document !== "undefined" ? document.body : null;
 
   /* ------------------------------------------------------------------ */
   /*  Render                                                              */
@@ -187,7 +172,7 @@ export default function NavigationBar({ company }: NavigationBarProps) {
     <>
       {/* ── Normal nav shell (stays inside the header) ── */}
       <header
-        className={`sp-header ${isSticky ? "is-sticky" : ""} ${!isVisible ? "is-hidden" : ""}`}
+        className={`sp-header ${isSticky ? "is-sticky" : ""} ${!isVisible && !isMenuActive ? "is-hidden" : ""} ${isMenuActive ? "has-mobile-menu" : ""}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -210,7 +195,7 @@ export default function NavigationBar({ company }: NavigationBarProps) {
             })}
           </div>
 
-          <div className="sp-nav-shell">
+          <div ref={shellRef} className="sp-nav-shell">
             <Link to="/" className="sp-brand" onClick={closeMenu}>
               <img
                 src={imageAssets.logo.main}
@@ -243,89 +228,47 @@ export default function NavigationBar({ company }: NavigationBarProps) {
             <button
               ref={toggleRef}
               type="button"
-              className="sp-mobile-toggle"
+              id="sp-mobile-menu-toggle"
+              className="sp-mobile-toggle sp-mobile-menu-toggle"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
               aria-controls="sp-sidebar-panel"
-              onClick={() => setIsMenuOpen((prev) => !prev)}
+              onClick={() => {
+                if (menuOpenRef.current) {
+                  closeMenu();
+                } else {
+                  menuOpenRef.current = true;
+                  setIsMenuPresent(true);
+                  setIsMenuOpen(true);
+                }
+              }}
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
             </button>
           </div>
         </div>
       </header>
 
-      {/* ── Portal: backdrop + sidebar – rendered directly into document.body ── */}
-      {portalTarget &&
-        createPortal(
-          <>
-            {/* Backdrop – blurs and darkens everything behind the sidebar */}
-            <button
-              type="button"
-              className={`sp-mobile-backdrop ${isMenuOpen ? "is-open" : ""}`}
-              aria-label="Close menu"
-              tabIndex={isMenuOpen ? 0 : -1}
-              onClick={closeMenu}
-            />
-
-            {/* Sidebar panel */}
-            <aside
-              id="sp-sidebar-panel"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Navigation menu"
-              className={`sp-mobile-menu ${isMenuOpen ? "is-open" : ""}`}
-              // Lenis must not handle wheel/touch events inside the sidebar.
-              data-lenis-prevent
-            >
-              <div className="sp-mobile-menu-head">
-                <img
-                  src={imageAssets.logo.main}
-                  alt={company?.brand || "Sumathi Printers"}
-                  className="sp-mobile-menu-logo"
-                  loading="eager"
-                  decoding="async"
-                />
-
-                <button
-                  type="button"
-                  className="sp-mobile-menu-close"
-                  aria-label="Close menu"
-                  onClick={closeMenu}
-                >
-                  <X size={22} />
-                </button>
-              </div>
-
-              <nav
-                className="sp-mobile-nav-links"
-                aria-label="Mobile navigation"
-              >
-                {navItems.map((item, index) => (
-                  <NavLink
-                    key={item.label}
-                    to={item.to}
-                    end={item.to === "/"}
-                    className={({ isActive }) =>
-                      `sp-mobile-nav-link ${isActive ? "active" : ""}`
-                    }
-                    style={
-                      { "--delay": `${index * 55}ms` } as React.CSSProperties
-                    }
-                    onClick={closeMenu}
-                  >
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    {item.label}
-                  </NavLink>
-                ))}
-              </nav>
-
-              {/* Sidebar "Get a Quote" – uses exact same component as navbar */}
-              <QuoteButtonLink variant="sidebar" onClick={closeMenu} />
-            </aside>
-          </>,
-          portalTarget
-        )}
+      {isMobileNavigation && (
+        <Suspense fallback={null}>
+          <MobileSidebar
+            open={isMenuOpen}
+            onClose={closeMenuAndRestoreFocus}
+            onExitComplete={() => {
+              if (!menuOpenRef.current) setIsMenuPresent(false);
+            }}
+            anchorRef={shellRef}
+            toggleRef={toggleRef}
+            links={navItems}
+            contact={company?.contact ?? company?.topBar}
+            socials={socialLinks}
+          >
+            <QuoteButtonLink variant="sidebar" onClick={closeMenuAndRestoreFocus} />
+          </MobileSidebar>
+        </Suspense>
+      )}
     </>
   );
 }

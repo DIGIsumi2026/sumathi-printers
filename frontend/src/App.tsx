@@ -17,6 +17,7 @@ import { ScrollLockProvider } from "./contexts/ScrollLockContext";
 
 import "./App.css";
 import "./responsive-corrections.css";
+import "./components/common/MobileSidebar.css";
 
 const HomePage     = lazy(() => import("./pages/Home/HomePage"));
 const AboutPage    = lazy(() => import("./pages/About/AboutPage"));
